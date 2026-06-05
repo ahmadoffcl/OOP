@@ -134,3 +134,11 @@ The generated PDF was checked and contains:
 - Testing Summary section.
 - Output screenshot pages.
 - GitHub URL placeholder that must be replaced after pushing to GitHub.
+
+## GitHub Actions Workflow Check
+
+The workflow file `.github/workflows/build.yml` includes:
+
+- `g++ -std=c++17 -Wall -Wextra` compile command.
+- Automated menu smoke test through all six modules.
+- File checks for `data/campus_report.txt` and `data/campus_pdf_report.txt`.

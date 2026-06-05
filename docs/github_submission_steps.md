@@ -47,7 +47,7 @@ https://github.com/YOUR_USERNAME/HITEC-OOP-SCMS-25-CS-067
 
 ## 4. Check GitHub Actions
 
-Open the repository on GitHub and click the `Actions` tab. The included workflow should compile the project.
+Open the repository on GitHub and click the `Actions` tab. The included workflow should compile the project, run a menu smoke test, and check that both report files are generated.
 
 ## 5. Submit
 

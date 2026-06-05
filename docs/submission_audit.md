@@ -19,6 +19,7 @@ Date: 2026-06-05
 - Screenshot-style output images exist in `docs/screenshots/`
 - Viva questions exist in `docs/viva_questions_full.md`
 - GitHub Actions build workflow exists at `.github/workflows/build.yml`
+- The workflow compiles the project, runs a menu smoke test, and checks generated report files.
 
 ## Verified Locally
 
