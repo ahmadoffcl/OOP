@@ -1,0 +1,10 @@
+*.o
+*.obj
+*.exe
+*.out
+a.out
+build/
+.vscode/
+.DS_Store
+library_catalog_saved.txt
+data/campus_report.txt
