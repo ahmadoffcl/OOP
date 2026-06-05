@@ -42,10 +42,11 @@ Detailed status files:
 - `docs/module1_status.md`
 - `docs/module2_status.md`
 - `docs/module3_status.md`
+- `docs/module4_status.md`
 
 ## Phase 2 Summary
 
-Phase 2 covers library and finance. The Library class stores `LibraryItem*` pointers, loads catalog data from `data/library_catalog.txt`, searches items, issues items, handles overdue fines, and saves output. Finance uses `FeeRecord`, `Invoice`, copy constructor, copy assignment, static invoice counter, and destructor.
+Phase 2 covers library and finance. The Library class stores `LibraryItem*` pointers, loads catalog data from `data/library_catalog.txt`, searches items, issues items, handles overdue fines, and saves output. Finance uses `FeeRecord`, `Invoice`, deep copy, copy constructor, copy assignment, static invoice counter, and destructor.
 
 ## Phase 3 Summary
 

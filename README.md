@@ -101,6 +101,7 @@ The home menu opens each module separately. Inside a module, select the task you
 - `docs/module1_status.md`: Person hierarchy completion status
 - `docs/module2_status.md`: Course and Enrollment completion status
 - `docs/module3_status.md`: Library System completion status
+- `docs/module4_status.md`: Fee and Finance completion status
 - `docs/oop_concepts_checklist.md`: where each OOP concept is used
 - `docs/viva_questions_full.md`: viva questions and short answers
 - `docs/phase2_status.md`: Library and Finance phase status

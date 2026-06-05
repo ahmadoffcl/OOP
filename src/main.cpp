@@ -305,30 +305,57 @@ void showFeeRecordDemo(Student& s1) {
     fee -= 25000;
     cout << "\nAfter payment of 25000:" << endl;
     fee.displayFeeRecord();
+    fee.displayPayments();
+}
 
-    FeeRecord copiedFee = fee;
+void showFeeCopyDemo(Student& s1) {
+    printTitle("FEE COPY CONSTRUCTOR AND ASSIGNMENT DEMO");
+
+    FeeRecord fee(&s1, 65000, 20000, 500);
+    fee -= 25000;
+    fee -= 10000;
+
+    cout << "\nOriginal fee record:" << endl;
+    fee.displayFeeRecord();
+    fee.displayPayments();
+
+    FeeRecord copiedFee(fee);
     cout << "\nCopied fee record:" << endl;
     copiedFee.displayFeeRecord();
+    copiedFee.displayPayments();
 
     FeeRecord assignedFee;
     assignedFee = fee;
     cout << "\nAssigned fee record:" << endl;
     assignedFee.displayFeeRecord();
+    assignedFee.displayPayments();
 }
 
 void showInvoiceDemo(Student& s1) {
     printTitle("INVOICE DEMO");
+
+    cout << "Invoice counter before creating invoices: "
+         << Invoice::getInvoiceCounter() << endl;
 
     FeeRecord fee(&s1, 65000, 20000, 500);
     fee -= 25000;
 
     string invoiceItems[3] = {"Semester Fee", "Hostel Fee", "Library Fine"};
     Invoice inv(Utils::getTodayDate(), invoiceItems, 3, fee.getBalance());
+    cout << "\nOriginal invoice:" << endl;
     cout << inv;
 
     Invoice copiedInvoice = inv;
     cout << "\nCopied invoice using copy constructor:" << endl;
     cout << copiedInvoice;
+
+    Invoice assignedInvoice;
+    assignedInvoice = inv;
+    cout << "\nAssigned invoice using copy assignment:" << endl;
+    cout << assignedInvoice;
+
+    cout << "\nInvoice counter after creating invoices: "
+         << Invoice::getInvoiceCounter() << endl;
 }
 
 void financeMenu(Student& s1) {
@@ -337,13 +364,16 @@ void financeMenu(Student& s1) {
     do {
         printTitle("FEE AND FINANCE MODULE");
         cout << "1. Show fee record and payment" << endl;
-        cout << "2. Show invoice and invoice copy" << endl;
+        cout << "2. Show fee copy constructor and assignment" << endl;
+        cout << "3. Show invoice, copies, and static counter" << endl;
         printBackOption();
         choice = readChoice();
 
         if (choice == 1) {
             showFeeRecordDemo(s1);
         } else if (choice == 2) {
+            showFeeCopyDemo(s1);
+        } else if (choice == 3) {
             showInvoiceDemo(s1);
         } else if (choice == 0) {
             cout << "Returning to Home..." << endl;

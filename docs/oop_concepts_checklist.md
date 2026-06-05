@@ -25,7 +25,7 @@ This file maps the assignment checklist to files in this project. Read the code 
 | 19 | Exception handling | `try/catch` in `main.cpp`, custom exceptions in `Exceptions.h` |
 | 20 | File I/O | `Library::saveCatalog()`, `Library::loadCatalog()`, report file output |
 | 21 | Reports and utilities | `Reports.h/.cpp`, `Utils.h/.cpp` |
-| 22 | Memory management | `new Book`, `new Journal`, `delete` in `Library`, `new[]/delete[]` in `Invoice` |
+| 22 | Memory management | `new Book`, `new Journal`, `delete` in `Library`, `new[]/delete[]` in `FeeRecord` and `Invoice` |
 | 23 | Sorting and searching | `Reports::sortStudentsByGPA()`, `Library::searchByTitle()` |
 | 24 | Composition | `HostelManager` contains a `HostelBlock` object |
 | 25 | Aggregation | `Course` keeps `Faculty* instructor`, `Room` keeps `Student* occupants[]` |

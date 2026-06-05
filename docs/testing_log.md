@@ -60,6 +60,7 @@ C++ Basics
 4
 1
 2
+3
 0
 5
 1
@@ -78,7 +79,7 @@ Result:
 - Person module printed records and compact student list.
 - Course module printed course details, enrollment exception, enrolled/waiting students, course comparison, and waiting list merge.
 - Library module loaded/showed library items, searched title, issued book `B001`, returned with overdue fine, displayed issued records, and saved catalog.
-- Finance module showed fee payment, fee copy, fee assignment, invoice, and invoice copy.
+- Finance module showed fee payment, payment history, fee copy, fee assignment, invoice copy, invoice assignment, and static counter.
 - Hostel module allocated students, printed occupancy report, and vacated one student.
 - Reports module sorted students by GPA and wrote `data/campus_report.txt`.
 - Every module used `0. Back to Home`.

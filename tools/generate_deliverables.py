@@ -73,8 +73,8 @@ def make_class_diagram():
         "Book": ((80, 1220, 440, 1425), ["- isbn", "- genre", "- copiesAvailable", "+ checkout()", "+ checkin()"]),
         "Journal": ((520, 1220, 880, 1425), ["- issn", "- volume", "- issueNumber", "+ checkout()", "+ checkin()"]),
         "Library": ((980, 950, 1360, 1185), ["- LibraryItem* items[]", "- IssuedRecord issued[]", "+ searchByTitle()", "+ displayIssuedRecords()", "+ save/load catalog"]),
-        "FeeRecord": ((1420, 950, 1740, 1160), ["- Student* studentRef", "- semesterFee", "- hostelFee", "- balance", "+ operator-=()"]),
-        "Invoice": ((1420, 1240, 1740, 1420), ["- static counter", "- string* items", "+ copy constructor", "+ destructor"]),
+        "FeeRecord": ((1420, 950, 1740, 1190), ["- Student* studentRef", "- semesterFee", "- hostelFee", "- balance", "- double* payments", "+ operator-=()", "+ displayPayments()"]),
+        "Invoice": ((1420, 1240, 1740, 1445), ["- static counter", "- string* items", "+ getInvoiceCounter()", "+ copy constructor", "+ destructor"]),
         "CampusService": ((80, 1580, 440, 1700), ["+ showServiceName()"]),
         "Accommodation": ((80, 1810, 440, 1960), ["+ allocateRoom()", "+ vacateRoom()"]),
         "Reportable": ((520, 1810, 880, 1960), ["+ generateReport()"]),
@@ -226,7 +226,7 @@ def make_report(diagram_path):
     add_section(pdf, "Library and Finance Details")
     add_wrapped(pdf, "The Library module loads records from data/library_catalog.txt, displays books and "
                      "journals, searches by title or ID, issues a book, shows issued records, and checks overdue returns. The Finance module "
-                     "tracks fee balance, accepts payment with operator-=, copies fee records, and creates invoices with "
+                     "tracks fee balance, accepts payment with operator-=, deep-copies payment history, and creates invoices with "
                      "a static invoice counter.")
 
     add_section(pdf, "Testing Summary")

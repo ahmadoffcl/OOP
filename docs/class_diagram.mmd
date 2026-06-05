@@ -97,13 +97,16 @@ classDiagram
         -double hostelFee
         -double libraryFine
         -double balance
+        -double* payments
         +operator-=()
+        +displayPayments()
     }
 
     class Invoice {
         -static int invoiceCounter
         -int invoiceID
         -string* items
+        +getInvoiceCounter()
         +operator<<()
     }
 

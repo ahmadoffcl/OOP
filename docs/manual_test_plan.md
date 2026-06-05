@@ -39,8 +39,9 @@ Then test menu choices:
 | 3 then 5 | Returns item `B001` with overdue fine |
 | 3 then 6 | Shows issued item records |
 | 3 then 7 | Saves library catalog |
-| 4 then 1 | Shows fee record, payment using `-=`, copied fee record, and assigned fee record |
-| 4 then 2 | Shows invoice and copied invoice |
+| 4 then 1 | Shows fee record, payment using `-=`, and payment history |
+| 4 then 2 | Shows fee copy constructor and assignment with copied payment history |
+| 4 then 3 | Shows invoice, copied invoice, assigned invoice, and static counter |
 | 5 then 1 | Allocates students to hostel rooms |
 | 5 then 2 | Prints occupancy report |
 | 5 then 3 | Vacates Ahmad Ali room |

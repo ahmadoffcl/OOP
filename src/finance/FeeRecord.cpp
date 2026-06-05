@@ -20,6 +20,12 @@ FeeRecord::FeeRecord() {
     libraryFine = 0;
     totalPaid = 0;
     balance = 0;
+    paymentCount = 0;
+    payments = new double[MAX_PAYMENTS];
+
+    for (int i = 0; i < MAX_PAYMENTS; i++) {
+        payments[i] = 0;
+    }
 }
 
 FeeRecord::FeeRecord(Student* st, double semFee, double hostFee, double fine) {
@@ -28,6 +34,13 @@ FeeRecord::FeeRecord(Student* st, double semFee, double hostFee, double fine) {
     hostelFee = hostFee;
     libraryFine = fine;
     totalPaid = 0;
+    paymentCount = 0;
+    payments = new double[MAX_PAYMENTS];
+
+    for (int i = 0; i < MAX_PAYMENTS; i++) {
+        payments[i] = 0;
+    }
+
     calculateBalance();
 }
 
@@ -38,19 +51,37 @@ FeeRecord::FeeRecord(const FeeRecord& other) {
     libraryFine = other.libraryFine;
     totalPaid = other.totalPaid;
     balance = other.balance;
+    paymentCount = other.paymentCount;
+    payments = new double[MAX_PAYMENTS];
+
+    for (int i = 0; i < MAX_PAYMENTS; i++) {
+        payments[i] = other.payments[i];
+    }
 }
 
 FeeRecord& FeeRecord::operator=(const FeeRecord& other) {
     if (this != &other) {
+        delete[] payments;
+
         studentRef = other.studentRef;
         semesterFee = other.semesterFee;
         hostelFee = other.hostelFee;
         libraryFine = other.libraryFine;
         totalPaid = other.totalPaid;
         balance = other.balance;
+        paymentCount = other.paymentCount;
+        payments = new double[MAX_PAYMENTS];
+
+        for (int i = 0; i < MAX_PAYMENTS; i++) {
+            payments[i] = other.payments[i];
+        }
     }
 
     return *this;
+}
+
+FeeRecord::~FeeRecord() {
+    delete[] payments;
 }
 
 void FeeRecord::calculateBalance() {
@@ -62,11 +93,43 @@ void FeeRecord::addLibraryFine(double fine) {
     calculateBalance();
 }
 
+double FeeRecord::getSemesterFee() const {
+    return semesterFee;
+}
+
+double FeeRecord::getHostelFee() const {
+    return hostelFee;
+}
+
+double FeeRecord::getLibraryFine() const {
+    return libraryFine;
+}
+
+double FeeRecord::getTotalPaid() const {
+    return totalPaid;
+}
+
 double FeeRecord::getBalance() const {
     return balance;
 }
 
+int FeeRecord::getPaymentCount() const {
+    return paymentCount;
+}
+
 FeeRecord& FeeRecord::operator-=(double payment) {
+    if (payment <= 0) {
+        cout << "Payment amount must be positive." << endl;
+        return *this;
+    }
+
+    if (paymentCount < MAX_PAYMENTS) {
+        payments[paymentCount] = payment;
+        paymentCount++;
+    } else {
+        cout << "Payment history is full. Payment still recorded in total." << endl;
+    }
+
     totalPaid = totalPaid + payment;
     calculateBalance();
     return *this;
@@ -85,4 +148,16 @@ void FeeRecord::displayFeeRecord() const {
     cout << "Library Fine: " << libraryFine << endl;
     cout << "Total Paid: " << totalPaid << endl;
     cout << "Balance: " << balance << endl;
+}
+
+void FeeRecord::displayPayments() const {
+    cout << "\n--- Payment History ---" << endl;
+
+    if (paymentCount == 0) {
+        cout << "No payment made yet." << endl;
+    }
+
+    for (int i = 0; i < paymentCount; i++) {
+        cout << i + 1 << ". Payment: " << payments[i] << endl;
+    }
 }
