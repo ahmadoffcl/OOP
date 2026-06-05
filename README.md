@@ -140,6 +140,8 @@ The home menu opens each module separately. Inside a module, select the task you
 - `docs/manual_test_plan.md`: manual testing steps
 - `docs/testing_log.md`: latest test evidence
 - `docs/remaining_work.md`: what is left before final submission
+- `docs/submission_audit.md`: final local readiness audit
+- `docs/github_submission_steps.md`: exact steps to push the project to GitHub
 - `docs/test_outputs/`: captured console output for each module
 - `docs/screenshots/`: screenshot-style images generated from console output
 - `docs/class_diagram.mmd`: class diagram source
