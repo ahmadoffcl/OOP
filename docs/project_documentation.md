@@ -23,18 +23,24 @@ The Smart Campus Management System is a simple command-line C++ project for mana
 
 ## Main Menu
 
-1. Person module demo
-2. Course module demo
-3. Enrollment and exception demo
-4. Library module demo
-5. Finance module demo
-6. Hostel module demo
-7. Reports module demo
+1. Person module
+2. Course and Enrollment module
+3. Library module
+4. Fee and Finance module
+5. Hostel module
+6. Reports module
 0. Exit
+
+Each module opens its own submenu. Option `0` inside any module returns to the home menu. This keeps the output cleaner and makes the console interface easier to use.
 
 ## Phase 1 Summary
 
 Phase 1 covers the person and course modules. `Person` is an abstract base class. `Student`, `GradStudent`, `Faculty`, and `Staff` inherit from it. Course enrollment uses a capacity exception and operator overloading.
+
+Detailed status files:
+
+- `docs/module1_status.md`
+- `docs/module2_status.md`
 
 ## Phase 2 Summary
 

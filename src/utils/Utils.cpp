@@ -18,7 +18,7 @@ string Utils::getTodayDate() {
 }
 
 void Utils::printLine() {
-    cout << "------------------------------------" << endl;
+    cout << "------------------------------------------------------------" << endl;
 }
 
 int Utils::checkPositiveInt(int value) {

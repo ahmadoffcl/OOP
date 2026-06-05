@@ -21,14 +21,15 @@ This is a learning starter for the SCMS project. It currently includes a simple 
 - Hostel starter: `Accommodation`, `Reportable`, `Room`, `HostelBlock`, `HostelManager`
 - Reports starter: `Reports` and `Utils`
 - Simple arrays, constructors, getters/setters, inheritance, polymorphism, file handling, and operator overloading
+- Clean console interface with separate module screens and `0. Back to Home` options
 
 You should still complete and personalize the project before submission:
 
 - Replace sample names, CNICs, fees, and roll numbers with your own values
 - Add more menu input instead of only fixed demo data
 - Improve file loading/saving after you understand the starter code
-- UML class diagram
-- Final project report
+- Review `docs/class_diagram.png`
+- Review and improve `docs/project_report.pdf` with your own screenshots
 
 ## How to Compile
 
@@ -90,9 +91,15 @@ g++ -std=c++17 -Wall -Wextra src/main.cpp src/person/*.cpp src/course/*.cpp src/
 - Add `docs/project_report.pdf`
 - Follow `docs/manual_test_plan.md` after installing g++
 
+## Interface Flow
+
+The home menu opens each module separately. Inside a module, select the task you want, then use `0` to go back home. This keeps the output cleaner instead of printing the home menu directly under every result.
+
 ## Documentation Files
 
 - `docs/project_documentation.md`: project overview and module explanation
+- `docs/module1_status.md`: Person hierarchy completion status
+- `docs/module2_status.md`: Course and Enrollment completion status
 - `docs/oop_concepts_checklist.md`: where each OOP concept is used
 - `docs/viva_questions_full.md`: viva questions and short answers
 - `docs/phase2_status.md`: Library and Finance phase status
@@ -100,6 +107,8 @@ g++ -std=c++17 -Wall -Wextra src/main.cpp src/person/*.cpp src/course/*.cpp src/
 - `docs/testing_log.md`: latest test evidence
 - `docs/remaining_work.md`: what is left before final submission
 - `docs/class_diagram.mmd`: class diagram source
+- `docs/class_diagram.png`: generated class diagram image
+- `docs/project_report.pdf`: generated report draft
 
 ## Important
 Do not submit this starter without understanding and changing it. Your viva will test whether you can explain and modify your own code.

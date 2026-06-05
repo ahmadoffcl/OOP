@@ -6,8 +6,8 @@ These items are still left before final submission.
 
 - Confirm with instructor whether 3 group members are allowed.
 - Replace sample CNIC/contact values with real or acceptable demo values.
-- Create `docs/class_diagram.png` from `docs/class_diagram.mmd`.
-- Create final `docs/project_report.pdf`.
+- Review `docs/class_diagram.png` and adjust if your teacher wants a different UML style.
+- Review `docs/project_report.pdf` and add real screenshots.
 - Add screenshots of all menu options to the report.
 - Make sure every group member understands each file before viva.
 - Create a public GitHub repository and push this project.
@@ -25,6 +25,7 @@ These items are still left before final submission.
 - Project folder on D drive.
 - Portable compiler installed on D drive.
 - Build script and run script.
+- Clean console interface with module submenus and back-to-home options.
 - Person module.
 - Course and enrollment module.
 - Library module.

@@ -20,6 +20,11 @@ Course::Course() {
     maxCapacity = 0;
     enrolledCount = 0;
     waitingCount = 0;
+
+    for (int i = 0; i < MAX_COURSE_STUDENTS; i++) {
+        enrolledStudents[i] = NULL;
+        waitingList[i] = NULL;
+    }
 }
 
 Course::Course(string code, string name, int hours, Faculty* fac, int capacity) {
@@ -30,6 +35,11 @@ Course::Course(string code, string name, int hours, Faculty* fac, int capacity) 
     maxCapacity = capacity;
     enrolledCount = 0;
     waitingCount = 0;
+
+    for (int i = 0; i < MAX_COURSE_STUDENTS; i++) {
+        enrolledStudents[i] = NULL;
+        waitingList[i] = NULL;
+    }
 }
 
 Course::Course(const Course& other) {
@@ -47,6 +57,14 @@ Course::Course(const Course& other) {
 
     for (int i = 0; i < waitingCount; i++) {
         waitingList[i] = other.waitingList[i];
+    }
+
+    for (int i = enrolledCount; i < MAX_COURSE_STUDENTS; i++) {
+        enrolledStudents[i] = NULL;
+    }
+
+    for (int i = waitingCount; i < MAX_COURSE_STUDENTS; i++) {
+        waitingList[i] = NULL;
     }
 }
 
@@ -98,7 +116,37 @@ int Course::getWaitingCount() const {
     return waitingCount;
 }
 
+bool Course::isStudentEnrolled(string rollNo) const {
+    for (int i = 0; i < enrolledCount; i++) {
+        if (enrolledStudents[i] != NULL && enrolledStudents[i]->getRollNo() == rollNo) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool Course::isStudentWaiting(string rollNo) const {
+    for (int i = 0; i < waitingCount; i++) {
+        if (waitingList[i] != NULL && waitingList[i]->getRollNo() == rollNo) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void Course::enrollStudent(Student* st) {
+    if (st == NULL) {
+        cout << "Student record is empty." << endl;
+        return;
+    }
+
+    if (isStudentEnrolled(st->getRollNo())) {
+        cout << st->getName() << " is already enrolled in " << courseCode << "." << endl;
+        return;
+    }
+
     if (enrolledCount >= maxCapacity) {
         addToWaitingList(st);
         throw CapacityExceededException();
@@ -110,9 +158,46 @@ void Course::enrollStudent(Student* st) {
 }
 
 void Course::addToWaitingList(Student* st) {
+    if (st == NULL) {
+        return;
+    }
+
+    if (isStudentWaiting(st->getRollNo())) {
+        cout << st->getName() << " is already in waiting list." << endl;
+        return;
+    }
+
     if (waitingCount < MAX_COURSE_STUDENTS) {
         waitingList[waitingCount] = st;
         waitingCount++;
+    } else {
+        cout << "Waiting list is full." << endl;
+    }
+}
+
+void Course::displayEnrolledStudents() const {
+    cout << "\nEnrolled Students:" << endl;
+
+    if (enrolledCount == 0) {
+        cout << "No student enrolled yet." << endl;
+    }
+
+    for (int i = 0; i < enrolledCount; i++) {
+        cout << i + 1 << ". " << enrolledStudents[i]->getName()
+             << " (" << enrolledStudents[i]->getRollNo() << ")" << endl;
+    }
+}
+
+void Course::displayWaitingList() const {
+    cout << "\nWaiting List:" << endl;
+
+    if (waitingCount == 0) {
+        cout << "No student in waiting list." << endl;
+    }
+
+    for (int i = 0; i < waitingCount; i++) {
+        cout << i + 1 << ". " << waitingList[i]->getName()
+             << " (" << waitingList[i]->getRollNo() << ")" << endl;
     }
 }
 

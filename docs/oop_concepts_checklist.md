@@ -20,7 +20,7 @@ This file maps the assignment checklist to files in this project. Read the code 
 | 14 | Copy constructor | `Person`, `Course`, `FeeRecord`, `Invoice` |
 | 15 | Copy assignment | `FeeRecord::operator=`, `Invoice::operator=` |
 | 16 | Search functions | `Library::searchByTitle()` and `Library::searchByID()` |
-| 17 | Array-based collections | Library item array, room array, course enrolled student array |
+| 17 | Array-based collections | Library item array, room array, course enrolled student array, course waiting list array |
 | 18 | Arrays of objects | `Room rooms[MAX_BLOCK_ROOMS]` in `HostelBlock` |
 | 19 | Exception handling | `try/catch` in `main.cpp`, custom exceptions in `Exceptions.h` |
 | 20 | File I/O | `Library::saveCatalog()`, `Library::loadCatalog()`, report file output |

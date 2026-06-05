@@ -51,8 +51,12 @@ public:
     int getEnrolledCount() const;
     int getWaitingCount() const;
 
+    bool isStudentEnrolled(string rollNo) const;
+    bool isStudentWaiting(string rollNo) const;
     void enrollStudent(Student* st);
     void addToWaitingList(Student* st);
+    void displayEnrolledStudents() const;
+    void displayWaitingList() const;
 
     bool operator==(const Course& other) const;
     Student** operator+(const Course& other) const;

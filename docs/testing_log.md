@@ -37,26 +37,48 @@ Test input:
 
 ```text
 1
+1
+2
+0
+2
+1
 2
 3
 4
 5
+0
+3
+1
+2
+3
+4
+0
+4
+1
+2
+0
+5
+1
+2
+3
+0
 6
-7
+1
+2
+0
 0
 ```
 
 Result:
 
-- Option 1 printed person records.
-- Option 2 printed course information.
-- Option 3 enrolled one student and showed capacity exception.
-- Option 4 loaded/showed library items and showed overdue fine.
-- Option 4 also issued book `B001` to `25-CS-067`.
-- Option 5 showed fee payment, fee copy, fee assignment, invoice, and invoice copy.
-- Option 6 allocated students to hostel room.
-- Option 7 sorted students by GPA and wrote `data/campus_report.txt`.
-- Option 0 exited program.
+- Person module printed records and compact student list.
+- Course module printed course details, enrollment exception, enrolled/waiting students, course comparison, and waiting list merge.
+- Library module loaded/showed library items, searched title, issued book `B001`, showed overdue fine, and saved catalog.
+- Finance module showed fee payment, fee copy, fee assignment, invoice, and invoice copy.
+- Hostel module allocated students, printed occupancy report, and vacated one student.
+- Reports module sorted students by GPA and wrote `data/campus_report.txt`.
+- Every module used `0. Back to Home`.
+- Home option `0` exited program.
 
 ## Wrong Input Test
 

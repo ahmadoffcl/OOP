@@ -25,13 +25,25 @@ Then test menu choices:
 
 | Choice | Expected result |
 |--------|-----------------|
-| 1 | Shows student, grad student, faculty, and staff information |
-| 2 | Shows OOP course information |
-| 3 | Enrolls first student and sends second to waiting list because capacity is 1 |
-| 4 | Shows library items, searches C++ book, issues and returns with overdue fine |
-| 5 | Shows fee record, payment using `-=`, copied fee record, and invoice |
-| 6 | Allocates students to hostel rooms and prints occupancy report |
-| 7 | Sorts students by GPA and writes `data/campus_report.txt` |
+| 1 then 1 | Shows student, grad student, faculty, and staff information |
+| 1 then 2 | Shows compact student list |
+| 2 then 1 | Shows OOP course information |
+| 2 then 2 | Enrolls first student and sends second to waiting list because capacity is 1 |
+| 2 then 3 | Shows enrolled and waiting students |
+| 2 then 4 | Compares courses using `==` |
+| 2 then 5 | Merges waiting lists using `+` |
+| 3 then 1 | Shows library catalog |
+| 3 then 2 | Searches C++ book |
+| 3 then 3 | Issues and returns with overdue fine |
+| 3 then 4 | Saves library catalog |
+| 4 then 1 | Shows fee record, payment using `-=`, copied fee record, and assigned fee record |
+| 4 then 2 | Shows invoice and copied invoice |
+| 5 then 1 | Allocates students to hostel rooms |
+| 5 then 2 | Prints occupancy report |
+| 5 then 3 | Vacates Ahmad Ali room |
+| 6 then 1 | Sorts students by GPA |
+| 6 then 2 | Writes `data/campus_report.txt` |
+| module 0 | Returns to home menu |
 | 0 | Exits the program |
 
 Also test a wrong input:
