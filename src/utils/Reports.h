@@ -20,6 +20,8 @@ using namespace std;
 namespace Reports {
     void sortStudentsByGPA(Student* students[], int count);
     void showStudents(Student* students[], int count);
+    Student* findStudentByRollNo(Student* students[], int count, string rollNo);
+    void showTopStudent(Student* students[], int count);
     void generateCampusTextReport(Student* students[], int studentCount, Library& library, string fileName);
 }
 

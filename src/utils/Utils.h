@@ -18,6 +18,7 @@ using namespace std;
 namespace Utils {
     string getTodayDate();
     void printLine();
+    void printSmallLine();
     int checkPositiveInt(int value);
 }
 

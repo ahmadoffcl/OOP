@@ -432,7 +432,9 @@ void reportsMenu(Student* students[], int studentCount, Library& library) {
     do {
         printTitle("REPORTS MODULE");
         cout << "1. Sort and show students by GPA" << endl;
-        cout << "2. Generate campus text report" << endl;
+        cout << "2. Find student by roll number" << endl;
+        cout << "3. Show top GPA student" << endl;
+        cout << "4. Generate campus text report" << endl;
         printBackOption();
         choice = readChoice();
 
@@ -440,6 +442,26 @@ void reportsMenu(Student* students[], int studentCount, Library& library) {
             Reports::sortStudentsByGPA(students, studentCount);
             Reports::showStudents(students, studentCount);
         } else if (choice == 2) {
+            string rollNo;
+            cout << "Enter roll no (press Enter for 25-CS-067): ";
+            getline(cin, rollNo);
+
+            if (rollNo == "") {
+                rollNo = "25-CS-067";
+            }
+
+            Student* found = Reports::findStudentByRollNo(students, studentCount, rollNo);
+
+            if (found != NULL) {
+                cout << "Student found:" << endl;
+                cout << found->getRollNo() << " - " << found->getName()
+                     << " - GPA: " << found->getGPA() << endl;
+            } else {
+                cout << "Student not found." << endl;
+            }
+        } else if (choice == 3) {
+            Reports::showTopStudent(students, studentCount);
+        } else if (choice == 4) {
             loadLibraryIfNeeded(library);
             Reports::generateCampusTextReport(students, studentCount, library, "data/campus_report.txt");
         } else if (choice == 0) {

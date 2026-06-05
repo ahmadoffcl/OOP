@@ -147,6 +147,19 @@ classDiagram
         +showSummary()
     }
 
+    class Reports {
+        +sortStudentsByGPA()
+        +findStudentByRollNo()
+        +showTopStudent()
+        +generateCampusTextReport()
+    }
+
+    class Utils {
+        +getTodayDate()
+        +printLine()
+        +checkPositiveInt()
+    }
+
     Person <|-- Student
     Student <|-- GradStudent
     Person <|-- Faculty

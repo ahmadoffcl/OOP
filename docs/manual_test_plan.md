@@ -49,7 +49,9 @@ Then test menu choices:
 | 5 then 5 | Prints occupancy report |
 | 5 then 6 | Vacates Ahmad Ali room |
 | 6 then 1 | Sorts students by GPA |
-| 6 then 2 | Writes `data/campus_report.txt` |
+| 6 then 2 | Finds student by roll number |
+| 6 then 3 | Shows top GPA student |
+| 6 then 4 | Writes `data/campus_report.txt` |
 | module 0 | Returns to home menu |
 | 0 | Exits the program |
 

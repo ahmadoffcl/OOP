@@ -81,6 +81,8 @@ def make_class_diagram():
         "Room": ((980, 1580, 1360, 1805), ["- roomNumber", "- type, floor", "- Student* occupants[]", "+ add/remove student", "+ hasStudent()"]),
         "HostelBlock": ((980, 1880, 1360, 2065), ["- blockName", "- Room rooms[]", "+ addRoom()", "+ getTotalOccupants()"]),
         "HostelManager": ((1420, 1740, 1740, 2005), ["- HostelBlock block", "+ allocateRoom()", "+ vacateRoom()", "+ generateReport()", "+ showSummary()"]),
+        "Reports": ((80, 2120, 520, 2320), ["+ sortStudentsByGPA()", "+ findStudentByRollNo()", "+ showTopStudent()", "+ generateCampusTextReport()"]),
+        "Utils": ((620, 2120, 1000, 2320), ["+ getTodayDate()", "+ printLine()", "+ printSmallLine()", "+ checkPositiveInt()"]),
     }
 
     for name, (xy, lines) in boxes.items():
@@ -236,6 +238,7 @@ def make_report(diagram_path):
         "Library demo loaded catalog data, issued B001, and showed overdue fine.",
         "Finance demo showed payment, copy constructor, copy assignment, invoice, and invoice copy.",
         "Hostel demo showed service name, allocation, duplicate check, summary, report, and vacate room.",
+        "Reports demo sorted students, searched roll number, showed top GPA student, and generated campus report.",
         "Reports demo sorted students by GPA and created data/campus_report.txt.",
         "Wrong input test with abc did not freeze the program.",
     ])

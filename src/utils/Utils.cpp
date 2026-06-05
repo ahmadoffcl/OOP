@@ -21,6 +21,10 @@ void Utils::printLine() {
     cout << "------------------------------------------------------------" << endl;
 }
 
+void Utils::printSmallLine() {
+    cout << "------------------------------" << endl;
+}
+
 int Utils::checkPositiveInt(int value) {
     if (value < 0) {
         return 0;
