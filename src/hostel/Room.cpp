@@ -36,7 +36,15 @@ Room::Room(int number, string roomType, int floorNo) {
 }
 
 bool Room::addStudent(Student* student) {
+    if (student == NULL) {
+        return false;
+    }
+
     if (!hasSpace()) {
+        return false;
+    }
+
+    if (hasStudent(student->getRollNo())) {
         return false;
     }
 
@@ -61,6 +69,16 @@ bool Room::removeStudent(string rollNo) {
     return false;
 }
 
+bool Room::hasStudent(string rollNo) const {
+    for (int i = 0; i < occupantCount; i++) {
+        if (occupants[i] != NULL && occupants[i]->getRollNo() == rollNo) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 bool Room::hasSpace() const {
     return occupantCount < MAX_ROOM_OCCUPANTS;
 }
@@ -71,6 +89,14 @@ int Room::getOccupantCount() const {
 
 int Room::getRoomNumber() const {
     return roomNumber;
+}
+
+string Room::getType() const {
+    return type;
+}
+
+int Room::getFloor() const {
+    return floor;
 }
 
 void Room::displayRoom() const {

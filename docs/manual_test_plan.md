@@ -42,9 +42,12 @@ Then test menu choices:
 | 4 then 1 | Shows fee record, payment using `-=`, and payment history |
 | 4 then 2 | Shows fee copy constructor and assignment with copied payment history |
 | 4 then 3 | Shows invoice, copied invoice, assigned invoice, and static counter |
-| 5 then 1 | Allocates students to hostel rooms |
-| 5 then 2 | Prints occupancy report |
-| 5 then 3 | Vacates Ahmad Ali room |
+| 5 then 1 | Shows hostel service name |
+| 5 then 2 | Allocates students to hostel rooms |
+| 5 then 3 | Tries duplicate allocation and blocks it |
+| 5 then 4 | Shows hostel summary |
+| 5 then 5 | Prints occupancy report |
+| 5 then 6 | Vacates Ahmad Ali room |
 | 6 then 1 | Sorts students by GPA |
 | 6 then 2 | Writes `data/campus_report.txt` |
 | module 0 | Returns to home menu |

@@ -27,6 +27,8 @@ void HostelBlock::addRoom(Room room) {
     if (roomCount < MAX_BLOCK_ROOMS) {
         rooms[roomCount] = room;
         roomCount++;
+    } else {
+        cout << "No more rooms can be added in this block." << endl;
     }
 }
 
@@ -40,6 +42,26 @@ Room* HostelBlock::getRoom(int index) {
 
 int HostelBlock::getRoomCount() const {
     return roomCount;
+}
+
+int HostelBlock::getTotalOccupants() const {
+    int total = 0;
+
+    for (int i = 0; i < roomCount; i++) {
+        total = total + rooms[i].getOccupantCount();
+    }
+
+    return total;
+}
+
+Room* HostelBlock::findRoomByStudent(string rollNo) {
+    for (int i = 0; i < roomCount; i++) {
+        if (rooms[i].hasStudent(rollNo)) {
+            return &rooms[i];
+        }
+    }
+
+    return NULL;
 }
 
 string HostelBlock::getBlockName() const {

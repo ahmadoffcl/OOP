@@ -129,12 +129,14 @@ classDiagram
         -Student* occupants[]
         +addStudent()
         +removeStudent()
+        +hasStudent()
     }
 
     class HostelBlock {
         -string blockName
         -Room rooms[]
         +addRoom()
+        +getTotalOccupants()
     }
 
     class HostelManager {
@@ -142,6 +144,7 @@ classDiagram
         +allocateRoom()
         +vacateRoom()
         +generateReport()
+        +showSummary()
     }
 
     Person <|-- Student

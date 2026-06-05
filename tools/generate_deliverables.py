@@ -78,9 +78,9 @@ def make_class_diagram():
         "CampusService": ((80, 1580, 440, 1700), ["+ showServiceName()"]),
         "Accommodation": ((80, 1810, 440, 1960), ["+ allocateRoom()", "+ vacateRoom()"]),
         "Reportable": ((520, 1810, 880, 1960), ["+ generateReport()"]),
-        "Room": ((980, 1580, 1360, 1780), ["- roomNumber", "- type, floor", "- Student* occupants[]", "+ add/remove student"]),
-        "HostelBlock": ((980, 1880, 1360, 2040), ["- blockName", "- Room rooms[]", "+ addRoom()"]),
-        "HostelManager": ((1420, 1740, 1740, 1980), ["- HostelBlock block", "+ allocateRoom()", "+ vacateRoom()", "+ generateReport()"]),
+        "Room": ((980, 1580, 1360, 1805), ["- roomNumber", "- type, floor", "- Student* occupants[]", "+ add/remove student", "+ hasStudent()"]),
+        "HostelBlock": ((980, 1880, 1360, 2065), ["- blockName", "- Room rooms[]", "+ addRoom()", "+ getTotalOccupants()"]),
+        "HostelManager": ((1420, 1740, 1740, 2005), ["- HostelBlock block", "+ allocateRoom()", "+ vacateRoom()", "+ generateReport()", "+ showSummary()"]),
     }
 
     for name, (xy, lines) in boxes.items():
@@ -235,6 +235,7 @@ def make_report(diagram_path):
         "Menu options 1 to 7 were tested.",
         "Library demo loaded catalog data, issued B001, and showed overdue fine.",
         "Finance demo showed payment, copy constructor, copy assignment, invoice, and invoice copy.",
+        "Hostel demo showed service name, allocation, duplicate check, summary, report, and vacate room.",
         "Reports demo sorted students by GPA and created data/campus_report.txt.",
         "Wrong input test with abc did not freeze the program.",
     ])

@@ -32,9 +32,12 @@ public:
 
     bool addStudent(Student* student);
     bool removeStudent(string rollNo);
+    bool hasStudent(string rollNo) const;
     bool hasSpace() const;
     int getOccupantCount() const;
     int getRoomNumber() const;
+    string getType() const;
+    int getFloor() const;
 
     void displayRoom() const;
 };

@@ -43,6 +43,7 @@ Detailed status files:
 - `docs/module2_status.md`
 - `docs/module3_status.md`
 - `docs/module4_status.md`
+- `docs/module5_status.md`
 
 ## Phase 2 Summary
 

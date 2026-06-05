@@ -27,6 +27,18 @@ void HostelManager::showServiceName() const {
 }
 
 void HostelManager::allocateRoom(Student* student) {
+    if (student == NULL) {
+        cout << "Student record is empty." << endl;
+        return;
+    }
+
+    Room* existingRoom = block.findRoomByStudent(student->getRollNo());
+    if (existingRoom != NULL) {
+        cout << student->getName() << " is already allocated to room "
+             << existingRoom->getRoomNumber() << endl;
+        return;
+    }
+
     for (int i = 0; i < block.getRoomCount(); i++) {
         Room* room = block.getRoom(i);
 
@@ -55,5 +67,12 @@ void HostelManager::vacateRoom(string rollNo) {
 
 void HostelManager::generateReport() const {
     cout << "\n--- Hostel Occupancy Report ---" << endl;
+    showSummary();
     block.displayBlock();
+}
+
+void HostelManager::showSummary() const {
+    cout << "Block Name: " << block.getBlockName() << endl;
+    cout << "Total Rooms: " << block.getRoomCount() << endl;
+    cout << "Total Occupants: " << block.getTotalOccupants() << endl;
 }

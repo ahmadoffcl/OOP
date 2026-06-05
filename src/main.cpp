@@ -390,15 +390,19 @@ void hostelMenu(Student& s1, GradStudent& s2, Student& s3) {
 
     do {
         printTitle("HOSTEL MODULE");
-        cout << "1. Allocate sample students" << endl;
-        cout << "2. Show occupancy report" << endl;
-        cout << "3. Vacate Ahmad Ali room" << endl;
+        cout << "1. Show hostel service name" << endl;
+        cout << "2. Allocate sample students" << endl;
+        cout << "3. Try duplicate allocation" << endl;
+        cout << "4. Show hostel summary" << endl;
+        cout << "5. Show occupancy report" << endl;
+        cout << "6. Vacate Ahmad Ali room" << endl;
         printBackOption();
         choice = readChoice();
 
         if (choice == 1) {
+            manager.showServiceName();
+        } else if (choice == 2) {
             if (!allocated) {
-                manager.showServiceName();
                 manager.allocateRoom(&s1);
                 manager.allocateRoom(&s2);
                 manager.allocateRoom(&s3);
@@ -406,9 +410,13 @@ void hostelMenu(Student& s1, GradStudent& s2, Student& s3) {
             } else {
                 cout << "Students are already allocated in this module visit." << endl;
             }
-        } else if (choice == 2) {
-            manager.generateReport();
         } else if (choice == 3) {
+            manager.allocateRoom(&s1);
+        } else if (choice == 4) {
+            manager.showSummary();
+        } else if (choice == 5) {
+            manager.generateReport();
+        } else if (choice == 6) {
             manager.vacateRoom(s1.getRollNo());
         } else if (choice == 0) {
             cout << "Returning to Home..." << endl;

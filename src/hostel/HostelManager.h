@@ -28,6 +28,7 @@ public:
     void allocateRoom(Student* student);
     void vacateRoom(string rollNo);
     void generateReport() const;
+    void showSummary() const;
 };
 
 #endif

@@ -31,6 +31,8 @@ public:
     void addRoom(Room room);
     Room* getRoom(int index);
     int getRoomCount() const;
+    int getTotalOccupants() const;
+    Room* findRoomByStudent(string rollNo);
     string getBlockName() const;
     void displayBlock() const;
 };
