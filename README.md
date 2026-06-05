@@ -10,6 +10,13 @@
 
 Note: The project brief mentions individual/team of 2. Confirm with the instructor if a 3-member group is allowed.
 
+## Project Description
+Smart Campus Management System is a simple C++ console project for basic university work.
+It manages students, faculty, courses, library records, fee records, hostel rooms, and reports.
+The program is divided into six modules so each OOP concept is easy to find and explain.
+It uses classes, inheritance, polymorphism, arrays, file handling, exception handling, operator overloading, and copy semantics.
+The interface is menu-based and runs in the command prompt.
+
 ## Current Status
 This folder contains the completed simple command-line version of the SCMS project. It includes all main assignment modules:
 
@@ -27,8 +34,17 @@ You should still personalize and review the project before submission:
 
 - Replace sample names, CNICs, fees, and roll numbers with your own values
 - Review `docs/class_diagram.png`
-- Review and improve `docs/project_report.pdf` with your own screenshots
+- Review `docs/project_report.pdf` and replace screenshots only if your teacher wants manual terminal screenshots
 - Make sure every group member can explain the files used in their module
+
+## Modules
+
+1. Person Hierarchy: `Person`, `Student`, `GradStudent`, `Faculty`, and `Staff`.
+2. Course and Enrollment: `Course` and `Enrollment` with capacity checks and overloaded operators.
+3. Library System: `LibraryItem`, `Book`, `Journal`, and `Library` with file loading/saving.
+4. Fee and Finance: `FeeRecord` and `Invoice` with deep copy, static counter, and payment operator.
+5. Hostel Management: `Room`, `HostelBlock`, and `HostelManager` with multiple inheritance and composition.
+6. Reports and Utilities: `Reports` and `Utils` for sorting, searching, formatting, and report writing.
 
 ## How to Compile
 
@@ -79,12 +95,29 @@ g++ -std=c++17 -Wall -Wextra src/main.cpp src/person/*.cpp src/course/*.cpp src/
 18. Multiple inheritance: `HostelManager`
 19. Virtual inheritance: `Accommodation` and `Reportable`
 20. Composition: `HostelManager` contains `HostelBlock`
+21. Search functions: `Library::searchByTitle`, `Library::searchByID`, `Reports::findStudentByRollNo`
+22. Arrays of objects: `HostelBlock` stores `Room rooms[]`
+23. Memory management: `Library`, `FeeRecord`, and `Invoice` use `new/delete` or `new[]/delete[]`
+24. Sorting and searching: `Reports::sortStudentsByGPA` and roll number search
+25. Reporting and utilities: `Reports.h/.cpp` and `Utils.h/.cpp`
+
+## UML Class Diagram
+
+![Class Diagram](docs/class_diagram.png)
+
+## GitHub Repository
+
+Add the public GitHub URL here after pushing:
+
+```text
+https://github.com/[username]/HITEC-OOP-SCMS-25-CS-067
+```
 
 ## Remaining Work Checklist
 
 - Confirm with the instructor that a 3-member group is allowed
 - Replace sample CNIC/contact values with real or acceptable demo values
-- Add your own screenshots to `docs/project_report.pdf`
+- Review the generated screenshots in `docs/screenshots`
 - Create a public GitHub repository and push the project
 - Follow `docs/manual_test_plan.md` once more before final submission
 
@@ -107,9 +140,11 @@ The home menu opens each module separately. Inside a module, select the task you
 - `docs/manual_test_plan.md`: manual testing steps
 - `docs/testing_log.md`: latest test evidence
 - `docs/remaining_work.md`: what is left before final submission
+- `docs/test_outputs/`: captured console output for each module
+- `docs/screenshots/`: screenshot-style images generated from console output
 - `docs/class_diagram.mmd`: class diagram source
 - `docs/class_diagram.png`: generated class diagram image
 - `docs/project_report.pdf`: generated report draft
 
 ## Important
-Do not submit this starter without understanding and changing it. Your viva will test whether you can explain and modify your own code.
+Do not submit this project without understanding it. Your viva will test whether you can explain and modify your own code.

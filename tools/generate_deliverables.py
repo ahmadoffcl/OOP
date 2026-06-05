@@ -9,7 +9,6 @@ This script is intentionally simple so it can be explained in viva if needed.
 """
 
 from pathlib import Path
-from textwrap import wrap
 
 from fpdf import FPDF
 from PIL import Image, ImageDraw, ImageFont
@@ -17,6 +16,8 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
+OUTPUTS = DOCS / "test_outputs"
+SCREENSHOTS = DOCS / "screenshots"
 
 
 def get_font(size=22, bold=False):
@@ -50,6 +51,66 @@ def draw_arrow(draw, start, end):
     else:
         points = [(ex, ey), (ex - 14, ey - 7), (ex - 14, ey + 7)]
     draw.polygon(points, fill="#333333")
+
+
+def render_console_image(input_path, output_path, title, max_lines=42):
+    """Turn captured console text into a screenshot-style PNG."""
+    if not input_path.exists():
+        return None
+
+    raw_lines = input_path.read_text(encoding="utf-8", errors="replace").splitlines()
+    lines = []
+    for line in raw_lines:
+        line = line.lstrip("\ufeff")
+        if line.strip() == "":
+            lines.append("")
+        else:
+            lines.append(line[:115])
+
+    if len(lines) > max_lines:
+        lines = lines[:max_lines - 2] + ["", f"... see {input_path.name} for full captured output ..."]
+
+    width = 1500
+    line_height = 26
+    height = 90 + max(1, len(lines)) * line_height + 35
+    img = Image.new("RGB", (width, height), "#101418")
+    draw = ImageDraw.Draw(img)
+    title_font = get_font(26, True)
+    text_font = get_font(20)
+
+    draw.rectangle((0, 0, width, 58), fill="#20262c")
+    draw.text((25, 16), title, fill="#f2f2f2", font=title_font)
+    draw.ellipse((width - 95, 20, width - 77, 38), fill="#ff6057")
+    draw.ellipse((width - 67, 20, width - 49, 38), fill="#ffbd2e")
+    draw.ellipse((width - 39, 20, width - 21, 38), fill="#27c93f")
+
+    y = 78
+    for line in lines:
+        draw.text((28, y), line, fill="#e7edf3", font=text_font)
+        y += line_height
+
+    output_path.parent.mkdir(exist_ok=True)
+    img.save(output_path)
+    return output_path
+
+
+def make_output_screenshots():
+    screenshot_jobs = [
+        ("module1_person.txt", "Module 1 - Person Hierarchy", "module1_person.png"),
+        ("module2_course.txt", "Module 2 - Course and Enrollment", "module2_course.png"),
+        ("module3_library.txt", "Module 3 - Library System", "module3_library.png"),
+        ("module4_finance.txt", "Module 4 - Fee and Finance", "module4_finance.png"),
+        ("module5_hostel.txt", "Module 5 - Hostel Management", "module5_hostel.png"),
+        ("module6_reports.txt", "Module 6 - Reports and Utilities", "module6_reports.png"),
+        ("wrong_input.txt", "Wrong Input Test", "wrong_input.png"),
+    ]
+
+    made = []
+    for text_file, title, image_file in screenshot_jobs:
+        made_image = render_console_image(OUTPUTS / text_file, SCREENSHOTS / image_file, title)
+        if made_image is not None:
+            made.append(made_image)
+    return made
 
 
 def make_class_diagram():
@@ -133,7 +194,7 @@ class ReportPDF(FPDF):
 
 def add_wrapped(pdf, text, size=11, style="", line_height=6):
     pdf.set_font("Helvetica", style, size)
-    text = text.replace("`", "")
+    text = text.replace("`", "").encode("latin-1", "replace").decode("latin-1")
     pdf.set_x(pdf.l_margin)
     width = pdf.w - pdf.l_margin - pdf.r_margin
     pdf.multi_cell(width, line_height, text)
@@ -156,7 +217,24 @@ def add_bullets(pdf, items):
     pdf.ln(1)
 
 
-def make_report(diagram_path):
+def add_code_line(pdf, text):
+    pdf.set_font("Courier", "", 9)
+    pdf.set_x(pdf.l_margin + 4)
+    width = pdf.w - pdf.l_margin - pdf.r_margin - 4
+    text = text.encode("latin-1", "replace").decode("latin-1")
+    pdf.multi_cell(width, 5, text)
+    pdf.ln(1)
+
+
+def add_image_with_caption(pdf, image_path, caption):
+    if not image_path.exists():
+        return
+    pdf.add_page()
+    add_section(pdf, caption)
+    pdf.image(str(image_path), x=10, w=190)
+
+
+def make_report(diagram_path, screenshot_paths):
     pdf = ReportPDF()
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.add_page()
@@ -169,6 +247,10 @@ def make_report(diagram_path):
     pdf.cell(0, 8, "CS-104L Object-Oriented Programming", 0, 1, "C")
     pdf.set_x(pdf.l_margin)
     pdf.cell(0, 8, "HITEC University Taxila", 0, 1, "C")
+    pdf.set_x(pdf.l_margin)
+    pdf.cell(0, 8, "Date: 05-06-2026", 0, 1, "C")
+    pdf.set_x(pdf.l_margin)
+    pdf.cell(0, 8, "GitHub URL: add public repository link after pushing", 0, 1, "C")
     pdf.ln(6)
 
     add_section(pdf, "Group Members")
@@ -180,9 +262,11 @@ def make_report(diagram_path):
 
     add_section(pdf, "Introduction")
     add_wrapped(pdf, "This project is a simple command-line Smart Campus Management System written in C++. "
-                     "It manages basic campus records such as students, faculty, courses, library items, fee records, "
-                     "hostel rooms, and reports. The code is made with beginner-level OOP concepts and simple arrays "
-                     "so it can be understood and explained by second-semester students.")
+                     "It manages basic campus records for students, faculty, courses, library items, fee records, "
+                     "hostel rooms, and reports. The purpose is to show all major OOP concepts from the CS-104L "
+                     "course in one connected program. The program uses simple arrays, pointers, classes, file "
+                     "handling, and exception handling. The design is intentionally easy to read so each group "
+                     "member can explain the code during viva.")
 
     add_section(pdf, "System Modules")
     add_bullets(pdf, [
@@ -195,54 +279,88 @@ def make_report(diagram_path):
     ])
 
     add_section(pdf, "Class Diagram")
-    add_wrapped(pdf, "The class diagram below shows the main classes and relationships used in the project.")
+    add_wrapped(pdf, "The class diagram below shows the main classes and relationships used in the project. "
+                     "Inheritance is used in Person, LibraryItem, and hostel interfaces. Composition is used "
+                     "where HostelManager contains HostelBlock, and aggregation is used where Course stores a "
+                     "Faculty pointer without owning the faculty object.")
     pdf.image(str(diagram_path), x=12, w=185)
 
     pdf.add_page()
-    add_section(pdf, "OOP Concepts Implemented")
+    add_section(pdf, "OOP Concepts Implementation")
     concepts = [
-        "Classes and Objects: All modules use C++ classes and objects.",
-        "Encapsulation: Private data members are accessed through public methods.",
-        "Constructors: Default and parameterized constructors are used in many classes.",
-        "Destructors: Library and Invoice clean dynamic memory.",
-        "Single Inheritance: Student inherits from Person.",
-        "Multi-level Inheritance: GradStudent inherits from Student.",
-        "Multiple Inheritance: HostelManager inherits from Accommodation and Reportable.",
-        "Virtual Inheritance: Accommodation and Reportable virtually inherit CampusService.",
-        "Abstract Classes: Person, LibraryItem, Accommodation, and Reportable.",
-        "Runtime Polymorphism: Person pointers call different displayInfo functions.",
-        "Operator Overloading: Course ==, Course <<, Course +, FeeRecord -=.",
-        "Friend Functions: operator<< is used for Course and Invoice.",
-        "Static Members: Invoice uses invoiceCounter.",
-        "Copy Constructor and Assignment: FeeRecord and Invoice examples.",
-        "Search Functions: Library has searchByTitle and searchByID.",
-        "Array Collections: Arrays are used for courses, library items, rooms, and students.",
-        "Exception Handling: CapacityExceededException and OverdueException.",
-        "File I/O: Library catalog and campus report files.",
-        "Sorting: Reports sort students by GPA.",
-        "Composition: HostelManager contains HostelBlock.",
-        "Aggregation: Course stores Faculty pointer and Room stores Student pointers.",
+        ("Classes and Objects", "All modules define classes and make objects in main.cpp.", "Student s1(...); Course oop(...);"),
+        ("Encapsulation", "Private data is changed through public getters, setters, and member functions.", "string getRollNo() const; void setGPA(double newGPA);"),
+        ("Default Constructor", "Several classes provide simple empty/default object creation.", "Student::Student() : Person(), semester(1), gpa(0.0) {}"),
+        ("Parameterized Constructor", "Objects can be created with real starting data.", "Course::Course(string code, string name, int credits, Faculty* teacher, int capacity)"),
+        ("Copy Constructor", "Person, Course, FeeRecord, and Invoice copy object data.", "FeeRecord::FeeRecord(const FeeRecord& other)"),
+        ("Destructors", "Library, Invoice, and HostelManager have destructors for cleanup.", "Invoice::~Invoice() { delete[] items; }"),
+        ("Single Inheritance", "Student reuses common Person data and behavior.", "class Student : public Person"),
+        ("Multi-level Inheritance", "GradStudent extends Student, which already extends Person.", "class GradStudent : public Student"),
+        ("Multiple Inheritance", "HostelManager implements accommodation and report behavior.", "class HostelManager : public Accommodation, public Reportable"),
+        ("Virtual Inheritance", "Accommodation and Reportable virtually inherit CampusService to avoid duplicate base parts.", "class Accommodation : virtual public CampusService"),
+        ("Abstract Classes", "Person, LibraryItem, Accommodation, and Reportable cannot be directly instantiated.", "virtual void displayInfo() const = 0;"),
+        ("Runtime Polymorphism", "Base pointers call the correct derived displayInfo function.", "Person* people[] = { &student, &faculty, &staff };"),
+        ("Operator Overloading ==", "Course objects are compared by course code.", "bool Course::operator==(const Course& other) const"),
+        ("Operator Overloading <<", "Course and Invoice can be printed using stream insertion.", "ostream& operator<<(ostream& out, const Course& course)"),
+        ("Operator Overloading +", "Two course waiting lists are merged.", "Student** Course::operator+(Course& other)"),
+        ("Operator Overloading -=", "FeeRecord records a payment and reduces balance.", "fee -= 25000;"),
+        ("Friend Functions", "operator<< is declared as a friend for Course and Invoice.", "friend ostream& operator<<(ostream& out, const Invoice& invoice);"),
+        ("Static Members", "Invoice has one shared invoiceCounter for all invoice objects.", "int Invoice::invoiceCounter = 0;"),
+        ("Deep Copy", "FeeRecord and Invoice copy dynamic arrays instead of sharing them.", "payments = new double[paymentCount];"),
+        ("Search Functions", "Library and Reports search records with loops.", "LibraryItem* Library::searchByTitle(string title)"),
+        ("Array-based Collections", "The project uses arrays for courses, library items, rooms, and students.", "LibraryItem* items[MAX_LIBRARY_ITEMS];"),
+        ("Arrays of Objects", "HostelBlock keeps Room objects in an array.", "Room rooms[MAX_BLOCK_ROOMS];"),
+        ("Exception Handling", "Custom exceptions are thrown and caught for capacity and overdue cases.", "throw CapacityExceededException(\"Course is full\");"),
+        ("File I/O", "Library data and campus reports are loaded/saved using fstream.", "ofstream file(fileName);"),
+        ("Reporting and Utilities", "Reports and Utils keep report, date, formatting, and validation helpers separate.", "Reports::generateCampusTextReport(...);"),
+        ("Memory Management", "Objects created with new are deleted in destructors.", "delete items[i];"),
+        ("Sorting and Searching", "Reports sorts students by GPA and searches by roll number.", "sortStudentsByGPA(students, count);"),
+        ("Composition", "HostelManager owns a HostelBlock object.", "HostelBlock block;"),
+        ("Aggregation", "Course stores Faculty* and Room stores Student* without owning those people.", "Faculty* instructor; Student* occupants[];"),
     ]
-    add_bullets(pdf, concepts)
+    for number, (name, explanation, snippet) in enumerate(concepts, 1):
+        add_wrapped(pdf, f"{number}. {name}: {explanation}", size=10)
+        add_code_line(pdf, snippet)
 
-    add_section(pdf, "Library and Finance Details")
-    add_wrapped(pdf, "The Library module loads records from data/library_catalog.txt, displays books and "
-                     "journals, searches by title or ID, issues a book, shows issued records, and checks overdue returns. The Finance module "
-                     "tracks fee balance, accepts payment with operator-=, deep-copies payment history, and creates invoices with "
-                     "a static invoice counter.")
+    pdf.add_page()
+    add_section(pdf, "Module Descriptions")
+    add_bullets(pdf, [
+        "Module 1 - Person Hierarchy: Stores common personal information in Person and uses Student, GradStudent, Faculty, and Staff subclasses.",
+        "Module 2 - Course and Enrollment: Stores course data, enrolls students, blocks over-capacity enrollment, and demonstrates overloaded operators.",
+        "Module 3 - Library System: Stores books and journals, searches the catalog, saves/loads text files, tracks issued items, and handles overdue fines.",
+        "Module 4 - Fee and Finance: Stores fee balance, records payments with operator-=, deep-copies fee data, and generates invoices with a static counter.",
+        "Module 5 - Hostel Management: Uses rooms, hostel blocks, multiple inheritance, virtual inheritance, and composition to allocate/vacate rooms.",
+        "Module 6 - Reporting and Utilities: Sorts and searches student data, prints reports, writes a campus text report, and keeps helper functions separate.",
+    ])
+
+    add_section(pdf, "GitHub Workflow")
+    add_wrapped(pdf, "The project is already a local git repository with separate commits for setup, documentation, and each major module. "
+                     "Before final submission, create a public GitHub repository named HITEC-OOP-SCMS-25-CS-067, push this folder, "
+                     "and paste the repository URL here and in README.md.")
+    add_bullets(pdf, [
+        "Local branch: master",
+        "Current local commits: see git log --oneline in the repository.",
+        "A GitHub Actions build workflow is included at .github/workflows/build.yml for the bonus compile check.",
+        "Do not submit until the public GitHub link is shared through the course portal.",
+    ])
 
     add_section(pdf, "Testing Summary")
     add_bullets(pdf, [
         "Build command .\\build.bat completed successfully.",
-        "Menu options 1 to 7 were tested.",
+        "All six home menu modules were tested.",
         "Library demo loaded catalog data, issued B001, and showed overdue fine.",
         "Finance demo showed payment, copy constructor, copy assignment, invoice, and invoice copy.",
         "Hostel demo showed service name, allocation, duplicate check, summary, report, and vacate room.",
-        "Reports demo sorted students, searched roll number, showed top GPA student, and generated campus report.",
         "Reports demo sorted students by GPA and created data/campus_report.txt.",
         "Wrong input test with abc did not freeze the program.",
+        "Full captured output files are saved in docs/test_outputs.",
     ])
 
+    for image_path in screenshot_paths:
+        caption = image_path.stem.replace("_", " ").title() + " Output Screenshot"
+        add_image_with_caption(pdf, image_path, caption)
+
+    pdf.add_page()
     add_section(pdf, "Challenges and Solutions")
     add_bullets(pdf, [
         "Understanding polymorphism: solved by using Person* array in main.cpp.",
@@ -254,7 +372,8 @@ def make_report(diagram_path):
     add_section(pdf, "Conclusion")
     add_wrapped(pdf, "This project helped practice core C++ OOP concepts in a practical campus system. "
                      "The project is intentionally console-based and simple so each module can be explained in viva. "
-                     "Before final submission, real output screenshots should be added by the group.")
+                     "Before final submission, the group should push the repository to GitHub and replace the placeholder "
+                     "GitHub URL in this report.")
 
     add_section(pdf, "References")
     add_bullets(pdf, [
@@ -270,9 +389,13 @@ def make_report(diagram_path):
 
 def main():
     DOCS.mkdir(exist_ok=True)
+    SCREENSHOTS.mkdir(exist_ok=True)
     diagram = make_class_diagram()
-    report = make_report(diagram)
+    screenshots = make_output_screenshots()
+    report = make_report(diagram, screenshots)
     print(f"Generated: {diagram}")
+    for screenshot in screenshots:
+        print(f"Generated: {screenshot}")
     print(f"Generated: {report}")
 
 

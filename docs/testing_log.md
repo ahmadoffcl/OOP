@@ -105,3 +105,31 @@ Result:
 - Program did not freeze.
 - Program printed wrong choice message.
 - Program exited after `0`.
+
+## Report Deliverable Check
+
+Command:
+
+```powershell
+python tools\generate_deliverables.py
+```
+
+Result:
+
+- `docs/class_diagram.png` regenerated.
+- `docs/screenshots/module1_person.png` regenerated.
+- `docs/screenshots/module2_course.png` regenerated.
+- `docs/screenshots/module3_library.png` regenerated.
+- `docs/screenshots/module4_finance.png` regenerated.
+- `docs/screenshots/module5_hostel.png` regenerated.
+- `docs/screenshots/module6_reports.png` regenerated.
+- `docs/screenshots/wrong_input.png` regenerated.
+- `docs/project_report.pdf` regenerated.
+
+The generated PDF was checked and contains:
+
+- GitHub Workflow section.
+- OOP Concepts Implementation section.
+- Testing Summary section.
+- Output screenshot pages.
+- GitHub URL placeholder that must be replaced after pushing to GitHub.

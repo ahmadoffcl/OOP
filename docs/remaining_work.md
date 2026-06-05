@@ -7,10 +7,11 @@ These items are still left before final submission. The local C++ code, build se
 - Confirm with instructor whether 3 group members are allowed.
 - Replace sample CNIC/contact values with real or acceptable demo values.
 - Review `docs/class_diagram.png` and adjust it only if your teacher wants a different UML style.
-- Review `docs/project_report.pdf` and add real screenshots from your own run.
-- Add screenshots of all main menu/module options to the report if your teacher requires screenshots.
+- Review `docs/project_report.pdf` and replace screenshots only if your teacher wants screenshots taken manually from your own terminal.
 - Make sure every group member understands each file before viva.
 - Create a public GitHub repository and push this project.
+- Paste the public GitHub URL into `README.md` and `docs/project_report.pdf`.
+- The marking sheet mentions commit history. This local repo has several meaningful commits, but not 20+ commits, so confirm what your lab instructor expects.
 
 ## Good Improvements
 
@@ -38,3 +39,5 @@ These items are still left before final submission. The local C++ code, build se
 - Testing log.
 - Generated class diagram image.
 - Generated project report draft.
+- Captured console output in `docs/test_outputs/`.
+- Screenshot-style output images in `docs/screenshots/`.
