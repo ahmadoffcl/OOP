@@ -39,6 +39,19 @@ After the push, copy your public repository URL and paste it in:
 - `README.md`
 - `docs/project_report.pdf`
 
+You can update both with one command:
+
+```powershell
+cd D:\HITEC-OOP-SCMS-25-CS-067
+python tools\finalize_github_url.py https://github.com/YOUR_USERNAME/HITEC-OOP-SCMS-25-CS-067
+```
+
+To check the URL format without changing files:
+
+```powershell
+python tools\finalize_github_url.py --dry-run https://github.com/YOUR_USERNAME/HITEC-OOP-SCMS-25-CS-067
+```
+
 The URL should look like:
 
 ```text

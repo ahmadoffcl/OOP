@@ -18,6 +18,7 @@ Date: 2026-06-05
 - Test output logs exist in `docs/test_outputs/`
 - Screenshot-style output images exist in `docs/screenshots/`
 - Viva questions exist in `docs/viva_questions_full.md`
+- GitHub URL finalization helper exists at `tools/finalize_github_url.py`
 - GitHub Actions build workflow exists at `.github/workflows/build.yml`
 - The workflow compiles the project, runs a menu smoke test, and checks generated report files.
 

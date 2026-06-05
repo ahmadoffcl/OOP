@@ -9,6 +9,7 @@ This script is intentionally simple so it can be explained in viva if needed.
 """
 
 from pathlib import Path
+import argparse
 
 from fpdf import FPDF
 from PIL import Image, ImageDraw, ImageFont
@@ -18,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "docs"
 OUTPUTS = DOCS / "test_outputs"
 SCREENSHOTS = DOCS / "screenshots"
+DEFAULT_GITHUB_TEXT = "add public repository link after pushing"
 
 
 def get_font(size=22, bold=False):
@@ -234,7 +236,7 @@ def add_image_with_caption(pdf, image_path, caption):
     pdf.image(str(image_path), x=10, w=190)
 
 
-def make_report(diagram_path, screenshot_paths):
+def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
     pdf = ReportPDF()
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.add_page()
@@ -250,7 +252,7 @@ def make_report(diagram_path, screenshot_paths):
     pdf.set_x(pdf.l_margin)
     pdf.cell(0, 8, "Date: 05-06-2026", 0, 1, "C")
     pdf.set_x(pdf.l_margin)
-    pdf.cell(0, 8, "GitHub URL: add public repository link after pushing", 0, 1, "C")
+    pdf.cell(0, 8, f"GitHub URL: {github_url}", 0, 1, "C")
     pdf.ln(6)
 
     add_section(pdf, "Group Members")
@@ -389,11 +391,16 @@ def make_report(diagram_path, screenshot_paths):
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Generate SCMS diagram and report.")
+    parser.add_argument("--github-url", default=DEFAULT_GITHUB_TEXT,
+                        help="Public GitHub repository URL to print in the report.")
+    args = parser.parse_args()
+
     DOCS.mkdir(exist_ok=True)
     SCREENSHOTS.mkdir(exist_ok=True)
     diagram = make_class_diagram()
     screenshots = make_output_screenshots()
-    report = make_report(diagram, screenshots)
+    report = make_report(diagram, screenshots, args.github_url)
     print(f"Generated: {diagram}")
     for screenshot in screenshots:
         print(f"Generated: {screenshot}")

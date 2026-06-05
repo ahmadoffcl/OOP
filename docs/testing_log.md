@@ -142,3 +142,26 @@ The workflow file `.github/workflows/build.yml` includes:
 - `g++ -std=c++17 -Wall -Wextra` compile command.
 - Automated menu smoke test through all six modules.
 - File checks for `data/campus_report.txt` and `data/campus_pdf_report.txt`.
+
+## GitHub URL Helper Check
+
+Command:
+
+```powershell
+python tools\finalize_github_url.py --dry-run https://github.com/test-user/HITEC-OOP-SCMS-25-CS-067
+```
+
+Result:
+
+- Dry run passed.
+- No fake URL was written to README or PDF.
+
+Command:
+
+```powershell
+python tools\generate_deliverables.py --github-url "add public repository link after pushing"
+```
+
+Result:
+
+- PDF regenerated successfully with the placeholder GitHub URL.

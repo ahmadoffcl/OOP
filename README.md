@@ -113,6 +113,12 @@ Add the public GitHub URL here after pushing:
 https://github.com/[username]/HITEC-OOP-SCMS-25-CS-067
 ```
 
+After pushing, this command can update the README and regenerate the PDF report with your real URL:
+
+```powershell
+python tools\finalize_github_url.py https://github.com/YOUR_USERNAME/HITEC-OOP-SCMS-25-CS-067
+```
+
 ## Remaining Work Checklist
 
 - Confirm with the instructor that a 3-member group is allowed
@@ -147,6 +153,7 @@ The home menu opens each module separately. Inside a module, select the task you
 - `docs/class_diagram.mmd`: class diagram source
 - `docs/class_diagram.png`: generated class diagram image
 - `docs/project_report.pdf`: generated report draft
+- `tools/finalize_github_url.py`: helper to insert the final GitHub URL into README/report
 
 ## Important
 Do not submit this project without understanding it. Your viva will test whether you can explain and modify your own code.
