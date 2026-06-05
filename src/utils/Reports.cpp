@@ -6,7 +6,7 @@
  * @inst    HITEC University Taxila
  * @date    2026-06-05
  *
- * OOP Concepts: std::sort, Loops, File I/O
+ * OOP Concepts: std::sort, std::find_if, Loops, File I/O
  */
 
 #include "Reports.h"
@@ -32,13 +32,15 @@ void Reports::showStudents(Student* students[], int count) {
 }
 
 Student* Reports::findStudentByRollNo(Student* students[], int count, string rollNo) {
-    for (int i = 0; i < count; i++) {
-        if (students[i] != NULL && students[i]->getRollNo() == rollNo) {
-            return students[i];
-        }
+    Student** result = find_if(students, students + count, [rollNo](Student* student) {
+        return student != NULL && student->getRollNo() == rollNo;
+    });
+
+    if (result == students + count) {
+        return NULL;
     }
 
-    return NULL;
+    return *result;
 }
 
 void Reports::showTopStudent(Student* students[], int count) {
@@ -110,4 +112,81 @@ void Reports::generateCampusTextReport(Student* students[], int studentCount, Li
 
     file.close();
     cout << "Text report saved to " << fileName << endl;
+}
+
+void Reports::generatePdfStyleTextReport(Student* students[], int studentCount, Library& library, string fileName) {
+    ofstream file(fileName);
+
+    if (!file) {
+        cout << "PDF-style report file could not be created." << endl;
+        return;
+    }
+
+    Student** sortedStudents = new Student*[studentCount];
+
+    for (int i = 0; i < studentCount; i++) {
+        sortedStudents[i] = students[i];
+    }
+
+    sort(sortedStudents, sortedStudents + studentCount, [](Student* a, Student* b) {
+        return a->getGPA() > b->getGPA();
+    });
+
+    Student* topStudent = NULL;
+
+    if (studentCount > 0) {
+        Student** topResult = max_element(students, students + studentCount, [](Student* a, Student* b) {
+            return a->getGPA() < b->getGPA();
+        });
+        topStudent = *topResult;
+    }
+
+    file << "============================================================" << endl;
+    file << "                 PDF STYLE CAMPUS REPORT" << endl;
+    file << "============================================================" << endl;
+    file << "Project: Smart Campus Management System" << endl;
+    file << "Course : CS-104L Object-Oriented Programming" << endl;
+    file << "Inst   : HITEC University Taxila" << endl;
+    file << "Date   : " << Utils::getTodayDate() << endl;
+    file << "Group  : Ahmad Ali, Umer Altaf, Muhammed Ahmad" << endl;
+    file << "------------------------------------------------------------" << endl;
+    file << "Summary" << endl;
+    file << "------------------------------------------------------------" << endl;
+    file << "Total Students : " << studentCount << endl;
+    file << "Library Items  : " << library.getItemCount() << endl;
+
+    if (topStudent != NULL) {
+        file << "Top GPA Student: " << topStudent->getName()
+             << " (" << topStudent->getRollNo() << ")" << endl;
+    }
+
+    file << "------------------------------------------------------------" << endl;
+    file << "Students Sorted by GPA" << endl;
+    file << "------------------------------------------------------------" << endl;
+
+    for (int i = 0; i < studentCount; i++) {
+        file << i + 1 << ". " << sortedStudents[i]->getRollNo()
+             << " | " << sortedStudents[i]->getName()
+             << " | GPA: " << sortedStudents[i]->getGPA() << endl;
+    }
+
+    file << "------------------------------------------------------------" << endl;
+    file << "Library Summary" << endl;
+    file << "------------------------------------------------------------" << endl;
+    file << "Library catalog item count: " << library.getItemCount() << endl;
+    file << "See the program Library module for full book and journal records." << endl;
+    file << "------------------------------------------------------------" << endl;
+    file << "OOP Concepts Highlight" << endl;
+    file << "------------------------------------------------------------" << endl;
+    file << "Classes, inheritance, polymorphism, arrays, file handling," << endl;
+    file << "exception handling, operator overloading, copy constructor," << endl;
+    file << "copy assignment, static members, and memory management." << endl;
+    file << "============================================================" << endl;
+    file << "End of PDF-style report" << endl;
+    file << "============================================================" << endl;
+
+    delete[] sortedStudents;
+    file.close();
+
+    cout << "PDF-style text report saved to " << fileName << endl;
 }

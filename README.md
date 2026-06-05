@@ -44,7 +44,7 @@ You should still personalize and review the project before submission:
 3. Library System: `LibraryItem`, `Book`, `Journal`, and `Library` with file loading/saving.
 4. Fee and Finance: `FeeRecord` and `Invoice` with deep copy, static counter, and payment operator.
 5. Hostel Management: `Room`, `HostelBlock`, and `HostelManager` with multiple inheritance and composition.
-6. Reports and Utilities: `Reports` and `Utils` for sorting, searching, formatting, and report writing.
+6. Reports and Utilities: `Reports` and `Utils` for sorting, searching, formatting, text reports, and PDF-style text reports.
 
 ## How to Compile
 
@@ -98,7 +98,7 @@ g++ -std=c++17 -Wall -Wextra src/main.cpp src/person/*.cpp src/course/*.cpp src/
 21. Search functions: `Library::searchByTitle`, `Library::searchByID`, `Reports::findStudentByRollNo`
 22. Arrays of objects: `HostelBlock` stores `Room rooms[]`
 23. Memory management: `Library`, `FeeRecord`, and `Invoice` use `new/delete` or `new[]/delete[]`
-24. Sorting and searching: `Reports::sortStudentsByGPA` and roll number search
+24. Sorting and searching: `Reports::sortStudentsByGPA` uses `std::sort`, and roll number search uses `std::find_if`
 25. Reporting and utilities: `Reports.h/.cpp` and `Utils.h/.cpp`
 
 ## UML Class Diagram

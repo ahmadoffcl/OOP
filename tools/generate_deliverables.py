@@ -275,7 +275,7 @@ def make_report(diagram_path, screenshot_paths):
         "Library module: Book and Journal catalog using file handling and arrays.",
         "Finance module: FeeRecord and Invoice classes with copy handling and static invoice counter.",
         "Hostel module: Room, HostelBlock, and HostelManager using composition and multiple inheritance.",
-        "Reports module: student sorting and campus text report generation.",
+        "Reports module: student sorting, searching, campus text report, and PDF-style text report generation.",
     ])
 
     add_section(pdf, "Class Diagram")
@@ -307,13 +307,13 @@ def make_report(diagram_path, screenshot_paths):
         ("Friend Functions", "operator<< is declared as a friend for Course and Invoice.", "friend ostream& operator<<(ostream& out, const Invoice& invoice);"),
         ("Static Members", "Invoice has one shared invoiceCounter for all invoice objects.", "int Invoice::invoiceCounter = 0;"),
         ("Deep Copy", "FeeRecord and Invoice copy dynamic arrays instead of sharing them.", "payments = new double[paymentCount];"),
-        ("Search Functions", "Library and Reports search records with loops.", "LibraryItem* Library::searchByTitle(string title)"),
+        ("Search Functions", "Library searches with a loop, and Reports uses std::find_if for roll number search.", "Student* Reports::findStudentByRollNo(Student* students[], int count, string rollNo)"),
         ("Array-based Collections", "The project uses arrays for courses, library items, rooms, and students.", "LibraryItem* items[MAX_LIBRARY_ITEMS];"),
         ("Arrays of Objects", "HostelBlock keeps Room objects in an array.", "Room rooms[MAX_BLOCK_ROOMS];"),
         ("Exception Handling", "Custom exceptions are thrown and caught for capacity and overdue cases.", "throw CapacityExceededException(\"Course is full\");"),
         ("File I/O", "Library data and campus reports are loaded/saved using fstream.", "ofstream file(fileName);"),
         ("Reporting and Utilities", "Reports and Utils keep report, date, formatting, and validation helpers separate.", "Reports::generateCampusTextReport(...);"),
-        ("Memory Management", "Objects created with new are deleted in destructors.", "delete items[i];"),
+        ("Memory Management", "Objects and arrays created with new are deleted using delete or delete[].", "delete[] sortedStudents;"),
         ("Sorting and Searching", "Reports sorts students by GPA and searches by roll number.", "sortStudentsByGPA(students, count);"),
         ("Composition", "HostelManager owns a HostelBlock object.", "HostelBlock block;"),
         ("Aggregation", "Course stores Faculty* and Room stores Student* without owning those people.", "Faculty* instructor; Student* occupants[];"),
@@ -330,7 +330,7 @@ def make_report(diagram_path, screenshot_paths):
         "Module 3 - Library System: Stores books and journals, searches the catalog, saves/loads text files, tracks issued items, and handles overdue fines.",
         "Module 4 - Fee and Finance: Stores fee balance, records payments with operator-=, deep-copies fee data, and generates invoices with a static counter.",
         "Module 5 - Hostel Management: Uses rooms, hostel blocks, multiple inheritance, virtual inheritance, and composition to allocate/vacate rooms.",
-        "Module 6 - Reporting and Utilities: Sorts and searches student data, prints reports, writes a campus text report, and keeps helper functions separate.",
+        "Module 6 - Reporting and Utilities: Sorts and searches student data, prints reports, writes a campus text report, writes a PDF-style text report, and keeps helper functions separate.",
     ])
 
     add_section(pdf, "GitHub Workflow")
@@ -352,6 +352,7 @@ def make_report(diagram_path, screenshot_paths):
         "Finance demo showed payment, copy constructor, copy assignment, invoice, and invoice copy.",
         "Hostel demo showed service name, allocation, duplicate check, summary, report, and vacate room.",
         "Reports demo sorted students by GPA and created data/campus_report.txt.",
+        "Reports demo created data/campus_pdf_report.txt.",
         "Wrong input test with abc did not freeze the program.",
         "Full captured output files are saved in docs/test_outputs.",
     ])

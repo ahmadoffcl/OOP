@@ -76,6 +76,7 @@ C++ Basics
 25-CS-067
 3
 4
+5
 0
 0
 ```
@@ -87,7 +88,7 @@ Result:
 - Library module loaded/showed library items, searched title, issued book `B001`, returned with overdue fine, displayed issued records, and saved catalog.
 - Finance module showed fee payment, payment history, fee copy, fee assignment, invoice copy, invoice assignment, and static counter.
 - Hostel module printed service name, allocated students, blocked duplicate allocation, showed summary, printed occupancy report, and vacated one student.
-- Reports module sorted students by GPA, searched by roll number, showed top GPA student, and wrote `data/campus_report.txt`.
+- Reports module sorted students by GPA, searched by roll number, showed top GPA student, wrote `data/campus_report.txt`, and wrote `data/campus_pdf_report.txt`.
 - Every module used `0. Back to Home`.
 - Home option `0` exited program.
 

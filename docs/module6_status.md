@@ -15,9 +15,12 @@ Status: Complete and tested.
 - Search student by roll number.
 - Show top GPA student.
 - Generate consolidated campus text report.
+- Generate PDF-style text report.
 - Use helper functions for date and formatting.
 - Use `std::sort` with custom comparator.
-- Use loops for search and report output.
+- Use `std::find_if` for roll number search.
+- Use dynamic array copy with `new[]` and `delete[]` inside PDF-style report generation.
+- Use loops for report output.
 
 ## Report Output
 
@@ -25,6 +28,7 @@ The report is written to:
 
 ```text
 data/campus_report.txt
+data/campus_pdf_report.txt
 ```
 
 It includes:
@@ -36,14 +40,17 @@ It includes:
 - Library item count
 - Student list
 - Top student by GPA
+- Sorted student section in PDF-style text report
+- OOP concepts highlight in PDF-style text report
 
 ## OOP/Programming Concepts Covered
 
 - Reporting functions
 - Utility helper functions
 - Sorting with `std::sort`
-- Searching with loops
+- Searching with `std::find_if`
 - File output with `ofstream`
+- Memory management with `new[]` and `delete[]`
 - Array traversal
 
 ## Where It Is Tested
@@ -55,6 +62,7 @@ Home -> 6. Reports Module -> 1. Sort and show students by GPA
 Home -> 6. Reports Module -> 2. Find student by roll number
 Home -> 6. Reports Module -> 3. Show top GPA student
 Home -> 6. Reports Module -> 4. Generate campus text report
+Home -> 6. Reports Module -> 5. Generate PDF-style text report
 ```
 
 Expected result:
@@ -63,3 +71,4 @@ Expected result:
 - Roll number search finds `25-CS-067`.
 - Top student displays.
 - `data/campus_report.txt` is generated.
+- `data/campus_pdf_report.txt` is generated.

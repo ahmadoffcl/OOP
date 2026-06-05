@@ -29,7 +29,7 @@ Date: 2026-06-05
 - Library load/search/issue/return/save flow works
 - Finance payment, deep copy, invoice copy, destructor-backed dynamic array design, and static counter are demonstrated
 - Hostel allocation, duplicate allocation check, report, and vacate flow work
-- Reports sorting, searching, top student, and text report generation work
+- Reports sorting, searching, top student, text report generation, and PDF-style text report generation work
 
 ## Still Needed Before Portal Submission
 

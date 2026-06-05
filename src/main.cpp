@@ -435,6 +435,7 @@ void reportsMenu(Student* students[], int studentCount, Library& library) {
         cout << "2. Find student by roll number" << endl;
         cout << "3. Show top GPA student" << endl;
         cout << "4. Generate campus text report" << endl;
+        cout << "5. Generate PDF-style text report" << endl;
         printBackOption();
         choice = readChoice();
 
@@ -464,6 +465,9 @@ void reportsMenu(Student* students[], int studentCount, Library& library) {
         } else if (choice == 4) {
             loadLibraryIfNeeded(library);
             Reports::generateCampusTextReport(students, studentCount, library, "data/campus_report.txt");
+        } else if (choice == 5) {
+            loadLibraryIfNeeded(library);
+            Reports::generatePdfStyleTextReport(students, studentCount, library, "data/campus_pdf_report.txt");
         } else if (choice == 0) {
             cout << "Returning to Home..." << endl;
         } else {

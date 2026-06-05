@@ -52,6 +52,7 @@ Then test menu choices:
 | 6 then 2 | Finds student by roll number |
 | 6 then 3 | Shows top GPA student |
 | 6 then 4 | Writes `data/campus_report.txt` |
+| 6 then 5 | Writes `data/campus_pdf_report.txt` |
 | module 0 | Returns to home menu |
 | 0 | Exits the program |
 

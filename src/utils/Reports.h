@@ -6,7 +6,7 @@
  * @inst    HITEC University Taxila
  * @date    2026-06-05
  *
- * OOP Concepts: Reporting, Sorting, Searching
+ * OOP Concepts: Reporting, Sorting, Searching, File I/O
  */
 
 #ifndef REPORTS_H
@@ -23,6 +23,7 @@ namespace Reports {
     Student* findStudentByRollNo(Student* students[], int count, string rollNo);
     void showTopStudent(Student* students[], int count);
     void generateCampusTextReport(Student* students[], int studentCount, Library& library, string fileName);
+    void generatePdfStyleTextReport(Student* students[], int studentCount, Library& library, string fileName);
 }
 
 #endif
