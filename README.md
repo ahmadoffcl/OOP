@@ -11,25 +11,24 @@
 Note: The project brief mentions individual/team of 2. Confirm with the instructor if a 3-member group is allowed.
 
 ## Current Status
-This is a learning starter for the SCMS project. It currently includes a simple command-line program for all main modules:
+This folder contains the completed simple command-line version of the SCMS project. It includes all main assignment modules:
 
 - Person hierarchy: `Person`, `Student`, `GradStudent`, `Faculty`, `Staff`
 - Course and enrollment management: `Course`, `Enrollment`
 - Basic exception handling with `CapacityExceededException`
-- Library starter: `LibraryItem`, `Book`, `Journal`, `Library`
-- Finance starter: `FeeRecord`, `Invoice`
-- Hostel starter: `Accommodation`, `Reportable`, `Room`, `HostelBlock`, `HostelManager`
-- Reports starter: `Reports` and `Utils`
+- Library module: `LibraryItem`, `Book`, `Journal`, `Library`
+- Finance module: `FeeRecord`, `Invoice`
+- Hostel module: `Accommodation`, `Reportable`, `Room`, `HostelBlock`, `HostelManager`
+- Reports module: `Reports` and `Utils`
 - Simple arrays, constructors, getters/setters, inheritance, polymorphism, file handling, and operator overloading
 - Clean console interface with separate module screens and `0. Back to Home` options
 
-You should still complete and personalize the project before submission:
+You should still personalize and review the project before submission:
 
 - Replace sample names, CNICs, fees, and roll numbers with your own values
-- Add more menu input instead of only fixed demo data
-- Improve file loading/saving after you understand the starter code
 - Review `docs/class_diagram.png`
 - Review and improve `docs/project_report.pdf` with your own screenshots
+- Make sure every group member can explain the files used in their module
 
 ## How to Compile
 
@@ -83,13 +82,11 @@ g++ -std=c++17 -Wall -Wextra src/main.cpp src/person/*.cpp src/course/*.cpp src/
 
 ## Remaining Work Checklist
 
-- Add real user input for adding students/courses/books
-- Add more checks for wrong input
-- Add more records in `data/students.txt`
-- Add your own comments explaining each OOP concept
-- Add `docs/class_diagram.png`
-- Add `docs/project_report.pdf`
-- Follow `docs/manual_test_plan.md` after installing g++
+- Confirm with the instructor that a 3-member group is allowed
+- Replace sample CNIC/contact values with real or acceptable demo values
+- Add your own screenshots to `docs/project_report.pdf`
+- Create a public GitHub repository and push the project
+- Follow `docs/manual_test_plan.md` once more before final submission
 
 ## Interface Flow
 

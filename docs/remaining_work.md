@@ -1,20 +1,20 @@
 # Remaining Work
 
-These items are still left before final submission.
+These items are still left before final submission. The local C++ code, build setup, module documentation, viva notes, UML image, and generated report draft are already present.
 
 ## Must Do
 
 - Confirm with instructor whether 3 group members are allowed.
 - Replace sample CNIC/contact values with real or acceptable demo values.
-- Review `docs/class_diagram.png` and adjust if your teacher wants a different UML style.
-- Review `docs/project_report.pdf` and add real screenshots.
-- Add screenshots of all menu options to the report.
+- Review `docs/class_diagram.png` and adjust it only if your teacher wants a different UML style.
+- Review `docs/project_report.pdf` and add real screenshots from your own run.
+- Add screenshots of all main menu/module options to the report if your teacher requires screenshots.
 - Make sure every group member understands each file before viva.
 - Create a public GitHub repository and push this project.
 
 ## Good Improvements
 
-- Add real input for adding students, books, and courses.
+- Add more real input forms for adding students, books, and courses.
 - Add simple validation for GPA, fee amount, and semester.
 - Add more records in `data/library_catalog.txt`.
 - Add separate menu options for load, save, issue, and return library item.
@@ -36,3 +36,5 @@ These items are still left before final submission.
 - OOP checklist.
 - Manual test plan.
 - Testing log.
+- Generated class diagram image.
+- Generated project report draft.
