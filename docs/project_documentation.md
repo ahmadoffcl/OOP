@@ -1,0 +1,69 @@
+# Smart Campus Management System Documentation
+
+## Group Members
+
+- Ahmad Ali | Reg No: 25-CS-067
+- Umer Altaf | Reg No: 25-CS-057
+- Muhammed Ahmad | Reg No: 25-CS-252
+
+## Project Purpose
+
+The Smart Campus Management System is a simple command-line C++ project for managing basic university operations. It is written in a beginner-friendly style using classes, inheritance, arrays, file handling, exception handling, and operator overloading.
+
+## Folder Structure
+
+- `src/person`: Person, Student, GradStudent, Faculty, Staff
+- `src/course`: Course and Enrollment
+- `src/library`: LibraryItem, Book, Journal, Library
+- `src/finance`: FeeRecord and Invoice
+- `src/hostel`: Room, HostelBlock, HostelManager, interfaces
+- `src/utils`: Exceptions, Reports, Utils
+- `data`: text files used by the program
+- `docs`: notes, viva questions, diagram source, and checklists
+
+## Main Menu
+
+1. Person module demo
+2. Course module demo
+3. Enrollment and exception demo
+4. Library module demo
+5. Finance module demo
+6. Hostel module demo
+7. Reports module demo
+0. Exit
+
+## Phase 1 Summary
+
+Phase 1 covers the person and course modules. `Person` is an abstract base class. `Student`, `GradStudent`, `Faculty`, and `Staff` inherit from it. Course enrollment uses a capacity exception and operator overloading.
+
+## Phase 2 Summary
+
+Phase 2 covers library and finance. The Library class stores `LibraryItem*` pointers, loads catalog data from `data/library_catalog.txt`, searches items, issues items, handles overdue fines, and saves output. Finance uses `FeeRecord`, `Invoice`, copy constructor, copy assignment, static invoice counter, and destructor.
+
+## Phase 3 Summary
+
+Phase 3 covers hostel and reports. HostelManager uses multiple inheritance and composition. Reports sort students by GPA and write `data/campus_report.txt`.
+
+## Build and Run
+
+```powershell
+cd D:\HITEC-OOP-SCMS-25-CS-067
+.\build.bat
+.\scms.exe
+```
+
+Or:
+
+```powershell
+.\run.bat
+```
+
+The compiler is installed at:
+
+```text
+D:\tools\w64devkit\bin\g++.exe
+```
+
+## Important Note
+
+The code is intentionally simple. Read and edit it before viva so every group member can explain it.
