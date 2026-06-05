@@ -51,7 +51,11 @@ Test input:
 1
 2
 3
+C++ Basics
 4
+5
+6
+7
 0
 4
 1
@@ -73,7 +77,7 @@ Result:
 
 - Person module printed records and compact student list.
 - Course module printed course details, enrollment exception, enrolled/waiting students, course comparison, and waiting list merge.
-- Library module loaded/showed library items, searched title, issued book `B001`, showed overdue fine, and saved catalog.
+- Library module loaded/showed library items, searched title, issued book `B001`, returned with overdue fine, displayed issued records, and saved catalog.
 - Finance module showed fee payment, fee copy, fee assignment, invoice, and invoice copy.
 - Hostel module allocated students, printed occupancy report, and vacated one student.
 - Reports module sorted students by GPA and wrote `data/campus_report.txt`.

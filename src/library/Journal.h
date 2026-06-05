@@ -26,7 +26,9 @@ public:
     Journal();
     Journal(string id, string t, string a, int year, string issnNo, int vol, int issue);
 
+    bool isAvailable() const;
     void checkout();
+    void checkin();
     void displayItem() const;
     string getSaveLine() const;
 };

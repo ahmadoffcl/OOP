@@ -36,7 +36,9 @@ public:
     void setAuthor(string a);
     void setPublicationYear(int year);
 
+    virtual bool isAvailable() const = 0;
     virtual void checkout() = 0;
+    virtual void checkin() = 0;
     virtual void displayItem() const = 0;
     virtual string getSaveLine() const = 0;
 };

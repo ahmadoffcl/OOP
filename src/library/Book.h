@@ -29,7 +29,9 @@ public:
     int getCopiesAvailable() const;
     void setCopiesAvailable(int copies);
 
+    bool isAvailable() const;
     void checkout();
+    void checkin();
     void displayItem() const;
     string getSaveLine() const;
 };

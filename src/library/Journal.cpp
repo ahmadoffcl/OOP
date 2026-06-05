@@ -26,8 +26,16 @@ Journal::Journal(string id, string t, string a, int year, string issnNo, int vol
     issueNumber = issue;
 }
 
+bool Journal::isAvailable() const {
+    return true;
+}
+
 void Journal::checkout() {
     cout << "Journal reading entry added." << endl;
+}
+
+void Journal::checkin() {
+    cout << "Journal return entry added." << endl;
 }
 
 void Journal::displayItem() const {

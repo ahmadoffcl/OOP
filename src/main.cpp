@@ -221,20 +221,33 @@ void showLibrarySearch(Library& library) {
     loadLibraryIfNeeded(library);
     printTitle("LIBRARY SEARCH");
 
-    LibraryItem* found = library.searchByTitle("C++ Basics");
+    string title;
+    cout << "Enter title to search (press Enter for C++ Basics): ";
+    getline(cin, title);
+
+    if (title == "") {
+        title = "C++ Basics";
+    }
+
+    LibraryItem* found = library.searchByTitle(title);
     if (found != NULL) {
-        cout << "Search title: C++ Basics" << endl;
+        cout << "Search title: " << title << endl;
         found->displayItem();
     } else {
-        cout << "Book not found." << endl;
+        cout << "Item not found." << endl;
     }
 }
 
-void showLibraryIssueReturn(Library& library) {
+void showLibraryIssue(Library& library) {
     loadLibraryIfNeeded(library);
-    printTitle("ISSUE AND RETURN DEMO");
+    printTitle("ISSUE ITEM DEMO");
 
     library.issueItem("25-CS-067", "B001");
+}
+
+void showLibraryReturn(Library& library) {
+    loadLibraryIfNeeded(library);
+    printTitle("RETURN ITEM DEMO");
 
     try {
         library.returnItem("25-CS-067", "B001", 9);
@@ -248,20 +261,30 @@ void libraryMenu(Library& library) {
 
     do {
         printTitle("LIBRARY MODULE");
-        cout << "1. Show catalog" << endl;
-        cout << "2. Search by title" << endl;
-        cout << "3. Issue and return item" << endl;
-        cout << "4. Save catalog to file" << endl;
+        cout << "1. Load catalog from file" << endl;
+        cout << "2. Show catalog" << endl;
+        cout << "3. Search by title" << endl;
+        cout << "4. Issue item B001 to 25-CS-067" << endl;
+        cout << "5. Return item B001 with overdue fine" << endl;
+        cout << "6. Show issued records" << endl;
+        cout << "7. Save catalog to file" << endl;
         printBackOption();
         choice = readChoice();
 
         if (choice == 1) {
-            showLibraryCatalog(library);
+            library.loadCatalog("data/library_catalog.txt");
+            cout << "Catalog loaded. Total items: " << library.getItemCount() << endl;
         } else if (choice == 2) {
-            showLibrarySearch(library);
+            showLibraryCatalog(library);
         } else if (choice == 3) {
-            showLibraryIssueReturn(library);
+            showLibrarySearch(library);
         } else if (choice == 4) {
+            showLibraryIssue(library);
+        } else if (choice == 5) {
+            showLibraryReturn(library);
+        } else if (choice == 6) {
+            library.displayIssuedRecords();
+        } else if (choice == 7) {
             loadLibraryIfNeeded(library);
             library.saveCatalog("data/library_catalog_saved.txt");
             cout << "Catalog saved to data/library_catalog_saved.txt" << endl;

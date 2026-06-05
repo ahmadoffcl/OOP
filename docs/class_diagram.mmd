@@ -62,6 +62,7 @@ classDiagram
         #string author
         #int publicationYear
         +checkout()*
+        +checkin()*
         +displayItem()*
     }
 
@@ -70,6 +71,7 @@ classDiagram
         -string genre
         -int copiesAvailable
         +checkout()
+        +checkin()
     }
 
     class Journal {
@@ -77,12 +79,14 @@ classDiagram
         -int volume
         -int issueNumber
         +checkout()
+        +checkin()
     }
 
     class Library {
         -LibraryItem* items[]
         -IssuedRecord issued[]
         +searchByTitle()
+        +displayIssuedRecords()
         +saveCatalog()
         +loadCatalog()
     }

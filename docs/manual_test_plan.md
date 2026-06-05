@@ -32,10 +32,13 @@ Then test menu choices:
 | 2 then 3 | Shows enrolled and waiting students |
 | 2 then 4 | Compares courses using `==` |
 | 2 then 5 | Merges waiting lists using `+` |
-| 3 then 1 | Shows library catalog |
-| 3 then 2 | Searches C++ book |
-| 3 then 3 | Issues and returns with overdue fine |
-| 3 then 4 | Saves library catalog |
+| 3 then 1 | Loads library catalog from `data/library_catalog.txt` |
+| 3 then 2 | Shows library catalog |
+| 3 then 3 | Searches C++ book by title |
+| 3 then 4 | Issues item `B001` to `25-CS-067` |
+| 3 then 5 | Returns item `B001` with overdue fine |
+| 3 then 6 | Shows issued item records |
+| 3 then 7 | Saves library catalog |
 | 4 then 1 | Shows fee record, payment using `-=`, copied fee record, and assigned fee record |
 | 4 then 2 | Shows invoice and copied invoice |
 | 5 then 1 | Allocates students to hostel rooms |

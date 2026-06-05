@@ -34,6 +34,10 @@ void Book::setCopiesAvailable(int copies) {
     copiesAvailable = copies;
 }
 
+bool Book::isAvailable() const {
+    return copiesAvailable > 0;
+}
+
 void Book::checkout() {
     if (copiesAvailable > 0) {
         copiesAvailable--;
@@ -41,6 +45,11 @@ void Book::checkout() {
     } else {
         cout << "No copy available." << endl;
     }
+}
+
+void Book::checkin() {
+    copiesAvailable++;
+    cout << "Book copy returned to library." << endl;
 }
 
 void Book::displayItem() const {

@@ -69,10 +69,10 @@ def make_class_diagram():
         "Staff": ((500, 650, 840, 810), ["- staffID", "- role", "- salary", "+ displayInfo()"]),
         "Course": ((980, 150, 1360, 385), ["- courseCode", "- courseName", "- Faculty* instructor", "- Student* enrolled[]", "- Student* waiting[]", "+ enrollStudent()", "+ display roster", "+ operator overloads"]),
         "Enrollment": ((1420, 150, 1740, 310), ["- Student* student", "- Course* course", "- date, grade"]),
-        "LibraryItem": ((80, 950, 440, 1130), ["# itemID, title", "# author, year", "+ checkout()", "+ displayItem()"]),
-        "Book": ((80, 1220, 440, 1400), ["- isbn", "- genre", "- copiesAvailable", "+ checkout()"]),
-        "Journal": ((520, 1220, 880, 1400), ["- issn", "- volume", "- issueNumber", "+ checkout()"]),
-        "Library": ((980, 950, 1360, 1160), ["- LibraryItem* items[]", "- IssuedRecord issued[]", "+ searchByTitle()", "+ save/load catalog"]),
+        "LibraryItem": ((80, 950, 440, 1155), ["# itemID, title", "# author, year", "+ checkout()", "+ checkin()", "+ displayItem()"]),
+        "Book": ((80, 1220, 440, 1425), ["- isbn", "- genre", "- copiesAvailable", "+ checkout()", "+ checkin()"]),
+        "Journal": ((520, 1220, 880, 1425), ["- issn", "- volume", "- issueNumber", "+ checkout()", "+ checkin()"]),
+        "Library": ((980, 950, 1360, 1185), ["- LibraryItem* items[]", "- IssuedRecord issued[]", "+ searchByTitle()", "+ displayIssuedRecords()", "+ save/load catalog"]),
         "FeeRecord": ((1420, 950, 1740, 1160), ["- Student* studentRef", "- semesterFee", "- hostelFee", "- balance", "+ operator-=()"]),
         "Invoice": ((1420, 1240, 1740, 1420), ["- static counter", "- string* items", "+ copy constructor", "+ destructor"]),
         "CampusService": ((80, 1580, 440, 1700), ["+ showServiceName()"]),
@@ -223,9 +223,9 @@ def make_report(diagram_path):
     ]
     add_bullets(pdf, concepts)
 
-    add_section(pdf, "Phase 2 Details")
-    add_wrapped(pdf, "The Phase 2 Library module loads records from data/library_catalog.txt, displays books and "
-                     "journals, searches by title or ID, issues a book, and checks overdue returns. The Finance module "
+    add_section(pdf, "Library and Finance Details")
+    add_wrapped(pdf, "The Library module loads records from data/library_catalog.txt, displays books and "
+                     "journals, searches by title or ID, issues a book, shows issued records, and checks overdue returns. The Finance module "
                      "tracks fee balance, accepts payment with operator-=, copies fee records, and creates invoices with "
                      "a static invoice counter.")
 

@@ -42,9 +42,12 @@ public:
     LibraryItem* searchByID(string itemID) const;
     void showAllItems() const;
     int getItemCount() const;
+    int getIssuedCount() const;
 
+    bool isAlreadyIssued(string rollNo, string itemID) const;
     void issueItem(string rollNo, string itemID);
     void returnItem(string rollNo, string itemID, int daysLate);
+    void displayIssuedRecords() const;
 
     void saveCatalog(string fileName) const;
     void loadCatalog(string fileName);

@@ -77,11 +77,35 @@ int Library::getItemCount() const {
     return itemCount;
 }
 
+int Library::getIssuedCount() const {
+    return issuedCount;
+}
+
+bool Library::isAlreadyIssued(string rollNo, string itemID) const {
+    for (int i = 0; i < issuedCount; i++) {
+        if (issued[i].rollNo == rollNo && issued[i].itemID == itemID && issued[i].returned == false) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
 void Library::issueItem(string rollNo, string itemID) {
     LibraryItem* item = searchByID(itemID);
 
     if (item == NULL) {
         cout << "Library item not found." << endl;
+        return;
+    }
+
+    if (isAlreadyIssued(rollNo, itemID)) {
+        cout << "This item is already issued to roll no " << rollNo << "." << endl;
+        return;
+    }
+
+    if (!item->isAvailable()) {
+        cout << "Item is not available right now." << endl;
         return;
     }
 
@@ -101,6 +125,12 @@ void Library::issueItem(string rollNo, string itemID) {
 void Library::returnItem(string rollNo, string itemID, int daysLate) {
     for (int i = 0; i < issuedCount; i++) {
         if (issued[i].rollNo == rollNo && issued[i].itemID == itemID && issued[i].returned == false) {
+            LibraryItem* item = searchByID(itemID);
+
+            if (item != NULL) {
+                item->checkin();
+            }
+
             issued[i].returned = true;
             issued[i].daysLate = daysLate;
 
@@ -115,6 +145,28 @@ void Library::returnItem(string rollNo, string itemID, int daysLate) {
     }
 
     cout << "Issued record not found." << endl;
+}
+
+void Library::displayIssuedRecords() const {
+    cout << "\n--- Issued Item Records ---" << endl;
+
+    if (issuedCount == 0) {
+        cout << "No issued record found." << endl;
+    }
+
+    for (int i = 0; i < issuedCount; i++) {
+        cout << i + 1 << ". Roll No: " << issued[i].rollNo
+             << " | Item ID: " << issued[i].itemID
+             << " | Returned: ";
+
+        if (issued[i].returned) {
+            cout << "Yes";
+        } else {
+            cout << "No";
+        }
+
+        cout << " | Days Late: " << issued[i].daysLate << endl;
+    }
 }
 
 void Library::saveCatalog(string fileName) const {
