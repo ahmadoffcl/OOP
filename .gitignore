@@ -1,0 +1,13 @@
+*.o
+*.obj
+*.exe
+*.out
+a.out
+build/
+.vscode/
+.DS_Store
+__pycache__/
+*.pyc
+library_catalog_saved.txt
+data/campus_report.txt
+data/campus_pdf_report.txt
