@@ -1,0 +1,105 @@
+﻿
+------------------------------------------------------------
+ SMART CAMPUS MANAGEMENT SYSTEM
+------------------------------------------------------------
+Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
+Course: CS-104L Object-Oriented Programming
+------------------------------------------------------------
+1. Person Module
+2. Course and Enrollment Module
+3. Library Module
+4. Fee and Finance Module
+5. Hostel Module
+6. Reports Module
+0. Exit
+Enter choice: 
+------------------------------------------------------------
+ REPORTS MODULE
+------------------------------------------------------------
+1. Sort and show students by GPA
+2. Find student by roll number
+3. Show top GPA student
+4. Generate campus text report
+5. Generate PDF-style text report
+0. Back to Home
+Enter choice: 
+--- Students Sorted by GPA ---
+25-CS-057 - Umer Altaf - GPA: 3.8
+25-CS-067 - Ahmad Ali - GPA: 3.4
+25-CS-252 - Muhammed Ahmad - GPA: 3.2
+
+------------------------------------------------------------
+ REPORTS MODULE
+------------------------------------------------------------
+1. Sort and show students by GPA
+2. Find student by roll number
+3. Show top GPA student
+4. Generate campus text report
+5. Generate PDF-style text report
+0. Back to Home
+Enter choice: Enter roll no (press Enter for 25-CS-067): Student found:
+25-CS-067 - Ahmad Ali - GPA: 3.4
+
+------------------------------------------------------------
+ REPORTS MODULE
+------------------------------------------------------------
+1. Sort and show students by GPA
+2. Find student by roll number
+3. Show top GPA student
+4. Generate campus text report
+5. Generate PDF-style text report
+0. Back to Home
+Enter choice: 
+--- Top GPA Student ---
+25-CS-057 - Umer Altaf - GPA: 3.8
+
+------------------------------------------------------------
+ REPORTS MODULE
+------------------------------------------------------------
+1. Sort and show students by GPA
+2. Find student by roll number
+3. Show top GPA student
+4. Generate campus text report
+5. Generate PDF-style text report
+0. Back to Home
+Enter choice: Text report saved to data/campus_report.txt
+
+------------------------------------------------------------
+ REPORTS MODULE
+------------------------------------------------------------
+1. Sort and show students by GPA
+2. Find student by roll number
+3. Show top GPA student
+4. Generate campus text report
+5. Generate PDF-style text report
+0. Back to Home
+Enter choice: PDF-style text report saved to data/campus_pdf_report.txt
+
+------------------------------------------------------------
+ REPORTS MODULE
+------------------------------------------------------------
+1. Sort and show students by GPA
+2. Find student by roll number
+3. Show top GPA student
+4. Generate campus text report
+5. Generate PDF-style text report
+0. Back to Home
+Enter choice: Returning to Home...
+
+------------------------------------------------------------
+ SMART CAMPUS MANAGEMENT SYSTEM
+------------------------------------------------------------
+Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
+Course: CS-104L Object-Oriented Programming
+------------------------------------------------------------
+1. Person Module
+2. Course and Enrollment Module
+3. Library Module
+4. Fee and Finance Module
+5. Hostel Module
+6. Reports Module
+0. Exit
+Enter choice: 
+------------------------------------------------------------
+ PROGRAM CLOSED
+------------------------------------------------------------
