@@ -1,0 +1,158 @@
+﻿
+------------------------------------------------------------
+ SMART CAMPUS MANAGEMENT SYSTEM
+------------------------------------------------------------
+Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
+Course: CS-104L Object-Oriented Programming
+------------------------------------------------------------
+1. Person Module
+2. Course and Enrollment Module
+3. Library Module
+4. Fee and Finance Module
+5. Hostel Module
+6. Reports Module
+0. Exit
+Enter choice: 
+------------------------------------------------------------
+ HOSTEL MODULE
+------------------------------------------------------------
+1. Show hostel service name
+2. Allocate sample students
+3. Try duplicate allocation
+4. Show hostel summary
+5. Show occupancy report
+6. Vacate Ahmad Ali room
+0. Back to Home
+Enter choice: Hostel Accommodation Service
+
+------------------------------------------------------------
+ HOSTEL MODULE
+------------------------------------------------------------
+1. Show hostel service name
+2. Allocate sample students
+3. Try duplicate allocation
+4. Show hostel summary
+5. Show occupancy report
+6. Vacate Ahmad Ali room
+0. Back to Home
+Enter choice: Ahmad Ali allocated to room 101
+Umer Altaf allocated to room 101
+Muhammed Ahmad allocated to room 101
+
+------------------------------------------------------------
+ HOSTEL MODULE
+------------------------------------------------------------
+1. Show hostel service name
+2. Allocate sample students
+3. Try duplicate allocation
+4. Show hostel summary
+5. Show occupancy report
+6. Vacate Ahmad Ali room
+0. Back to Home
+Enter choice: Ahmad Ali is already allocated to room 101
+
+------------------------------------------------------------
+ HOSTEL MODULE
+------------------------------------------------------------
+1. Show hostel service name
+2. Allocate sample students
+3. Try duplicate allocation
+4. Show hostel summary
+5. Show occupancy report
+6. Vacate Ahmad Ali room
+0. Back to Home
+Enter choice: Block Name: Boys Block A
+Total Rooms: 3
+Total Occupants: 3
+
+------------------------------------------------------------
+ HOSTEL MODULE
+------------------------------------------------------------
+1. Show hostel service name
+2. Allocate sample students
+3. Try duplicate allocation
+4. Show hostel summary
+5. Show occupancy report
+6. Vacate Ahmad Ali room
+0. Back to Home
+Enter choice: 
+--- Hostel Occupancy Report ---
+Block Name: Boys Block A
+Total Rooms: 3
+Total Occupants: 3
+
+Hostel Block: Boys Block A
+
+Room No: 101
+Type: triple
+Floor: 1
+Occupants: 3/3
+- Ahmad Ali (25-CS-067)
+- Umer Altaf (25-CS-057)
+- Muhammed Ahmad (25-CS-252)
+
+Room No: 102
+Type: triple
+Floor: 1
+Occupants: 0/3
+
+Room No: 201
+Type: triple
+Floor: 2
+Occupants: 0/3
+
+------------------------------------------------------------
+ HOSTEL MODULE
+------------------------------------------------------------
+1. Show hostel service name
+2. Allocate sample students
+3. Try duplicate allocation
+4. Show hostel summary
+5. Show occupancy report
+6. Vacate Ahmad Ali room
+0. Back to Home
+Enter choice: Room vacated for roll no 25-CS-067
+
+------------------------------------------------------------
+ HOSTEL MODULE
+------------------------------------------------------------
+1. Show hostel service name
+2. Allocate sample students
+3. Try duplicate allocation
+4. Show hostel summary
+5. Show occupancy report
+6. Vacate Ahmad Ali room
+0. Back to Home
+Enter choice: Block Name: Boys Block A
+Total Rooms: 3
+Total Occupants: 2
+
+------------------------------------------------------------
+ HOSTEL MODULE
+------------------------------------------------------------
+1. Show hostel service name
+2. Allocate sample students
+3. Try duplicate allocation
+4. Show hostel summary
+5. Show occupancy report
+6. Vacate Ahmad Ali room
+0. Back to Home
+Enter choice: Returning to Home...
+
+------------------------------------------------------------
+ SMART CAMPUS MANAGEMENT SYSTEM
+------------------------------------------------------------
+Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
+Course: CS-104L Object-Oriented Programming
+------------------------------------------------------------
+1. Person Module
+2. Course and Enrollment Module
+3. Library Module
+4. Fee and Finance Module
+5. Hostel Module
+6. Reports Module
+0. Exit
+Enter choice: 
+------------------------------------------------------------
+ PROGRAM CLOSED
+------------------------------------------------------------
