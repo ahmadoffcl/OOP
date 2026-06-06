@@ -1,0 +1,181 @@
+classDiagram
+    class Person {
+        #string name
+        #string cnic
+        #int age
+        #string contact
+        +displayInfo()*
+    }
+
+    class Student {
+        -string rollNo
+        -int semester
+        -double gpa
+        -string enrolledCourses[]
+        +calculateGrade()
+        +displayInfo()
+    }
+
+    class GradStudent {
+        -string thesisTitle
+        +displayInfo()
+    }
+
+    class Faculty {
+        -string employeeID
+        -string department
+        -string designation
+        -string assignedCourses[]
+        +displayInfo()
+    }
+
+    class Staff {
+        -string staffID
+        -string role
+        -double salary
+        +displayInfo()
+    }
+
+    class Course {
+        -string courseCode
+        -string courseName
+        -int creditHours
+        -Faculty* instructor
+        -Student* enrolledStudents[]
+        +enrollStudent()
+        +displayEnrolledStudents()
+        +displayWaitingList()
+        +operator==()
+        +operator+()
+    }
+
+    class Enrollment {
+        -Student* student
+        -Course* course
+        -string enrollmentDate
+        -string grade
+    }
+
+    class LibraryItem {
+        #string itemID
+        #string title
+        #string author
+        #int publicationYear
+        +checkout()*
+        +checkin()*
+        +displayItem()*
+    }
+
+    class Book {
+        -string isbn
+        -string genre
+        -int copiesAvailable
+        +checkout()
+        +checkin()
+    }
+
+    class Journal {
+        -string issn
+        -int volume
+        -int issueNumber
+        +checkout()
+        +checkin()
+    }
+
+    class Library {
+        -LibraryItem* items[]
+        -IssuedRecord issued[]
+        +searchByTitle()
+        +displayIssuedRecords()
+        +saveCatalog()
+        +loadCatalog()
+    }
+
+    class FeeRecord {
+        -Student* studentRef
+        -double semesterFee
+        -double hostelFee
+        -double libraryFine
+        -double balance
+        -double* payments
+        +operator-=()
+        +displayPayments()
+    }
+
+    class Invoice {
+        -static int invoiceCounter
+        -int invoiceID
+        -string* items
+        +getInvoiceCounter()
+        +operator<<()
+    }
+
+    class CampusService {
+        +showServiceName()*
+    }
+
+    class Accommodation {
+        +allocateRoom()*
+        +vacateRoom()*
+    }
+
+    class Reportable {
+        +generateReport()*
+    }
+
+    class Room {
+        -int roomNumber
+        -string type
+        -Student* occupants[]
+        +addStudent()
+        +removeStudent()
+        +hasStudent()
+    }
+
+    class HostelBlock {
+        -string blockName
+        -Room rooms[]
+        +addRoom()
+        +getTotalOccupants()
+    }
+
+    class HostelManager {
+        -HostelBlock block
+        +allocateRoom()
+        +vacateRoom()
+        +generateReport()
+        +showSummary()
+    }
+
+    class Reports {
+        +sortStudentsByGPA()
+        +findStudentByRollNo()
+        +showTopStudent()
+        +generateCampusTextReport()
+    }
+
+    class Utils {
+        +getTodayDate()
+        +printLine()
+        +checkPositiveInt()
+    }
+
+    Person <|-- Student
+    Student <|-- GradStudent
+    Person <|-- Faculty
+    Person <|-- Staff
+    Course o-- Faculty
+    Course o-- Student
+    Enrollment o-- Student
+    Enrollment o-- Course
+    LibraryItem <|-- Book
+    LibraryItem <|-- Journal
+    Library o-- LibraryItem
+    FeeRecord o-- Student
+    CampusService <|-- Accommodation
+    CampusService <|-- Reportable
+    Accommodation <|-- HostelManager
+    Reportable <|-- HostelManager
+    HostelManager *-- HostelBlock
+    HostelBlock *-- Room
+    Room o-- Student
