@@ -1,0 +1,2 @@
+Book|B001|C++ Basics|Deitel|2020|978-0000000001|Programming|3
+Journal|J001|OOP Lab Journal|HITEC CS|2025|ISSN-1111|1|1

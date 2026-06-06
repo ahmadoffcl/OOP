@@ -1,0 +1,3 @@
+25-CS-067,Ahmad Ali,2,3.4
+25-CS-057,Umer Altaf,2,3.8
+25-CS-252,Muhammed Ahmad,2,3.2

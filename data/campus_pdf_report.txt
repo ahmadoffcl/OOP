@@ -1,0 +1,34 @@
+============================================================
+                 PDF STYLE CAMPUS REPORT
+============================================================
+Project: Smart Campus Management System
+Course : CS-104L Object-Oriented Programming
+Inst   : HITEC University Taxila
+Date   : 05-06-2026
+Group  : Ahmad Ali, Umer Altaf, Muhammed Ahmad
+------------------------------------------------------------
+Summary
+------------------------------------------------------------
+Total Students : 3
+Library Items  : 2
+Top GPA Student: Umer Altaf (25-CS-057)
+------------------------------------------------------------
+Students Sorted by GPA
+------------------------------------------------------------
+1. 25-CS-057 | Umer Altaf | GPA: 3.8
+2. 25-CS-067 | Ahmad Ali | GPA: 3.4
+3. 25-CS-252 | Muhammed Ahmad | GPA: 3.2
+------------------------------------------------------------
+Library Summary
+------------------------------------------------------------
+Library catalog item count: 2
+See the program Library module for full book and journal records.
+------------------------------------------------------------
+OOP Concepts Highlight
+------------------------------------------------------------
+Classes, inheritance, polymorphism, arrays, file handling,
+exception handling, operator overloading, copy constructor,
+copy assignment, static members, and memory management.
+============================================================
+End of PDF-style report
+============================================================
