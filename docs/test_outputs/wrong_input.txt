@@ -1,0 +1,33 @@
+﻿
+------------------------------------------------------------
+ SMART CAMPUS MANAGEMENT SYSTEM
+------------------------------------------------------------
+Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
+Course: CS-104L Object-Oriented Programming
+------------------------------------------------------------
+1. Person Module
+2. Course and Enrollment Module
+3. Library Module
+4. Fee and Finance Module
+5. Hostel Module
+6. Reports Module
+0. Exit
+Enter choice: Wrong choice. Try again.
+
+------------------------------------------------------------
+ SMART CAMPUS MANAGEMENT SYSTEM
+------------------------------------------------------------
+Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
+Course: CS-104L Object-Oriented Programming
+------------------------------------------------------------
+1. Person Module
+2. Course and Enrollment Module
+3. Library Module
+4. Fee and Finance Module
+5. Hostel Module
+6. Reports Module
+0. Exit
+Enter choice: 
+------------------------------------------------------------
+ PROGRAM CLOSED
+------------------------------------------------------------
