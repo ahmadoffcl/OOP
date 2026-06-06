@@ -1,0 +1,196 @@
+﻿
+------------------------------------------------------------
+ SMART CAMPUS MANAGEMENT SYSTEM
+------------------------------------------------------------
+Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
+Course: CS-104L Object-Oriented Programming
+------------------------------------------------------------
+1. Person Module
+2. Course and Enrollment Module
+3. Library Module
+4. Fee and Finance Module
+5. Hostel Module
+6. Reports Module
+0. Exit
+Enter choice: 
+------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Load catalog from file
+2. Show catalog
+3. Search by title
+4. Issue item B001 to 25-CS-067
+5. Return item B001 with overdue fine
+6. Show issued records
+7. Save catalog to file
+0. Back to Home
+Enter choice: Catalog loaded. Total items: 2
+
+------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Load catalog from file
+2. Show catalog
+3. Search by title
+4. Issue item B001 to 25-CS-067
+5. Return item B001 with overdue fine
+6. Show issued records
+7. Save catalog to file
+0. Back to Home
+Enter choice: 
+------------------------------------------------------------
+ LIBRARY CATALOG
+------------------------------------------------------------
+
+--- Library Catalog ---
+
+Book ID: B001
+Title: C++ Basics
+Author: Deitel
+Year: 2020
+ISBN: 978-0000000001
+Genre: Programming
+Copies: 3
+
+Journal ID: J001
+Title: OOP Lab Journal
+Author: HITEC CS
+Year: 2025
+ISSN: ISSN-1111
+Volume: 1
+Issue: 1
+
+------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Load catalog from file
+2. Show catalog
+3. Search by title
+4. Issue item B001 to 25-CS-067
+5. Return item B001 with overdue fine
+6. Show issued records
+7. Save catalog to file
+0. Back to Home
+Enter choice: 
+------------------------------------------------------------
+ LIBRARY SEARCH
+------------------------------------------------------------
+Enter title to search (press Enter for C++ Basics): Search title: C++ Basics
+
+Book ID: B001
+Title: C++ Basics
+Author: Deitel
+Year: 2020
+ISBN: 978-0000000001
+Genre: Programming
+Copies: 3
+
+------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Load catalog from file
+2. Show catalog
+3. Search by title
+4. Issue item B001 to 25-CS-067
+5. Return item B001 with overdue fine
+6. Show issued records
+7. Save catalog to file
+0. Back to Home
+Enter choice: 
+------------------------------------------------------------
+ ISSUE ITEM DEMO
+------------------------------------------------------------
+Book issued successfully.
+Issued to roll no 25-CS-067
+
+------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Load catalog from file
+2. Show catalog
+3. Search by title
+4. Issue item B001 to 25-CS-067
+5. Return item B001 with overdue fine
+6. Show issued records
+7. Save catalog to file
+0. Back to Home
+Enter choice: 
+--- Issued Item Records ---
+1. Roll No: 25-CS-067 | Item ID: B001 | Returned: No | Days Late: 0
+
+------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Load catalog from file
+2. Show catalog
+3. Search by title
+4. Issue item B001 to 25-CS-067
+5. Return item B001 with overdue fine
+6. Show issued records
+7. Save catalog to file
+0. Back to Home
+Enter choice: 
+------------------------------------------------------------
+ RETURN ITEM DEMO
+------------------------------------------------------------
+Book copy returned to library.
+Fine Error: Library item is overdue. Fine is Rs. 20.000000
+
+------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Load catalog from file
+2. Show catalog
+3. Search by title
+4. Issue item B001 to 25-CS-067
+5. Return item B001 with overdue fine
+6. Show issued records
+7. Save catalog to file
+0. Back to Home
+Enter choice: 
+--- Issued Item Records ---
+1. Roll No: 25-CS-067 | Item ID: B001 | Returned: Yes | Days Late: 9
+
+------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Load catalog from file
+2. Show catalog
+3. Search by title
+4. Issue item B001 to 25-CS-067
+5. Return item B001 with overdue fine
+6. Show issued records
+7. Save catalog to file
+0. Back to Home
+Enter choice: Catalog saved to data/library_catalog_saved.txt
+
+------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Load catalog from file
+2. Show catalog
+3. Search by title
+4. Issue item B001 to 25-CS-067
+5. Return item B001 with overdue fine
+6. Show issued records
+7. Save catalog to file
+0. Back to Home
+Enter choice: Returning to Home...
+
+------------------------------------------------------------
+ SMART CAMPUS MANAGEMENT SYSTEM
+------------------------------------------------------------
+Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
+Course: CS-104L Object-Oriented Programming
+------------------------------------------------------------
+1. Person Module
+2. Course and Enrollment Module
+3. Library Module
+4. Fee and Finance Module
+5. Hostel Module
+6. Reports Module
+0. Exit
+Enter choice: 
+------------------------------------------------------------
+ PROGRAM CLOSED
+------------------------------------------------------------
