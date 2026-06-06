@@ -1,0 +1,34 @@
+Create docs/class_diagram.png using draw.io or another UML tool.
+You can also paste the Mermaid code from docs/class_diagram.mmd into a Mermaid editor and export it as PNG.
+
+Minimum classes to draw:
+- Person
+- Student
+- GradStudent
+- Faculty
+- Staff
+- Course
+- Enrollment
+- LibraryItem
+- Book
+- Journal
+- Library
+- FeeRecord
+- Invoice
+- Accommodation
+- Reportable
+- Room
+- HostelBlock
+- HostelManager
+
+Relationships:
+- Student inherits from Person.
+- GradStudent inherits from Student.
+- Faculty inherits from Person.
+- Staff inherits from Person.
+- Course has Faculty* instructor.
+- Enrollment has Student* and Course*.
+- Library has LibraryItem* array.
+- Book and Journal inherit from LibraryItem.
+- HostelManager has HostelBlock object.
+- HostelManager inherits from Accommodation and Reportable.
