@@ -23,6 +23,7 @@
 #include "library/Library.h"
 #include "finance/FeeRecord.h"
 #include "finance/Invoice.h"
+#include "finance/FinanceManager.h"
 #include "hostel/HostelManager.h"
 #include "utils/Exceptions.h"
 #include "utils/Reports.h"
@@ -923,96 +924,253 @@ void libraryMenu(Library& library, PersonManager& personManager) {
     } while (choice != 0);
 }
 
-void showFeeRecordDemo(Student& s1) {
-    printTitle("FEE RECORD DEMO");
+int showFinanceStudents(PersonManager& personManager) {
+    Student* students[MAX_PEOPLE];
+    int totalStudents = personManager.getStudents(students, MAX_PEOPLE);
 
-    FeeRecord fee(&s1, 65000, 20000, 500);
-    fee.displayFeeRecord();
+    cout << "Saved Students:" << endl;
+    if (totalStudents == 0) {
+        cout << "No saved students." << endl;
+    }
 
-    fee -= 25000;
-    cout << "\nAfter payment of 25000:" << endl;
-    fee.displayFeeRecord();
-    fee.displayPayments();
+    for (int i = 0; i < totalStudents; i++) {
+        cout << i + 1 << ". " << students[i]->getRollNo()
+             << " | " << students[i]->getName() << endl;
+    }
+
+    return totalStudents;
 }
 
-void showFeeCopyDemo(Student& s1) {
-    printTitle("FEE COPY CONSTRUCTOR AND ASSIGNMENT DEMO");
+string moneyLine(string label, double amount) {
+    stringstream ss;
+    ss << label << ": Rs. " << amount;
+    return ss.str();
+}
 
-    FeeRecord fee(&s1, 65000, 20000, 500);
-    fee -= 25000;
-    fee -= 10000;
+void showAllFeeRecordsPage(FinanceManager& financeManager) {
+    printTitle("SAVED FEE RECORDS");
+    financeManager.showAllRecords();
+}
+
+void addFeeRecordPage(FinanceManager& financeManager, PersonManager& personManager) {
+    printTitle("ADD FEE RECORD");
+
+    if (showFinanceStudents(personManager) == 0) {
+        cout << "Add at least 1 student in Person Module first." << endl;
+        return;
+    }
+
+    Utils::printSmallLine();
+    string rollNo = readText("Student Roll No: ");
+    double semesterFee = readDouble("Semester Fee: ", 65000);
+    double hostelFee = readDouble("Hostel Fee: ", 0);
+    double libraryFine = readDouble("Library Fine: ", 0);
+
+    Student* student = dynamic_cast<Student*>(personManager.findByID(rollNo));
+    if (student == NULL) {
+        cout << "Student not found." << endl;
+        return;
+    }
+
+    if (semesterFee < 0) {
+        semesterFee = 0;
+    }
+
+    if (hostelFee < 0) {
+        hostelFee = 0;
+    }
+
+    if (libraryFine < 0) {
+        libraryFine = 0;
+    }
+
+    if (financeManager.addRecord(student, semesterFee, hostelFee, libraryFine)) {
+        cout << "Fee record added. Use option 9 to save records." << endl;
+    }
+}
+
+void searchFeeRecordPage(FinanceManager& financeManager) {
+    printTitle("SEARCH FEE RECORD");
+
+    string rollNo = readText("Student Roll No: ");
+    FeeRecord* record = financeManager.findRecordByRollNo(rollNo);
+
+    if (record == NULL) {
+        cout << "Fee record not found." << endl;
+        return;
+    }
+
+    record->displayFeeRecord();
+}
+
+void recordPaymentPage(FinanceManager& financeManager) {
+    printTitle("RECORD PAYMENT USING -=");
+
+    string rollNo = readText("Student Roll No: ");
+    double amount = readDouble("Payment Amount: ", 0);
+
+    if (financeManager.recordPayment(rollNo, amount)) {
+        cout << "Payment recorded. Use option 9 to save records." << endl;
+        FeeRecord* record = financeManager.findRecordByRollNo(rollNo);
+        if (record != NULL) {
+            record->displayFeeRecord();
+        }
+    }
+}
+
+void addLibraryFinePage(FinanceManager& financeManager) {
+    printTitle("ADD LIBRARY FINE");
+
+    string rollNo = readText("Student Roll No: ");
+    double amount = readDouble("Fine Amount: ", 0);
+
+    if (financeManager.addFine(rollNo, amount)) {
+        cout << "Fine added. Use option 9 to save records." << endl;
+        FeeRecord* record = financeManager.findRecordByRollNo(rollNo);
+        if (record != NULL) {
+            record->displayFeeRecord();
+        }
+    }
+}
+
+void showPaymentHistoryPage(FinanceManager& financeManager) {
+    printTitle("PAYMENT HISTORY");
+
+    string rollNo = readText("Student Roll No: ");
+    FeeRecord* record = financeManager.findRecordByRollNo(rollNo);
+
+    if (record == NULL) {
+        cout << "Fee record not found." << endl;
+        return;
+    }
+
+    record->displayPayments();
+}
+
+void generateInvoicePage(FinanceManager& financeManager) {
+    printTitle("GENERATE INVOICE");
+
+    string rollNo = readText("Student Roll No: ");
+    FeeRecord* record = financeManager.findRecordByRollNo(rollNo);
+
+    if (record == NULL) {
+        cout << "Fee record not found." << endl;
+        return;
+    }
+
+    cout << "Invoice counter before: " << Invoice::getInvoiceCounter() << endl;
+
+    string invoiceItems[5];
+    invoiceItems[0] = moneyLine("Semester Fee", record->getSemesterFee());
+    invoiceItems[1] = moneyLine("Hostel Fee", record->getHostelFee());
+    invoiceItems[2] = moneyLine("Library Fine", record->getLibraryFine());
+    invoiceItems[3] = moneyLine("Total Paid", record->getTotalPaid());
+    invoiceItems[4] = moneyLine("Balance Due", record->getBalance());
+
+    Invoice invoice(Utils::getTodayDate(), invoiceItems, 5, record->getBalance());
+    cout << invoice;
+
+    Invoice copiedInvoice = invoice;
+    cout << "\nCopied invoice:" << endl;
+    cout << copiedInvoice;
+
+    Invoice assignedInvoice;
+    assignedInvoice = invoice;
+    cout << "\nAssigned invoice:" << endl;
+    cout << assignedInvoice;
+
+    cout << "\nInvoice counter after: " << Invoice::getInvoiceCounter() << endl;
+}
+
+void showFeeCopyPage(FinanceManager& financeManager) {
+    printTitle("FEE COPY CONSTRUCTOR AND ASSIGNMENT");
+
+    string rollNo = readText("Student Roll No: ");
+    FeeRecord* record = financeManager.findRecordByRollNo(rollNo);
+
+    if (record == NULL) {
+        cout << "Fee record not found." << endl;
+        return;
+    }
 
     cout << "\nOriginal fee record:" << endl;
-    fee.displayFeeRecord();
-    fee.displayPayments();
+    record->displayFeeRecord();
+    record->displayPayments();
 
-    FeeRecord copiedFee(fee);
+    FeeRecord copiedFee(*record);
     cout << "\nCopied fee record:" << endl;
     copiedFee.displayFeeRecord();
     copiedFee.displayPayments();
 
     FeeRecord assignedFee;
-    assignedFee = fee;
+    assignedFee = *record;
     cout << "\nAssigned fee record:" << endl;
     assignedFee.displayFeeRecord();
     assignedFee.displayPayments();
 }
 
-void showInvoiceDemo(Student& s1) {
-    printTitle("INVOICE DEMO");
+void saveFinanceRecordsPage(FinanceManager& financeManager) {
+    printTitle("SAVE FINANCE RECORDS");
 
-    cout << "Invoice counter before creating invoices: "
-         << Invoice::getInvoiceCounter() << endl;
-
-    FeeRecord fee(&s1, 65000, 20000, 500);
-    fee -= 25000;
-
-    string invoiceItems[3] = {"Semester Fee", "Hostel Fee", "Library Fine"};
-    Invoice inv(Utils::getTodayDate(), invoiceItems, 3, fee.getBalance());
-    cout << "\nOriginal invoice:" << endl;
-    cout << inv;
-
-    Invoice copiedInvoice = inv;
-    cout << "\nCopied invoice using copy constructor:" << endl;
-    cout << copiedInvoice;
-
-    Invoice assignedInvoice;
-    assignedInvoice = inv;
-    cout << "\nAssigned invoice using copy assignment:" << endl;
-    cout << assignedInvoice;
-
-    cout << "\nInvoice counter after creating invoices: "
-         << Invoice::getInvoiceCounter() << endl;
+    financeManager.saveToFile();
+    cout << "Records saved to data/fee_records.txt" << endl;
 }
 
-void financeMenu(PersonManager& personManager) {
-    Student* s1 = personManager.getFirstStudent();
+void reloadFinanceRecordsPage(FinanceManager& financeManager, PersonManager& personManager) {
+    printTitle("RELOAD FINANCE RECORDS");
 
-    if (s1 == NULL) {
-        printTitle("FEE AND FINANCE MODULE");
-        cout << "Add at least 1 student in Person Module first." << endl;
-        pauseScreen();
-        return;
-    }
+    financeManager.loadFromFile(personManager);
+    cout << "Records reloaded from data/fee_records.txt" << endl;
+    cout << "Total records: " << financeManager.getRecordCount() << endl;
+}
 
+void financeMenu(FinanceManager& financeManager, PersonManager& personManager) {
     int choice;
 
     do {
         showPageTitle("FEE AND FINANCE MODULE");
-        cout << "1. Show fee record and payment" << endl;
-        cout << "2. Show fee copy constructor and assignment" << endl;
-        cout << "3. Show invoice, copies, and static counter" << endl;
+        cout << "1. Show all fee records" << endl;
+        cout << "2. Add fee record" << endl;
+        cout << "3. Search fee record by roll no" << endl;
+        cout << "4. Record payment using -=" << endl;
+        cout << "5. Add library fine" << endl;
+        cout << "6. Show payment history" << endl;
+        cout << "7. Generate invoice" << endl;
+        cout << "8. Show FeeRecord copy constructor/assignment" << endl;
+        cout << "9. Save finance records" << endl;
+        cout << "10. Reload finance records" << endl;
         printBackOption();
         choice = readChoice();
 
         if (choice == 1) {
-            showFeeRecordDemo(*s1);
+            showAllFeeRecordsPage(financeManager);
             pauseScreen();
         } else if (choice == 2) {
-            showFeeCopyDemo(*s1);
+            addFeeRecordPage(financeManager, personManager);
             pauseScreen();
         } else if (choice == 3) {
-            showInvoiceDemo(*s1);
+            searchFeeRecordPage(financeManager);
+            pauseScreen();
+        } else if (choice == 4) {
+            recordPaymentPage(financeManager);
+            pauseScreen();
+        } else if (choice == 5) {
+            addLibraryFinePage(financeManager);
+            pauseScreen();
+        } else if (choice == 6) {
+            showPaymentHistoryPage(financeManager);
+            pauseScreen();
+        } else if (choice == 7) {
+            generateInvoicePage(financeManager);
+            pauseScreen();
+        } else if (choice == 8) {
+            showFeeCopyPage(financeManager);
+            pauseScreen();
+        } else if (choice == 9) {
+            saveFinanceRecordsPage(financeManager);
+            pauseScreen();
+        } else if (choice == 10) {
+            reloadFinanceRecordsPage(financeManager, personManager);
             pauseScreen();
         } else if (choice != 0) {
             printTitle("WRONG CHOICE");
@@ -1171,6 +1329,8 @@ int main() {
     personManager.loadFromFile();
     CourseManager courseManager("data/courses.txt", "data/enrollments.txt");
     courseManager.loadAll(personManager);
+    FinanceManager financeManager("data/fee_records.txt");
+    financeManager.loadFromFile(personManager);
     Library library;
     int choice;
 
@@ -1181,12 +1341,13 @@ int main() {
         if (choice == 1) {
             personMenu(personManager);
             courseManager.loadAll(personManager);
+            financeManager.loadFromFile(personManager);
         } else if (choice == 2) {
             courseMenu(courseManager, personManager);
         } else if (choice == 3) {
             libraryMenu(library, personManager);
         } else if (choice == 4) {
-            financeMenu(personManager);
+            financeMenu(financeManager, personManager);
         } else if (choice == 5) {
             hostelMenu(personManager);
         } else if (choice == 6) {
