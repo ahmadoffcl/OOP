@@ -14,29 +14,17 @@ Course: CS-104L Object-Oriented Programming
 Enter choice: ------------------------------------------------------------
  LIBRARY MODULE
 ------------------------------------------------------------
-1. Load catalog from file
-2. Show catalog
-3. Search by title
-4. Issue item B001 to 25-CS-067
-5. Return item B001 with overdue fine
-6. Show issued records
-7. Save catalog to file
-0. Back to Home
-Enter choice: ------------------------------------------------------------
- LOAD LIBRARY CATALOG
-------------------------------------------------------------
-Catalog loaded. Total items: 2
-
-Press Enter to continue...------------------------------------------------------------
- LIBRARY MODULE
-------------------------------------------------------------
-1. Load catalog from file
-2. Show catalog
-3. Search by title
-4. Issue item B001 to 25-CS-067
-5. Return item B001 with overdue fine
-6. Show issued records
-7. Save catalog to file
+1. Show catalog
+2. Add Book
+3. Add Journal
+4. Search by title
+5. Search by item ID
+6. Issue item
+7. Return item
+8. Show issued records
+9. Delete item by ID
+10. Save library records
+11. Reload library records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
  LIBRARY CATALOG
@@ -63,18 +51,123 @@ Issue: 1
 Press Enter to continue...------------------------------------------------------------
  LIBRARY MODULE
 ------------------------------------------------------------
-1. Load catalog from file
-2. Show catalog
-3. Search by title
-4. Issue item B001 to 25-CS-067
-5. Return item B001 with overdue fine
-6. Show issued records
-7. Save catalog to file
+1. Show catalog
+2. Add Book
+3. Add Journal
+4. Search by title
+5. Search by item ID
+6. Issue item
+7. Return item
+8. Show issued records
+9. Delete item by ID
+10. Save library records
+11. Reload library records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
- LIBRARY SEARCH
+ ADD BOOK
 ------------------------------------------------------------
-Enter title to search (press Enter for C++ Basics): Search title: C++ Basics
+Item ID: Title: Author: Publication Year: ISBN: Genre: Copies Available: Book added. Use option 10 to save records.
+
+Press Enter to continue...------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Show catalog
+2. Add Book
+3. Add Journal
+4. Search by title
+5. Search by item ID
+6. Issue item
+7. Return item
+8. Show issued records
+9. Delete item by ID
+10. Save library records
+11. Reload library records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ ADD JOURNAL
+------------------------------------------------------------
+Item ID: Title: Author: Publication Year: ISSN: Volume: Issue Number: Journal added. Use option 10 to save records.
+
+Press Enter to continue...------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Show catalog
+2. Add Book
+3. Add Journal
+4. Search by title
+5. Search by item ID
+6. Issue item
+7. Return item
+8. Show issued records
+9. Delete item by ID
+10. Save library records
+11. Reload library records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ SEARCH LIBRARY BY TITLE
+------------------------------------------------------------
+Title:
+Book ID: B900
+Title: Algorithms
+Author: Sedgewick
+Year: 2021
+ISBN: 978-TEST
+Genre: Programming
+Copies: 2
+
+Press Enter to continue...------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Show catalog
+2. Add Book
+3. Add Journal
+4. Search by title
+5. Search by item ID
+6. Issue item
+7. Return item
+8. Show issued records
+9. Delete item by ID
+10. Save library records
+11. Reload library records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ SEARCH LIBRARY BY ID
+------------------------------------------------------------
+Item ID:
+Journal ID: J900
+Title: AI Review
+Author: HITEC CS
+Year: 2026
+ISSN: ISSN-900
+Volume: 2
+Issue: 1
+
+Press Enter to continue...------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Show catalog
+2. Add Book
+3. Add Journal
+4. Search by title
+5. Search by item ID
+6. Issue item
+7. Return item
+8. Show issued records
+9. Delete item by ID
+10. Save library records
+11. Reload library records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ ISSUE LIBRARY ITEM
+------------------------------------------------------------
+Saved Students:
+1. 25-CS-067 | Ahmad Ali
+2. 25-CS-057 | Umer Altaf
+3. 25-CS-252 | Muhammed Ahmad
+4. 24 | Ahmed Ali
+------------------------------
+
+--- Library Catalog ---
 
 Book ID: B001
 Title: C++ Basics
@@ -84,102 +177,343 @@ ISBN: 978-0000000001
 Genre: Programming
 Copies: 3
 
-Press Enter to continue...------------------------------------------------------------
- LIBRARY MODULE
-------------------------------------------------------------
-1. Load catalog from file
-2. Show catalog
-3. Search by title
-4. Issue item B001 to 25-CS-067
-5. Return item B001 with overdue fine
-6. Show issued records
-7. Save catalog to file
-0. Back to Home
-Enter choice: ------------------------------------------------------------
- ISSUE ITEM DEMO
-------------------------------------------------------------
-Book issued successfully.
+Journal ID: J001
+Title: OOP Lab Journal
+Author: HITEC CS
+Year: 2025
+ISSN: ISSN-1111
+Volume: 1
+Issue: 1
+
+Book ID: B900
+Title: Algorithms
+Author: Sedgewick
+Year: 2021
+ISBN: 978-TEST
+Genre: Programming
+Copies: 2
+
+Journal ID: J900
+Title: AI Review
+Author: HITEC CS
+Year: 2026
+ISSN: ISSN-900
+Volume: 2
+Issue: 1
+------------------------------
+Student Roll No: Item ID: Book issued successfully.
 Issued to roll no 25-CS-067
+Use option 10 to save records.
 
 Press Enter to continue...------------------------------------------------------------
  LIBRARY MODULE
 ------------------------------------------------------------
-1. Load catalog from file
-2. Show catalog
-3. Search by title
-4. Issue item B001 to 25-CS-067
-5. Return item B001 with overdue fine
-6. Show issued records
-7. Save catalog to file
+1. Show catalog
+2. Add Book
+3. Add Journal
+4. Search by title
+5. Search by item ID
+6. Issue item
+7. Return item
+8. Show issued records
+9. Delete item by ID
+10. Save library records
+11. Reload library records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ ISSUE LIBRARY ITEM
+------------------------------------------------------------
+Saved Students:
+1. 25-CS-067 | Ahmad Ali
+2. 25-CS-057 | Umer Altaf
+3. 25-CS-252 | Muhammed Ahmad
+4. 24 | Ahmed Ali
+------------------------------
+
+--- Library Catalog ---
+
+Book ID: B001
+Title: C++ Basics
+Author: Deitel
+Year: 2020
+ISBN: 978-0000000001
+Genre: Programming
+Copies: 3
+
+Journal ID: J001
+Title: OOP Lab Journal
+Author: HITEC CS
+Year: 2025
+ISSN: ISSN-1111
+Volume: 1
+Issue: 1
+
+Book ID: B900
+Title: Algorithms
+Author: Sedgewick
+Year: 2021
+ISBN: 978-TEST
+Genre: Programming
+Copies: 1
+
+Journal ID: J900
+Title: AI Review
+Author: HITEC CS
+Year: 2026
+ISSN: ISSN-900
+Volume: 2
+Issue: 1
+------------------------------
+Student Roll No: Item ID: This item is already issued to roll no 25-CS-067.
+
+Press Enter to continue...------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Show catalog
+2. Add Book
+3. Add Journal
+4. Search by title
+5. Search by item ID
+6. Issue item
+7. Return item
+8. Show issued records
+9. Delete item by ID
+10. Save library records
+11. Reload library records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
  ISSUED RECORDS
 ------------------------------------------------------------
 
 --- Issued Item Records ---
-1. Roll No: 25-CS-067 | Item ID: B001 | Returned: No | Days Late: 0
+1. Roll No: 25-CS-057 | Item ID: J001 | Returned: Yes | Days Late: 0
+2. Roll No: 25-CS-067 | Item ID: B900 | Returned: No | Days Late: 0
 
 Press Enter to continue...------------------------------------------------------------
  LIBRARY MODULE
 ------------------------------------------------------------
-1. Load catalog from file
-2. Show catalog
-3. Search by title
-4. Issue item B001 to 25-CS-067
-5. Return item B001 with overdue fine
-6. Show issued records
-7. Save catalog to file
+1. Show catalog
+2. Add Book
+3. Add Journal
+4. Search by title
+5. Search by item ID
+6. Issue item
+7. Return item
+8. Show issued records
+9. Delete item by ID
+10. Save library records
+11. Reload library records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
- RETURN ITEM DEMO
+ RETURN LIBRARY ITEM
 ------------------------------------------------------------
-Book copy returned to library.
+Saved Students:
+1. 25-CS-067 | Ahmad Ali
+2. 25-CS-057 | Umer Altaf
+3. 25-CS-252 | Muhammed Ahmad
+4. 24 | Ahmed Ali
+------------------------------
+
+--- Issued Item Records ---
+1. Roll No: 25-CS-057 | Item ID: J001 | Returned: Yes | Days Late: 0
+2. Roll No: 25-CS-067 | Item ID: B900 | Returned: No | Days Late: 0
+------------------------------
+Student Roll No: Item ID: Days Late: Book copy returned to library.
+Item returned on time.
+Use option 10 to save records.
+
+Press Enter to continue...------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Show catalog
+2. Add Book
+3. Add Journal
+4. Search by title
+5. Search by item ID
+6. Issue item
+7. Return item
+8. Show issued records
+9. Delete item by ID
+10. Save library records
+11. Reload library records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ ISSUE LIBRARY ITEM
+------------------------------------------------------------
+Saved Students:
+1. 25-CS-067 | Ahmad Ali
+2. 25-CS-057 | Umer Altaf
+3. 25-CS-252 | Muhammed Ahmad
+4. 24 | Ahmed Ali
+------------------------------
+
+--- Library Catalog ---
+
+Book ID: B001
+Title: C++ Basics
+Author: Deitel
+Year: 2020
+ISBN: 978-0000000001
+Genre: Programming
+Copies: 3
+
+Journal ID: J001
+Title: OOP Lab Journal
+Author: HITEC CS
+Year: 2025
+ISSN: ISSN-1111
+Volume: 1
+Issue: 1
+
+Book ID: B900
+Title: Algorithms
+Author: Sedgewick
+Year: 2021
+ISBN: 978-TEST
+Genre: Programming
+Copies: 2
+
+Journal ID: J900
+Title: AI Review
+Author: HITEC CS
+Year: 2026
+ISSN: ISSN-900
+Volume: 2
+Issue: 1
+------------------------------
+Student Roll No: Item ID: Book issued successfully.
+Issued to roll no 25-CS-067
+Use option 10 to save records.
+
+Press Enter to continue...------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Show catalog
+2. Add Book
+3. Add Journal
+4. Search by title
+5. Search by item ID
+6. Issue item
+7. Return item
+8. Show issued records
+9. Delete item by ID
+10. Save library records
+11. Reload library records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ RETURN LIBRARY ITEM
+------------------------------------------------------------
+Saved Students:
+1. 25-CS-067 | Ahmad Ali
+2. 25-CS-057 | Umer Altaf
+3. 25-CS-252 | Muhammed Ahmad
+4. 24 | Ahmed Ali
+------------------------------
+
+--- Issued Item Records ---
+1. Roll No: 25-CS-057 | Item ID: J001 | Returned: Yes | Days Late: 0
+2. Roll No: 25-CS-067 | Item ID: B900 | Returned: Yes | Days Late: 3
+3. Roll No: 25-CS-067 | Item ID: B900 | Returned: No | Days Late: 0
+------------------------------
+Student Roll No: Item ID: Days Late: Book copy returned to library.
 Fine Error: Library item is overdue. Fine is Rs. 20.000000
+Use option 10 to save records.
 
 Press Enter to continue...------------------------------------------------------------
  LIBRARY MODULE
 ------------------------------------------------------------
-1. Load catalog from file
-2. Show catalog
-3. Search by title
-4. Issue item B001 to 25-CS-067
-5. Return item B001 with overdue fine
-6. Show issued records
-7. Save catalog to file
+1. Show catalog
+2. Add Book
+3. Add Journal
+4. Search by title
+5. Search by item ID
+6. Issue item
+7. Return item
+8. Show issued records
+9. Delete item by ID
+10. Save library records
+11. Reload library records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
- ISSUED RECORDS
+ DELETE LIBRARY ITEM
 ------------------------------------------------------------
-
---- Issued Item Records ---
-1. Roll No: 25-CS-067 | Item ID: B001 | Returned: Yes | Days Late: 9
+Item ID: Item deleted. Use option 10 to save records.
 
 Press Enter to continue...------------------------------------------------------------
  LIBRARY MODULE
 ------------------------------------------------------------
-1. Load catalog from file
-2. Show catalog
-3. Search by title
-4. Issue item B001 to 25-CS-067
-5. Return item B001 with overdue fine
-6. Show issued records
-7. Save catalog to file
+1. Show catalog
+2. Add Book
+3. Add Journal
+4. Search by title
+5. Search by item ID
+6. Issue item
+7. Return item
+8. Show issued records
+9. Delete item by ID
+10. Save library records
+11. Reload library records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
- SAVE LIBRARY CATALOG
+ SAVE LIBRARY RECORDS
 ------------------------------------------------------------
-Catalog saved to data/library_catalog_saved.txt
+Records saved to data/library_catalog.txt and data/library_issued.txt
 
 Press Enter to continue...------------------------------------------------------------
  LIBRARY MODULE
 ------------------------------------------------------------
-1. Load catalog from file
-2. Show catalog
-3. Search by title
-4. Issue item B001 to 25-CS-067
-5. Return item B001 with overdue fine
-6. Show issued records
-7. Save catalog to file
+1. Show catalog
+2. Add Book
+3. Add Journal
+4. Search by title
+5. Search by item ID
+6. Issue item
+7. Return item
+8. Show issued records
+9. Delete item by ID
+10. Save library records
+11. Reload library records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ RELOAD LIBRARY RECORDS
+------------------------------------------------------------
+Catalog items: 3
+Issued records: 3
+
+Press Enter to continue...------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Show catalog
+2. Add Book
+3. Add Journal
+4. Search by title
+5. Search by item ID
+6. Issue item
+7. Return item
+8. Show issued records
+9. Delete item by ID
+10. Save library records
+11. Reload library records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ SEARCH LIBRARY BY ID
+------------------------------------------------------------
+Item ID: Item not found.
+
+Press Enter to continue...------------------------------------------------------------
+ LIBRARY MODULE
+------------------------------------------------------------
+1. Show catalog
+2. Add Book
+3. Add Journal
+4. Search by title
+5. Search by item ID
+6. Issue item
+7. Return item
+8. Show issued records
+9. Delete item by ID
+10. Save library records
+11. Reload library records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
  SMART CAMPUS MANAGEMENT SYSTEM
