@@ -34,3 +34,7 @@ void GradStudent::displayInfo() const {
     Student::displayInfo();
     cout << "Thesis: " << thesisTitle << endl;
 }
+
+string GradStudent::getPersonType() const {
+    return "GradStudent";
+}

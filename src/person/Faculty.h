@@ -40,6 +40,8 @@ public:
 
     void assignCourse(string courseCode);
     void displayInfo() const;
+    string getPersonType() const;
+    string getUniqueID() const;
 };
 
 #endif

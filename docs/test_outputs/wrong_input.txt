@@ -1,5 +1,4 @@
-﻿
-------------------------------------------------------------
+﻿------------------------------------------------------------
  SMART CAMPUS MANAGEMENT SYSTEM
 ------------------------------------------------------------
 Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
@@ -12,9 +11,12 @@ Course: CS-104L Object-Oriented Programming
 5. Hostel Module
 6. Reports Module
 0. Exit
-Enter choice: Wrong choice. Try again.
+Enter choice: ------------------------------------------------------------
+ WRONG CHOICE
+------------------------------------------------------------
+Wrong choice. Try again.
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  SMART CAMPUS MANAGEMENT SYSTEM
 ------------------------------------------------------------
 Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
@@ -27,7 +29,6 @@ Course: CS-104L Object-Oriented Programming
 5. Hostel Module
 6. Reports Module
 0. Exit
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  PROGRAM CLOSED
 ------------------------------------------------------------

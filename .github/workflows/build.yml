@@ -13,7 +13,7 @@ jobs:
         run: g++ -std=c++17 -Wall -Wextra src/main.cpp src/person/*.cpp src/course/*.cpp src/library/*.cpp src/finance/*.cpp src/hostel/*.cpp src/utils/*.cpp -o scms
       - name: Smoke test all menus
         run: |
-          printf '1\n1\n2\n0\n2\n1\n2\n3\n4\n5\n0\n3\n1\n2\n3\nC++ Basics\n4\n6\n5\n6\n7\n0\n4\n1\n2\n3\n0\n5\n1\n2\n3\n4\n5\n6\n4\n0\n6\n1\n2\n25-CS-067\n3\n4\n5\n0\nabc\n0\n' | ./scms
+          printf '1\n1\n\n2\n\n0\n2\n1\n\n2\n\n3\n\n4\n\n5\n\n0\n3\n1\n\n2\n\n3\nC++ Basics\n\n4\n\n6\n\n5\n\n6\n\n7\n\n0\n4\n1\n\n2\n\n3\n\n0\n5\n1\n\n2\n\n3\n\n4\n\n5\n\n6\n\n4\n\n0\n6\n1\n\n2\n25-CS-067\n\n3\n\n4\n\n5\n\n0\nabc\n\n0\n' | ./scms
       - name: Check generated reports
         run: |
           test -f data/campus_report.txt

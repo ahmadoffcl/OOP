@@ -13,14 +13,14 @@ This file maps the assignment checklist to files in this project. Read the code 
 | 7 | Multiple inheritance | `HostelManager : Accommodation, Reportable` |
 | 8 | Virtual inheritance | `Accommodation` and `Reportable` virtually inherit `CampusService` |
 | 9 | Abstract classes | `Person`, `LibraryItem`, `Accommodation`, `Reportable` |
-| 10 | Runtime polymorphism | `Person* people[]` calls different `displayInfo()` methods |
+| 10 | Runtime polymorphism | `PersonManager` stores `Person*` records and calls different `displayInfo()` methods |
 | 11 | Operator overloading | `Course ==`, `Course <<`, `Course +`, `FeeRecord -=` |
 | 12 | Friend functions | `operator<<` for `Course` and `Invoice` |
 | 13 | Static members | `Invoice::invoiceCounter` |
 | 14 | Copy constructor | `Person`, `Course`, `FeeRecord`, `Invoice` |
 | 15 | Copy assignment | `FeeRecord::operator=`, `Invoice::operator=` |
 | 16 | Search functions | `Library::searchByTitle()` and `Library::searchByID()` |
-| 17 | Array-based collections | Library item array, room array, course enrolled student array, course waiting list array |
+| 17 | Array-based collections | Person array, library item array, room array, course enrolled student array, course waiting list array |
 | 18 | Arrays of objects | `Room rooms[MAX_BLOCK_ROOMS]` in `HostelBlock` |
 | 19 | Exception handling | `try/catch` in `main.cpp`, custom exceptions in `Exceptions.h` |
 | 20 | File I/O | `Library::saveCatalog()`, `Library::loadCatalog()`, report file output |

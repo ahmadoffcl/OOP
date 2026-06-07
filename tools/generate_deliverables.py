@@ -99,6 +99,8 @@ def render_console_image(input_path, output_path, title, max_lines=42):
 def make_output_screenshots():
     screenshot_jobs = [
         ("module1_person.txt", "Module 1 - Person Hierarchy", "module1_person.png"),
+        ("module1_crud_test.txt", "Module 1 - Person CRUD", "module1_crud_test.png"),
+        ("module1_add_course_test.txt", "Module 1 - Add Course to Student", "module1_add_course_test.png"),
         ("module2_course.txt", "Module 2 - Course and Enrollment", "module2_course.png"),
         ("module3_library.txt", "Module 3 - Library System", "module3_library.png"),
         ("module4_finance.txt", "Module 4 - Fee and Finance", "module4_finance.png"),
@@ -130,6 +132,7 @@ def make_class_diagram():
         "GradStudent": ((80, 680, 420, 820), ["- thesisTitle", "+ displayInfo()"]),
         "Faculty": ((500, 390, 840, 570), ["- employeeID", "- department", "- designation", "- assignedCourses[]", "+ displayInfo()"]),
         "Staff": ((500, 650, 840, 810), ["- staffID", "- role", "- salary", "+ displayInfo()"]),
+        "PersonManager": ((1420, 390, 1740, 650), ["- Person* people[]", "- personCount", "- fileName", "+ add/delete person", "+ save/load records", "+ getStudents()"]),
         "Course": ((980, 150, 1360, 385), ["- courseCode", "- courseName", "- Faculty* instructor", "- Student* enrolled[]", "- Student* waiting[]", "+ enrollStudent()", "+ display roster", "+ operator overloads"]),
         "Enrollment": ((1420, 150, 1740, 310), ["- Student* student", "- Course* course", "- date, grade"]),
         "LibraryItem": ((80, 950, 440, 1155), ["# itemID, title", "# author, year", "+ checkout()", "+ checkin()", "+ displayItem()"]),
@@ -162,6 +165,7 @@ def make_class_diagram():
     draw_arrow(draw, (700, 1810), (300, 1700))
     draw_arrow(draw, (1510, 1740), (440, 1885))
     draw_arrow(draw, (1510, 1740), (880, 1885))
+    draw_arrow(draw, (1420, 500), (420, 230))
     draw_arrow(draw, (1360, 250), (1420, 230))
     draw_arrow(draw, (980, 250), (840, 470))
     draw_arrow(draw, (1180, 360), (410, 450))
@@ -273,6 +277,7 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
     add_section(pdf, "System Modules")
     add_bullets(pdf, [
         "Person module: Person, Student, GradStudent, Faculty, and Staff classes.",
+        "PersonManager: saved person records with add, view, delete, save, and reload options.",
         "Course module: Course and Enrollment classes with capacity checking.",
         "Library module: Book and Journal catalog using file handling and arrays.",
         "Finance module: FeeRecord and Invoice classes with copy handling and static invoice counter.",
@@ -301,7 +306,7 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
         ("Multiple Inheritance", "HostelManager implements accommodation and report behavior.", "class HostelManager : public Accommodation, public Reportable"),
         ("Virtual Inheritance", "Accommodation and Reportable virtually inherit CampusService to avoid duplicate base parts.", "class Accommodation : virtual public CampusService"),
         ("Abstract Classes", "Person, LibraryItem, Accommodation, and Reportable cannot be directly instantiated.", "virtual void displayInfo() const = 0;"),
-        ("Runtime Polymorphism", "Base pointers call the correct derived displayInfo function.", "Person* people[] = { &student, &faculty, &staff };"),
+        ("Runtime Polymorphism", "Base pointers call the correct derived displayInfo function.", "Person* people[MAX_PEOPLE]; people[i]->displayInfo();"),
         ("Operator Overloading ==", "Course objects are compared by course code.", "bool Course::operator==(const Course& other) const"),
         ("Operator Overloading <<", "Course and Invoice can be printed using stream insertion.", "ostream& operator<<(ostream& out, const Course& course)"),
         ("Operator Overloading +", "Two course waiting lists are merged.", "Student** Course::operator+(Course& other)"),
@@ -310,7 +315,7 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
         ("Static Members", "Invoice has one shared invoiceCounter for all invoice objects.", "int Invoice::invoiceCounter = 0;"),
         ("Deep Copy", "FeeRecord and Invoice copy dynamic arrays instead of sharing them.", "payments = new double[paymentCount];"),
         ("Search Functions", "Library searches with a loop, and Reports uses std::find_if for roll number search.", "Student* Reports::findStudentByRollNo(Student* students[], int count, string rollNo)"),
-        ("Array-based Collections", "The project uses arrays for courses, library items, rooms, and students.", "LibraryItem* items[MAX_LIBRARY_ITEMS];"),
+        ("Array-based Collections", "The project uses arrays for people, courses, library items, rooms, and students.", "Person* people[MAX_PEOPLE];"),
         ("Arrays of Objects", "HostelBlock keeps Room objects in an array.", "Room rooms[MAX_BLOCK_ROOMS];"),
         ("Exception Handling", "Custom exceptions are thrown and caught for capacity and overdue cases.", "throw CapacityExceededException(\"Course is full\");"),
         ("File I/O", "Library data and campus reports are loaded/saved using fstream.", "ofstream file(fileName);"),
@@ -327,7 +332,7 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
     pdf.add_page()
     add_section(pdf, "Module Descriptions")
     add_bullets(pdf, [
-        "Module 1 - Person Hierarchy: Stores common personal information in Person and uses Student, GradStudent, Faculty, and Staff subclasses.",
+        "Module 1 - Person Hierarchy: Stores common personal information in Person and uses Student, GradStudent, Faculty, and Staff subclasses. PersonManager stores saved records, supports input, deletion, save, and reload.",
         "Module 2 - Course and Enrollment: Stores course data, enrolls students, blocks over-capacity enrollment, and demonstrates overloaded operators.",
         "Module 3 - Library System: Stores books and journals, searches the catalog, saves/loads text files, tracks issued items, and handles overdue fines.",
         "Module 4 - Fee and Finance: Stores fee balance, records payments with operator-=, deep-copies fee data, and generates invoices with a static counter.",
@@ -350,6 +355,9 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
     add_bullets(pdf, [
         "Build command .\\build.bat completed successfully.",
         "All six home menu modules were tested.",
+        "Screen-based navigation was tested with Enter pauses after action pages.",
+        "Module 1 CRUD was tested: add, display, save, reload, delete, save, and reload.",
+        "Module 1 add-course action was tested by adding CS-200 to 25-CS-067.",
         "Library demo loaded catalog data, issued B001, and showed overdue fine.",
         "Finance demo showed payment, copy constructor, copy assignment, invoice, and invoice copy.",
         "Hostel demo showed service name, allocation, duplicate check, summary, report, and vacate room.",

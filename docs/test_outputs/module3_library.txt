@@ -1,5 +1,4 @@
-﻿
-------------------------------------------------------------
+﻿------------------------------------------------------------
  SMART CAMPUS MANAGEMENT SYSTEM
 ------------------------------------------------------------
 Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
@@ -12,8 +11,7 @@ Course: CS-104L Object-Oriented Programming
 5. Hostel Module
 6. Reports Module
 0. Exit
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  LIBRARY MODULE
 ------------------------------------------------------------
 1. Load catalog from file
@@ -24,9 +22,12 @@ Enter choice:
 6. Show issued records
 7. Save catalog to file
 0. Back to Home
-Enter choice: Catalog loaded. Total items: 2
+Enter choice: ------------------------------------------------------------
+ LOAD LIBRARY CATALOG
+------------------------------------------------------------
+Catalog loaded. Total items: 2
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  LIBRARY MODULE
 ------------------------------------------------------------
 1. Load catalog from file
@@ -37,8 +38,7 @@ Enter choice: Catalog loaded. Total items: 2
 6. Show issued records
 7. Save catalog to file
 0. Back to Home
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  LIBRARY CATALOG
 ------------------------------------------------------------
 
@@ -60,7 +60,7 @@ ISSN: ISSN-1111
 Volume: 1
 Issue: 1
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  LIBRARY MODULE
 ------------------------------------------------------------
 1. Load catalog from file
@@ -71,8 +71,7 @@ Issue: 1
 6. Show issued records
 7. Save catalog to file
 0. Back to Home
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  LIBRARY SEARCH
 ------------------------------------------------------------
 Enter title to search (press Enter for C++ Basics): Search title: C++ Basics
@@ -85,7 +84,7 @@ ISBN: 978-0000000001
 Genre: Programming
 Copies: 3
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  LIBRARY MODULE
 ------------------------------------------------------------
 1. Load catalog from file
@@ -96,14 +95,13 @@ Copies: 3
 6. Show issued records
 7. Save catalog to file
 0. Back to Home
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  ISSUE ITEM DEMO
 ------------------------------------------------------------
 Book issued successfully.
 Issued to roll no 25-CS-067
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  LIBRARY MODULE
 ------------------------------------------------------------
 1. Load catalog from file
@@ -114,11 +112,14 @@ Issued to roll no 25-CS-067
 6. Show issued records
 7. Save catalog to file
 0. Back to Home
-Enter choice: 
+Enter choice: ------------------------------------------------------------
+ ISSUED RECORDS
+------------------------------------------------------------
+
 --- Issued Item Records ---
 1. Roll No: 25-CS-067 | Item ID: B001 | Returned: No | Days Late: 0
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  LIBRARY MODULE
 ------------------------------------------------------------
 1. Load catalog from file
@@ -129,14 +130,13 @@ Enter choice:
 6. Show issued records
 7. Save catalog to file
 0. Back to Home
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  RETURN ITEM DEMO
 ------------------------------------------------------------
 Book copy returned to library.
 Fine Error: Library item is overdue. Fine is Rs. 20.000000
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  LIBRARY MODULE
 ------------------------------------------------------------
 1. Load catalog from file
@@ -147,11 +147,14 @@ Fine Error: Library item is overdue. Fine is Rs. 20.000000
 6. Show issued records
 7. Save catalog to file
 0. Back to Home
-Enter choice: 
+Enter choice: ------------------------------------------------------------
+ ISSUED RECORDS
+------------------------------------------------------------
+
 --- Issued Item Records ---
 1. Roll No: 25-CS-067 | Item ID: B001 | Returned: Yes | Days Late: 9
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  LIBRARY MODULE
 ------------------------------------------------------------
 1. Load catalog from file
@@ -162,9 +165,12 @@ Enter choice:
 6. Show issued records
 7. Save catalog to file
 0. Back to Home
-Enter choice: Catalog saved to data/library_catalog_saved.txt
-
+Enter choice: ------------------------------------------------------------
+ SAVE LIBRARY CATALOG
 ------------------------------------------------------------
+Catalog saved to data/library_catalog_saved.txt
+
+Press Enter to continue...------------------------------------------------------------
  LIBRARY MODULE
 ------------------------------------------------------------
 1. Load catalog from file
@@ -175,9 +181,7 @@ Enter choice: Catalog saved to data/library_catalog_saved.txt
 6. Show issued records
 7. Save catalog to file
 0. Back to Home
-Enter choice: Returning to Home...
-
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  SMART CAMPUS MANAGEMENT SYSTEM
 ------------------------------------------------------------
 Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
@@ -190,7 +194,6 @@ Course: CS-104L Object-Oriented Programming
 5. Hostel Module
 6. Reports Module
 0. Exit
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  PROGRAM CLOSED
 ------------------------------------------------------------

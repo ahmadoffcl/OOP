@@ -28,6 +28,7 @@ public:
     string getThesisTitle() const;
 
     void displayInfo() const;
+    string getPersonType() const;
 };
 
 #endif

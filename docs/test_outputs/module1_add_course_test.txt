@@ -26,6 +26,25 @@ Enter choice: ------------------------------------------------------------
 10. Reload records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
+ ADD COURSE TO STUDENT
+------------------------------------------------------------
+Student Roll No: Course Code: Course added to student for this session.
+
+Press Enter to continue...------------------------------------------------------------
+ PERSON MODULE
+------------------------------------------------------------
+1. Show all saved people
+2. Show saved students
+3. Add Student
+4. Add Grad Student
+5. Add Faculty
+6. Add Staff
+7. Add course to student
+8. Delete person by ID
+9. Save records
+10. Reload records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
  SAVED PERSON RECORDS
 ------------------------------------------------------------
 
@@ -34,7 +53,7 @@ Roll No: 25-CS-067
 Semester: 2
 GPA: 3.4
 Grade: B
-Courses: No course added
+Courses: CS-200 
 Type: Student
 Unique ID: 25-CS-067
 
@@ -71,27 +90,6 @@ Role: Clerk
 Salary: 45000
 Type: Staff
 Unique ID: S-11
-
-Press Enter to continue...------------------------------------------------------------
- PERSON MODULE
-------------------------------------------------------------
-1. Show all saved people
-2. Show saved students
-3. Add Student
-4. Add Grad Student
-5. Add Faculty
-6. Add Staff
-7. Add course to student
-8. Delete person by ID
-9. Save records
-10. Reload records
-0. Back to Home
-Enter choice: ------------------------------------------------------------
- SAVED STUDENTS
-------------------------------------------------------------
-1. 25-CS-067 | Ahmad Ali | Semester 2 | GPA 3.4 | Grade B
-2. 25-CS-057 | Umer Altaf | Semester 2 | GPA 3.8 | Grade A
-3. 25-CS-252 | Muhammed Ahmad | Semester 2 | GPA 3.2 | Grade B
 
 Press Enter to continue...------------------------------------------------------------
  PERSON MODULE

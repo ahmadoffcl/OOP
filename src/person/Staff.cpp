@@ -56,3 +56,11 @@ void Staff::displayInfo() const {
     cout << "Role: " << role << endl;
     cout << "Salary: " << salary << endl;
 }
+
+string Staff::getPersonType() const {
+    return "Staff";
+}
+
+string Staff::getUniqueID() const {
+    return staffID;
+}

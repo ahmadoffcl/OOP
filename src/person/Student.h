@@ -41,6 +41,8 @@ public:
     void addCourse(string courseCode);
     string calculateGrade() const;
     void displayInfo() const;
+    string getPersonType() const;
+    string getUniqueID() const;
 };
 
 #endif
