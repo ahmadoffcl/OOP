@@ -11,7 +11,7 @@ if exist "%COMPILER%" (
 
 "%GPP%" -std=c++17 -Wall -Wextra ^
 src\main.cpp ^
-src\person\Person.cpp src\person\Student.cpp src\person\GradStudent.cpp src\person\Faculty.cpp src\person\Staff.cpp ^
+src\person\Person.cpp src\person\Student.cpp src\person\GradStudent.cpp src\person\Faculty.cpp src\person\Staff.cpp src\person\PersonManager.cpp ^
 src\course\Course.cpp src\course\Enrollment.cpp ^
 src\library\LibraryItem.cpp src\library\Book.cpp src\library\Journal.cpp src\library\Library.cpp ^
 src\finance\FeeRecord.cpp src\finance\Invoice.cpp ^

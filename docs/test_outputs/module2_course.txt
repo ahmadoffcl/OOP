@@ -1,5 +1,4 @@
-﻿
-------------------------------------------------------------
+﻿------------------------------------------------------------
  SMART CAMPUS MANAGEMENT SYSTEM
 ------------------------------------------------------------
 Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
@@ -12,8 +11,7 @@ Course: CS-104L Object-Oriented Programming
 5. Hostel Module
 6. Reports Module
 0. Exit
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  COURSE AND ENROLLMENT MODULE
 ------------------------------------------------------------
 1. Show course details
@@ -22,8 +20,7 @@ Enter choice:
 4. Compare courses using ==
 5. Merge waiting lists using +
 0. Back to Home
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  COURSE DETAILS
 ------------------------------------------------------------
 
@@ -34,7 +31,7 @@ Instructor: Sir Usman
 Capacity: 0/1
 Waiting Students: 0
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  COURSE AND ENROLLMENT MODULE
 ------------------------------------------------------------
 1. Show course details
@@ -43,8 +40,7 @@ Waiting Students: 0
 4. Compare courses using ==
 5. Merge waiting lists using +
 0. Back to Home
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  ENROLLMENT DEMO
 ------------------------------------------------------------
 Ahmad Ali enrolled successfully.
@@ -56,7 +52,7 @@ Student: Ahmad Ali (25-CS-067)
 Course: CS-104L - Object Oriented Programming Lab
 Grade: B
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  COURSE AND ENROLLMENT MODULE
 ------------------------------------------------------------
 1. Show course details
@@ -65,8 +61,7 @@ Grade: B
 4. Compare courses using ==
 5. Merge waiting lists using +
 0. Back to Home
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  COURSE ROSTER
 ------------------------------------------------------------
 
@@ -76,7 +71,7 @@ Enrolled Students:
 Waiting List:
 1. Umer Altaf (25-CS-057)
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  COURSE AND ENROLLMENT MODULE
 ------------------------------------------------------------
 1. Show course details
@@ -85,14 +80,13 @@ Waiting List:
 4. Compare courses using ==
 5. Merge waiting lists using +
 0. Back to Home
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  COURSE COMPARISON DEMO
 ------------------------------------------------------------
 CS-104L and sameCourse are equal by course code.
 CS-104L and CS-105 are not equal.
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  COURSE AND ENROLLMENT MODULE
 ------------------------------------------------------------
 1. Show course details
@@ -101,8 +95,7 @@ CS-104L and CS-105 are not equal.
 4. Compare courses using ==
 5. Merge waiting lists using +
 0. Back to Home
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  WAITING LIST MERGE DEMO
 ------------------------------------------------------------
 Merged waiting list:
@@ -110,7 +103,7 @@ Merged waiting list:
 2. Umer Altaf (25-CS-057)
 3. Muhammed Ahmad (25-CS-252)
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  COURSE AND ENROLLMENT MODULE
 ------------------------------------------------------------
 1. Show course details
@@ -119,9 +112,7 @@ Merged waiting list:
 4. Compare courses using ==
 5. Merge waiting lists using +
 0. Back to Home
-Enter choice: Returning to Home...
-
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  SMART CAMPUS MANAGEMENT SYSTEM
 ------------------------------------------------------------
 Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
@@ -134,7 +125,6 @@ Course: CS-104L Object-Oriented Programming
 5. Hostel Module
 6. Reports Module
 0. Exit
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  PROGRAM CLOSED
 ------------------------------------------------------------

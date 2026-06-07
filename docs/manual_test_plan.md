@@ -25,8 +25,16 @@ Then test menu choices:
 
 | Choice | Expected result |
 |--------|-----------------|
-| 1 then 1 | Shows student, grad student, faculty, and staff information |
-| 1 then 2 | Shows compact student list |
+| 1 then 1 | Shows all saved student, grad student, faculty, and staff information |
+| 1 then 2 | Shows saved student list |
+| 1 then 3 | Adds a new student from keyboard input |
+| 1 then 4 | Adds a new grad student from keyboard input |
+| 1 then 5 | Adds a new faculty record from keyboard input |
+| 1 then 6 | Adds a new staff record from keyboard input |
+| 1 then 7 | Adds a course code to a saved student |
+| 1 then 8 | Deletes a person by roll no, employee ID, or staff ID |
+| 1 then 9 | Saves records to `data/person_records.txt` |
+| 1 then 10 | Reloads records from `data/person_records.txt` |
 | 2 then 1 | Shows OOP course information |
 | 2 then 2 | Enrolls first student and sends second to waiting list because capacity is 1 |
 | 2 then 3 | Shows enrolled and waiting students |
@@ -55,6 +63,8 @@ Then test menu choices:
 | 6 then 5 | Writes `data/campus_pdf_report.txt` |
 | module 0 | Returns to home menu |
 | 0 | Exits the program |
+
+After each action page, press Enter to return to the current module menu.
 
 Also test a wrong input:
 

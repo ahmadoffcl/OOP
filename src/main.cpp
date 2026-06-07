@@ -4,7 +4,7 @@
  * @author  Ahmad Ali (25-CS-067), Umer Altaf (25-CS-057), Muhammed Ahmad (25-CS-252)
  * @course  CS-104L: Object-Oriented Programming
  * @inst    HITEC University Taxila
- * @date    2026-06-05
+ * @date    2026-06-07
  *
  * OOP Concepts: Objects, Runtime Polymorphism, Exception Handling
  */
@@ -14,6 +14,7 @@
 #include "person/GradStudent.h"
 #include "person/Faculty.h"
 #include "person/Staff.h"
+#include "person/PersonManager.h"
 #include "course/Course.h"
 #include "course/Enrollment.h"
 #include "library/Book.h"
@@ -25,9 +26,19 @@
 #include "utils/Exceptions.h"
 #include "utils/Reports.h"
 #include "utils/Utils.h"
+#include <cstdlib>
 #include <iostream>
 #include <limits>
+#include <sstream>
 using namespace std;
+
+void clearScreen() {
+#ifdef _WIN32
+    system("cls");
+#else
+    cout << "\033[2J\033[H";
+#endif
+}
 
 int readChoice() {
     int choice;
@@ -43,11 +54,71 @@ int readChoice() {
     return choice;
 }
 
-void printTitle(string title) {
-    cout << endl;
+void pauseScreen() {
+    string temp;
+    cout << "\nPress Enter to continue...";
+    getline(cin, temp);
+}
+
+string readText(string label, string defaultValue = "") {
+    string value;
+    cout << label;
+    getline(cin, value);
+
+    if (value == "" && defaultValue != "") {
+        return defaultValue;
+    }
+
+    return value;
+}
+
+int readInt(string label, int defaultValue) {
+    string value = readText(label);
+
+    if (value == "") {
+        return defaultValue;
+    }
+
+    stringstream ss(value);
+    int number;
+    ss >> number;
+
+    if (ss.fail()) {
+        cout << "Wrong number. Default value used." << endl;
+        return defaultValue;
+    }
+
+    return number;
+}
+
+double readDouble(string label, double defaultValue) {
+    string value = readText(label);
+
+    if (value == "") {
+        return defaultValue;
+    }
+
+    stringstream ss(value);
+    double number;
+    ss >> number;
+
+    if (ss.fail()) {
+        cout << "Wrong number. Default value used." << endl;
+        return defaultValue;
+    }
+
+    return number;
+}
+
+void showPageTitle(string title) {
+    clearScreen();
     Utils::printLine();
     cout << " " << title << endl;
     Utils::printLine();
+}
+
+void printTitle(string title) {
+    showPageTitle(title);
 }
 
 void printBackOption() {
@@ -66,42 +137,219 @@ void loadLibraryIfNeeded(Library& library) {
     }
 }
 
-void showPeopleDemo(Person* people[], int totalPeople) {
-    printTitle("PERSON RECORDS");
+void showAllPeople(PersonManager& personManager) {
+    printTitle("SAVED PERSON RECORDS");
 
-    for (int i = 0; i < totalPeople; i++) {
-        people[i]->displayInfo();
+    if (personManager.getPersonCount() == 0) {
+        cout << "No saved person records found." << endl;
+        return;
+    }
+
+    for (int i = 0; i < personManager.getPersonCount(); i++) {
+        Person* person = personManager.getPerson(i);
+        if (person != NULL) {
+            person->displayInfo();
+            cout << "Type: " << person->getPersonType() << endl;
+            cout << "Unique ID: " << person->getUniqueID() << endl;
+        }
     }
 }
 
-void showStudentList(Student* students[], int totalStudents) {
-    printTitle("STUDENT LIST");
+void showStudentList(PersonManager& personManager) {
+    printTitle("SAVED STUDENTS");
+
+    Student* students[MAX_PEOPLE];
+    int totalStudents = personManager.getStudents(students, MAX_PEOPLE);
+
+    if (totalStudents == 0) {
+        cout << "No saved student records found." << endl;
+        return;
+    }
 
     for (int i = 0; i < totalStudents; i++) {
-        cout << students[i]->getRollNo() << " | " << students[i]->getName()
+        cout << i + 1 << ". " << students[i]->getRollNo() << " | " << students[i]->getName()
              << " | Semester " << students[i]->getSemester()
-             << " | GPA " << students[i]->getGPA() << endl;
+             << " | GPA " << students[i]->getGPA()
+             << " | Grade " << students[i]->calculateGrade() << endl;
     }
 }
 
-void personMenu(Person* people[], int totalPeople, Student* students[], int totalStudents) {
+void addStudentPage(PersonManager& personManager) {
+    printTitle("ADD STUDENT");
+
+    string name = readText("Name: ");
+    string cnic = readText("CNIC: ");
+    int age = readInt("Age: ", 18);
+    string contact = readText("Contact: ");
+    string rollNo = readText("Roll No: ");
+    int semester = readInt("Semester: ", 2);
+    double gpa = readDouble("GPA: ", 0.0);
+
+    if (name == "" || rollNo == "") {
+        cout << "Name and roll number are required." << endl;
+        return;
+    }
+
+    if (personManager.addPerson(new Student(name, cnic, age, contact, rollNo, semester, gpa))) {
+        cout << "Student added. Use option 9 to save records." << endl;
+    }
+}
+
+void addGradStudentPage(PersonManager& personManager) {
+    printTitle("ADD GRAD STUDENT");
+
+    string name = readText("Name: ");
+    string cnic = readText("CNIC: ");
+    int age = readInt("Age: ", 18);
+    string contact = readText("Contact: ");
+    string rollNo = readText("Roll No: ");
+    int semester = readInt("Semester: ", 2);
+    double gpa = readDouble("GPA: ", 0.0);
+    string thesis = readText("Thesis Title: ");
+
+    if (name == "" || rollNo == "") {
+        cout << "Name and roll number are required." << endl;
+        return;
+    }
+
+    if (personManager.addPerson(new GradStudent(name, cnic, age, contact, rollNo, semester, gpa, thesis))) {
+        cout << "Grad student added. Use option 9 to save records." << endl;
+    }
+}
+
+void addFacultyPage(PersonManager& personManager) {
+    printTitle("ADD FACULTY");
+
+    string name = readText("Name: ");
+    string cnic = readText("CNIC: ");
+    int age = readInt("Age: ", 30);
+    string contact = readText("Contact: ");
+    string employeeID = readText("Employee ID: ");
+    string department = readText("Department: ");
+    string designation = readText("Designation: ");
+
+    if (name == "" || employeeID == "") {
+        cout << "Name and employee ID are required." << endl;
+        return;
+    }
+
+    if (personManager.addPerson(new Faculty(name, cnic, age, contact, employeeID, department, designation))) {
+        cout << "Faculty added. Use option 9 to save records." << endl;
+    }
+}
+
+void addStaffPage(PersonManager& personManager) {
+    printTitle("ADD STAFF");
+
+    string name = readText("Name: ");
+    string cnic = readText("CNIC: ");
+    int age = readInt("Age: ", 25);
+    string contact = readText("Contact: ");
+    string staffID = readText("Staff ID: ");
+    string role = readText("Role: ");
+    double salary = readDouble("Salary: ", 0);
+
+    if (name == "" || staffID == "") {
+        cout << "Name and staff ID are required." << endl;
+        return;
+    }
+
+    if (personManager.addPerson(new Staff(name, cnic, age, contact, staffID, role, salary))) {
+        cout << "Staff added. Use option 9 to save records." << endl;
+    }
+}
+
+void addCourseToStudentPage(PersonManager& personManager) {
+    printTitle("ADD COURSE TO STUDENT");
+
+    string rollNo = readText("Student Roll No: ");
+    string courseCode = readText("Course Code: ");
+
+    Person* person = personManager.findByID(rollNo);
+    Student* student = dynamic_cast<Student*>(person);
+
+    if (student == NULL) {
+        cout << "Student not found." << endl;
+        return;
+    }
+
+    if (courseCode == "") {
+        cout << "Course code is required." << endl;
+        return;
+    }
+
+    student->addCourse(courseCode);
+    cout << "Course added to student for this session." << endl;
+}
+
+void deletePersonPage(PersonManager& personManager) {
+    printTitle("DELETE PERSON RECORD");
+
+    string id = readText("Enter Roll No / Employee ID / Staff ID: ");
+
+    if (personManager.deleteByID(id)) {
+        cout << "Record deleted. Use option 9 to save records." << endl;
+    } else {
+        cout << "Record not found." << endl;
+    }
+}
+
+void personMenu(PersonManager& personManager) {
     int choice;
 
     do {
-        printTitle("PERSON MODULE");
-        cout << "1. Show all people" << endl;
-        cout << "2. Show student list" << endl;
+        showPageTitle("PERSON MODULE");
+        cout << "1. Show all saved people" << endl;
+        cout << "2. Show saved students" << endl;
+        cout << "3. Add Student" << endl;
+        cout << "4. Add Grad Student" << endl;
+        cout << "5. Add Faculty" << endl;
+        cout << "6. Add Staff" << endl;
+        cout << "7. Add course to student" << endl;
+        cout << "8. Delete person by ID" << endl;
+        cout << "9. Save records" << endl;
+        cout << "10. Reload records" << endl;
         printBackOption();
         choice = readChoice();
 
         if (choice == 1) {
-            showPeopleDemo(people, totalPeople);
+            showAllPeople(personManager);
+            pauseScreen();
         } else if (choice == 2) {
-            showStudentList(students, totalStudents);
-        } else if (choice == 0) {
-            cout << "Returning to Home..." << endl;
-        } else {
+            showStudentList(personManager);
+            pauseScreen();
+        } else if (choice == 3) {
+            addStudentPage(personManager);
+            pauseScreen();
+        } else if (choice == 4) {
+            addGradStudentPage(personManager);
+            pauseScreen();
+        } else if (choice == 5) {
+            addFacultyPage(personManager);
+            pauseScreen();
+        } else if (choice == 6) {
+            addStaffPage(personManager);
+            pauseScreen();
+        } else if (choice == 7) {
+            addCourseToStudentPage(personManager);
+            pauseScreen();
+        } else if (choice == 8) {
+            deletePersonPage(personManager);
+            pauseScreen();
+        } else if (choice == 9) {
+            printTitle("SAVE PERSON RECORDS");
+            personManager.saveToFile();
+            cout << "Records saved to data/person_records.txt" << endl;
+            pauseScreen();
+        } else if (choice == 10) {
+            printTitle("RELOAD PERSON RECORDS");
+            personManager.loadFromFile();
+            cout << "Records reloaded from data/person_records.txt" << endl;
+            pauseScreen();
+        } else if (choice != 0) {
+            printTitle("WRONG CHOICE");
             cout << "Wrong choice. Try again." << endl;
+            pauseScreen();
         }
     } while (choice != 0);
 }
@@ -117,7 +365,7 @@ void showCourseRosterDemo(Course& oopCourse) {
     oopCourse.displayWaitingList();
 }
 
-void showEnrollmentDemo(Student& s1, GradStudent& s2, Course& oopCourse, bool& enrollmentDone) {
+void showEnrollmentDemo(Student& s1, Student& s2, Course& oopCourse, bool& enrollmentDone) {
     printTitle("ENROLLMENT DEMO");
 
     if (!enrollmentDone) {
@@ -137,7 +385,7 @@ void showEnrollmentDemo(Student& s1, GradStudent& s2, Course& oopCourse, bool& e
         cout << "Enrollment demo already completed in this run." << endl;
     }
 
-    Enrollment e1(&s1, &oopCourse, "05-06-2026");
+    Enrollment e1(&s1, &oopCourse, Utils::getTodayDate());
     e1.setGrade(s1.calculateGrade());
     e1.displayEnrollment();
 }
@@ -157,7 +405,7 @@ void showCourseCompareDemo(Course& oopCourse, Faculty& faculty) {
     }
 }
 
-void showWaitingListMergeDemo(Student& s1, GradStudent& s2, Student& s3, Faculty& faculty) {
+void showWaitingListMergeDemo(Student& s1, Student& s2, Student& s3, Faculty& faculty) {
     printTitle("WAITING LIST MERGE DEMO");
 
     Course c1("CS-201", "Data Structures", 3, &faculty, 2);
@@ -179,12 +427,25 @@ void showWaitingListMergeDemo(Student& s1, GradStudent& s2, Student& s3, Faculty
     delete[] merged;
 }
 
-void courseMenu(Student& s1, GradStudent& s2, Student& s3, Faculty& faculty, Course& oopCourse) {
+void courseMenu(PersonManager& personManager) {
+    Student* s1 = personManager.getStudentAt(0);
+    Student* s2 = personManager.getStudentAt(1);
+    Student* s3 = personManager.getStudentAt(2);
+    Faculty* faculty = personManager.getFirstFaculty();
+
+    if (s1 == NULL || s2 == NULL || s3 == NULL || faculty == NULL) {
+        printTitle("COURSE MODULE");
+        cout << "Add at least 3 students and 1 faculty in Person Module first." << endl;
+        pauseScreen();
+        return;
+    }
+
+    Course oopCourse("CS-104L", "Object Oriented Programming Lab", 1, faculty, 1);
     int choice;
     bool enrollmentDone = false;
 
     do {
-        printTitle("COURSE AND ENROLLMENT MODULE");
+        showPageTitle("COURSE AND ENROLLMENT MODULE");
         cout << "1. Show course details" << endl;
         cout << "2. Run enrollment demo" << endl;
         cout << "3. Show enrolled and waiting students" << endl;
@@ -195,18 +456,23 @@ void courseMenu(Student& s1, GradStudent& s2, Student& s3, Faculty& faculty, Cou
 
         if (choice == 1) {
             showCourseDemo(oopCourse);
+            pauseScreen();
         } else if (choice == 2) {
-            showEnrollmentDemo(s1, s2, oopCourse, enrollmentDone);
+            showEnrollmentDemo(*s1, *s2, oopCourse, enrollmentDone);
+            pauseScreen();
         } else if (choice == 3) {
             showCourseRosterDemo(oopCourse);
+            pauseScreen();
         } else if (choice == 4) {
-            showCourseCompareDemo(oopCourse, faculty);
+            showCourseCompareDemo(oopCourse, *faculty);
+            pauseScreen();
         } else if (choice == 5) {
-            showWaitingListMergeDemo(s1, s2, s3, faculty);
-        } else if (choice == 0) {
-            cout << "Returning to Home..." << endl;
-        } else {
+            showWaitingListMergeDemo(*s1, *s2, *s3, *faculty);
+            pauseScreen();
+        } else if (choice != 0) {
+            printTitle("WRONG CHOICE");
             cout << "Wrong choice. Try again." << endl;
+            pauseScreen();
         }
     } while (choice != 0);
 }
@@ -260,7 +526,7 @@ void libraryMenu(Library& library) {
     int choice;
 
     do {
-        printTitle("LIBRARY MODULE");
+        showPageTitle("LIBRARY MODULE");
         cout << "1. Load catalog from file" << endl;
         cout << "2. Show catalog" << endl;
         cout << "3. Search by title" << endl;
@@ -272,26 +538,36 @@ void libraryMenu(Library& library) {
         choice = readChoice();
 
         if (choice == 1) {
+            printTitle("LOAD LIBRARY CATALOG");
             library.loadCatalog("data/library_catalog.txt");
             cout << "Catalog loaded. Total items: " << library.getItemCount() << endl;
+            pauseScreen();
         } else if (choice == 2) {
             showLibraryCatalog(library);
+            pauseScreen();
         } else if (choice == 3) {
             showLibrarySearch(library);
+            pauseScreen();
         } else if (choice == 4) {
             showLibraryIssue(library);
+            pauseScreen();
         } else if (choice == 5) {
             showLibraryReturn(library);
+            pauseScreen();
         } else if (choice == 6) {
+            printTitle("ISSUED RECORDS");
             library.displayIssuedRecords();
+            pauseScreen();
         } else if (choice == 7) {
+            printTitle("SAVE LIBRARY CATALOG");
             loadLibraryIfNeeded(library);
             library.saveCatalog("data/library_catalog_saved.txt");
             cout << "Catalog saved to data/library_catalog_saved.txt" << endl;
-        } else if (choice == 0) {
-            cout << "Returning to Home..." << endl;
-        } else {
+            pauseScreen();
+        } else if (choice != 0) {
+            printTitle("WRONG CHOICE");
             cout << "Wrong choice. Try again." << endl;
+            pauseScreen();
         }
     } while (choice != 0);
 }
@@ -358,11 +634,20 @@ void showInvoiceDemo(Student& s1) {
          << Invoice::getInvoiceCounter() << endl;
 }
 
-void financeMenu(Student& s1) {
+void financeMenu(PersonManager& personManager) {
+    Student* s1 = personManager.getFirstStudent();
+
+    if (s1 == NULL) {
+        printTitle("FEE AND FINANCE MODULE");
+        cout << "Add at least 1 student in Person Module first." << endl;
+        pauseScreen();
+        return;
+    }
+
     int choice;
 
     do {
-        printTitle("FEE AND FINANCE MODULE");
+        showPageTitle("FEE AND FINANCE MODULE");
         cout << "1. Show fee record and payment" << endl;
         cout << "2. Show fee copy constructor and assignment" << endl;
         cout << "3. Show invoice, copies, and static counter" << endl;
@@ -370,67 +655,103 @@ void financeMenu(Student& s1) {
         choice = readChoice();
 
         if (choice == 1) {
-            showFeeRecordDemo(s1);
+            showFeeRecordDemo(*s1);
+            pauseScreen();
         } else if (choice == 2) {
-            showFeeCopyDemo(s1);
+            showFeeCopyDemo(*s1);
+            pauseScreen();
         } else if (choice == 3) {
-            showInvoiceDemo(s1);
-        } else if (choice == 0) {
-            cout << "Returning to Home..." << endl;
-        } else {
+            showInvoiceDemo(*s1);
+            pauseScreen();
+        } else if (choice != 0) {
+            printTitle("WRONG CHOICE");
             cout << "Wrong choice. Try again." << endl;
+            pauseScreen();
         }
     } while (choice != 0);
 }
 
-void hostelMenu(Student& s1, GradStudent& s2, Student& s3) {
+void hostelMenu(PersonManager& personManager) {
+    Student* s1 = personManager.getStudentAt(0);
+    Student* s2 = personManager.getStudentAt(1);
+    Student* s3 = personManager.getStudentAt(2);
+
+    if (s1 == NULL || s2 == NULL || s3 == NULL) {
+        printTitle("HOSTEL MODULE");
+        cout << "Add at least 3 students in Person Module first." << endl;
+        pauseScreen();
+        return;
+    }
+
     HostelManager manager;
     int choice;
     bool allocated = false;
 
     do {
-        printTitle("HOSTEL MODULE");
+        showPageTitle("HOSTEL MODULE");
         cout << "1. Show hostel service name" << endl;
         cout << "2. Allocate sample students" << endl;
         cout << "3. Try duplicate allocation" << endl;
         cout << "4. Show hostel summary" << endl;
         cout << "5. Show occupancy report" << endl;
-        cout << "6. Vacate Ahmad Ali room" << endl;
+        cout << "6. Vacate first student room" << endl;
         printBackOption();
         choice = readChoice();
 
         if (choice == 1) {
+            printTitle("HOSTEL SERVICE");
             manager.showServiceName();
+            pauseScreen();
         } else if (choice == 2) {
+            printTitle("ALLOCATE SAMPLE STUDENTS");
             if (!allocated) {
-                manager.allocateRoom(&s1);
-                manager.allocateRoom(&s2);
-                manager.allocateRoom(&s3);
+                manager.allocateRoom(s1);
+                manager.allocateRoom(s2);
+                manager.allocateRoom(s3);
                 allocated = true;
             } else {
                 cout << "Students are already allocated in this module visit." << endl;
             }
+            pauseScreen();
         } else if (choice == 3) {
-            manager.allocateRoom(&s1);
+            printTitle("DUPLICATE ALLOCATION CHECK");
+            manager.allocateRoom(s1);
+            pauseScreen();
         } else if (choice == 4) {
+            printTitle("HOSTEL SUMMARY");
             manager.showSummary();
+            pauseScreen();
         } else if (choice == 5) {
+            printTitle("HOSTEL OCCUPANCY REPORT");
             manager.generateReport();
+            pauseScreen();
         } else if (choice == 6) {
-            manager.vacateRoom(s1.getRollNo());
-        } else if (choice == 0) {
-            cout << "Returning to Home..." << endl;
-        } else {
+            printTitle("VACATE ROOM");
+            manager.vacateRoom(s1->getRollNo());
+            pauseScreen();
+        } else if (choice != 0) {
+            printTitle("WRONG CHOICE");
             cout << "Wrong choice. Try again." << endl;
+            pauseScreen();
         }
     } while (choice != 0);
 }
 
-void reportsMenu(Student* students[], int studentCount, Library& library) {
+void reportsMenu(PersonManager& personManager, Library& library) {
+    Student* students[MAX_PEOPLE];
+    int studentCount = personManager.getStudents(students, MAX_PEOPLE);
+
+    if (studentCount == 0) {
+        printTitle("REPORTS MODULE");
+        cout << "Add at least 1 student in Person Module first." << endl;
+        pauseScreen();
+        return;
+    }
+
     int choice;
 
     do {
-        printTitle("REPORTS MODULE");
+        showPageTitle("REPORTS MODULE");
         cout << "1. Sort and show students by GPA" << endl;
         cout << "2. Find student by roll number" << endl;
         cout << "3. Show top GPA student" << endl;
@@ -440,17 +761,13 @@ void reportsMenu(Student* students[], int studentCount, Library& library) {
         choice = readChoice();
 
         if (choice == 1) {
+            printTitle("STUDENTS SORTED BY GPA");
             Reports::sortStudentsByGPA(students, studentCount);
             Reports::showStudents(students, studentCount);
+            pauseScreen();
         } else if (choice == 2) {
-            string rollNo;
-            cout << "Enter roll no (press Enter for 25-CS-067): ";
-            getline(cin, rollNo);
-
-            if (rollNo == "") {
-                rollNo = "25-CS-067";
-            }
-
+            printTitle("FIND STUDENT");
+            string rollNo = readText("Enter roll no (press Enter for 25-CS-067): ", "25-CS-067");
             Student* found = Reports::findStudentByRollNo(students, studentCount, rollNo);
 
             if (found != NULL) {
@@ -460,24 +777,31 @@ void reportsMenu(Student* students[], int studentCount, Library& library) {
             } else {
                 cout << "Student not found." << endl;
             }
+            pauseScreen();
         } else if (choice == 3) {
+            printTitle("TOP GPA STUDENT");
             Reports::showTopStudent(students, studentCount);
+            pauseScreen();
         } else if (choice == 4) {
+            printTitle("GENERATE CAMPUS TEXT REPORT");
             loadLibraryIfNeeded(library);
             Reports::generateCampusTextReport(students, studentCount, library, "data/campus_report.txt");
+            pauseScreen();
         } else if (choice == 5) {
+            printTitle("GENERATE PDF-STYLE TEXT REPORT");
             loadLibraryIfNeeded(library);
             Reports::generatePdfStyleTextReport(students, studentCount, library, "data/campus_pdf_report.txt");
-        } else if (choice == 0) {
-            cout << "Returning to Home..." << endl;
-        } else {
+            pauseScreen();
+        } else if (choice != 0) {
+            printTitle("WRONG CHOICE");
             cout << "Wrong choice. Try again." << endl;
+            pauseScreen();
         }
     } while (choice != 0);
 }
 
 void showHomeMenu() {
-    printTitle("SMART CAMPUS MANAGEMENT SYSTEM");
+    showPageTitle("SMART CAMPUS MANAGEMENT SYSTEM");
     cout << "Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad" << endl;
     cout << "Course: CS-104L Object-Oriented Programming" << endl;
     Utils::printLine();
@@ -492,29 +816,9 @@ void showHomeMenu() {
 }
 
 int main() {
-    Student s1("Ahmad Ali", "11111-1111111-1", 19, "0300-0000000", "25-CS-067", 2, 3.4);
-    GradStudent s2("Umer Altaf", "22222-2222222-2", 19, "0311-0000000", "25-CS-057", 2, 3.8, "Campus Management");
-    Student s3("Muhammed Ahmad", "55555-5555555-5", 19, "0344-0000000", "25-CS-252", 2, 3.2);
-    Faculty f1("Sir Usman", "33333-3333333-3", 35, "0322-0000000", "F-101", "Computer Science", "Lecturer");
-    Staff staff1("Office Staff", "44444-4444444-4", 30, "0333-0000000", "S-11", "Clerk", 45000);
-
-    f1.assignCourse("CS-104L");
-
-    Course oopCourse("CS-104L", "Object Oriented Programming Lab", 1, &f1, 1);
+    PersonManager personManager("data/person_records.txt");
+    personManager.loadFromFile();
     Library library;
-
-    Person* people[5];
-    people[0] = &s1;
-    people[1] = &s2;
-    people[2] = &s3;
-    people[3] = &f1;
-    people[4] = &staff1;
-
-    Student* students[3];
-    students[0] = &s1;
-    students[1] = &s2;
-    students[2] = &s3;
-
     int choice;
 
     do {
@@ -522,21 +826,23 @@ int main() {
         choice = readChoice();
 
         if (choice == 1) {
-            personMenu(people, 5, students, 3);
+            personMenu(personManager);
         } else if (choice == 2) {
-            courseMenu(s1, s2, s3, f1, oopCourse);
+            courseMenu(personManager);
         } else if (choice == 3) {
             libraryMenu(library);
         } else if (choice == 4) {
-            financeMenu(s1);
+            financeMenu(personManager);
         } else if (choice == 5) {
-            hostelMenu(s1, s2, s3);
+            hostelMenu(personManager);
         } else if (choice == 6) {
-            reportsMenu(students, 3, library);
+            reportsMenu(personManager, library);
         } else if (choice == 0) {
             printTitle("PROGRAM CLOSED");
         } else {
+            printTitle("WRONG CHOICE");
             cout << "Wrong choice. Try again." << endl;
+            pauseScreen();
         }
     } while (choice != 0);
 

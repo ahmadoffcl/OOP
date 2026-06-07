@@ -35,6 +35,8 @@ public:
     double getSalary() const;
 
     void displayInfo() const;
+    string getPersonType() const;
+    string getUniqueID() const;
 };
 
 #endif

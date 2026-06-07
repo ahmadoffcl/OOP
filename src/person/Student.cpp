@@ -87,3 +87,11 @@ void Student::displayInfo() const {
     }
     cout << endl;
 }
+
+string Student::getPersonType() const {
+    return "Student";
+}
+
+string Student::getUniqueID() const {
+    return rollNo;
+}

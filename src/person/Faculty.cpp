@@ -75,3 +75,11 @@ void Faculty::displayInfo() const {
     }
     cout << endl;
 }
+
+string Faculty::getPersonType() const {
+    return "Faculty";
+}
+
+string Faculty::getUniqueID() const {
+    return employeeID;
+}

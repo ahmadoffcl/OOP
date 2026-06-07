@@ -39,6 +39,8 @@ public:
     string getContact() const;
 
     virtual void displayInfo() const = 0;
+    virtual string getPersonType() const = 0;
+    virtual string getUniqueID() const = 0;
 };
 
 #endif

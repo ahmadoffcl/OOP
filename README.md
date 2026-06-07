@@ -21,6 +21,7 @@ The interface is menu-based and runs in the command prompt.
 This folder contains the completed simple command-line version of the SCMS project. It includes all main assignment modules:
 
 - Person hierarchy: `Person`, `Student`, `GradStudent`, `Faculty`, `Staff`
+- Person records manager: add, view, save, load, and delete saved people
 - Course and enrollment management: `Course`, `Enrollment`
 - Basic exception handling with `CapacityExceededException`
 - Library module: `LibraryItem`, `Book`, `Journal`, `Library`
@@ -28,7 +29,7 @@ This folder contains the completed simple command-line version of the SCMS proje
 - Hostel module: `Accommodation`, `Reportable`, `Room`, `HostelBlock`, `HostelManager`
 - Reports module: `Reports` and `Utils`
 - Simple arrays, constructors, getters/setters, inheritance, polymorphism, file handling, and operator overloading
-- Clean console interface with separate module screens and `0. Back to Home` options
+- Clean screen-based console interface with separate module screens and `0. Back to Home` options
 
 You should still personalize and review the project before submission:
 
@@ -39,7 +40,7 @@ You should still personalize and review the project before submission:
 
 ## Modules
 
-1. Person Hierarchy: `Person`, `Student`, `GradStudent`, `Faculty`, and `Staff`.
+1. Person Hierarchy: `Person`, `Student`, `GradStudent`, `Faculty`, `Staff`, and `PersonManager` for saved records.
 2. Course and Enrollment: `Course` and `Enrollment` with capacity checks and overloaded operators.
 3. Library System: `LibraryItem`, `Book`, `Journal`, and `Library` with file loading/saving.
 4. Fee and Finance: `FeeRecord` and `Invoice` with deep copy, static counter, and payment operator.
@@ -83,12 +84,12 @@ g++ -std=c++17 -Wall -Wextra src/main.cpp src/person/*.cpp src/course/*.cpp src/
 6. Multi-level inheritance: `GradStudent : Student : Person`
 7. Abstract class: `Person`
 8. Pure virtual function: `displayInfo()`
-9. Runtime polymorphism: `Person* people[]` in `main.cpp`
+9. Runtime polymorphism: `Person* people[]` in `PersonManager`
 10. Operator overloading: `Course ==`, `Course <<`, `Course +`
 11. Friend function: `operator<<` for `Course`
 12. Custom exception: `CapacityExceededException`
 13. Aggregation: `Course` stores a `Faculty*`
-14. Array-based collections: course arrays, people arrays, library arrays, hostel room arrays
+14. Array-based collections: course arrays, `PersonManager` people array, library arrays, hostel room arrays
 15. File I/O: `Library::saveCatalog`, `Library::loadCatalog`, campus text report
 16. Static members: `Invoice::invoiceCounter`
 17. Copy assignment: `FeeRecord` and `Invoice`
@@ -107,16 +108,14 @@ g++ -std=c++17 -Wall -Wextra src/main.cpp src/person/*.cpp src/course/*.cpp src/
 
 ## GitHub Repository
 
-Add the public GitHub URL here after pushing:
-
 ```text
-https://github.com/[username]/HITEC-OOP-SCMS-25-CS-067
+https://github.com/ahmadoffcl/OOP
 ```
 
 After pushing, this command can update the README and regenerate the PDF report with your real URL:
 
 ```powershell
-python tools\finalize_github_url.py https://github.com/YOUR_USERNAME/HITEC-OOP-SCMS-25-CS-067
+python tools\generate_deliverables.py --github-url "https://github.com/ahmadoffcl/OOP"
 ```
 
 ## Remaining Work Checklist
@@ -129,7 +128,7 @@ python tools\finalize_github_url.py https://github.com/YOUR_USERNAME/HITEC-OOP-S
 
 ## Interface Flow
 
-The home menu opens each module separately. Inside a module, select the task you want, then use `0` to go back home. This keeps the output cleaner instead of printing the home menu directly under every result.
+The home menu opens each module as a separate screen. Each new menu/action clears the old screen first. Inside a module, select the task you want, press Enter after action output, then use `0` to go back home. This avoids printing new menus underneath old output.
 
 ## Documentation Files
 

@@ -1,5 +1,4 @@
-﻿
-------------------------------------------------------------
+﻿------------------------------------------------------------
  SMART CAMPUS MANAGEMENT SYSTEM
 ------------------------------------------------------------
 Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
@@ -12,16 +11,14 @@ Course: CS-104L Object-Oriented Programming
 5. Hostel Module
 6. Reports Module
 0. Exit
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  FEE AND FINANCE MODULE
 ------------------------------------------------------------
 1. Show fee record and payment
 2. Show fee copy constructor and assignment
 3. Show invoice, copies, and static counter
 0. Back to Home
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  FEE RECORD DEMO
 ------------------------------------------------------------
 
@@ -48,15 +45,14 @@ Balance: 60500
 --- Payment History ---
 1. Payment: 25000
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  FEE AND FINANCE MODULE
 ------------------------------------------------------------
 1. Show fee record and payment
 2. Show fee copy constructor and assignment
 3. Show invoice, copies, and static counter
 0. Back to Home
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  FEE COPY CONSTRUCTOR AND ASSIGNMENT DEMO
 ------------------------------------------------------------
 
@@ -105,15 +101,14 @@ Balance: 50500
 1. Payment: 25000
 2. Payment: 10000
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  FEE AND FINANCE MODULE
 ------------------------------------------------------------
 1. Show fee record and payment
 2. Show fee copy constructor and assignment
 3. Show invoice, copies, and static counter
 0. Back to Home
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  INVOICE DEMO
 ------------------------------------------------------------
 Invoice counter before creating invoices: 0
@@ -153,16 +148,14 @@ Total Amount: 60500
 
 Invoice counter after creating invoices: 3
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  FEE AND FINANCE MODULE
 ------------------------------------------------------------
 1. Show fee record and payment
 2. Show fee copy constructor and assignment
 3. Show invoice, copies, and static counter
 0. Back to Home
-Enter choice: Returning to Home...
-
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  SMART CAMPUS MANAGEMENT SYSTEM
 ------------------------------------------------------------
 Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
@@ -175,7 +168,6 @@ Course: CS-104L Object-Oriented Programming
 5. Hostel Module
 6. Reports Module
 0. Exit
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  PROGRAM CLOSED
 ------------------------------------------------------------

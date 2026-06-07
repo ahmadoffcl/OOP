@@ -1,5 +1,4 @@
-﻿
-------------------------------------------------------------
+﻿------------------------------------------------------------
  SMART CAMPUS MANAGEMENT SYSTEM
 ------------------------------------------------------------
 Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
@@ -12,8 +11,7 @@ Course: CS-104L Object-Oriented Programming
 5. Hostel Module
 6. Reports Module
 0. Exit
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  HOSTEL MODULE
 ------------------------------------------------------------
 1. Show hostel service name
@@ -21,11 +19,14 @@ Enter choice:
 3. Try duplicate allocation
 4. Show hostel summary
 5. Show occupancy report
-6. Vacate Ahmad Ali room
+6. Vacate first student room
 0. Back to Home
-Enter choice: Hostel Accommodation Service
+Enter choice: ------------------------------------------------------------
+ HOSTEL SERVICE
+------------------------------------------------------------
+Hostel Accommodation Service
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  HOSTEL MODULE
 ------------------------------------------------------------
 1. Show hostel service name
@@ -33,13 +34,16 @@ Enter choice: Hostel Accommodation Service
 3. Try duplicate allocation
 4. Show hostel summary
 5. Show occupancy report
-6. Vacate Ahmad Ali room
+6. Vacate first student room
 0. Back to Home
-Enter choice: Ahmad Ali allocated to room 101
+Enter choice: ------------------------------------------------------------
+ ALLOCATE SAMPLE STUDENTS
+------------------------------------------------------------
+Ahmad Ali allocated to room 101
 Umer Altaf allocated to room 101
 Muhammed Ahmad allocated to room 101
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  HOSTEL MODULE
 ------------------------------------------------------------
 1. Show hostel service name
@@ -47,11 +51,14 @@ Muhammed Ahmad allocated to room 101
 3. Try duplicate allocation
 4. Show hostel summary
 5. Show occupancy report
-6. Vacate Ahmad Ali room
+6. Vacate first student room
 0. Back to Home
-Enter choice: Ahmad Ali is already allocated to room 101
+Enter choice: ------------------------------------------------------------
+ DUPLICATE ALLOCATION CHECK
+------------------------------------------------------------
+Ahmad Ali is already allocated to room 101
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  HOSTEL MODULE
 ------------------------------------------------------------
 1. Show hostel service name
@@ -59,13 +66,16 @@ Enter choice: Ahmad Ali is already allocated to room 101
 3. Try duplicate allocation
 4. Show hostel summary
 5. Show occupancy report
-6. Vacate Ahmad Ali room
+6. Vacate first student room
 0. Back to Home
-Enter choice: Block Name: Boys Block A
+Enter choice: ------------------------------------------------------------
+ HOSTEL SUMMARY
+------------------------------------------------------------
+Block Name: Boys Block A
 Total Rooms: 3
 Total Occupants: 3
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  HOSTEL MODULE
 ------------------------------------------------------------
 1. Show hostel service name
@@ -73,9 +83,12 @@ Total Occupants: 3
 3. Try duplicate allocation
 4. Show hostel summary
 5. Show occupancy report
-6. Vacate Ahmad Ali room
+6. Vacate first student room
 0. Back to Home
-Enter choice: 
+Enter choice: ------------------------------------------------------------
+ HOSTEL OCCUPANCY REPORT
+------------------------------------------------------------
+
 --- Hostel Occupancy Report ---
 Block Name: Boys Block A
 Total Rooms: 3
@@ -101,7 +114,7 @@ Type: triple
 Floor: 2
 Occupants: 0/3
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  HOSTEL MODULE
 ------------------------------------------------------------
 1. Show hostel service name
@@ -109,11 +122,14 @@ Occupants: 0/3
 3. Try duplicate allocation
 4. Show hostel summary
 5. Show occupancy report
-6. Vacate Ahmad Ali room
+6. Vacate first student room
 0. Back to Home
-Enter choice: Room vacated for roll no 25-CS-067
+Enter choice: ------------------------------------------------------------
+ VACATE ROOM
+------------------------------------------------------------
+Room vacated for roll no 25-CS-067
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  HOSTEL MODULE
 ------------------------------------------------------------
 1. Show hostel service name
@@ -121,13 +137,16 @@ Enter choice: Room vacated for roll no 25-CS-067
 3. Try duplicate allocation
 4. Show hostel summary
 5. Show occupancy report
-6. Vacate Ahmad Ali room
+6. Vacate first student room
 0. Back to Home
-Enter choice: Block Name: Boys Block A
+Enter choice: ------------------------------------------------------------
+ HOSTEL SUMMARY
+------------------------------------------------------------
+Block Name: Boys Block A
 Total Rooms: 3
 Total Occupants: 2
 
-------------------------------------------------------------
+Press Enter to continue...------------------------------------------------------------
  HOSTEL MODULE
 ------------------------------------------------------------
 1. Show hostel service name
@@ -135,11 +154,9 @@ Total Occupants: 2
 3. Try duplicate allocation
 4. Show hostel summary
 5. Show occupancy report
-6. Vacate Ahmad Ali room
+6. Vacate first student room
 0. Back to Home
-Enter choice: Returning to Home...
-
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  SMART CAMPUS MANAGEMENT SYSTEM
 ------------------------------------------------------------
 Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
@@ -152,7 +169,6 @@ Course: CS-104L Object-Oriented Programming
 5. Hostel Module
 6. Reports Module
 0. Exit
-Enter choice: 
-------------------------------------------------------------
+Enter choice: ------------------------------------------------------------
  PROGRAM CLOSED
 ------------------------------------------------------------
