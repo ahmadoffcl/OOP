@@ -141,6 +141,7 @@ def make_class_diagram():
         "Journal": ((520, 1220, 880, 1425), ["- issn", "- volume", "- issueNumber", "+ checkout()", "+ checkin()"]),
         "Library": ((980, 950, 1360, 1185), ["- LibraryItem* items[]", "- IssuedRecord issued[]", "+ add/delete item", "+ search by title/id", "+ issue/return item", "+ save/load records"]),
         "FeeRecord": ((1420, 950, 1740, 1190), ["- Student* studentRef", "- semesterFee", "- hostelFee", "- balance", "- double* payments", "+ operator-=()", "+ displayPayments()"]),
+        "FinanceManager": ((980, 1240, 1360, 1460), ["- FeeRecord records[]", "- recordCount", "- fileName", "+ add/search record", "+ record payment", "+ save/load records"]),
         "Invoice": ((1420, 1240, 1740, 1445), ["- static counter", "- string* items", "+ getInvoiceCounter()", "+ copy constructor", "+ destructor"]),
         "CampusService": ((80, 1580, 440, 1700), ["+ showServiceName()"]),
         "Accommodation": ((80, 1810, 440, 1960), ["+ allocateRoom()", "+ vacateRoom()"]),
@@ -175,6 +176,7 @@ def make_class_diagram():
     draw_arrow(draw, (980, 540), (840, 470))
     draw_arrow(draw, (980, 1050), (440, 1040))
     draw_arrow(draw, (1420, 1040), (420, 500))
+    draw_arrow(draw, (1360, 1335), (1420, 1075))
     draw_arrow(draw, (1190, 1880), (1190, 1780))
     draw_arrow(draw, (1420, 1870), (1360, 1960))
     draw_arrow(draw, (980, 1675), (420, 500))
@@ -284,7 +286,7 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
         "PersonManager: saved person records with add, view, delete, save, and reload options.",
         "Course module: Course, Enrollment, and CourseManager classes with saved course/enrollment records and capacity checking.",
         "Library module: Book and Journal catalog with add/search/delete, issue/return, overdue fine, file handling, and arrays.",
-        "Finance module: FeeRecord and Invoice classes with copy handling and static invoice counter.",
+        "Finance module: FeeRecord, Invoice, and FinanceManager classes with saved fee records, payments, fines, invoices, copy handling, and static invoice counter.",
         "Hostel module: Room, HostelBlock, and HostelManager using composition and multiple inheritance.",
         "Reports module: student sorting, searching, campus text report, and PDF-style text report generation.",
     ])
@@ -339,7 +341,7 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
         "Module 1 - Person Hierarchy: Stores common personal information in Person and uses Student, GradStudent, Faculty, and Staff subclasses. PersonManager stores saved records, supports input, deletion, save, and reload.",
         "Module 2 - Course and Enrollment: Stores saved course data, enrolls saved students, tracks waiting-list records, saves/reloads text files, blocks over-capacity enrollment, and demonstrates overloaded operators.",
         "Module 3 - Library System: Stores books and journals, adds/deletes catalog items, searches by title or ID, saves/loads catalog and issued records, tracks issued items, and handles overdue fines.",
-        "Module 4 - Fee and Finance: Stores fee balance, records payments with operator-=, deep-copies fee data, and generates invoices with a static counter.",
+        "Module 4 - Fee and Finance: Stores saved fee records, records payments with operator-=, adds fines, deep-copies fee data, and generates invoices with a static counter.",
         "Module 5 - Hostel Management: Uses rooms, hostel blocks, multiple inheritance, virtual inheritance, and composition to allocate/vacate rooms.",
         "Module 6 - Reporting and Utilities: Sorts and searches student data, prints reports, writes a campus text report, writes a PDF-style text report, and keeps helper functions separate.",
     ])
@@ -364,7 +366,7 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
         "Module 1 add-course action was tested by adding CS-200 to 25-CS-067.",
         "Module 2 added a course, searched it, enrolled students, sent a full-course student to waiting list, showed roster, dropped a student, saved/reloaded records, compared courses, and merged waiting lists.",
         "Library module added book/journal records, searched by title and ID, issued and returned items, blocked duplicate issue, showed overdue fine, deleted an item, and saved/reloaded records.",
-        "Finance demo showed payment, copy constructor, copy assignment, invoice, and invoice copy.",
+        "Finance module added/search fee records, recorded payment, added fine, generated invoice, showed copy constructor/assignment, and saved/reloaded records.",
         "Hostel demo showed service name, allocation, duplicate check, summary, report, and vacate room.",
         "Reports demo sorted students by GPA and created data/campus_report.txt.",
         "Reports demo created data/campus_pdf_report.txt.",

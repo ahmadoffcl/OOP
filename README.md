@@ -25,7 +25,7 @@ This folder contains the completed simple command-line version of the SCMS proje
 - Course and enrollment management: `Course`, `Enrollment`, `CourseManager`
 - Basic exception handling with `CapacityExceededException`
 - Library module: `LibraryItem`, `Book`, `Journal`, `Library` with saved catalog and issued records
-- Finance module: `FeeRecord`, `Invoice`
+- Finance module: `FeeRecord`, `Invoice`, `FinanceManager`
 - Hostel module: `Accommodation`, `Reportable`, `Room`, `HostelBlock`, `HostelManager`
 - Reports module: `Reports` and `Utils`
 - Simple arrays, constructors, getters/setters, inheritance, polymorphism, file handling, and operator overloading
@@ -43,7 +43,7 @@ You should still personalize and review the project before submission:
 1. Person Hierarchy: `Person`, `Student`, `GradStudent`, `Faculty`, `Staff`, and `PersonManager` for saved records.
 2. Course and Enrollment: `Course`, `Enrollment`, and `CourseManager` with saved courses, saved enrollments, capacity checks, roster/drop actions, and overloaded operators.
 3. Library System: `LibraryItem`, `Book`, `Journal`, and `Library` with add/search/delete, issue/return, overdue fine, and file loading/saving.
-4. Fee and Finance: `FeeRecord` and `Invoice` with deep copy, static counter, and payment operator.
+4. Fee and Finance: `FeeRecord`, `Invoice`, and `FinanceManager` with saved fee records, payments, fines, invoices, deep copy, static counter, and payment operator.
 5. Hostel Management: `Room`, `HostelBlock`, and `HostelManager` with multiple inheritance and composition.
 6. Reports and Utilities: `Reports` and `Utils` for sorting, searching, formatting, text reports, and PDF-style text reports.
 
@@ -89,8 +89,8 @@ g++ -std=c++17 -Wall -Wextra src/main.cpp src/person/*.cpp src/course/*.cpp src/
 11. Friend function: `operator<<` for `Course`
 12. Custom exception: `CapacityExceededException`
 13. Aggregation: `Course` stores a `Faculty*`
-14. Array-based collections: course arrays, enrollment arrays, `PersonManager` people array, library arrays, hostel room arrays
-15. File I/O: `PersonManager`, `CourseManager`, `Library::saveCatalog`, `Library::loadCatalog`, `Library::saveIssuedRecords`, `Library::loadIssuedRecords`, campus text report
+14. Array-based collections: course arrays, enrollment arrays, finance arrays, `PersonManager` people array, library arrays, hostel room arrays
+15. File I/O: `PersonManager`, `CourseManager`, `FinanceManager`, `Library::saveCatalog`, `Library::loadCatalog`, `Library::saveIssuedRecords`, `Library::loadIssuedRecords`, campus text report
 16. Static members: `Invoice::invoiceCounter`
 17. Copy assignment: `FeeRecord` and `Invoice`
 18. Multiple inheritance: `HostelManager`

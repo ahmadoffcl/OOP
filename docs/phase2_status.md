@@ -43,6 +43,8 @@ Features:
 
 - Fee balance calculation
 - Payment using `operator-=`
+- Saved fee records with `FinanceManager`
+- Add/search/payment/fine/invoice/save/reload finance menu actions
 - Copy constructor in `FeeRecord`
 - Copy assignment in `FeeRecord`
 - Static `Invoice::invoiceCounter`
@@ -56,6 +58,6 @@ Features:
 Phase 2 menu options tested:
 
 - Option 3: Library real management module
-- Option 4: Finance module
+- Option 4: Finance real management module
 
 Both run successfully after compiling with `build.bat`.

@@ -48,7 +48,7 @@ Detailed status files:
 
 ## Phase 2 Summary
 
-Phase 2 covers library and finance. The Library class stores `LibraryItem*` pointers, loads catalog data from `data/library_catalog.txt`, adds/deletes books and journals, searches items, issues items to saved student roll numbers, stores issue history in `data/library_issued.txt`, handles overdue fines, and saves/reloads records. Finance uses `FeeRecord`, `Invoice`, deep copy, copy constructor, copy assignment, static invoice counter, and destructor.
+Phase 2 covers library and finance. The Library class stores `LibraryItem*` pointers, loads catalog data from `data/library_catalog.txt`, adds/deletes books and journals, searches items, issues items to saved student roll numbers, stores issue history in `data/library_issued.txt`, handles overdue fines, and saves/reloads records. Finance uses `FeeRecord`, `Invoice`, and `FinanceManager` to save fee records in `data/fee_records.txt`, record payments with `-=`, add fines, generate invoices, show copy behavior, and demonstrate static invoice counter/destructor behavior.
 
 ## Phase 3 Summary
 

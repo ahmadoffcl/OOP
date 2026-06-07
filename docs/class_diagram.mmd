@@ -107,6 +107,16 @@ classDiagram
         +displayPayments()
     }
 
+    class FinanceManager {
+        -FeeRecord records[]
+        -int recordCount
+        -string fileName
+        +addRecord()
+        +recordPayment()
+        +saveToFile()
+        +loadFromFile()
+    }
+
     class Invoice {
         -static int invoiceCounter
         -int invoiceID
@@ -177,6 +187,7 @@ classDiagram
     LibraryItem <|-- Journal
     Library o-- LibraryItem
     FeeRecord o-- Student
+    FinanceManager o-- FeeRecord
     CampusService <|-- Accommodation
     CampusService <|-- Reportable
     Accommodation <|-- HostelManager

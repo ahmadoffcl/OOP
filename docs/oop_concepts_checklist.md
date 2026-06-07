@@ -20,10 +20,10 @@ This file maps the assignment checklist to files in this project. Read the code 
 | 14 | Copy constructor | `Person`, `Course`, `FeeRecord`, `Invoice` |
 | 15 | Copy assignment | `Course::operator=`, `FeeRecord::operator=`, `Invoice::operator=` |
 | 16 | Search functions | `Library::searchByTitle()`, `Library::searchByID()`, and `Reports::findStudentByRollNo()` |
-| 17 | Array-based collections | Person array, course array, enrollment array, library item array, room array, course enrolled student array, course waiting list array |
+| 17 | Array-based collections | Person array, course array, enrollment array, finance record array, library item array, room array, course enrolled student array, course waiting list array |
 | 18 | Arrays of objects | `Room rooms[MAX_BLOCK_ROOMS]` in `HostelBlock` |
 | 19 | Exception handling | `try/catch` in `main.cpp`, custom exceptions in `Exceptions.h` |
-| 20 | File I/O | `PersonManager`, `CourseManager`, `Library::saveCatalog()`, `Library::loadCatalog()`, `Library::saveIssuedRecords()`, `Library::loadIssuedRecords()`, report file output |
+| 20 | File I/O | `PersonManager`, `CourseManager`, `FinanceManager`, `Library::saveCatalog()`, `Library::loadCatalog()`, `Library::saveIssuedRecords()`, `Library::loadIssuedRecords()`, report file output |
 | 21 | Reports and utilities | `Reports.h/.cpp`, `Utils.h/.cpp` |
 | 22 | Memory management | `new Book`, `new Journal`, `delete` in `Library`, `new[]/delete[]` in `FeeRecord` and `Invoice` |
 | 23 | Sorting and searching | `Reports::sortStudentsByGPA()` uses `std::sort`, `Reports::findStudentByRollNo()` uses `std::find_if`, and `Library::searchByTitle()` uses loop search |

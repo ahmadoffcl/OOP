@@ -30,7 +30,7 @@ Date: 2026-06-07
 - Wrong text input does not freeze the program
 - Module 2 real course/enrollment flow works: add course, search, enroll, waiting list, roster, drop, save, reload, compare, and merge waiting lists
 - Library add/search/issue/duplicate block/return/overdue/delete/save/reload flow works
-- Finance payment, deep copy, invoice copy, destructor-backed dynamic array design, and static counter are demonstrated
+- Finance add/search/payment/fine/history/invoice/save/reload flow works, with deep copy, destructor-backed dynamic array design, and static counter demonstrated
 - Hostel allocation, duplicate allocation check, report, and vacate flow work
 - Reports sorting, searching, top student, text report generation, and PDF-style text report generation work
 

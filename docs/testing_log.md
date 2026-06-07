@@ -48,7 +48,7 @@ Result:
 - Module 1 course assignment test added `CS-200` to `25-CS-067` for the session and displayed it.
 - Module 2 course manager added `CS-220`, searched it, enrolled two students, sent a third student to waiting list using `CapacityExceededException`, showed roster, compared courses, merged waiting lists, displayed enrollment records, dropped a waiting student, saved records, reloaded records, and verified `CS-220` remained after reload.
 - Module 3 library manager added a book and journal, searched by title and ID, issued a book to `25-CS-067`, blocked duplicate issue, returned once on time, returned once with overdue fine, displayed issued records, deleted a returned item, saved records, reloaded records, and verified deleted item was gone.
-- Finance module showed fee payment, payment history, fee copy, fee assignment, invoice copy, invoice assignment, and static counter.
+- Module 4 finance manager added a fee record, searched it, recorded payment using `-=`, added library fine, showed payment history, generated invoice with static counter, showed FeeRecord copy constructor/assignment, saved records, reloaded records, and verified the saved fee record remained.
 - Hostel module printed service name, allocated students, blocked duplicate allocation, showed summary, printed occupancy report, and vacated one student.
 - Reports module sorted students by GPA, searched by roll number, showed top GPA student, wrote `data/campus_report.txt`, and wrote `data/campus_pdf_report.txt`.
 - Every module used `0. Back to Home`.

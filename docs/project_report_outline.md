@@ -43,7 +43,7 @@ Run each menu option and paste screenshots:
 - Course module
 - Enrollment demo
 - Library module
-- Finance demo
+- Finance module
 - Hostel demo
 - Reports demo
 

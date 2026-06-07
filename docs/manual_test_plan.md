@@ -57,9 +57,16 @@ Then test menu choices:
 | 3 then 9 | Deletes a library item by item ID |
 | 3 then 10 | Saves catalog and issued records |
 | 3 then 11 | Reloads catalog and issued records |
-| 4 then 1 | Shows fee record, payment using `-=`, and payment history |
-| 4 then 2 | Shows fee copy constructor and assignment with copied payment history |
-| 4 then 3 | Shows invoice, copied invoice, assigned invoice, and static counter |
+| 4 then 1 | Shows all saved fee records |
+| 4 then 2 | Adds a fee record for a saved student |
+| 4 then 3 | Searches a fee record by roll number |
+| 4 then 4 | Records payment using overloaded `-=` |
+| 4 then 5 | Adds library fine to a fee record |
+| 4 then 6 | Shows payment history |
+| 4 then 7 | Generates invoice and shows static counter |
+| 4 then 8 | Shows FeeRecord copy constructor and assignment |
+| 4 then 9 | Saves finance records |
+| 4 then 10 | Reloads finance records |
 | 5 then 1 | Shows hostel service name |
 | 5 then 2 | Allocates students to hostel rooms |
 | 5 then 3 | Tries duplicate allocation and blocks it |
