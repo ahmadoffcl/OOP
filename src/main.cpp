@@ -1382,36 +1382,40 @@ void hostelMenu(HostelManager& hostelManager, PersonManager& personManager) {
     } while (choice != 0);
 }
 
-void reportsMenu(PersonManager& personManager, Library& library) {
-    Student* students[MAX_PEOPLE];
-    int studentCount = personManager.getStudents(students, MAX_PEOPLE);
-
-    if (studentCount == 0) {
-        printTitle("REPORTS MODULE");
-        cout << "Add at least 1 student in Person Module first." << endl;
-        pauseScreen();
-        return;
-    }
-
+void reportsMenu(PersonManager& personManager, CourseManager& courseManager,
+                 Library& library, FinanceManager& financeManager,
+                 HostelManager& hostelManager) {
     int choice;
 
     do {
         showPageTitle("REPORTS MODULE");
-        cout << "1. Sort and show students by GPA" << endl;
-        cout << "2. Find student by roll number" << endl;
-        cout << "3. Show top GPA student" << endl;
-        cout << "4. Generate campus text report" << endl;
-        cout << "5. Generate PDF-style text report" << endl;
+        cout << "1. Show complete campus summary" << endl;
+        cout << "2. Sort and show students by GPA" << endl;
+        cout << "3. Find student by roll number" << endl;
+        cout << "4. Show top GPA student" << endl;
+        cout << "5. Show overdue library records" << endl;
+        cout << "6. Generate consolidated text report" << endl;
+        cout << "7. Generate consolidated PDF-style report" << endl;
+        cout << "8. Show utility/date helper info" << endl;
         printBackOption();
         choice = readChoice();
 
         if (choice == 1) {
+            printTitle("COMPLETE CAMPUS SUMMARY");
+            loadLibraryIfNeeded(library);
+            Reports::showCampusSummary(personManager, courseManager, library, financeManager, hostelManager);
+            pauseScreen();
+        } else if (choice == 2) {
             printTitle("STUDENTS SORTED BY GPA");
+            Student* students[MAX_PEOPLE];
+            int studentCount = personManager.getStudents(students, MAX_PEOPLE);
             Reports::sortStudentsByGPA(students, studentCount);
             Reports::showStudents(students, studentCount);
             pauseScreen();
-        } else if (choice == 2) {
+        } else if (choice == 3) {
             printTitle("FIND STUDENT");
+            Student* students[MAX_PEOPLE];
+            int studentCount = personManager.getStudents(students, MAX_PEOPLE);
             string rollNo = readText("Enter roll no (press Enter for 25-CS-067): ", "25-CS-067");
             Student* found = Reports::findStudentByRollNo(students, studentCount, rollNo);
 
@@ -1423,19 +1427,32 @@ void reportsMenu(PersonManager& personManager, Library& library) {
                 cout << "Student not found." << endl;
             }
             pauseScreen();
-        } else if (choice == 3) {
+        } else if (choice == 4) {
             printTitle("TOP GPA STUDENT");
+            Student* students[MAX_PEOPLE];
+            int studentCount = personManager.getStudents(students, MAX_PEOPLE);
             Reports::showTopStudent(students, studentCount);
             pauseScreen();
-        } else if (choice == 4) {
-            printTitle("GENERATE CAMPUS TEXT REPORT");
-            loadLibraryIfNeeded(library);
-            Reports::generateCampusTextReport(students, studentCount, library, "data/campus_report.txt");
-            pauseScreen();
         } else if (choice == 5) {
-            printTitle("GENERATE PDF-STYLE TEXT REPORT");
+            printTitle("OVERDUE LIBRARY RECORDS");
             loadLibraryIfNeeded(library);
-            Reports::generatePdfStyleTextReport(students, studentCount, library, "data/campus_pdf_report.txt");
+            library.displayOverdueRecords();
+            pauseScreen();
+        } else if (choice == 6) {
+            printTitle("GENERATE CONSOLIDATED TEXT REPORT");
+            loadLibraryIfNeeded(library);
+            Reports::generateCampusTextReport(personManager, courseManager, library, financeManager,
+                                              hostelManager, "data/campus_report.txt");
+            pauseScreen();
+        } else if (choice == 7) {
+            printTitle("GENERATE CONSOLIDATED PDF-STYLE REPORT");
+            loadLibraryIfNeeded(library);
+            Reports::generatePdfStyleTextReport(personManager, courseManager, library, financeManager,
+                                                hostelManager, "data/campus_pdf_report.txt");
+            pauseScreen();
+        } else if (choice == 8) {
+            printTitle("UTILITY AND DATE HELPERS");
+            Reports::showUtilityInfo();
             pauseScreen();
         } else if (choice != 0) {
             printTitle("WRONG CHOICE");
@@ -1490,7 +1507,7 @@ int main() {
         } else if (choice == 5) {
             hostelMenu(hostelManager, personManager);
         } else if (choice == 6) {
-            reportsMenu(personManager, library);
+            reportsMenu(personManager, courseManager, library, financeManager, hostelManager);
         } else if (choice == 0) {
             printTitle("PROGRAM CLOSED");
         } else {

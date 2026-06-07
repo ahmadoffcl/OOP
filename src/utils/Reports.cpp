@@ -6,7 +6,7 @@
  * @inst    HITEC University Taxila
  * @date    2026-06-05
  *
- * OOP Concepts: std::sort, std::find_if, Loops, File I/O
+ * OOP Concepts: std::sort, std::find_if, Dynamic Arrays, File I/O
  */
 
 #include "Reports.h"
@@ -25,9 +25,15 @@ void Reports::sortStudentsByGPA(Student* students[], int count) {
 void Reports::showStudents(Student* students[], int count) {
     cout << "\n--- Students Sorted by GPA ---" << endl;
 
+    if (count == 0) {
+        cout << "No student data available." << endl;
+    }
+
     for (int i = 0; i < count; i++) {
-        cout << students[i]->getRollNo() << " - " << students[i]->getName()
-             << " - GPA: " << students[i]->getGPA() << endl;
+        cout << i + 1 << ". " << students[i]->getRollNo()
+             << " | " << students[i]->getName()
+             << " | Semester: " << students[i]->getSemester()
+             << " | GPA: " << students[i]->getGPA() << endl;
     }
 }
 
@@ -62,13 +68,61 @@ void Reports::showTopStudent(Student* students[], int count) {
          << " - GPA: " << topStudent->getGPA() << endl;
 }
 
-void Reports::generateCampusTextReport(Student* students[], int studentCount, Library& library, string fileName) {
+void Reports::showCampusSummary(PersonManager& personManager, CourseManager& courseManager,
+                                Library& library, FinanceManager& financeManager,
+                                HostelManager& hostelManager) {
+    Student* students[MAX_PEOPLE];
+    int studentCount = personManager.getStudents(students, MAX_PEOPLE);
+
+    cout << "Date: " << Utils::getTodayDate() << endl;
+    Utils::printSmallLine();
+    cout << "Total People: " << personManager.getPersonCount() << endl;
+    cout << "Total Students: " << studentCount << endl;
+    cout << "Saved Courses: " << courseManager.getCourseCount() << endl;
+    cout << "Enrollment Records: " << courseManager.getEnrollmentCount() << endl;
+    cout << "Library Items: " << library.getItemCount() << endl;
+    cout << "Issued Records: " << library.getIssuedCount() << endl;
+    cout << "Currently Issued Items: " << library.getActiveIssuedCount() << endl;
+    cout << "Overdue Library Records: " << library.getOverdueRecordCount() << endl;
+    cout << "Fee Records: " << financeManager.getRecordCount() << endl;
+    cout << "Total Fee Paid: " << financeManager.getTotalPaid() << endl;
+    cout << "Total Fee Balance: " << financeManager.getTotalBalance() << endl;
+    cout << "Hostel Rooms: " << hostelManager.getRoomCount() << endl;
+    cout << "Hostel Occupants: " << hostelManager.getTotalOccupants() << endl;
+}
+
+void Reports::showUtilityInfo() {
+    cout << "Today Date: " << Utils::getTodayDate() << endl;
+    Utils::printSmallLine();
+    cout << "Utils::printLine() prints a long separator." << endl;
+    cout << "Utils::printSmallLine() prints a short separator." << endl;
+    cout << "Utils::checkPositiveInt(-5) returns "
+         << Utils::checkPositiveInt(-5) << endl;
+    cout << "Utils::checkPositiveInt(10) returns "
+         << Utils::checkPositiveInt(10) << endl;
+}
+
+void Reports::generateCampusTextReport(PersonManager& personManager, CourseManager& courseManager,
+                                       Library& library, FinanceManager& financeManager,
+                                       HostelManager& hostelManager, string fileName) {
     ofstream file(fileName);
 
     if (!file) {
         cout << "Report file could not be created." << endl;
         return;
     }
+
+    Student* students[MAX_PEOPLE];
+    int studentCount = personManager.getStudents(students, MAX_PEOPLE);
+    Student** sortedStudents = new Student*[studentCount];
+
+    for (int i = 0; i < studentCount; i++) {
+        sortedStudents[i] = students[i];
+    }
+
+    sort(sortedStudents, sortedStudents + studentCount, [](Student* a, Student* b) {
+        return a->getGPA() > b->getGPA();
+    });
 
     file << "============================================================" << endl;
     file << "        SMART CAMPUS MANAGEMENT SYSTEM REPORT" << endl;
@@ -78,43 +132,93 @@ void Reports::generateCampusTextReport(Student* students[], int studentCount, Li
     file << "Course: CS-104L Object-Oriented Programming" << endl;
     file << "Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad" << endl;
     file << "------------------------------------------------------------" << endl;
-    file << "Total Students: " << studentCount << endl;
-    file << "Library Items: " << library.getItemCount() << endl;
+    file << "Campus Summary" << endl;
     file << "------------------------------------------------------------" << endl;
-    file << "Student List" << endl;
+    file << "Total People: " << personManager.getPersonCount() << endl;
+    file << "Total Students: " << studentCount << endl;
+    file << "Saved Courses: " << courseManager.getCourseCount() << endl;
+    file << "Enrollment Records: " << courseManager.getEnrollmentCount() << endl;
+    file << "Library Items: " << library.getItemCount() << endl;
+    file << "Issued Records: " << library.getIssuedCount() << endl;
+    file << "Currently Issued Items: " << library.getActiveIssuedCount() << endl;
+    file << "Overdue Library Records: " << library.getOverdueRecordCount() << endl;
+    file << "Fee Records: " << financeManager.getRecordCount() << endl;
+    file << "Total Fee Paid: " << financeManager.getTotalPaid() << endl;
+    file << "Total Fee Balance: " << financeManager.getTotalBalance() << endl;
+    file << "Total Library Fine: " << financeManager.getTotalLibraryFine() << endl;
+    file << "Hostel Rooms: " << hostelManager.getRoomCount() << endl;
+    file << "Hostel Occupants: " << hostelManager.getTotalOccupants() << endl;
+
+    file << "------------------------------------------------------------" << endl;
+    file << "Students Sorted by GPA" << endl;
     file << "------------------------------------------------------------" << endl;
 
     for (int i = 0; i < studentCount; i++) {
-        file << students[i]->getRollNo() << " - " << students[i]->getName()
-             << " - GPA: " << students[i]->getGPA() << endl;
+        file << i + 1 << ". " << sortedStudents[i]->getRollNo()
+             << " | " << sortedStudents[i]->getName()
+             << " | Semester: " << sortedStudents[i]->getSemester()
+             << " | GPA: " << sortedStudents[i]->getGPA() << endl;
     }
 
     file << "------------------------------------------------------------" << endl;
-    file << "Top Student" << endl;
+    file << "Courses" << endl;
     file << "------------------------------------------------------------" << endl;
 
-    if (studentCount > 0) {
-        Student* topStudent = students[0];
+    if (courseManager.getCourseCount() == 0) {
+        file << "No courses saved." << endl;
+    }
 
-        for (int i = 1; i < studentCount; i++) {
-            if (students[i]->getGPA() > topStudent->getGPA()) {
-                topStudent = students[i];
-            }
+    for (int i = 0; i < courseManager.getCourseCount(); i++) {
+        Course* course = courseManager.getCourse(i);
+
+        if (course != NULL) {
+            file << course->getCourseCode() << " | " << course->getCourseName()
+                 << " | Enrolled: " << course->getEnrolledCount()
+                 << "/" << course->getMaxCapacity()
+                 << " | Waiting: " << course->getWaitingCount() << endl;
+        }
+    }
+
+    file << "------------------------------------------------------------" << endl;
+    file << "Finance Records" << endl;
+    file << "------------------------------------------------------------" << endl;
+
+    if (financeManager.getRecordCount() == 0) {
+        file << "No fee records saved." << endl;
+    }
+
+    for (int i = 0; i < financeManager.getRecordCount(); i++) {
+        FeeRecord* record = financeManager.getRecord(i);
+        Student* student = NULL;
+
+        if (record != NULL) {
+            student = record->getStudent();
         }
 
-        file << topStudent->getRollNo() << " - " << topStudent->getName()
-             << " - GPA: " << topStudent->getGPA() << endl;
+        if (record != NULL && student != NULL) {
+            file << student->getRollNo() << " | " << student->getName()
+                 << " | Paid: " << record->getTotalPaid()
+                 << " | Balance: " << record->getBalance() << endl;
+        }
     }
 
+    file << "------------------------------------------------------------" << endl;
+    file << "Library and Hostel Summary" << endl;
+    file << "------------------------------------------------------------" << endl;
+    file << "Use Module 3 for full book/journal catalog and issued records." << endl;
+    file << "Use Module 5 for room-wise hostel occupancy report." << endl;
     file << "============================================================" << endl;
     file << "End of report" << endl;
     file << "============================================================" << endl;
 
+    delete[] sortedStudents;
     file.close();
-    cout << "Text report saved to " << fileName << endl;
+    cout << "Consolidated text report saved to " << fileName << endl;
 }
 
-void Reports::generatePdfStyleTextReport(Student* students[], int studentCount, Library& library, string fileName) {
+void Reports::generatePdfStyleTextReport(PersonManager& personManager, CourseManager& courseManager,
+                                         Library& library, FinanceManager& financeManager,
+                                         HostelManager& hostelManager, string fileName) {
     ofstream file(fileName);
 
     if (!file) {
@@ -122,6 +226,8 @@ void Reports::generatePdfStyleTextReport(Student* students[], int studentCount, 
         return;
     }
 
+    Student* students[MAX_PEOPLE];
+    int studentCount = personManager.getStudents(students, MAX_PEOPLE);
     Student** sortedStudents = new Student*[studentCount];
 
     for (int i = 0; i < studentCount; i++) {
@@ -150,13 +256,24 @@ void Reports::generatePdfStyleTextReport(Student* students[], int studentCount, 
     file << "Date   : " << Utils::getTodayDate() << endl;
     file << "Group  : Ahmad Ali, Umer Altaf, Muhammed Ahmad" << endl;
     file << "------------------------------------------------------------" << endl;
-    file << "Summary" << endl;
+    file << "Complete System Summary" << endl;
     file << "------------------------------------------------------------" << endl;
-    file << "Total Students : " << studentCount << endl;
-    file << "Library Items  : " << library.getItemCount() << endl;
+    file << "People Records      : " << personManager.getPersonCount() << endl;
+    file << "Student Records     : " << studentCount << endl;
+    file << "Course Records      : " << courseManager.getCourseCount() << endl;
+    file << "Enrollment Records  : " << courseManager.getEnrollmentCount() << endl;
+    file << "Library Items       : " << library.getItemCount() << endl;
+    file << "Issued Records      : " << library.getIssuedCount() << endl;
+    file << "Active Issued Items : " << library.getActiveIssuedCount() << endl;
+    file << "Overdue Records     : " << library.getOverdueRecordCount() << endl;
+    file << "Fee Records         : " << financeManager.getRecordCount() << endl;
+    file << "Total Paid          : " << financeManager.getTotalPaid() << endl;
+    file << "Total Balance       : " << financeManager.getTotalBalance() << endl;
+    file << "Hostel Rooms        : " << hostelManager.getRoomCount() << endl;
+    file << "Hostel Occupants    : " << hostelManager.getTotalOccupants() << endl;
 
     if (topStudent != NULL) {
-        file << "Top GPA Student: " << topStudent->getName()
+        file << "Top GPA Student     : " << topStudent->getName()
              << " (" << topStudent->getRollNo() << ")" << endl;
     }
 
@@ -171,16 +288,21 @@ void Reports::generatePdfStyleTextReport(Student* students[], int studentCount, 
     }
 
     file << "------------------------------------------------------------" << endl;
-    file << "Library Summary" << endl;
+    file << "Module Coverage" << endl;
     file << "------------------------------------------------------------" << endl;
-    file << "Library catalog item count: " << library.getItemCount() << endl;
-    file << "See the program Library module for full book and journal records." << endl;
+    file << "1. Person records: saved people, students, faculty, staff." << endl;
+    file << "2. Courses: saved courses, enrollments, waiting lists." << endl;
+    file << "3. Library: catalog, issued records, overdue tracking." << endl;
+    file << "4. Finance: fee records, payments, fines, invoices." << endl;
+    file << "5. Hostel: saved rooms and allocations." << endl;
+    file << "6. Reports: sorting, searching, file output, utilities." << endl;
     file << "------------------------------------------------------------" << endl;
     file << "OOP Concepts Highlight" << endl;
     file << "------------------------------------------------------------" << endl;
     file << "Classes, inheritance, polymorphism, arrays, file handling," << endl;
     file << "exception handling, operator overloading, copy constructor," << endl;
-    file << "copy assignment, static members, and memory management." << endl;
+    file << "copy assignment, static members, dynamic arrays, sorting," << endl;
+    file << "std::find_if searching, and memory management." << endl;
     file << "============================================================" << endl;
     file << "End of PDF-style report" << endl;
     file << "============================================================" << endl;
@@ -188,5 +310,5 @@ void Reports::generatePdfStyleTextReport(Student* students[], int studentCount, 
     delete[] sortedStudents;
     file.close();
 
-    cout << "PDF-style text report saved to " << fileName << endl;
+    cout << "Consolidated PDF-style text report saved to " << fileName << endl;
 }
