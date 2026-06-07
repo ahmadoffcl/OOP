@@ -23,13 +23,19 @@ private:
     Course* course;
     string enrollmentDate;
     string grade;
+    string status;
 
 public:
     Enrollment();
     Enrollment(Student* st, Course* c, string date);
 
     void setGrade(string g);
+    void setStatus(string s);
+    void setStudent(Student* st);
+    void setCourse(Course* c);
+    void setEnrollmentDate(string date);
     string getGrade() const;
+    string getStatus() const;
     Student* getStudent() const;
     Course* getCourse() const;
     string getEnrollmentDate() const;

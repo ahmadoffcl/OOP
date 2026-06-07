@@ -14,103 +14,440 @@ Course: CS-104L Object-Oriented Programming
 Enter choice: ------------------------------------------------------------
  COURSE AND ENROLLMENT MODULE
 ------------------------------------------------------------
-1. Show course details
-2. Run enrollment demo
-3. Show enrolled and waiting students
-4. Compare courses using ==
-5. Merge waiting lists using +
+1. Show all courses
+2. Add course
+3. Search course by code
+4. Enroll student in course
+5. Show course roster
+6. Drop student from course
+7. Compare two courses using ==
+8. Merge waiting lists using +
+9. Show enrollment records
+10. Save course/enrollment records
+11. Reload course/enrollment records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
- COURSE DETAILS
+ ADD COURSE
+------------------------------------------------------------
+Saved Faculty:
+1. F-101 | Sir Usman | Computer Science
+------------------------------
+Course Code: Course Name: Credit Hours: Max Capacity: Instructor Employee ID: Course added. Use option 10 to save records.
+
+Press Enter to continue...------------------------------------------------------------
+ COURSE AND ENROLLMENT MODULE
+------------------------------------------------------------
+1. Show all courses
+2. Add course
+3. Search course by code
+4. Enroll student in course
+5. Show course roster
+6. Drop student from course
+7. Compare two courses using ==
+8. Merge waiting lists using +
+9. Show enrollment records
+10. Save course/enrollment records
+11. Reload course/enrollment records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ SAVED COURSES
 ------------------------------------------------------------
 
 Course Code: CS-104L
 Course Name: Object Oriented Programming Lab
 Credit Hours: 1
 Instructor: Sir Usman
-Capacity: 0/1
+Capacity: 1/1
+Waiting Students: 1
+
+Course Code: CS-220
+Course Name: Data Structures
+Credit Hours: 3
+Instructor: Sir Usman
+Capacity: 0/2
 Waiting Students: 0
 
 Press Enter to continue...------------------------------------------------------------
  COURSE AND ENROLLMENT MODULE
 ------------------------------------------------------------
-1. Show course details
-2. Run enrollment demo
-3. Show enrolled and waiting students
-4. Compare courses using ==
-5. Merge waiting lists using +
+1. Show all courses
+2. Add course
+3. Search course by code
+4. Enroll student in course
+5. Show course roster
+6. Drop student from course
+7. Compare two courses using ==
+8. Merge waiting lists using +
+9. Show enrollment records
+10. Save course/enrollment records
+11. Reload course/enrollment records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
- ENROLLMENT DEMO
+ SEARCH COURSE
 ------------------------------------------------------------
-Ahmad Ali enrolled successfully.
-Error: Course capacity is full. Student cannot be enrolled.
-Second student was sent to waiting list.
+Course Code:
+Course Code: CS-220
+Course Name: Data Structures
+Credit Hours: 3
+Instructor: Sir Usman
+Capacity: 0/2
+Waiting Students: 0
+
+Press Enter to continue...------------------------------------------------------------
+ COURSE AND ENROLLMENT MODULE
+------------------------------------------------------------
+1. Show all courses
+2. Add course
+3. Search course by code
+4. Enroll student in course
+5. Show course roster
+6. Drop student from course
+7. Compare two courses using ==
+8. Merge waiting lists using +
+9. Show enrollment records
+10. Save course/enrollment records
+11. Reload course/enrollment records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ ENROLL STUDENT
+------------------------------------------------------------
+Saved Students:
+1. 25-CS-067 | Ahmad Ali
+2. 25-CS-057 | Umer Altaf
+3. 25-CS-252 | Muhammed Ahmad
+4. 24 | Ahmed Ali
+------------------------------
+Saved Courses:
+
+Course Code: CS-104L
+Course Name: Object Oriented Programming Lab
+Credit Hours: 1
+Instructor: Sir Usman
+Capacity: 1/1
+Waiting Students: 1
+
+Course Code: CS-220
+Course Name: Data Structures
+Credit Hours: 3
+Instructor: Sir Usman
+Capacity: 0/2
+Waiting Students: 0
+------------------------------
+Student Roll No: Course Code: Ahmad Ali enrolled in CS-220.
+Use option 10 to save records.
+
+Press Enter to continue...------------------------------------------------------------
+ COURSE AND ENROLLMENT MODULE
+------------------------------------------------------------
+1. Show all courses
+2. Add course
+3. Search course by code
+4. Enroll student in course
+5. Show course roster
+6. Drop student from course
+7. Compare two courses using ==
+8. Merge waiting lists using +
+9. Show enrollment records
+10. Save course/enrollment records
+11. Reload course/enrollment records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ ENROLL STUDENT
+------------------------------------------------------------
+Saved Students:
+1. 25-CS-067 | Ahmad Ali
+2. 25-CS-057 | Umer Altaf
+3. 25-CS-252 | Muhammed Ahmad
+4. 24 | Ahmed Ali
+------------------------------
+Saved Courses:
+
+Course Code: CS-104L
+Course Name: Object Oriented Programming Lab
+Credit Hours: 1
+Instructor: Sir Usman
+Capacity: 1/1
+Waiting Students: 1
+
+Course Code: CS-220
+Course Name: Data Structures
+Credit Hours: 3
+Instructor: Sir Usman
+Capacity: 1/2
+Waiting Students: 0
+------------------------------
+Student Roll No: Course Code: Umer Altaf enrolled in CS-220.
+Use option 10 to save records.
+
+Press Enter to continue...------------------------------------------------------------
+ COURSE AND ENROLLMENT MODULE
+------------------------------------------------------------
+1. Show all courses
+2. Add course
+3. Search course by code
+4. Enroll student in course
+5. Show course roster
+6. Drop student from course
+7. Compare two courses using ==
+8. Merge waiting lists using +
+9. Show enrollment records
+10. Save course/enrollment records
+11. Reload course/enrollment records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ ENROLL STUDENT
+------------------------------------------------------------
+Saved Students:
+1. 25-CS-067 | Ahmad Ali
+2. 25-CS-057 | Umer Altaf
+3. 25-CS-252 | Muhammed Ahmad
+4. 24 | Ahmed Ali
+------------------------------
+Saved Courses:
+
+Course Code: CS-104L
+Course Name: Object Oriented Programming Lab
+Credit Hours: 1
+Instructor: Sir Usman
+Capacity: 1/1
+Waiting Students: 1
+
+Course Code: CS-220
+Course Name: Data Structures
+Credit Hours: 3
+Instructor: Sir Usman
+Capacity: 2/2
+Waiting Students: 0
+------------------------------
+Student Roll No: Course Code: Error: Course capacity is full. Student cannot be enrolled.
+Muhammed Ahmad was added to waiting list.
+Use option 10 to save records.
+
+Press Enter to continue...------------------------------------------------------------
+ COURSE AND ENROLLMENT MODULE
+------------------------------------------------------------
+1. Show all courses
+2. Add course
+3. Search course by code
+4. Enroll student in course
+5. Show course roster
+6. Drop student from course
+7. Compare two courses using ==
+8. Merge waiting lists using +
+9. Show enrollment records
+10. Save course/enrollment records
+11. Reload course/enrollment records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ COURSE ROSTER
+------------------------------------------------------------
+Course Code:
+Course Code: CS-220
+Course Name: Data Structures
+Credit Hours: 3
+Instructor: Sir Usman
+Capacity: 2/2
+Waiting Students: 1
+
+Enrolled Students:
+1. Ahmad Ali (25-CS-067)
+2. Umer Altaf (25-CS-057)
+
+Waiting List:
+1. Muhammed Ahmad (25-CS-252)
+
+Press Enter to continue...------------------------------------------------------------
+ COURSE AND ENROLLMENT MODULE
+------------------------------------------------------------
+1. Show all courses
+2. Add course
+3. Search course by code
+4. Enroll student in course
+5. Show course roster
+6. Drop student from course
+7. Compare two courses using ==
+8. Merge waiting lists using +
+9. Show enrollment records
+10. Save course/enrollment records
+11. Reload course/enrollment records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ COMPARE COURSES USING ==
+------------------------------------------------------------
+First Course Code: Second Course Code: Courses are not equal because course codes are different.
+
+Press Enter to continue...------------------------------------------------------------
+ COURSE AND ENROLLMENT MODULE
+------------------------------------------------------------
+1. Show all courses
+2. Add course
+3. Search course by code
+4. Enroll student in course
+5. Show course roster
+6. Drop student from course
+7. Compare two courses using ==
+8. Merge waiting lists using +
+9. Show enrollment records
+10. Save course/enrollment records
+11. Reload course/enrollment records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ MERGE WAITING LISTS USING +
+------------------------------------------------------------
+First Course Code: Second Course Code: Merged Waiting List:
+1. Umer Altaf (25-CS-057)
+2. Muhammed Ahmad (25-CS-252)
+
+Press Enter to continue...------------------------------------------------------------
+ COURSE AND ENROLLMENT MODULE
+------------------------------------------------------------
+1. Show all courses
+2. Add course
+3. Search course by code
+4. Enroll student in course
+5. Show course roster
+6. Drop student from course
+7. Compare two courses using ==
+8. Merge waiting lists using +
+9. Show enrollment records
+10. Save course/enrollment records
+11. Reload course/enrollment records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ ENROLLMENT RECORDS
+------------------------------------------------------------
 
 Enrollment Date: 05-06-2026
 Student: Ahmad Ali (25-CS-067)
 Course: CS-104L - Object Oriented Programming Lab
 Grade: B
+Status: Enrolled
+
+Enrollment Date: 05-06-2026
+Student: Umer Altaf (25-CS-057)
+Course: CS-104L - Object Oriented Programming Lab
+Grade: A
+Status: Waiting
+
+Enrollment Date: 05-06-2026
+Student: Ahmad Ali (25-CS-067)
+Course: CS-220 - Data Structures
+Grade: B
+Status: Enrolled
+
+Enrollment Date: 05-06-2026
+Student: Umer Altaf (25-CS-057)
+Course: CS-220 - Data Structures
+Grade: A
+Status: Enrolled
+
+Enrollment Date: 05-06-2026
+Student: Muhammed Ahmad (25-CS-252)
+Course: CS-220 - Data Structures
+Grade: B
+Status: Waiting
 
 Press Enter to continue...------------------------------------------------------------
  COURSE AND ENROLLMENT MODULE
 ------------------------------------------------------------
-1. Show course details
-2. Run enrollment demo
-3. Show enrolled and waiting students
-4. Compare courses using ==
-5. Merge waiting lists using +
+1. Show all courses
+2. Add course
+3. Search course by code
+4. Enroll student in course
+5. Show course roster
+6. Drop student from course
+7. Compare two courses using ==
+8. Merge waiting lists using +
+9. Show enrollment records
+10. Save course/enrollment records
+11. Reload course/enrollment records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
- COURSE ROSTER
+ DROP STUDENT FROM COURSE
 ------------------------------------------------------------
-
-Enrolled Students:
-1. Ahmad Ali (25-CS-067)
-
-Waiting List:
-1. Umer Altaf (25-CS-057)
+Course Code: Student Roll No: Student removed from course/waiting list.
+Use option 10 to save records.
 
 Press Enter to continue...------------------------------------------------------------
  COURSE AND ENROLLMENT MODULE
 ------------------------------------------------------------
-1. Show course details
-2. Run enrollment demo
-3. Show enrolled and waiting students
-4. Compare courses using ==
-5. Merge waiting lists using +
+1. Show all courses
+2. Add course
+3. Search course by code
+4. Enroll student in course
+5. Show course roster
+6. Drop student from course
+7. Compare two courses using ==
+8. Merge waiting lists using +
+9. Show enrollment records
+10. Save course/enrollment records
+11. Reload course/enrollment records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
- COURSE COMPARISON DEMO
+ SAVE COURSE AND ENROLLMENT RECORDS
 ------------------------------------------------------------
-CS-104L and sameCourse are equal by course code.
-CS-104L and CS-105 are not equal.
+Records saved to data/courses.txt and data/enrollments.txt
 
 Press Enter to continue...------------------------------------------------------------
  COURSE AND ENROLLMENT MODULE
 ------------------------------------------------------------
-1. Show course details
-2. Run enrollment demo
-3. Show enrolled and waiting students
-4. Compare courses using ==
-5. Merge waiting lists using +
+1. Show all courses
+2. Add course
+3. Search course by code
+4. Enroll student in course
+5. Show course roster
+6. Drop student from course
+7. Compare two courses using ==
+8. Merge waiting lists using +
+9. Show enrollment records
+10. Save course/enrollment records
+11. Reload course/enrollment records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
- WAITING LIST MERGE DEMO
+ RELOAD COURSE AND ENROLLMENT RECORDS
 ------------------------------------------------------------
-Merged waiting list:
-1. Ahmad Ali (25-CS-067)
-2. Umer Altaf (25-CS-057)
-3. Muhammed Ahmad (25-CS-252)
+Records reloaded from data/courses.txt and data/enrollments.txt
 
 Press Enter to continue...------------------------------------------------------------
  COURSE AND ENROLLMENT MODULE
 ------------------------------------------------------------
-1. Show course details
-2. Run enrollment demo
-3. Show enrolled and waiting students
-4. Compare courses using ==
-5. Merge waiting lists using +
+1. Show all courses
+2. Add course
+3. Search course by code
+4. Enroll student in course
+5. Show course roster
+6. Drop student from course
+7. Compare two courses using ==
+8. Merge waiting lists using +
+9. Show enrollment records
+10. Save course/enrollment records
+11. Reload course/enrollment records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ SEARCH COURSE
+------------------------------------------------------------
+Course Code:
+Course Code: CS-220
+Course Name: Data Structures
+Credit Hours: 3
+Instructor: Sir Usman
+Capacity: 2/2
+Waiting Students: 0
+
+Press Enter to continue...------------------------------------------------------------
+ COURSE AND ENROLLMENT MODULE
+------------------------------------------------------------
+1. Show all courses
+2. Add course
+3. Search course by code
+4. Enroll student in course
+5. Show course roster
+6. Drop student from course
+7. Compare two courses using ==
+8. Merge waiting lists using +
+9. Show enrollment records
+10. Save course/enrollment records
+11. Reload course/enrollment records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
  SMART CAMPUS MANAGEMENT SYSTEM

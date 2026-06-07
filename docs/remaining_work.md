@@ -15,7 +15,7 @@ These items are still left before final submission. The local C++ code, build se
 
 ## Good Improvements
 
-- Add more real input forms for adding books and courses.
+- Add more real input forms for adding books.
 - Add simple validation for GPA, fee amount, and semester.
 - Add more records in `data/library_catalog.txt`.
 - Add separate menu options for load, save, issue, and return library item.
@@ -28,7 +28,7 @@ These items are still left before final submission. The local C++ code, build se
 - Build script and run script.
 - Screen-based console interface with module submenus, Enter pauses, and back-to-home options.
 - Person module with saved record add/view/delete/save/reload actions.
-- Course and enrollment module.
+- Course and enrollment module with saved course/enrollment records.
 - Library module.
 - Finance module.
 - Hostel module.

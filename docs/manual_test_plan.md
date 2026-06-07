@@ -35,11 +35,17 @@ Then test menu choices:
 | 1 then 8 | Deletes a person by roll no, employee ID, or staff ID |
 | 1 then 9 | Saves records to `data/person_records.txt` |
 | 1 then 10 | Reloads records from `data/person_records.txt` |
-| 2 then 1 | Shows OOP course information |
-| 2 then 2 | Enrolls first student and sends second to waiting list because capacity is 1 |
-| 2 then 3 | Shows enrolled and waiting students |
-| 2 then 4 | Compares courses using `==` |
-| 2 then 5 | Merges waiting lists using `+` |
+| 2 then 1 | Shows all saved courses from `data/courses.txt` |
+| 2 then 2 | Adds a new course from keyboard input using a saved faculty employee ID |
+| 2 then 3 | Searches a saved course by course code |
+| 2 then 4 | Enrolls a saved student by roll number into a saved course |
+| 2 then 5 | Shows selected course roster with enrolled and waiting students |
+| 2 then 6 | Drops a student from enrolled or waiting list |
+| 2 then 7 | Compares two courses using `==` |
+| 2 then 8 | Merges two course waiting lists using `+` |
+| 2 then 9 | Shows saved enrollment records with status |
+| 2 then 10 | Saves courses and enrollments to text files |
+| 2 then 11 | Reloads courses and enrollments from text files |
 | 3 then 1 | Loads library catalog from `data/library_catalog.txt` |
 | 3 then 2 | Shows library catalog |
 | 3 then 3 | Searches C++ book by title |

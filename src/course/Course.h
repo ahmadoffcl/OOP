@@ -36,6 +36,7 @@ public:
     Course();
     Course(string code, string name, int hours, Faculty* fac, int capacity);
     Course(const Course& other);
+    Course& operator=(const Course& other);
 
     void setCourseCode(string code);
     void setCourseName(string name);
@@ -50,11 +51,14 @@ public:
     int getMaxCapacity() const;
     int getEnrolledCount() const;
     int getWaitingCount() const;
+    Student* getEnrolledStudent(int index) const;
+    Student* getWaitingStudent(int index) const;
 
     bool isStudentEnrolled(string rollNo) const;
     bool isStudentWaiting(string rollNo) const;
     void enrollStudent(Student* st);
     void addToWaitingList(Student* st);
+    bool removeStudent(string rollNo);
     void displayEnrolledStudents() const;
     void displayWaitingList() const;
 
