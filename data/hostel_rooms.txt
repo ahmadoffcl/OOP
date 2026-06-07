@@ -1,0 +1,4 @@
+101|triple|1
+102|double|1
+201|single|2
+301|triple|3

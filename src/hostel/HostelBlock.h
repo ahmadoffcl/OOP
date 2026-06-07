@@ -16,7 +16,7 @@
 #include <string>
 using namespace std;
 
-const int MAX_BLOCK_ROOMS = 5;
+const int MAX_BLOCK_ROOMS = 20;
 
 class HostelBlock {
 private:
@@ -28,11 +28,15 @@ public:
     HostelBlock();
     HostelBlock(string name);
 
-    void addRoom(Room room);
+    bool addRoom(Room room);
+    bool removeRoom(int roomNumber);
+    void clearRooms();
     Room* getRoom(int index);
+    const Room* getRoom(int index) const;
     int getRoomCount() const;
     int getTotalOccupants() const;
     Room* findRoomByStudent(string rollNo);
+    Room* findRoomByNumber(int roomNumber);
     string getBlockName() const;
     void displayBlock() const;
 };

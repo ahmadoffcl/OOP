@@ -80,11 +80,35 @@ bool Room::hasStudent(string rollNo) const {
 }
 
 bool Room::hasSpace() const {
-    return occupantCount < MAX_ROOM_OCCUPANTS;
+    return occupantCount < getCapacity();
+}
+
+void Room::clearOccupants() {
+    occupantCount = 0;
+
+    for (int i = 0; i < MAX_ROOM_OCCUPANTS; i++) {
+        occupants[i] = NULL;
+    }
+}
+
+bool Room::isEmpty() const {
+    return occupantCount == 0;
 }
 
 int Room::getOccupantCount() const {
     return occupantCount;
+}
+
+int Room::getCapacity() const {
+    if (type == "single") {
+        return 1;
+    }
+
+    if (type == "double") {
+        return 2;
+    }
+
+    return 3;
 }
 
 int Room::getRoomNumber() const {
@@ -99,11 +123,19 @@ int Room::getFloor() const {
     return floor;
 }
 
+Student* Room::getOccupant(int index) const {
+    if (index >= 0 && index < occupantCount) {
+        return occupants[index];
+    }
+
+    return NULL;
+}
+
 void Room::displayRoom() const {
     cout << "\nRoom No: " << roomNumber << endl;
     cout << "Type: " << type << endl;
     cout << "Floor: " << floor << endl;
-    cout << "Occupants: " << occupantCount << "/" << MAX_ROOM_OCCUPANTS << endl;
+    cout << "Occupants: " << occupantCount << "/" << getCapacity() << endl;
 
     for (int i = 0; i < occupantCount; i++) {
         cout << "- " << occupants[i]->getName() << " (" << occupants[i]->getRollNo() << ")" << endl;

@@ -15,20 +15,36 @@
 #include "Accommodation.h"
 #include "Reportable.h"
 #include "HostelBlock.h"
+#include "../person/PersonManager.h"
+#include <string>
+using namespace std;
 
 class HostelManager : public Accommodation, public Reportable {
 private:
     HostelBlock block;
+    string roomFileName;
+    string allocationFileName;
 
 public:
     HostelManager();
+    HostelManager(string roomFile, string allocationFile);
     ~HostelManager();
 
     void showServiceName() const;
     void allocateRoom(Student* student);
+    void allocateRoomToNumber(Student* student, int roomNumber);
     void vacateRoom(string rollNo);
     void generateReport() const;
     void showSummary() const;
+    void showAllRooms() const;
+    void showStudentRoom(string rollNo);
+    bool addRoom(int roomNumber, string type, int floor);
+    bool deleteRoom(int roomNumber);
+    Room* findRoomByNumber(int roomNumber);
+    int getRoomCount() const;
+    void seedDefaultRooms();
+    void loadFromFile(PersonManager& personManager);
+    void saveToFile() const;
 };
 
 #endif

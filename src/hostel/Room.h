@@ -34,10 +34,14 @@ public:
     bool removeStudent(string rollNo);
     bool hasStudent(string rollNo) const;
     bool hasSpace() const;
+    void clearOccupants();
+    bool isEmpty() const;
     int getOccupantCount() const;
+    int getCapacity() const;
     int getRoomNumber() const;
     string getType() const;
     int getFloor() const;
+    Student* getOccupant(int index) const;
 
     void displayRoom() const;
 };

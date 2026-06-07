@@ -23,16 +23,56 @@ HostelBlock::HostelBlock(string name) {
     roomCount = 0;
 }
 
-void HostelBlock::addRoom(Room room) {
-    if (roomCount < MAX_BLOCK_ROOMS) {
-        rooms[roomCount] = room;
-        roomCount++;
-    } else {
+bool HostelBlock::addRoom(Room room) {
+    if (roomCount >= MAX_BLOCK_ROOMS) {
         cout << "No more rooms can be added in this block." << endl;
+        return false;
     }
+
+    if (findRoomByNumber(room.getRoomNumber()) != NULL) {
+        cout << "Room number already exists." << endl;
+        return false;
+    }
+
+    rooms[roomCount] = room;
+    roomCount++;
+    return true;
+}
+
+bool HostelBlock::removeRoom(int roomNumber) {
+    for (int i = 0; i < roomCount; i++) {
+        if (rooms[i].getRoomNumber() == roomNumber) {
+            if (!rooms[i].isEmpty()) {
+                cout << "Room is not empty. Vacate students first." << endl;
+                return false;
+            }
+
+            for (int j = i; j < roomCount - 1; j++) {
+                rooms[j] = rooms[j + 1];
+            }
+
+            roomCount--;
+            return true;
+        }
+    }
+
+    cout << "Room not found." << endl;
+    return false;
+}
+
+void HostelBlock::clearRooms() {
+    roomCount = 0;
 }
 
 Room* HostelBlock::getRoom(int index) {
+    if (index >= 0 && index < roomCount) {
+        return &rooms[index];
+    }
+
+    return NULL;
+}
+
+const Room* HostelBlock::getRoom(int index) const {
     if (index >= 0 && index < roomCount) {
         return &rooms[index];
     }
@@ -57,6 +97,16 @@ int HostelBlock::getTotalOccupants() const {
 Room* HostelBlock::findRoomByStudent(string rollNo) {
     for (int i = 0; i < roomCount; i++) {
         if (rooms[i].hasStudent(rollNo)) {
+            return &rooms[i];
+        }
+    }
+
+    return NULL;
+}
+
+Room* HostelBlock::findRoomByNumber(int roomNumber) {
+    for (int i = 0; i < roomCount; i++) {
+        if (rooms[i].getRoomNumber() == roomNumber) {
             return &rooms[i];
         }
     }
