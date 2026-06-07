@@ -1,5 +1,7 @@
 # Smart Campus Management System (SCMS)
 
+![Build SCMS](https://github.com/ahmadoffcl/OOP/actions/workflows/build.yml/badge.svg)
+
 ## Project Information
 
 - Course: CS-104L Object-Oriented Programming
@@ -24,6 +26,19 @@ Smart Campus Management System is a beginner-friendly C++ console project for ma
 
 The program uses a clean screen-based menu system. Every module opens as its own page, every action clears the previous screen, and every module has `0. Back to Home`.
 
+## Quick Links
+
+| Item | Location |
+|------|----------|
+| Source code | `src/` |
+| Saved data files | `data/` |
+| UML class diagram | `docs/class_diagram.png` |
+| Project report PDF | `docs/project_report.pdf` |
+| Manual test plan | `docs/manual_test_plan.md` |
+| Test output logs | `docs/test_outputs/` |
+| Viva questions | `docs/viva_questions_full.md` |
+| GitHub Actions workflow | `.github/workflows/build.yml` |
+
 ## Current Submission Status
 
 The project is ready for final review and submission:
@@ -35,6 +50,12 @@ The project is ready for final review and submission:
 - GitHub Actions workflow is included.
 - Class diagram, report PDF, screenshots, test outputs, viva questions, and documentation are included.
 - The repository has been pushed to GitHub.
+
+## UML Class Diagram
+
+The diagram below shows the main classes and relationships used in the project, including inheritance, composition, aggregation, and manager classes.
+
+![UML Class Diagram](docs/class_diagram.png)
 
 ## Modules
 
@@ -85,6 +106,22 @@ g++ -std=c++17 -Wall -Wextra src/main.cpp src/person/*.cpp src/course/*.cpp src/
 ./scms
 ```
 
+## How to Use the App
+
+Run `scms.exe`, select a module from the home screen, perform the needed action, then press Enter to return to that module menu. Use `0. Back to Home` from any module.
+
+Main menu:
+
+```text
+1. Person Module
+2. Course and Enrollment Module
+3. Library Module
+4. Fee and Finance Module
+5. Hostel Module
+6. Reports Module
+0. Exit
+```
+
 ## Data Files
 
 | File | Purpose |
@@ -127,15 +164,25 @@ g++ -std=c++17 -Wall -Wextra src/main.cpp src/person/*.cpp src/course/*.cpp src/
 
 ## Documentation and Deliverables
 
-- `docs/project_report.pdf`: generated report draft
-- `docs/class_diagram.png`: generated UML-style class diagram
-- `docs/screenshots/`: screenshot-style output images
-- `docs/test_outputs/`: captured console outputs
-- `docs/manual_test_plan.md`: manual test checklist
-- `docs/testing_log.md`: latest test evidence
-- `docs/viva_questions_full.md`: viva questions and answers
-- `docs/oop_concepts_checklist.md`: concept mapping
-- `.github/workflows/build.yml`: GitHub Actions compile and smoke test
+| Deliverable | File |
+|-------------|------|
+| Project report | `docs/project_report.pdf` |
+| UML class diagram | `docs/class_diagram.png` |
+| Screenshot-style outputs | `docs/screenshots/` |
+| Captured console outputs | `docs/test_outputs/` |
+| Manual test checklist | `docs/manual_test_plan.md` |
+| Latest test evidence | `docs/testing_log.md` |
+| Viva questions and answers | `docs/viva_questions_full.md` |
+| OOP concept mapping | `docs/oop_concepts_checklist.md` |
+| GitHub Actions workflow | `.github/workflows/build.yml` |
+
+## Final Submission Notes
+
+- GitHub URL is already included: https://github.com/ahmadoffcl/OOP
+- `docs/project_report.pdf` includes the final GitHub URL.
+- `docs/class_diagram.png` is included and rendered in this README.
+- CI build workflow is included for compile/smoke-test evidence.
+- The project is intentionally written in simple C++ so it can be explained in viva.
 
 ## Final Review Checklist
 
