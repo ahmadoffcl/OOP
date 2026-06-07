@@ -33,14 +33,51 @@ Library::~Library() {
     }
 }
 
-void Library::addItem(LibraryItem* item) {
+bool Library::addItem(LibraryItem* item) {
+    if (item == NULL) {
+        return false;
+    }
+
+    if (searchByID(item->getItemID()) != NULL) {
+        cout << "Item with this ID already exists." << endl;
+        delete item;
+        return false;
+    }
+
     if (itemCount < MAX_LIBRARY_ITEMS) {
         items[itemCount] = item;
         itemCount++;
+        return true;
     } else {
         delete item;
         cout << "Library is full. Item was not added." << endl;
+        return false;
     }
+}
+
+bool Library::deleteItemByID(string deleteID) {
+    for (int i = 0; i < issuedCount; i++) {
+        if (issued[i].itemID == deleteID && issued[i].returned == false) {
+            cout << "Item is currently issued. Return it before deleting." << endl;
+            return false;
+        }
+    }
+
+    for (int i = 0; i < itemCount; i++) {
+        if (items[i] != NULL && items[i]->getItemID() == deleteID) {
+            delete items[i];
+
+            for (int j = i; j < itemCount - 1; j++) {
+                items[j] = items[j + 1];
+            }
+
+            items[itemCount - 1] = NULL;
+            itemCount--;
+            return true;
+        }
+    }
+
+    return false;
 }
 
 LibraryItem* Library::searchByTitle(string searchTitle) const {
@@ -91,22 +128,22 @@ bool Library::isAlreadyIssued(string rollNo, string itemID) const {
     return false;
 }
 
-void Library::issueItem(string rollNo, string itemID) {
+bool Library::issueItem(string rollNo, string itemID) {
     LibraryItem* item = searchByID(itemID);
 
     if (item == NULL) {
         cout << "Library item not found." << endl;
-        return;
+        return false;
     }
 
     if (isAlreadyIssued(rollNo, itemID)) {
         cout << "This item is already issued to roll no " << rollNo << "." << endl;
-        return;
+        return false;
     }
 
     if (!item->isAvailable()) {
         cout << "Item is not available right now." << endl;
-        return;
+        return false;
     }
 
     if (issuedCount < MAX_ISSUED_ITEMS) {
@@ -117,12 +154,14 @@ void Library::issueItem(string rollNo, string itemID) {
         issued[issuedCount].returned = false;
         issuedCount++;
         cout << "Issued to roll no " << rollNo << endl;
+        return true;
     } else {
         cout << "Issued record array is full." << endl;
+        return false;
     }
 }
 
-void Library::returnItem(string rollNo, string itemID, int daysLate) {
+bool Library::returnItem(string rollNo, string itemID, int daysLate) {
     for (int i = 0; i < issuedCount; i++) {
         if (issued[i].rollNo == rollNo && issued[i].itemID == itemID && issued[i].returned == false) {
             LibraryItem* item = searchByID(itemID);
@@ -140,11 +179,12 @@ void Library::returnItem(string rollNo, string itemID, int daysLate) {
             }
 
             cout << "Item returned on time." << endl;
-            return;
+            return true;
         }
     }
 
     cout << "Issued record not found." << endl;
+    return false;
 }
 
 void Library::displayIssuedRecords() const {
@@ -208,10 +248,77 @@ void Library::loadCatalog(string fileName) {
             count++;
         }
 
-        if (count >= 8 && part[0] == "Book") {
-            addItem(new Book(part[1], part[2], part[3], stoi(part[4]), part[5], part[6], stoi(part[7])));
-        } else if (count >= 8 && part[0] == "Journal") {
-            addItem(new Journal(part[1], part[2], part[3], stoi(part[4]), part[5], stoi(part[6]), stoi(part[7])));
+        try {
+            if (count >= 8 && part[0] == "Book") {
+                addItem(new Book(part[1], part[2], part[3], stoi(part[4]), part[5], part[6], stoi(part[7])));
+            } else if (count >= 8 && part[0] == "Journal") {
+                addItem(new Journal(part[1], part[2], part[3], stoi(part[4]), part[5], stoi(part[6]), stoi(part[7])));
+            }
+        } catch (...) {
+            cout << "Skipped wrong library record: " << line << endl;
+        }
+    }
+
+    file.close();
+}
+
+void Library::saveIssuedRecords(string fileName) const {
+    ofstream file(fileName);
+
+    if (!file) {
+        cout << "Issued records file could not be opened for saving." << endl;
+        return;
+    }
+
+    for (int i = 0; i < issuedCount; i++) {
+        file << issued[i].rollNo << "|" << issued[i].itemID << "|"
+             << issued[i].daysLate << "|";
+
+        if (issued[i].returned) {
+            file << "1";
+        } else {
+            file << "0";
+        }
+
+        file << endl;
+    }
+
+    file.close();
+}
+
+void Library::loadIssuedRecords(string fileName) {
+    ifstream file(fileName);
+
+    issuedCount = 0;
+
+    if (!file) {
+        return;
+    }
+
+    string line;
+    while (getline(file, line) && issuedCount < MAX_ISSUED_ITEMS) {
+        if (line == "") {
+            continue;
+        }
+
+        string part[4];
+        stringstream ss(line);
+        int count = 0;
+
+        while (count < 4 && getline(ss, part[count], '|')) {
+            count++;
+        }
+
+        if (count >= 4) {
+            try {
+                issued[issuedCount].rollNo = part[0];
+                issued[issuedCount].itemID = part[1];
+                issued[issuedCount].daysLate = stoi(part[2]);
+                issued[issuedCount].returned = (part[3] == "1");
+                issuedCount++;
+            } catch (...) {
+                cout << "Skipped wrong issued record: " << line << endl;
+            }
         }
     }
 

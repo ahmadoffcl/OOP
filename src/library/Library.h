@@ -37,7 +37,8 @@ public:
     Library();
     ~Library();
 
-    void addItem(LibraryItem* item);
+    bool addItem(LibraryItem* item);
+    bool deleteItemByID(string itemID);
     LibraryItem* searchByTitle(string title) const;
     LibraryItem* searchByID(string itemID) const;
     void showAllItems() const;
@@ -45,12 +46,14 @@ public:
     int getIssuedCount() const;
 
     bool isAlreadyIssued(string rollNo, string itemID) const;
-    void issueItem(string rollNo, string itemID);
-    void returnItem(string rollNo, string itemID, int daysLate);
+    bool issueItem(string rollNo, string itemID);
+    bool returnItem(string rollNo, string itemID, int daysLate);
     void displayIssuedRecords() const;
 
     void saveCatalog(string fileName) const;
     void loadCatalog(string fileName);
+    void saveIssuedRecords(string fileName) const;
+    void loadIssuedRecords(string fileName);
 };
 
 #endif
