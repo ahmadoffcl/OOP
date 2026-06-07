@@ -14,24 +14,20 @@ Course: CS-104L Object-Oriented Programming
 Enter choice: ------------------------------------------------------------
  FEE AND FINANCE MODULE
 ------------------------------------------------------------
-1. Show fee record and payment
-2. Show fee copy constructor and assignment
-3. Show invoice, copies, and static counter
+1. Show all fee records
+2. Add fee record
+3. Search fee record by roll no
+4. Record payment using -=
+5. Add library fine
+6. Show payment history
+7. Generate invoice
+8. Show FeeRecord copy constructor/assignment
+9. Save finance records
+10. Reload finance records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
- FEE RECORD DEMO
+ SAVED FEE RECORDS
 ------------------------------------------------------------
-
---- Fee Record ---
-Student: Ahmad Ali
-Roll No: 25-CS-067
-Semester Fee: 65000
-Hostel Fee: 20000
-Library Fine: 500
-Total Paid: 0
-Balance: 85500
-
-After payment of 25000:
 
 --- Fee Record ---
 Student: Ahmad Ali
@@ -42,118 +38,350 @@ Library Fine: 500
 Total Paid: 25000
 Balance: 60500
 
---- Payment History ---
-1. Payment: 25000
+--- Fee Record ---
+Student: Umer Altaf
+Roll No: 25-CS-057
+Semester Fee: 65000
+Hostel Fee: 20000
+Library Fine: 0
+Total Paid: 0
+Balance: 85000
+
+--- Fee Record ---
+Student: Muhammed Ahmad
+Roll No: 25-CS-252
+Semester Fee: 65000
+Hostel Fee: 0
+Library Fine: 0
+Total Paid: 0
+Balance: 65000
 
 Press Enter to continue...------------------------------------------------------------
  FEE AND FINANCE MODULE
 ------------------------------------------------------------
-1. Show fee record and payment
-2. Show fee copy constructor and assignment
-3. Show invoice, copies, and static counter
+1. Show all fee records
+2. Add fee record
+3. Search fee record by roll no
+4. Record payment using -=
+5. Add library fine
+6. Show payment history
+7. Generate invoice
+8. Show FeeRecord copy constructor/assignment
+9. Save finance records
+10. Reload finance records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
- FEE COPY CONSTRUCTOR AND ASSIGNMENT DEMO
+ ADD FEE RECORD
 ------------------------------------------------------------
-
-Original fee record:
-
---- Fee Record ---
-Student: Ahmad Ali
-Roll No: 25-CS-067
-Semester Fee: 65000
-Hostel Fee: 20000
-Library Fine: 500
-Total Paid: 35000
-Balance: 50500
-
---- Payment History ---
-1. Payment: 25000
-2. Payment: 10000
-
-Copied fee record:
-
---- Fee Record ---
-Student: Ahmad Ali
-Roll No: 25-CS-067
-Semester Fee: 65000
-Hostel Fee: 20000
-Library Fine: 500
-Total Paid: 35000
-Balance: 50500
-
---- Payment History ---
-1. Payment: 25000
-2. Payment: 10000
-
-Assigned fee record:
-
---- Fee Record ---
-Student: Ahmad Ali
-Roll No: 25-CS-067
-Semester Fee: 65000
-Hostel Fee: 20000
-Library Fine: 500
-Total Paid: 35000
-Balance: 50500
-
---- Payment History ---
-1. Payment: 25000
-2. Payment: 10000
+Saved Students:
+1. 25-CS-067 | Ahmad Ali
+2. 25-CS-057 | Umer Altaf
+3. 25-CS-252 | Muhammed Ahmad
+4. 24 | Ahmed Ali
+------------------------------
+Student Roll No: Semester Fee: Hostel Fee: Library Fine: Fee record added. Use option 9 to save records.
 
 Press Enter to continue...------------------------------------------------------------
  FEE AND FINANCE MODULE
 ------------------------------------------------------------
-1. Show fee record and payment
-2. Show fee copy constructor and assignment
-3. Show invoice, copies, and static counter
+1. Show all fee records
+2. Add fee record
+3. Search fee record by roll no
+4. Record payment using -=
+5. Add library fine
+6. Show payment history
+7. Generate invoice
+8. Show FeeRecord copy constructor/assignment
+9. Save finance records
+10. Reload finance records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
- INVOICE DEMO
+ SEARCH FEE RECORD
 ------------------------------------------------------------
-Invoice counter before creating invoices: 0
+Student Roll No:
+--- Fee Record ---
+Student: Ahmed Ali
+Roll No: 24
+Semester Fee: 70000
+Hostel Fee: 15000
+Library Fine: 0
+Total Paid: 0
+Balance: 85000
 
-Original invoice:
+Press Enter to continue...------------------------------------------------------------
+ FEE AND FINANCE MODULE
+------------------------------------------------------------
+1. Show all fee records
+2. Add fee record
+3. Search fee record by roll no
+4. Record payment using -=
+5. Add library fine
+6. Show payment history
+7. Generate invoice
+8. Show FeeRecord copy constructor/assignment
+9. Save finance records
+10. Reload finance records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ RECORD PAYMENT USING -=
+------------------------------------------------------------
+Student Roll No: Payment Amount: Payment recorded. Use option 9 to save records.
+
+--- Fee Record ---
+Student: Ahmed Ali
+Roll No: 24
+Semester Fee: 70000
+Hostel Fee: 15000
+Library Fine: 0
+Total Paid: 15000
+Balance: 70000
+
+Press Enter to continue...------------------------------------------------------------
+ FEE AND FINANCE MODULE
+------------------------------------------------------------
+1. Show all fee records
+2. Add fee record
+3. Search fee record by roll no
+4. Record payment using -=
+5. Add library fine
+6. Show payment history
+7. Generate invoice
+8. Show FeeRecord copy constructor/assignment
+9. Save finance records
+10. Reload finance records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ ADD LIBRARY FINE
+------------------------------------------------------------
+Student Roll No: Fine Amount: Fine added. Use option 9 to save records.
+
+--- Fee Record ---
+Student: Ahmed Ali
+Roll No: 24
+Semester Fee: 70000
+Hostel Fee: 15000
+Library Fine: 750
+Total Paid: 15000
+Balance: 70750
+
+Press Enter to continue...------------------------------------------------------------
+ FEE AND FINANCE MODULE
+------------------------------------------------------------
+1. Show all fee records
+2. Add fee record
+3. Search fee record by roll no
+4. Record payment using -=
+5. Add library fine
+6. Show payment history
+7. Generate invoice
+8. Show FeeRecord copy constructor/assignment
+9. Save finance records
+10. Reload finance records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ PAYMENT HISTORY
+------------------------------------------------------------
+Student Roll No:
+--- Payment History ---
+1. Payment: 15000
+
+Press Enter to continue...------------------------------------------------------------
+ FEE AND FINANCE MODULE
+------------------------------------------------------------
+1. Show all fee records
+2. Add fee record
+3. Search fee record by roll no
+4. Record payment using -=
+5. Add library fine
+6. Show payment history
+7. Generate invoice
+8. Show FeeRecord copy constructor/assignment
+9. Save finance records
+10. Reload finance records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ GENERATE INVOICE
+------------------------------------------------------------
+Student Roll No: Invoice counter before: 0
 
 --- Invoice ---
 Invoice ID: 1
 Date: 05-06-2026
 Items:
-- Semester Fee
-- Hostel Fee
-- Library Fine
-Total Amount: 60500
+- Semester Fee: Rs. 70000
+- Hostel Fee: Rs. 15000
+- Library Fine: Rs. 750
+- Total Paid: Rs. 15000
+- Balance Due: Rs. 70750
+Total Amount: 70750
 
-Copied invoice using copy constructor:
+Copied invoice:
 
 --- Invoice ---
 Invoice ID: 2
 Date: 05-06-2026
 Items:
-- Semester Fee
-- Hostel Fee
-- Library Fine
-Total Amount: 60500
+- Semester Fee: Rs. 70000
+- Hostel Fee: Rs. 15000
+- Library Fine: Rs. 750
+- Total Paid: Rs. 15000
+- Balance Due: Rs. 70750
+Total Amount: 70750
 
-Assigned invoice using copy assignment:
+Assigned invoice:
 
 --- Invoice ---
 Invoice ID: 3
 Date: 05-06-2026
 Items:
-- Semester Fee
-- Hostel Fee
-- Library Fine
-Total Amount: 60500
+- Semester Fee: Rs. 70000
+- Hostel Fee: Rs. 15000
+- Library Fine: Rs. 750
+- Total Paid: Rs. 15000
+- Balance Due: Rs. 70750
+Total Amount: 70750
 
-Invoice counter after creating invoices: 3
+Invoice counter after: 3
 
 Press Enter to continue...------------------------------------------------------------
  FEE AND FINANCE MODULE
 ------------------------------------------------------------
-1. Show fee record and payment
-2. Show fee copy constructor and assignment
-3. Show invoice, copies, and static counter
+1. Show all fee records
+2. Add fee record
+3. Search fee record by roll no
+4. Record payment using -=
+5. Add library fine
+6. Show payment history
+7. Generate invoice
+8. Show FeeRecord copy constructor/assignment
+9. Save finance records
+10. Reload finance records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ FEE COPY CONSTRUCTOR AND ASSIGNMENT
+------------------------------------------------------------
+Student Roll No:
+Original fee record:
+
+--- Fee Record ---
+Student: Ahmed Ali
+Roll No: 24
+Semester Fee: 70000
+Hostel Fee: 15000
+Library Fine: 750
+Total Paid: 15000
+Balance: 70750
+
+--- Payment History ---
+1. Payment: 15000
+
+Copied fee record:
+
+--- Fee Record ---
+Student: Ahmed Ali
+Roll No: 24
+Semester Fee: 70000
+Hostel Fee: 15000
+Library Fine: 750
+Total Paid: 15000
+Balance: 70750
+
+--- Payment History ---
+1. Payment: 15000
+
+Assigned fee record:
+
+--- Fee Record ---
+Student: Ahmed Ali
+Roll No: 24
+Semester Fee: 70000
+Hostel Fee: 15000
+Library Fine: 750
+Total Paid: 15000
+Balance: 70750
+
+--- Payment History ---
+1. Payment: 15000
+
+Press Enter to continue...------------------------------------------------------------
+ FEE AND FINANCE MODULE
+------------------------------------------------------------
+1. Show all fee records
+2. Add fee record
+3. Search fee record by roll no
+4. Record payment using -=
+5. Add library fine
+6. Show payment history
+7. Generate invoice
+8. Show FeeRecord copy constructor/assignment
+9. Save finance records
+10. Reload finance records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ SAVE FINANCE RECORDS
+------------------------------------------------------------
+Records saved to data/fee_records.txt
+
+Press Enter to continue...------------------------------------------------------------
+ FEE AND FINANCE MODULE
+------------------------------------------------------------
+1. Show all fee records
+2. Add fee record
+3. Search fee record by roll no
+4. Record payment using -=
+5. Add library fine
+6. Show payment history
+7. Generate invoice
+8. Show FeeRecord copy constructor/assignment
+9. Save finance records
+10. Reload finance records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ RELOAD FINANCE RECORDS
+------------------------------------------------------------
+Records reloaded from data/fee_records.txt
+Total records: 4
+
+Press Enter to continue...------------------------------------------------------------
+ FEE AND FINANCE MODULE
+------------------------------------------------------------
+1. Show all fee records
+2. Add fee record
+3. Search fee record by roll no
+4. Record payment using -=
+5. Add library fine
+6. Show payment history
+7. Generate invoice
+8. Show FeeRecord copy constructor/assignment
+9. Save finance records
+10. Reload finance records
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ SEARCH FEE RECORD
+------------------------------------------------------------
+Student Roll No:
+--- Fee Record ---
+Student: Ahmed Ali
+Roll No: 24
+Semester Fee: 70000
+Hostel Fee: 15000
+Library Fine: 750
+Total Paid: 15000
+Balance: 70750
+
+Press Enter to continue...------------------------------------------------------------
+ FEE AND FINANCE MODULE
+------------------------------------------------------------
+1. Show all fee records
+2. Add fee record
+3. Search fee record by roll no
+4. Record payment using -=
+5. Add library fine
+6. Show payment history
+7. Generate invoice
+8. Show FeeRecord copy constructor/assignment
+9. Save finance records
+10. Reload finance records
 0. Back to Home
 Enter choice: ------------------------------------------------------------
  SMART CAMPUS MANAGEMENT SYSTEM
