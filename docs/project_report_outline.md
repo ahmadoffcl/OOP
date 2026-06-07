@@ -45,7 +45,7 @@ Run each menu option and paste screenshots:
 - Library module
 - Finance module
 - Hostel real room/allocation flow
-- Reports demo
+- Reports campus summary and consolidated report flow
 
 ## 6. Challenges
 Write your own problems and solutions. Good examples:

@@ -80,11 +80,14 @@ Then test menu choices:
 | 5 then 11 | Saves hostel room/allocation records |
 | 5 then 12 | Reloads hostel room/allocation records |
 | 5 then 13 | Deletes an empty room |
-| 6 then 1 | Sorts students by GPA |
-| 6 then 2 | Finds student by roll number |
-| 6 then 3 | Shows top GPA student |
-| 6 then 4 | Writes `data/campus_report.txt` |
-| 6 then 5 | Writes `data/campus_pdf_report.txt` |
+| 6 then 1 | Shows complete campus summary from all managers |
+| 6 then 2 | Sorts students by GPA |
+| 6 then 3 | Finds student by roll number |
+| 6 then 4 | Shows top GPA student |
+| 6 then 5 | Shows overdue library records |
+| 6 then 6 | Writes consolidated `data/campus_report.txt` |
+| 6 then 7 | Writes consolidated `data/campus_pdf_report.txt` |
+| 6 then 8 | Shows utility/date helper examples |
 | module 0 | Returns to home menu |
 | 0 | Exits the program |
 

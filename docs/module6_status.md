@@ -1,6 +1,6 @@
 # Module 6 Status - Reporting and Utilities
 
-Status: Complete and tested.
+Status: Complete, real system-wide reporting, and tested.
 
 ## Required Files
 
@@ -11,37 +11,55 @@ Status: Complete and tested.
 
 ## Required Operations
 
-- Sort students by GPA.
-- Search student by roll number.
+- Show a complete campus summary using data from all managers.
+- Sort students by GPA with `std::sort`.
+- Search student by roll number with `std::find_if`.
 - Show top GPA student.
-- Generate consolidated campus text report.
-- Generate PDF-style text report.
-- Use helper functions for date and formatting.
-- Use `std::sort` with custom comparator.
-- Use `std::find_if` for roll number search.
-- Use dynamic array copy with `new[]` and `delete[]` inside PDF-style report generation.
+- Show overdue library records.
+- Generate a consolidated campus text report.
+- Generate a consolidated PDF-style text report.
+- Use helper functions for date, formatting, and validation.
+- Use dynamic array copy with `new[]` and `delete[]` in report generation.
 - Use loops for report output.
+
+## Menu Options
+
+```text
+1. Show complete campus summary
+2. Sort and show students by GPA
+3. Find student by roll number
+4. Show top GPA student
+5. Show overdue library records
+6. Generate consolidated text report
+7. Generate consolidated PDF-style report
+8. Show utility/date helper info
+0. Back to Home
+```
 
 ## Report Output
 
-The report is written to:
+The report files are written to:
 
 ```text
 data/campus_report.txt
 data/campus_pdf_report.txt
 ```
 
-It includes:
+The consolidated reports include:
 
 - Project heading
 - Date
 - University/course/group information
-- Total student count
-- Library item count
-- Student list
-- Top student by GPA
-- Sorted student section in PDF-style text report
-- OOP concepts highlight in PDF-style text report
+- Total people and students
+- Course and enrollment counts
+- Library item, issued, active issued, and overdue counts
+- Fee record totals, paid amount, balance, and library fine total
+- Hostel room and occupant counts
+- Students sorted by GPA
+- Course summary
+- Finance summary
+- Module coverage
+- OOP concepts highlight
 
 ## OOP/Programming Concepts Covered
 
@@ -52,23 +70,30 @@ It includes:
 - File output with `ofstream`
 - Memory management with `new[]` and `delete[]`
 - Array traversal
+- Cross-module data reading
 
 ## Where It Is Tested
 
 Run:
 
 ```text
-Home -> 6. Reports Module -> 1. Sort and show students by GPA
-Home -> 6. Reports Module -> 2. Find student by roll number
-Home -> 6. Reports Module -> 3. Show top GPA student
-Home -> 6. Reports Module -> 4. Generate campus text report
-Home -> 6. Reports Module -> 5. Generate PDF-style text report
+Home -> 6. Reports Module -> 1. Show complete campus summary
+Home -> 6. Reports Module -> 2. Sort and show students by GPA
+Home -> 6. Reports Module -> 3. Find student by roll number
+Home -> 6. Reports Module -> 4. Show top GPA student
+Home -> 6. Reports Module -> 5. Show overdue library records
+Home -> 6. Reports Module -> 6. Generate consolidated text report
+Home -> 6. Reports Module -> 7. Generate consolidated PDF-style report
+Home -> 6. Reports Module -> 8. Show utility/date helper info
 ```
 
 Expected result:
 
+- Campus summary shows counts from all main modules.
 - Students display in GPA order.
 - Roll number search finds `25-CS-067`.
-- Top student displays.
+- Top GPA student displays.
+- Overdue library records are shown or a clear empty message is printed.
 - `data/campus_report.txt` is generated.
 - `data/campus_pdf_report.txt` is generated.
+- Utility/date helper page displays date and validation examples.

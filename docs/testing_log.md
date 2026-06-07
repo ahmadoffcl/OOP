@@ -50,7 +50,7 @@ Result:
 - Module 3 library manager added a book and journal, searched by title and ID, issued a book to `25-CS-067`, blocked duplicate issue, returned once on time, returned once with overdue fine, displayed issued records, deleted a returned item, saved records, reloaded records, and verified deleted item was gone.
 - Module 4 finance manager added a fee record, searched it, recorded payment using `-=`, added library fine, showed payment history, generated invoice with static counter, showed FeeRecord copy constructor/assignment, saved records, reloaded records, and verified the saved fee record remained.
 - Module 5 hostel manager loaded saved rooms/allocations, showed rooms, added a room, searched it, allocated saved student `24`, showed the student's room, blocked duplicate allocation for `25-CS-067`, vacated `24`, deleted the empty room, saved records, reloaded records, showed summary, and printed occupancy report.
-- Reports module sorted students by GPA, searched by roll number, showed top GPA student, wrote `data/campus_report.txt`, and wrote `data/campus_pdf_report.txt`.
+- Module 6 reports showed complete campus summary, sorted students by GPA, searched by roll number, showed top GPA student, showed overdue library records, generated consolidated campus text report, generated consolidated PDF-style text report, and displayed utility/date helper examples.
 - Every module used `0. Back to Home`.
 - Every action page waited for Enter before showing the next menu.
 - Home option `0` exited program.
@@ -124,9 +124,9 @@ Result:
 Command:
 
 ```powershell
-python tools\generate_deliverables.py --github-url "add public repository link after pushing"
+python tools\generate_deliverables.py --github-url "https://github.com/ahmadoffcl/OOP"
 ```
 
 Result:
 
-- PDF regenerated successfully with the placeholder GitHub URL.
+- PDF regenerated successfully with the final GitHub URL.

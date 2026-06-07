@@ -32,17 +32,16 @@ Date: 2026-06-07
 - Library add/search/issue/duplicate block/return/overdue/delete/save/reload flow works
 - Finance add/search/payment/fine/history/invoice/save/reload flow works, with deep copy, destructor-backed dynamic array design, and static counter demonstrated
 - Hostel add/search/delete room, allocate, duplicate allocation check, save/reload, report, and vacate flow work
-- Reports sorting, searching, top student, text report generation, and PDF-style text report generation work
+- Reports campus summary, sorting, searching, overdue records, top student, utility helper page, consolidated text report generation, and consolidated PDF-style text report generation work
 
 ## Still Needed Before Portal Submission
 
 - Confirm with instructor that 3 group members are allowed, because the PDF says individual/team of 2.
-- Create a public GitHub repository named `HITEC-OOP-SCMS-25-CS-067`.
-- Push the local repository to GitHub.
-- Put the final public GitHub URL in `README.md` and the project report.
+- Confirm the GitHub repository link opens correctly: `https://github.com/ahmadoffcl/OOP`.
+- Confirm `README.md` and the project report show the final public GitHub URL.
 - Share the repository URL through the course portal.
 - Every group member should read and understand the code before viva.
 
 ## Note About Commit Count
 
-The PDF has two different commit-history hints: one place says at least 2 commits, while the marking table mentions commit history with `20+`. This local repository has multiple meaningful commits, one for each major phase/module, but it does not have 20+ commits. Ask the lab instructor if that marking note is strict.
+The PDF has two different commit-history hints: one place says at least 2 commits, while the marking table mentions commit history with `20+`. This repository now has many meaningful commits across setup, modules, docs, tests, and deliverables. Ask the lab instructor if the exact count is strict.

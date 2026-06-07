@@ -149,7 +149,7 @@ def make_class_diagram():
         "Room": ((980, 1580, 1360, 1805), ["- roomNumber", "- type, floor", "- Student* occupants[]", "+ add/remove student", "+ getCapacity()"]),
         "HostelBlock": ((980, 1880, 1360, 2065), ["- blockName", "- Room rooms[]", "+ add/remove room", "+ findRoomByNumber()", "+ getTotalOccupants()"]),
         "HostelManager": ((1420, 1740, 1740, 2030), ["- HostelBlock block", "- room/allocation files", "+ allocate/vacate room", "+ save/load records", "+ generateReport()"]),
-        "Reports": ((80, 2120, 520, 2320), ["+ sortStudentsByGPA()", "+ findStudentByRollNo()", "+ showTopStudent()", "+ generateCampusTextReport()"]),
+        "Reports": ((80, 2120, 520, 2345), ["+ showCampusSummary()", "+ sortStudentsByGPA()", "+ findStudentByRollNo()", "+ generateCampusTextReport()", "+ generatePdfStyleTextReport()"]),
         "Utils": ((620, 2120, 1000, 2320), ["+ getTodayDate()", "+ printLine()", "+ printSmallLine()", "+ checkPositiveInt()"]),
     }
 
@@ -288,7 +288,7 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
         "Library module: Book and Journal catalog with add/search/delete, issue/return, overdue fine, file handling, and arrays.",
         "Finance module: FeeRecord, Invoice, and FinanceManager classes with saved fee records, payments, fines, invoices, copy handling, and static invoice counter.",
         "Hostel module: Room, HostelBlock, and HostelManager with saved rooms, saved allocations, composition, and multiple inheritance.",
-        "Reports module: student sorting, searching, campus text report, and PDF-style text report generation.",
+        "Reports module: full campus summary, GPA sorting, roll-number search, overdue records, utility info, campus text report, and PDF-style text report generation.",
     ])
 
     add_section(pdf, "Class Diagram")
@@ -320,14 +320,14 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
         ("Friend Functions", "operator<< is declared as a friend for Course and Invoice.", "friend ostream& operator<<(ostream& out, const Invoice& invoice);"),
         ("Static Members", "Invoice has one shared invoiceCounter for all invoice objects.", "int Invoice::invoiceCounter = 0;"),
         ("Deep Copy", "FeeRecord and Invoice copy dynamic arrays instead of sharing them.", "payments = new double[paymentCount];"),
-        ("Search Functions", "Library searches with a loop, and Reports uses std::find_if for roll number search.", "Student* Reports::findStudentByRollNo(Student* students[], int count, string rollNo)"),
+        ("Search Functions", "Library and hostel use loop searches, and Reports uses std::find_if for roll number search.", "Student* Reports::findStudentByRollNo(Student* students[], int count, string rollNo)"),
         ("Array-based Collections", "The project uses arrays for people, courses, library items, rooms, and students.", "Person* people[MAX_PEOPLE];"),
         ("Arrays of Objects", "HostelBlock keeps Room objects in an array.", "Room rooms[MAX_BLOCK_ROOMS];"),
         ("Exception Handling", "Custom exceptions are thrown and caught for capacity and overdue cases.", "throw CapacityExceededException(\"Course is full\");"),
         ("File I/O", "Person, course, enrollment, library, finance, hostel, and report data are loaded/saved using fstream.", "ofstream file(fileName);"),
-        ("Reporting and Utilities", "Reports and Utils keep report, date, formatting, and validation helpers separate.", "Reports::generateCampusTextReport(...);"),
+        ("Reporting and Utilities", "Reports and Utils keep campus summaries, report files, date, formatting, and validation helpers separate.", "Reports::showCampusSummary(...);"),
         ("Memory Management", "Objects and arrays created with new are deleted using delete or delete[].", "delete[] sortedStudents;"),
-        ("Sorting and Searching", "Reports sorts students by GPA and searches by roll number.", "sortStudentsByGPA(students, count);"),
+        ("Sorting and Searching", "Reports sorts students by GPA, searches by roll number, and lists overdue library records.", "sortStudentsByGPA(students, count);"),
         ("Composition", "HostelManager owns a HostelBlock object.", "HostelBlock block;"),
         ("Aggregation", "Course stores Faculty* and Room stores Student* without owning those people.", "Faculty* instructor; Student* occupants[];"),
     ]
@@ -343,13 +343,13 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
         "Module 3 - Library System: Stores books and journals, adds/deletes catalog items, searches by title or ID, saves/loads catalog and issued records, tracks issued items, and handles overdue fines.",
         "Module 4 - Fee and Finance: Stores saved fee records, records payments with operator-=, adds fines, deep-copies fee data, and generates invoices with a static counter.",
         "Module 5 - Hostel Management: Uses saved rooms, saved allocations, room search/add/delete, multiple inheritance, virtual inheritance, and composition to allocate/vacate rooms.",
-        "Module 6 - Reporting and Utilities: Sorts and searches student data, prints reports, writes a campus text report, writes a PDF-style text report, and keeps helper functions separate.",
+        "Module 6 - Reporting and Utilities: Shows full campus summary, sorts/searches student data, lists overdue library records, writes consolidated text/PDF-style reports, and keeps helper functions separate.",
     ])
 
     add_section(pdf, "GitHub Workflow")
     add_wrapped(pdf, "The project is already a local git repository with separate commits for setup, documentation, and each major module. "
-                     "Before final submission, create a public GitHub repository named HITEC-OOP-SCMS-25-CS-067, push this folder, "
-                     "and paste the repository URL here and in README.md.")
+                     "The public GitHub URL is included in README.md and on the title page of this report. "
+                     "The GitHub Actions workflow compiles the code and runs a smoke test through the console menus.")
     add_bullets(pdf, [
         "Local branch: main",
         "Current local commits: see git log --oneline in the repository.",
@@ -368,8 +368,8 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
         "Library module added book/journal records, searched by title and ID, issued and returned items, blocked duplicate issue, showed overdue fine, deleted an item, and saved/reloaded records.",
         "Finance module added/search fee records, recorded payment, added fine, generated invoice, showed copy constructor/assignment, and saved/reloaded records.",
         "Hostel module loaded saved rooms, added/searched/deleted a room, allocated/vacated a saved student, blocked duplicate allocation, saved/reloaded records, and printed occupancy report.",
-        "Reports demo sorted students by GPA and created data/campus_report.txt.",
-        "Reports demo created data/campus_pdf_report.txt.",
+        "Reports module showed full campus summary, sorted/searched students, listed overdue library records, displayed utility helpers, and created data/campus_report.txt.",
+        "Reports module created data/campus_pdf_report.txt with full system summary.",
         "Wrong input test with abc did not freeze the program.",
         "Full captured output files are saved in docs/test_outputs.",
     ])
@@ -390,8 +390,8 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
     add_section(pdf, "Conclusion")
     add_wrapped(pdf, "This project helped practice core C++ OOP concepts in a practical campus system. "
                      "The project is intentionally console-based and simple so each module can be explained in viva. "
-                     "Before final submission, the group should push the repository to GitHub and replace the placeholder "
-                     "GitHub URL in this report.")
+                     "Before final submission, the group should review the code, test the menus once more, and make sure "
+                     "each member can explain the module they worked on.")
 
     add_section(pdf, "References")
     add_bullets(pdf, [

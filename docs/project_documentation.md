@@ -52,7 +52,7 @@ Phase 2 covers library and finance. The Library class stores `LibraryItem*` poin
 
 ## Phase 3 Summary
 
-Phase 3 covers hostel and reports. HostelManager uses multiple inheritance and composition, loads/saves `data/hostel_rooms.txt` and `data/hostel_allocations.txt`, adds/searches/deletes rooms, allocates saved students by roll number, vacates rooms, and prints occupancy reports. Reports sort students by GPA and write `data/campus_report.txt`.
+Phase 3 covers hostel and reports. HostelManager uses multiple inheritance and composition, loads/saves `data/hostel_rooms.txt` and `data/hostel_allocations.txt`, adds/searches/deletes rooms, allocates saved students by roll number, vacates rooms, and prints occupancy reports. Reports now reads data from all main managers, shows a complete campus summary, sorts students by GPA, searches students by roll number, shows overdue library records, writes `data/campus_report.txt`, and writes `data/campus_pdf_report.txt`.
 
 ## Build and Run
 

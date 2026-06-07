@@ -1,158 +1,151 @@
 # Smart Campus Management System (SCMS)
 
-## Project Info
-- Group Members:
-  - Ahmad Ali | Reg No: 25-CS-067
-  - Umer Altaf | Reg No: 25-CS-057
-  - Muhammed Ahmad | Reg No: 25-CS-252
+## Project Information
+
 - Course: CS-104L Object-Oriented Programming
 - University: HITEC University Taxila
+- Language: C++
+- Interface: Command Prompt / Console
+- GitHub Repository: https://github.com/ahmadoffcl/OOP
+
+## Group Members
+
+| Name | Registration No |
+|------|-----------------|
+| Ahmad Ali | 25-CS-067 |
+| Umer Altaf | 25-CS-057 |
+| Muhammed Ahmad | 25-CS-252 |
 
 Note: The project brief mentions individual/team of 2. Confirm with the instructor if a 3-member group is allowed.
 
-## Project Description
-Smart Campus Management System is a simple C++ console project for basic university work.
-It manages students, faculty, courses, library records, fee records, hostel rooms, and reports.
-The program is divided into six modules so each OOP concept is easy to find and explain.
-It uses classes, inheritance, polymorphism, arrays, file handling, exception handling, operator overloading, and copy semantics.
-The interface is menu-based and runs in the command prompt.
+## Project Overview
 
-## Current Status
-This folder contains the completed simple command-line version of the SCMS project. It includes all main assignment modules:
+Smart Campus Management System is a beginner-friendly C++ console project for managing common university records. It uses simple arrays, classes, inheritance, polymorphism, file handling, exception handling, operator overloading, static members, copy constructors, copy assignment, composition, and multiple inheritance.
 
-- Person hierarchy: `Person`, `Student`, `GradStudent`, `Faculty`, `Staff`
-- Person records manager: add, view, save, load, and delete saved people
-- Course and enrollment management: `Course`, `Enrollment`, `CourseManager`
-- Basic exception handling with `CapacityExceededException`
-- Library module: `LibraryItem`, `Book`, `Journal`, `Library` with saved catalog and issued records
-- Finance module: `FeeRecord`, `Invoice`, `FinanceManager`
-- Hostel module: `Accommodation`, `Reportable`, `Room`, `HostelBlock`, `HostelManager` with saved rooms and allocations
-- Reports module: `Reports` and `Utils`
-- Simple arrays, constructors, getters/setters, inheritance, polymorphism, file handling, and operator overloading
-- Clean screen-based console interface with separate module screens and `0. Back to Home` options
+The program uses a clean screen-based menu system. Every module opens as its own page, every action clears the previous screen, and every module has `0. Back to Home`.
 
-You should still personalize and review the project before submission:
+## Current Submission Status
 
-- Replace sample names, CNICs, fees, and roll numbers with your own values
-- Review `docs/class_diagram.png`
-- Review `docs/project_report.pdf` and replace screenshots only if your teacher wants manual terminal screenshots
-- Make sure every group member can explain the files used in their module
+The project is ready for final review and submission:
+
+- All 6 required modules are implemented.
+- Demo-only flows have been replaced with real keyboard-input actions.
+- Records are saved in text files under `data/`.
+- Build script and run script are included.
+- GitHub Actions workflow is included.
+- Class diagram, report PDF, screenshots, test outputs, viva questions, and documentation are included.
+- The repository has been pushed to GitHub.
 
 ## Modules
 
-1. Person Hierarchy: `Person`, `Student`, `GradStudent`, `Faculty`, `Staff`, and `PersonManager` for saved records.
-2. Course and Enrollment: `Course`, `Enrollment`, and `CourseManager` with saved courses, saved enrollments, capacity checks, roster/drop actions, and overloaded operators.
-3. Library System: `LibraryItem`, `Book`, `Journal`, and `Library` with add/search/delete, issue/return, overdue fine, and file loading/saving.
-4. Fee and Finance: `FeeRecord`, `Invoice`, and `FinanceManager` with saved fee records, payments, fines, invoices, deep copy, static counter, and payment operator.
-5. Hostel Management: `Room`, `HostelBlock`, and `HostelManager` with multiple inheritance, composition, saved rooms, saved allocations, add/search/delete, allocate, and vacate actions.
-6. Reports and Utilities: `Reports` and `Utils` for sorting, searching, formatting, text reports, and PDF-style text reports.
+1. Person Hierarchy
+   - `Person`, `Student`, `GradStudent`, `Faculty`, `Staff`
+   - Add, view, delete, save, reload, and course assignment for saved people
 
-## How to Compile
+2. Course and Enrollment Management
+   - `Course`, `Enrollment`, `CourseManager`
+   - Add/search courses, enroll/drop students, waiting list, save/reload, operator overloads
 
-### Windows PowerShell with g++
+3. Library System
+   - `LibraryItem`, `Book`, `Journal`, `Library`
+   - Add/search/delete catalog items, issue/return items, overdue fine, saved issued records
+
+4. Fee and Finance Management
+   - `FeeRecord`, `Invoice`, `FinanceManager`
+   - Add/search fee records, payments using `-=`, fines, invoice generation, copy semantics, static counter
+
+5. Hostel Management
+   - `Accommodation`, `Reportable`, `Room`, `HostelBlock`, `HostelManager`
+   - Saved rooms, saved allocations, add/search/delete room, allocate/vacate student, occupancy report
+
+6. Reporting and Utilities
+   - `Reports`, `Utils`
+   - Complete campus summary, GPA sorting, roll-number search, overdue library records, consolidated text report, PDF-style text report, date/helper functions
+
+## Build and Run
+
+Windows PowerShell:
+
 ```powershell
+cd D:\HITEC-OOP-SCMS-25-CS-067
 .\build.bat
 .\scms.exe
 ```
 
-Or:
+Or run directly:
 
 ```powershell
 .\run.bat
 ```
 
-### Windows PowerShell with the included D: drive compiler
-```powershell
-$env:PATH = "D:\tools\w64devkit\bin;$env:PATH"
-.\build.bat
-.\scms.exe
-```
+GitHub Actions/Linux compile command:
 
-### Linux or GitHub Actions style
 ```bash
 g++ -std=c++17 -Wall -Wextra src/main.cpp src/person/*.cpp src/course/*.cpp src/library/*.cpp src/finance/*.cpp src/hostel/*.cpp src/utils/*.cpp -o scms
 ./scms
 ```
 
-## OOP Concepts Already Demonstrated
+## Data Files
 
-1. Classes and objects: all C++ classes in `src/`
-2. Encapsulation: private data with public getters and setters
-3. Constructors: default and parameterized constructors
-4. Copy constructor: `Person` and `Course`
-5. Single inheritance: `Student : Person`
-6. Multi-level inheritance: `GradStudent : Student : Person`
-7. Abstract class: `Person`
-8. Pure virtual function: `displayInfo()`
-9. Runtime polymorphism: `Person* people[]` in `PersonManager`
-10. Operator overloading: `Course ==`, `Course <<`, `Course +`
-11. Friend function: `operator<<` for `Course`
-12. Custom exception: `CapacityExceededException`
-13. Aggregation: `Course` stores a `Faculty*`
-14. Array-based collections: course arrays, enrollment arrays, finance arrays, `PersonManager` people array, library arrays, hostel room arrays
-15. File I/O: `PersonManager`, `CourseManager`, `FinanceManager`, `HostelManager`, `Library::saveCatalog`, `Library::loadCatalog`, `Library::saveIssuedRecords`, `Library::loadIssuedRecords`, campus text report
-16. Static members: `Invoice::invoiceCounter`
-17. Copy assignment: `FeeRecord` and `Invoice`
-18. Multiple inheritance: `HostelManager`
-19. Virtual inheritance: `Accommodation` and `Reportable`
-20. Composition: `HostelManager` contains `HostelBlock`
-21. Search functions: `Library::searchByTitle`, `Library::searchByID`, `Reports::findStudentByRollNo`
-22. Arrays of objects: `HostelBlock` stores `Room rooms[]`
-23. Memory management: `Library`, `FeeRecord`, and `Invoice` use `new/delete` or `new[]/delete[]`
-24. Sorting and searching: `Reports::sortStudentsByGPA` uses `std::sort`, and roll number search uses `std::find_if`
-25. Reporting and utilities: `Reports.h/.cpp` and `Utils.h/.cpp`
+| File | Purpose |
+|------|---------|
+| `data/person_records.txt` | Saved students, faculty, and staff |
+| `data/courses.txt` | Saved course records |
+| `data/enrollments.txt` | Saved enrollment/waiting-list records |
+| `data/library_catalog.txt` | Saved books and journals |
+| `data/library_issued.txt` | Saved issued/returned library records |
+| `data/fee_records.txt` | Saved student fee records |
+| `data/hostel_rooms.txt` | Saved hostel room records |
+| `data/hostel_allocations.txt` | Saved hostel student allocations |
+| `data/campus_report.txt` | Generated consolidated campus report |
+| `data/campus_pdf_report.txt` | Generated PDF-style text report |
 
-## UML Class Diagram
+## OOP Concepts Covered
 
-![Class Diagram](docs/class_diagram.png)
+| Concept | Example |
+|---------|---------|
+| Abstract class | `Person`, `LibraryItem`, `Accommodation`, `Reportable` |
+| Pure virtual function | `displayInfo()`, `checkout()`, `allocateRoom()` |
+| Single inheritance | `Student : Person` |
+| Multi-level inheritance | `GradStudent : Student : Person` |
+| Multiple inheritance | `HostelManager : Accommodation, Reportable` |
+| Virtual inheritance | `Accommodation` and `Reportable` virtually inherit `CampusService` |
+| Runtime polymorphism | `Person* people[]`, `LibraryItem* items[]` |
+| Encapsulation | Private data with getters/setters |
+| Arrays of objects | `Course courses[]`, `Room rooms[]`, `FeeRecord records[]` |
+| Arrays of pointers | `Person*`, `Student*`, `LibraryItem*` arrays |
+| Operator overloading | `Course ==`, `Course <<`, `Course +`, `FeeRecord -=` |
+| Friend function | `operator<<` for `Course` and `Invoice` |
+| Custom exceptions | `CapacityExceededException`, `OverdueException` |
+| Static member | `Invoice::invoiceCounter` |
+| Copy constructor/assignment | `Course`, `FeeRecord`, `Invoice` |
+| File I/O | All main modules save/load text files |
+| Sorting/searching | `std::sort`, `std::find_if`, loop searches |
+| Dynamic memory | `new`, `delete`, `new[]`, `delete[]` |
+| Composition | `HostelManager` owns `HostelBlock`, `HostelBlock` owns `Room` array |
+| Aggregation | `Course` stores `Faculty*`, `Room` stores `Student*` |
 
-## GitHub Repository
+## Documentation and Deliverables
 
-```text
-https://github.com/ahmadoffcl/OOP
-```
-
-After pushing, this command can update the README and regenerate the PDF report with your real URL:
-
-```powershell
-python tools\generate_deliverables.py --github-url "https://github.com/ahmadoffcl/OOP"
-```
-
-## Remaining Work Checklist
-
-- Confirm with the instructor that a 3-member group is allowed
-- Replace sample CNIC/contact values with real or acceptable demo values
-- Review the generated screenshots in `docs/screenshots`
-- Create a public GitHub repository and push the project
-- Follow `docs/manual_test_plan.md` once more before final submission
-
-## Interface Flow
-
-The home menu opens each module as a separate screen. Each new menu/action clears the old screen first. Inside a module, select the task you want, press Enter after action output, then use `0` to go back home. This avoids printing new menus underneath old output.
-
-## Documentation Files
-
-- `docs/project_documentation.md`: project overview and module explanation
-- `docs/module1_status.md`: Person hierarchy completion status
-- `docs/module2_status.md`: Course and Enrollment completion status
-- `docs/module3_status.md`: Library System completion status
-- `docs/module4_status.md`: Fee and Finance completion status
-- `docs/module5_status.md`: Hostel Management completion status
-- `docs/module6_status.md`: Reporting and Utilities completion status
-- `docs/oop_concepts_checklist.md`: where each OOP concept is used
-- `docs/viva_questions_full.md`: viva questions and short answers
-- `docs/phase2_status.md`: Library and Finance phase status
-- `docs/manual_test_plan.md`: manual testing steps
-- `docs/testing_log.md`: latest test evidence
-- `docs/remaining_work.md`: what is left before final submission
-- `docs/submission_audit.md`: final local readiness audit
-- `docs/github_submission_steps.md`: exact steps to push the project to GitHub
-- `docs/test_outputs/`: captured console output for each module
-- `docs/screenshots/`: screenshot-style images generated from console output
-- `docs/class_diagram.mmd`: class diagram source
-- `docs/class_diagram.png`: generated class diagram image
 - `docs/project_report.pdf`: generated report draft
-- `tools/finalize_github_url.py`: helper to insert the final GitHub URL into README/report
+- `docs/class_diagram.png`: generated UML-style class diagram
+- `docs/screenshots/`: screenshot-style output images
+- `docs/test_outputs/`: captured console outputs
+- `docs/manual_test_plan.md`: manual test checklist
+- `docs/testing_log.md`: latest test evidence
+- `docs/viva_questions_full.md`: viva questions and answers
+- `docs/oop_concepts_checklist.md`: concept mapping
+- `.github/workflows/build.yml`: GitHub Actions compile and smoke test
+
+## Final Review Checklist
+
+- Run `.\build.bat`.
+- Run `.\scms.exe` and test each module using `docs/manual_test_plan.md`.
+- Read `docs/viva_questions_full.md`.
+- Open `docs/project_report.pdf` and `docs/class_diagram.png`.
+- Make sure each group member can explain their module.
+- Confirm the 3-member group permission with the instructor.
 
 ## Important
-Do not submit this project without understanding it. Your viva will test whether you can explain and modify your own code.
+
+Do not submit without understanding the code. The viva will check whether you can explain the classes, inheritance, file handling, arrays, and menu flows.

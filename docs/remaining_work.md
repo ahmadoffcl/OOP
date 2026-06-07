@@ -1,6 +1,6 @@
 # Remaining Work
 
-These items are still left before final submission. The local C++ code, build setup, module documentation, viva notes, UML image, and generated report draft are already present.
+These are final review items before submission. The C++ code, build setup, module documentation, viva notes, UML image, generated report draft, and GitHub repository are already present.
 
 ## Must Do
 
@@ -9,16 +9,13 @@ These items are still left before final submission. The local C++ code, build se
 - Review `docs/class_diagram.png` and adjust it only if your teacher wants a different UML style.
 - Review `docs/project_report.pdf` and replace screenshots only if your teacher wants screenshots taken manually from your own terminal.
 - Make sure every group member understands each file before viva.
-- Create a public GitHub repository and push this project.
-- Paste the public GitHub URL into `README.md` and `docs/project_report.pdf`.
-- The marking sheet mentions commit history. This local repo has several meaningful commits, but not 20+ commits, so confirm what your lab instructor expects.
+- Confirm the pushed GitHub repository link opens correctly: `https://github.com/ahmadoffcl/OOP`.
+- The marking sheet mentions commit history. This repository has many meaningful module commits, but confirm what your lab instructor expects.
 
 ## Good Improvements
 
-- Add more real input forms for adding books.
 - Add simple validation for GPA, fee amount, and semester.
 - Add more optional records in `data/library_catalog.txt` if your teacher wants a larger catalog.
-- Add separate menu options for load, save, issue, and return library item.
 - Add more comments in places you personally find confusing.
 
 ## Already Done
