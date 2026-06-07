@@ -1,4 +1,4 @@
-﻿------------------------------------------------------------
+------------------------------------------------------------
  SMART CAMPUS MANAGEMENT SYSTEM
 ------------------------------------------------------------
 Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
@@ -15,11 +15,18 @@ Enter choice: ------------------------------------------------------------
  HOSTEL MODULE
 ------------------------------------------------------------
 1. Show hostel service name
-2. Allocate sample students
-3. Try duplicate allocation
-4. Show hostel summary
-5. Show occupancy report
-6. Vacate first student room
+2. Show all rooms
+3. Add room
+4. Search room by number
+5. Allocate student to room
+6. Auto allocate student
+7. Vacate student room
+8. Show student's room
+9. Show hostel summary
+10. Show occupancy report
+11. Save hostel records
+12. Reload hostel records
+13. Delete empty room
 0. Back to Home
 Enter choice: ------------------------------------------------------------
  HOSTEL SERVICE
@@ -30,60 +37,312 @@ Press Enter to continue...-----------------------------------------------------
  HOSTEL MODULE
 ------------------------------------------------------------
 1. Show hostel service name
-2. Allocate sample students
-3. Try duplicate allocation
-4. Show hostel summary
-5. Show occupancy report
-6. Vacate first student room
+2. Show all rooms
+3. Add room
+4. Search room by number
+5. Allocate student to room
+6. Auto allocate student
+7. Vacate student room
+8. Show student's room
+9. Show hostel summary
+10. Show occupancy report
+11. Save hostel records
+12. Reload hostel records
+13. Delete empty room
 0. Back to Home
 Enter choice: ------------------------------------------------------------
- ALLOCATE SAMPLE STUDENTS
+ HOSTEL ROOMS
 ------------------------------------------------------------
-Ahmad Ali allocated to room 101
-Umer Altaf allocated to room 101
-Muhammed Ahmad allocated to room 101
+
+Hostel Block: Boys Block A
+
+Room No: 101
+Type: triple
+Floor: 1
+Occupants: 2/3
+- Ahmad Ali (25-CS-067)
+- Umer Altaf (25-CS-057)
+
+Room No: 102
+Type: double
+Floor: 1
+Occupants: 1/2
+- Muhammed Ahmad (25-CS-252)
+
+Room No: 201
+Type: single
+Floor: 2
+Occupants: 0/1
+
+Room No: 301
+Type: triple
+Floor: 3
+Occupants: 0/3
 
 Press Enter to continue...------------------------------------------------------------
  HOSTEL MODULE
 ------------------------------------------------------------
 1. Show hostel service name
-2. Allocate sample students
-3. Try duplicate allocation
-4. Show hostel summary
-5. Show occupancy report
-6. Vacate first student room
+2. Show all rooms
+3. Add room
+4. Search room by number
+5. Allocate student to room
+6. Auto allocate student
+7. Vacate student room
+8. Show student's room
+9. Show hostel summary
+10. Show occupancy report
+11. Save hostel records
+12. Reload hostel records
+13. Delete empty room
 0. Back to Home
 Enter choice: ------------------------------------------------------------
- DUPLICATE ALLOCATION CHECK
+ ADD HOSTEL ROOM
 ------------------------------------------------------------
-Ahmad Ali is already allocated to room 101
+Room Number: Room Type (single/double/triple): Floor: Room added. Use option 11 to save records.
 
 Press Enter to continue...------------------------------------------------------------
  HOSTEL MODULE
 ------------------------------------------------------------
 1. Show hostel service name
-2. Allocate sample students
-3. Try duplicate allocation
-4. Show hostel summary
-5. Show occupancy report
-6. Vacate first student room
+2. Show all rooms
+3. Add room
+4. Search room by number
+5. Allocate student to room
+6. Auto allocate student
+7. Vacate student room
+8. Show student's room
+9. Show hostel summary
+10. Show occupancy report
+11. Save hostel records
+12. Reload hostel records
+13. Delete empty room
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ SEARCH HOSTEL ROOM
+------------------------------------------------------------
+Room Number:
+Room No: 401
+Type: single
+Floor: 4
+Occupants: 0/1
+
+Press Enter to continue...------------------------------------------------------------
+ HOSTEL MODULE
+------------------------------------------------------------
+1. Show hostel service name
+2. Show all rooms
+3. Add room
+4. Search room by number
+5. Allocate student to room
+6. Auto allocate student
+7. Vacate student room
+8. Show student's room
+9. Show hostel summary
+10. Show occupancy report
+11. Save hostel records
+12. Reload hostel records
+13. Delete empty room
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ ALLOCATE STUDENT TO ROOM
+------------------------------------------------------------
+Saved Students:
+1. 25-CS-067 | Ahmad Ali
+2. 25-CS-057 | Umer Altaf
+3. 25-CS-252 | Muhammed Ahmad
+4. 24 | Ahmed Ali
+------------------------------
+Student Roll No: Room Number: Ahmed Ali allocated to room 401
+Use option 11 to save records.
+
+Press Enter to continue...------------------------------------------------------------
+ HOSTEL MODULE
+------------------------------------------------------------
+1. Show hostel service name
+2. Show all rooms
+3. Add room
+4. Search room by number
+5. Allocate student to room
+6. Auto allocate student
+7. Vacate student room
+8. Show student's room
+9. Show hostel summary
+10. Show occupancy report
+11. Save hostel records
+12. Reload hostel records
+13. Delete empty room
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ STUDENT HOSTEL ROOM
+------------------------------------------------------------
+Student Roll No: Student is allocated in room 401
+
+Room No: 401
+Type: single
+Floor: 4
+Occupants: 1/1
+- Ahmed Ali (24)
+
+Press Enter to continue...------------------------------------------------------------
+ HOSTEL MODULE
+------------------------------------------------------------
+1. Show hostel service name
+2. Show all rooms
+3. Add room
+4. Search room by number
+5. Allocate student to room
+6. Auto allocate student
+7. Vacate student room
+8. Show student's room
+9. Show hostel summary
+10. Show occupancy report
+11. Save hostel records
+12. Reload hostel records
+13. Delete empty room
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ AUTO ALLOCATE STUDENT
+------------------------------------------------------------
+Saved Students:
+1. 25-CS-067 | Ahmad Ali
+2. 25-CS-057 | Umer Altaf
+3. 25-CS-252 | Muhammed Ahmad
+4. 24 | Ahmed Ali
+------------------------------
+Student Roll No: Ahmad Ali is already allocated to room 101
+Use option 11 to save records.
+
+Press Enter to continue...------------------------------------------------------------
+ HOSTEL MODULE
+------------------------------------------------------------
+1. Show hostel service name
+2. Show all rooms
+3. Add room
+4. Search room by number
+5. Allocate student to room
+6. Auto allocate student
+7. Vacate student room
+8. Show student's room
+9. Show hostel summary
+10. Show occupancy report
+11. Save hostel records
+12. Reload hostel records
+13. Delete empty room
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ VACATE HOSTEL ROOM
+------------------------------------------------------------
+Student Roll No: Room vacated for roll no 24
+Use option 11 to save records.
+
+Press Enter to continue...------------------------------------------------------------
+ HOSTEL MODULE
+------------------------------------------------------------
+1. Show hostel service name
+2. Show all rooms
+3. Add room
+4. Search room by number
+5. Allocate student to room
+6. Auto allocate student
+7. Vacate student room
+8. Show student's room
+9. Show hostel summary
+10. Show occupancy report
+11. Save hostel records
+12. Reload hostel records
+13. Delete empty room
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ DELETE HOSTEL ROOM
+------------------------------------------------------------
+Room Number: Room deleted. Use option 11 to save records.
+
+Press Enter to continue...------------------------------------------------------------
+ HOSTEL MODULE
+------------------------------------------------------------
+1. Show hostel service name
+2. Show all rooms
+3. Add room
+4. Search room by number
+5. Allocate student to room
+6. Auto allocate student
+7. Vacate student room
+8. Show student's room
+9. Show hostel summary
+10. Show occupancy report
+11. Save hostel records
+12. Reload hostel records
+13. Delete empty room
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ SAVE HOSTEL RECORDS
+------------------------------------------------------------
+Records saved to data/hostel_rooms.txt and data/hostel_allocations.txt
+
+Press Enter to continue...------------------------------------------------------------
+ HOSTEL MODULE
+------------------------------------------------------------
+1. Show hostel service name
+2. Show all rooms
+3. Add room
+4. Search room by number
+5. Allocate student to room
+6. Auto allocate student
+7. Vacate student room
+8. Show student's room
+9. Show hostel summary
+10. Show occupancy report
+11. Save hostel records
+12. Reload hostel records
+13. Delete empty room
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ RELOAD HOSTEL RECORDS
+------------------------------------------------------------
+Records reloaded from hostel files.
+Total rooms: 4
+
+Press Enter to continue...------------------------------------------------------------
+ HOSTEL MODULE
+------------------------------------------------------------
+1. Show hostel service name
+2. Show all rooms
+3. Add room
+4. Search room by number
+5. Allocate student to room
+6. Auto allocate student
+7. Vacate student room
+8. Show student's room
+9. Show hostel summary
+10. Show occupancy report
+11. Save hostel records
+12. Reload hostel records
+13. Delete empty room
 0. Back to Home
 Enter choice: ------------------------------------------------------------
  HOSTEL SUMMARY
 ------------------------------------------------------------
 Block Name: Boys Block A
-Total Rooms: 3
+Total Rooms: 4
 Total Occupants: 3
 
 Press Enter to continue...------------------------------------------------------------
  HOSTEL MODULE
 ------------------------------------------------------------
 1. Show hostel service name
-2. Allocate sample students
-3. Try duplicate allocation
-4. Show hostel summary
-5. Show occupancy report
-6. Vacate first student room
+2. Show all rooms
+3. Add room
+4. Search room by number
+5. Allocate student to room
+6. Auto allocate student
+7. Vacate student room
+8. Show student's room
+9. Show hostel summary
+10. Show occupancy report
+11. Save hostel records
+12. Reload hostel records
+13. Delete empty room
 0. Back to Home
 Enter choice: ------------------------------------------------------------
  HOSTEL OCCUPANCY REPORT
@@ -91,7 +350,7 @@ Enter choice: ------------------------------------------------------------
 
 --- Hostel Occupancy Report ---
 Block Name: Boys Block A
-Total Rooms: 3
+Total Rooms: 4
 Total Occupants: 3
 
 Hostel Block: Boys Block A
@@ -99,62 +358,42 @@ Hostel Block: Boys Block A
 Room No: 101
 Type: triple
 Floor: 1
-Occupants: 3/3
+Occupants: 2/3
 - Ahmad Ali (25-CS-067)
 - Umer Altaf (25-CS-057)
-- Muhammed Ahmad (25-CS-252)
 
 Room No: 102
-Type: triple
+Type: double
 Floor: 1
-Occupants: 0/3
+Occupants: 1/2
+- Muhammed Ahmad (25-CS-252)
 
 Room No: 201
-Type: triple
+Type: single
 Floor: 2
+Occupants: 0/1
+
+Room No: 301
+Type: triple
+Floor: 3
 Occupants: 0/3
 
 Press Enter to continue...------------------------------------------------------------
  HOSTEL MODULE
 ------------------------------------------------------------
 1. Show hostel service name
-2. Allocate sample students
-3. Try duplicate allocation
-4. Show hostel summary
-5. Show occupancy report
-6. Vacate first student room
-0. Back to Home
-Enter choice: ------------------------------------------------------------
- VACATE ROOM
-------------------------------------------------------------
-Room vacated for roll no 25-CS-067
-
-Press Enter to continue...------------------------------------------------------------
- HOSTEL MODULE
-------------------------------------------------------------
-1. Show hostel service name
-2. Allocate sample students
-3. Try duplicate allocation
-4. Show hostel summary
-5. Show occupancy report
-6. Vacate first student room
-0. Back to Home
-Enter choice: ------------------------------------------------------------
- HOSTEL SUMMARY
-------------------------------------------------------------
-Block Name: Boys Block A
-Total Rooms: 3
-Total Occupants: 2
-
-Press Enter to continue...------------------------------------------------------------
- HOSTEL MODULE
-------------------------------------------------------------
-1. Show hostel service name
-2. Allocate sample students
-3. Try duplicate allocation
-4. Show hostel summary
-5. Show occupancy report
-6. Vacate first student room
+2. Show all rooms
+3. Add room
+4. Search room by number
+5. Allocate student to room
+6. Auto allocate student
+7. Vacate student room
+8. Show student's room
+9. Show hostel summary
+10. Show occupancy report
+11. Save hostel records
+12. Reload hostel records
+13. Delete empty room
 0. Back to Home
 Enter choice: ------------------------------------------------------------
  SMART CAMPUS MANAGEMENT SYSTEM
