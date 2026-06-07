@@ -17,6 +17,7 @@
 #include "person/PersonManager.h"
 #include "course/Course.h"
 #include "course/Enrollment.h"
+#include "course/CourseManager.h"
 #include "library/Book.h"
 #include "library/Journal.h"
 #include "library/Library.h"
@@ -354,120 +355,272 @@ void personMenu(PersonManager& personManager) {
     } while (choice != 0);
 }
 
-void showCourseDemo(Course& oopCourse) {
-    printTitle("COURSE DETAILS");
-    cout << oopCourse;
-}
+int showFacultyChoices(PersonManager& personManager) {
+    int count = 0;
+    cout << "Saved Faculty:" << endl;
 
-void showCourseRosterDemo(Course& oopCourse) {
-    printTitle("COURSE ROSTER");
-    oopCourse.displayEnrolledStudents();
-    oopCourse.displayWaitingList();
-}
+    for (int i = 0; i < personManager.getPersonCount(); i++) {
+        Faculty* faculty = dynamic_cast<Faculty*>(personManager.getPerson(i));
 
-void showEnrollmentDemo(Student& s1, Student& s2, Course& oopCourse, bool& enrollmentDone) {
-    printTitle("ENROLLMENT DEMO");
-
-    if (!enrollmentDone) {
-        try {
-            oopCourse.enrollStudent(&s1);
-            cout << s1.getName() << " enrolled successfully." << endl;
-
-            oopCourse.enrollStudent(&s2);
-            cout << s2.getName() << " enrolled successfully." << endl;
-        } catch (CapacityExceededException& e) {
-            cout << "Error: " << e.what() << endl;
-            cout << "Second student was sent to waiting list." << endl;
+        if (faculty != NULL) {
+            count++;
+            cout << count << ". " << faculty->getEmployeeID()
+                 << " | " << faculty->getName()
+                 << " | " << faculty->getDepartment() << endl;
         }
+    }
 
-        enrollmentDone = true;
+    if (count == 0) {
+        cout << "No faculty saved." << endl;
+    }
+
+    return count;
+}
+
+void showCourseListPage(CourseManager& courseManager) {
+    printTitle("SAVED COURSES");
+    courseManager.showAllCourses();
+}
+
+void addCoursePage(CourseManager& courseManager, PersonManager& personManager) {
+    printTitle("ADD COURSE");
+
+    if (personManager.getFirstFaculty() == NULL) {
+        cout << "Add at least 1 faculty in Person Module first." << endl;
+        return;
+    }
+
+    showFacultyChoices(personManager);
+    Utils::printSmallLine();
+
+    string code = readText("Course Code: ");
+    string name = readText("Course Name: ");
+    int hours = readInt("Credit Hours: ", 3);
+    int capacity = readInt("Max Capacity: ", 30);
+    string facultyID = readText("Instructor Employee ID: ");
+
+    if (code == "" || name == "" || facultyID == "") {
+        cout << "Course code, name, and instructor ID are required." << endl;
+        return;
+    }
+
+    Faculty* faculty = dynamic_cast<Faculty*>(personManager.findByID(facultyID));
+    if (faculty == NULL) {
+        cout << "Faculty not found." << endl;
+        return;
+    }
+
+    if (hours <= 0 || capacity <= 0) {
+        cout << "Credit hours and capacity must be positive." << endl;
+        return;
+    }
+
+    if (courseManager.addCourse(Course(code, name, hours, faculty, capacity))) {
+        faculty->assignCourse(code);
+        cout << "Course added. Use option 10 to save records." << endl;
+    }
+}
+
+void searchCoursePage(CourseManager& courseManager) {
+    printTitle("SEARCH COURSE");
+
+    string code = readText("Course Code: ");
+    Course* course = courseManager.findCourseByCode(code);
+
+    if (course == NULL) {
+        cout << "Course not found." << endl;
+        return;
+    }
+
+    cout << *course;
+}
+
+void enrollStudentPage(CourseManager& courseManager, PersonManager& personManager) {
+    printTitle("ENROLL STUDENT");
+
+    Student* students[MAX_PEOPLE];
+    int totalStudents = personManager.getStudents(students, MAX_PEOPLE);
+
+    if (totalStudents == 0) {
+        cout << "Add students in Person Module first." << endl;
+        return;
+    }
+
+    if (courseManager.getCourseCount() == 0) {
+        cout << "Add at least 1 course first." << endl;
+        return;
+    }
+
+    cout << "Saved Students:" << endl;
+    for (int i = 0; i < totalStudents; i++) {
+        cout << i + 1 << ". " << students[i]->getRollNo()
+             << " | " << students[i]->getName() << endl;
+    }
+
+    Utils::printSmallLine();
+    cout << "Saved Courses:" << endl;
+    courseManager.showAllCourses();
+    Utils::printSmallLine();
+
+    string rollNo = readText("Student Roll No: ");
+    string courseCode = readText("Course Code: ");
+
+    if (rollNo == "" || courseCode == "") {
+        cout << "Roll number and course code are required." << endl;
+        return;
+    }
+
+    if (courseManager.enrollStudent(rollNo, courseCode, personManager)) {
+        cout << "Use option 10 to save records." << endl;
+    }
+}
+
+void showCourseRosterPage(CourseManager& courseManager) {
+    printTitle("COURSE ROSTER");
+
+    string code = readText("Course Code: ");
+    Course* course = courseManager.findCourseByCode(code);
+
+    if (course == NULL) {
+        cout << "Course not found." << endl;
+        return;
+    }
+
+    cout << *course;
+    course->displayEnrolledStudents();
+    course->displayWaitingList();
+}
+
+void dropStudentPage(CourseManager& courseManager) {
+    printTitle("DROP STUDENT FROM COURSE");
+
+    string courseCode = readText("Course Code: ");
+    string rollNo = readText("Student Roll No: ");
+
+    if (courseCode == "" || rollNo == "") {
+        cout << "Course code and roll number are required." << endl;
+        return;
+    }
+
+    if (courseManager.dropStudent(rollNo, courseCode)) {
+        cout << "Use option 10 to save records." << endl;
+    }
+}
+
+void compareCoursesPage(CourseManager& courseManager) {
+    printTitle("COMPARE COURSES USING ==");
+
+    string code1 = readText("First Course Code: ");
+    string code2 = readText("Second Course Code: ");
+
+    Course* first = courseManager.findCourseByCode(code1);
+    Course* second = courseManager.findCourseByCode(code2);
+
+    if (first == NULL || second == NULL) {
+        cout << "One or both courses were not found." << endl;
+        return;
+    }
+
+    if (*first == *second) {
+        cout << "Both courses are equal because course code is same." << endl;
     } else {
-        cout << "Enrollment demo already completed in this run." << endl;
-    }
-
-    Enrollment e1(&s1, &oopCourse, Utils::getTodayDate());
-    e1.setGrade(s1.calculateGrade());
-    e1.displayEnrollment();
-}
-
-void showCourseCompareDemo(Course& oopCourse, Faculty& faculty) {
-    printTitle("COURSE COMPARISON DEMO");
-
-    Course sameCourse("CS-104L", "Object Oriented Programming Lab", 1, &faculty, 1);
-    Course otherCourse("CS-105", "Discrete Structures", 3, &faculty, 40);
-
-    if (oopCourse == sameCourse) {
-        cout << "CS-104L and sameCourse are equal by course code." << endl;
-    }
-
-    if (!(oopCourse == otherCourse)) {
-        cout << "CS-104L and CS-105 are not equal." << endl;
+        cout << "Courses are not equal because course codes are different." << endl;
     }
 }
 
-void showWaitingListMergeDemo(Student& s1, Student& s2, Student& s3, Faculty& faculty) {
-    printTitle("WAITING LIST MERGE DEMO");
+void mergeWaitingListsPage(CourseManager& courseManager) {
+    printTitle("MERGE WAITING LISTS USING +");
 
-    Course c1("CS-201", "Data Structures", 3, &faculty, 2);
-    Course c2("CS-202", "Computer Organization", 3, &faculty, 2);
+    string code1 = readText("First Course Code: ");
+    string code2 = readText("Second Course Code: ");
 
-    c1.addToWaitingList(&s1);
-    c1.addToWaitingList(&s2);
-    c2.addToWaitingList(&s3);
+    Course* first = courseManager.findCourseByCode(code1);
+    Course* second = courseManager.findCourseByCode(code2);
 
-    Student** merged = c1 + c2;
-    int total = c1.getWaitingCount() + c2.getWaitingCount();
+    if (first == NULL || second == NULL) {
+        cout << "One or both courses were not found." << endl;
+        return;
+    }
 
-    cout << "Merged waiting list:" << endl;
-    for (int i = 0; i < total; i++) {
-        cout << i + 1 << ". " << merged[i]->getName()
-             << " (" << merged[i]->getRollNo() << ")" << endl;
+    Student** merged = *first + *second;
+    int total = first->getWaitingCount() + second->getWaitingCount();
+
+    if (total == 0) {
+        cout << "No students in both waiting lists." << endl;
+    } else {
+        cout << "Merged Waiting List:" << endl;
+        for (int i = 0; i < total; i++) {
+            if (merged[i] != NULL) {
+                cout << i + 1 << ". " << merged[i]->getName()
+                     << " (" << merged[i]->getRollNo() << ")" << endl;
+            }
+        }
     }
 
     delete[] merged;
 }
 
-void courseMenu(PersonManager& personManager) {
-    Student* s1 = personManager.getStudentAt(0);
-    Student* s2 = personManager.getStudentAt(1);
-    Student* s3 = personManager.getStudentAt(2);
-    Faculty* faculty = personManager.getFirstFaculty();
+void showEnrollmentRecordsPage(CourseManager& courseManager) {
+    printTitle("ENROLLMENT RECORDS");
+    courseManager.rebuildEnrollmentRecords();
+    courseManager.showEnrollmentRecords();
+}
 
-    if (s1 == NULL || s2 == NULL || s3 == NULL || faculty == NULL) {
-        printTitle("COURSE MODULE");
-        cout << "Add at least 3 students and 1 faculty in Person Module first." << endl;
-        pauseScreen();
-        return;
-    }
-
-    Course oopCourse("CS-104L", "Object Oriented Programming Lab", 1, faculty, 1);
+void courseMenu(CourseManager& courseManager, PersonManager& personManager) {
     int choice;
-    bool enrollmentDone = false;
 
     do {
         showPageTitle("COURSE AND ENROLLMENT MODULE");
-        cout << "1. Show course details" << endl;
-        cout << "2. Run enrollment demo" << endl;
-        cout << "3. Show enrolled and waiting students" << endl;
-        cout << "4. Compare courses using ==" << endl;
-        cout << "5. Merge waiting lists using +" << endl;
+        cout << "1. Show all courses" << endl;
+        cout << "2. Add course" << endl;
+        cout << "3. Search course by code" << endl;
+        cout << "4. Enroll student in course" << endl;
+        cout << "5. Show course roster" << endl;
+        cout << "6. Drop student from course" << endl;
+        cout << "7. Compare two courses using ==" << endl;
+        cout << "8. Merge waiting lists using +" << endl;
+        cout << "9. Show enrollment records" << endl;
+        cout << "10. Save course/enrollment records" << endl;
+        cout << "11. Reload course/enrollment records" << endl;
         printBackOption();
         choice = readChoice();
 
         if (choice == 1) {
-            showCourseDemo(oopCourse);
+            showCourseListPage(courseManager);
             pauseScreen();
         } else if (choice == 2) {
-            showEnrollmentDemo(*s1, *s2, oopCourse, enrollmentDone);
+            addCoursePage(courseManager, personManager);
             pauseScreen();
         } else if (choice == 3) {
-            showCourseRosterDemo(oopCourse);
+            searchCoursePage(courseManager);
             pauseScreen();
         } else if (choice == 4) {
-            showCourseCompareDemo(oopCourse, *faculty);
+            enrollStudentPage(courseManager, personManager);
             pauseScreen();
         } else if (choice == 5) {
-            showWaitingListMergeDemo(*s1, *s2, *s3, *faculty);
+            showCourseRosterPage(courseManager);
+            pauseScreen();
+        } else if (choice == 6) {
+            dropStudentPage(courseManager);
+            pauseScreen();
+        } else if (choice == 7) {
+            compareCoursesPage(courseManager);
+            pauseScreen();
+        } else if (choice == 8) {
+            mergeWaitingListsPage(courseManager);
+            pauseScreen();
+        } else if (choice == 9) {
+            showEnrollmentRecordsPage(courseManager);
+            pauseScreen();
+        } else if (choice == 10) {
+            printTitle("SAVE COURSE AND ENROLLMENT RECORDS");
+            courseManager.saveAll();
+            cout << "Records saved to data/courses.txt and data/enrollments.txt" << endl;
+            pauseScreen();
+        } else if (choice == 11) {
+            printTitle("RELOAD COURSE AND ENROLLMENT RECORDS");
+            courseManager.loadAll(personManager);
+            cout << "Records reloaded from data/courses.txt and data/enrollments.txt" << endl;
             pauseScreen();
         } else if (choice != 0) {
             printTitle("WRONG CHOICE");
@@ -818,6 +971,8 @@ void showHomeMenu() {
 int main() {
     PersonManager personManager("data/person_records.txt");
     personManager.loadFromFile();
+    CourseManager courseManager("data/courses.txt", "data/enrollments.txt");
+    courseManager.loadAll(personManager);
     Library library;
     int choice;
 
@@ -827,8 +982,9 @@ int main() {
 
         if (choice == 1) {
             personMenu(personManager);
+            courseManager.loadAll(personManager);
         } else if (choice == 2) {
-            courseMenu(personManager);
+            courseMenu(courseManager, personManager);
         } else if (choice == 3) {
             libraryMenu(library);
         } else if (choice == 4) {

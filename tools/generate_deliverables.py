@@ -134,7 +134,8 @@ def make_class_diagram():
         "Staff": ((500, 650, 840, 810), ["- staffID", "- role", "- salary", "+ displayInfo()"]),
         "PersonManager": ((1420, 390, 1740, 650), ["- Person* people[]", "- personCount", "- fileName", "+ add/delete person", "+ save/load records", "+ getStudents()"]),
         "Course": ((980, 150, 1360, 385), ["- courseCode", "- courseName", "- Faculty* instructor", "- Student* enrolled[]", "- Student* waiting[]", "+ enrollStudent()", "+ display roster", "+ operator overloads"]),
-        "Enrollment": ((1420, 150, 1740, 310), ["- Student* student", "- Course* course", "- date, grade"]),
+        "Enrollment": ((1420, 150, 1740, 310), ["- Student* student", "- Course* course", "- date, grade", "- status"]),
+        "CourseManager": ((980, 455, 1360, 690), ["- Course courses[]", "- Enrollment records[]", "- courseCount", "- enrollmentCount", "+ add/search course", "+ enroll/drop student", "+ save/load records"]),
         "LibraryItem": ((80, 950, 440, 1155), ["# itemID, title", "# author, year", "+ checkout()", "+ checkin()", "+ displayItem()"]),
         "Book": ((80, 1220, 440, 1425), ["- isbn", "- genre", "- copiesAvailable", "+ checkout()", "+ checkin()"]),
         "Journal": ((520, 1220, 880, 1425), ["- issn", "- volume", "- issueNumber", "+ checkout()", "+ checkin()"]),
@@ -169,6 +170,9 @@ def make_class_diagram():
     draw_arrow(draw, (1360, 250), (1420, 230))
     draw_arrow(draw, (980, 250), (840, 470))
     draw_arrow(draw, (1180, 360), (410, 450))
+    draw_arrow(draw, (1180, 455), (1180, 385))
+    draw_arrow(draw, (1360, 540), (1420, 250))
+    draw_arrow(draw, (980, 540), (840, 470))
     draw_arrow(draw, (980, 1050), (440, 1040))
     draw_arrow(draw, (1420, 1040), (420, 500))
     draw_arrow(draw, (1190, 1880), (1190, 1780))
@@ -278,7 +282,7 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
     add_bullets(pdf, [
         "Person module: Person, Student, GradStudent, Faculty, and Staff classes.",
         "PersonManager: saved person records with add, view, delete, save, and reload options.",
-        "Course module: Course and Enrollment classes with capacity checking.",
+        "Course module: Course, Enrollment, and CourseManager classes with saved course/enrollment records and capacity checking.",
         "Library module: Book and Journal catalog using file handling and arrays.",
         "Finance module: FeeRecord and Invoice classes with copy handling and static invoice counter.",
         "Hostel module: Room, HostelBlock, and HostelManager using composition and multiple inheritance.",
@@ -318,7 +322,7 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
         ("Array-based Collections", "The project uses arrays for people, courses, library items, rooms, and students.", "Person* people[MAX_PEOPLE];"),
         ("Arrays of Objects", "HostelBlock keeps Room objects in an array.", "Room rooms[MAX_BLOCK_ROOMS];"),
         ("Exception Handling", "Custom exceptions are thrown and caught for capacity and overdue cases.", "throw CapacityExceededException(\"Course is full\");"),
-        ("File I/O", "Library data and campus reports are loaded/saved using fstream.", "ofstream file(fileName);"),
+        ("File I/O", "Person, course, enrollment, library, and report data are loaded/saved using fstream.", "ofstream file(fileName);"),
         ("Reporting and Utilities", "Reports and Utils keep report, date, formatting, and validation helpers separate.", "Reports::generateCampusTextReport(...);"),
         ("Memory Management", "Objects and arrays created with new are deleted using delete or delete[].", "delete[] sortedStudents;"),
         ("Sorting and Searching", "Reports sorts students by GPA and searches by roll number.", "sortStudentsByGPA(students, count);"),
@@ -333,7 +337,7 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
     add_section(pdf, "Module Descriptions")
     add_bullets(pdf, [
         "Module 1 - Person Hierarchy: Stores common personal information in Person and uses Student, GradStudent, Faculty, and Staff subclasses. PersonManager stores saved records, supports input, deletion, save, and reload.",
-        "Module 2 - Course and Enrollment: Stores course data, enrolls students, blocks over-capacity enrollment, and demonstrates overloaded operators.",
+        "Module 2 - Course and Enrollment: Stores saved course data, enrolls saved students, tracks waiting-list records, saves/reloads text files, blocks over-capacity enrollment, and demonstrates overloaded operators.",
         "Module 3 - Library System: Stores books and journals, searches the catalog, saves/loads text files, tracks issued items, and handles overdue fines.",
         "Module 4 - Fee and Finance: Stores fee balance, records payments with operator-=, deep-copies fee data, and generates invoices with a static counter.",
         "Module 5 - Hostel Management: Uses rooms, hostel blocks, multiple inheritance, virtual inheritance, and composition to allocate/vacate rooms.",
@@ -358,6 +362,7 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
         "Screen-based navigation was tested with Enter pauses after action pages.",
         "Module 1 CRUD was tested: add, display, save, reload, delete, save, and reload.",
         "Module 1 add-course action was tested by adding CS-200 to 25-CS-067.",
+        "Module 2 added a course, searched it, enrolled students, sent a full-course student to waiting list, showed roster, dropped a student, saved/reloaded records, compared courses, and merged waiting lists.",
         "Library demo loaded catalog data, issued B001, and showed overdue fine.",
         "Finance demo showed payment, copy constructor, copy assignment, invoice, and invoice copy.",
         "Hostel demo showed service name, allocation, duplicate check, summary, report, and vacate room.",

@@ -68,6 +68,36 @@ Course::Course(const Course& other) {
     }
 }
 
+Course& Course::operator=(const Course& other) {
+    if (this != &other) {
+        courseCode = other.courseCode;
+        courseName = other.courseName;
+        creditHours = other.creditHours;
+        instructor = other.instructor;
+        maxCapacity = other.maxCapacity;
+        enrolledCount = other.enrolledCount;
+        waitingCount = other.waitingCount;
+
+        for (int i = 0; i < enrolledCount; i++) {
+            enrolledStudents[i] = other.enrolledStudents[i];
+        }
+
+        for (int i = enrolledCount; i < MAX_COURSE_STUDENTS; i++) {
+            enrolledStudents[i] = NULL;
+        }
+
+        for (int i = 0; i < waitingCount; i++) {
+            waitingList[i] = other.waitingList[i];
+        }
+
+        for (int i = waitingCount; i < MAX_COURSE_STUDENTS; i++) {
+            waitingList[i] = NULL;
+        }
+    }
+
+    return *this;
+}
+
 void Course::setCourseCode(string code) {
     courseCode = code;
 }
@@ -116,6 +146,22 @@ int Course::getWaitingCount() const {
     return waitingCount;
 }
 
+Student* Course::getEnrolledStudent(int index) const {
+    if (index >= 0 && index < enrolledCount) {
+        return enrolledStudents[index];
+    }
+
+    return NULL;
+}
+
+Student* Course::getWaitingStudent(int index) const {
+    if (index >= 0 && index < waitingCount) {
+        return waitingList[index];
+    }
+
+    return NULL;
+}
+
 bool Course::isStudentEnrolled(string rollNo) const {
     for (int i = 0; i < enrolledCount; i++) {
         if (enrolledStudents[i] != NULL && enrolledStudents[i]->getRollNo() == rollNo) {
@@ -147,6 +193,11 @@ void Course::enrollStudent(Student* st) {
         return;
     }
 
+    if (isStudentWaiting(st->getRollNo())) {
+        cout << st->getName() << " is already in waiting list." << endl;
+        return;
+    }
+
     if (enrolledCount >= maxCapacity) {
         addToWaitingList(st);
         throw CapacityExceededException();
@@ -167,12 +218,45 @@ void Course::addToWaitingList(Student* st) {
         return;
     }
 
+    if (isStudentEnrolled(st->getRollNo())) {
+        cout << st->getName() << " is already enrolled in " << courseCode << "." << endl;
+        return;
+    }
+
     if (waitingCount < MAX_COURSE_STUDENTS) {
         waitingList[waitingCount] = st;
         waitingCount++;
     } else {
         cout << "Waiting list is full." << endl;
     }
+}
+
+bool Course::removeStudent(string rollNo) {
+    for (int i = 0; i < enrolledCount; i++) {
+        if (enrolledStudents[i] != NULL && enrolledStudents[i]->getRollNo() == rollNo) {
+            for (int j = i; j < enrolledCount - 1; j++) {
+                enrolledStudents[j] = enrolledStudents[j + 1];
+            }
+
+            enrolledStudents[enrolledCount - 1] = NULL;
+            enrolledCount--;
+            return true;
+        }
+    }
+
+    for (int i = 0; i < waitingCount; i++) {
+        if (waitingList[i] != NULL && waitingList[i]->getRollNo() == rollNo) {
+            for (int j = i; j < waitingCount - 1; j++) {
+                waitingList[j] = waitingList[j + 1];
+            }
+
+            waitingList[waitingCount - 1] = NULL;
+            waitingCount--;
+            return true;
+        }
+    }
+
+    return false;
 }
 
 void Course::displayEnrolledStudents() const {

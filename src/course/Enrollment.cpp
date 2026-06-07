@@ -18,6 +18,7 @@ Enrollment::Enrollment() {
     course = NULL;
     enrollmentDate = "N/A";
     grade = "Not Assigned";
+    status = "Enrolled";
 }
 
 Enrollment::Enrollment(Student* st, Course* c, string date) {
@@ -25,14 +26,35 @@ Enrollment::Enrollment(Student* st, Course* c, string date) {
     course = c;
     enrollmentDate = date;
     grade = "Not Assigned";
+    status = "Enrolled";
 }
 
 void Enrollment::setGrade(string g) {
     grade = g;
 }
 
+void Enrollment::setStatus(string s) {
+    status = s;
+}
+
+void Enrollment::setStudent(Student* st) {
+    student = st;
+}
+
+void Enrollment::setCourse(Course* c) {
+    course = c;
+}
+
+void Enrollment::setEnrollmentDate(string date) {
+    enrollmentDate = date;
+}
+
 string Enrollment::getGrade() const {
     return grade;
+}
+
+string Enrollment::getStatus() const {
+    return status;
 }
 
 Student* Enrollment::getStudent() const {
@@ -59,4 +81,5 @@ void Enrollment::displayEnrollment() const {
     }
 
     cout << "Grade: " << grade << endl;
+    cout << "Status: " << status << endl;
 }

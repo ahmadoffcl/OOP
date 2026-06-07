@@ -1,6 +1,6 @@
 # Testing Log
 
-Date: 2026-06-05
+Date: 2026-06-07
 
 ## Compiler
 
@@ -46,7 +46,7 @@ Result:
 - Person module printed records and compact student list.
 - Module 1 CRUD test added a student, displayed it, saved, reloaded, deleted it, saved again, and reloaded again.
 - Module 1 course assignment test added `CS-200` to `25-CS-067` for the session and displayed it.
-- Course module printed course details, enrollment exception, enrolled/waiting students, course comparison, and waiting list merge.
+- Module 2 course manager added `CS-220`, searched it, enrolled two students, sent a third student to waiting list using `CapacityExceededException`, showed roster, compared courses, merged waiting lists, displayed enrollment records, dropped a waiting student, saved records, reloaded records, and verified `CS-220` remained after reload.
 - Library module loaded/showed library items, searched title, issued book `B001`, returned with overdue fine, displayed issued records, and saved catalog.
 - Finance module showed fee payment, payment history, fee copy, fee assignment, invoice copy, invoice assignment, and static counter.
 - Hostel module printed service name, allocated students, blocked duplicate allocation, showed summary, printed occupancy report, and vacated one student.
@@ -84,7 +84,7 @@ Result:
 - `docs/screenshots/module1_person.png` regenerated.
 - `docs/screenshots/module1_crud_test.png` regenerated.
 - `docs/screenshots/module1_add_course_test.png` regenerated.
-- `docs/screenshots/module2_course.png` regenerated.
+- `docs/screenshots/module2_course.png` regenerated from the real Module 2 course/enrollment flow.
 - `docs/screenshots/module3_library.png` regenerated.
 - `docs/screenshots/module4_finance.png` regenerated.
 - `docs/screenshots/module5_hostel.png` regenerated.

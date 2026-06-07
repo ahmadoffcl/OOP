@@ -13,7 +13,7 @@ The Smart Campus Management System is a simple command-line C++ project for mana
 ## Folder Structure
 
 - `src/person`: Person, Student, GradStudent, Faculty, Staff, PersonManager
-- `src/course`: Course and Enrollment
+- `src/course`: Course, Enrollment, CourseManager
 - `src/library`: LibraryItem, Book, Journal, Library
 - `src/finance`: FeeRecord and Invoice
 - `src/hostel`: Room, HostelBlock, HostelManager, interfaces
@@ -35,7 +35,7 @@ Each module opens its own submenu as a separate screen. The console is cleared b
 
 ## Phase 1 Summary
 
-Phase 1 covers the person and course modules. `Person` is an abstract base class. `Student`, `GradStudent`, `Faculty`, and `Staff` inherit from it. `PersonManager` stores saved people in a simple array, loads/saves `data/person_records.txt`, and supports add/delete/search actions. Course enrollment uses a capacity exception and operator overloading.
+Phase 1 covers the person and course modules. `Person` is an abstract base class. `Student`, `GradStudent`, `Faculty`, and `Staff` inherit from it. `PersonManager` stores saved people in a simple array, loads/saves `data/person_records.txt`, and supports add/delete/search actions. `CourseManager` stores saved courses and enrollments in simple arrays, loads/saves `data/courses.txt` and `data/enrollments.txt`, enrolls saved students by roll number, tracks waiting-list records, and uses capacity exception plus operator overloading.
 
 Detailed status files:
 
