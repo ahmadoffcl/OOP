@@ -118,6 +118,30 @@ int Library::getIssuedCount() const {
     return issuedCount;
 }
 
+int Library::getActiveIssuedCount() const {
+    int total = 0;
+
+    for (int i = 0; i < issuedCount; i++) {
+        if (!issued[i].returned) {
+            total++;
+        }
+    }
+
+    return total;
+}
+
+int Library::getOverdueRecordCount() const {
+    int total = 0;
+
+    for (int i = 0; i < issuedCount; i++) {
+        if (issued[i].daysLate > 7) {
+            total++;
+        }
+    }
+
+    return total;
+}
+
 bool Library::isAlreadyIssued(string rollNo, string itemID) const {
     for (int i = 0; i < issuedCount; i++) {
         if (issued[i].rollNo == rollNo && issued[i].itemID == itemID && issued[i].returned == false) {
@@ -206,6 +230,27 @@ void Library::displayIssuedRecords() const {
         }
 
         cout << " | Days Late: " << issued[i].daysLate << endl;
+    }
+}
+
+void Library::displayOverdueRecords() const {
+    cout << "\n--- Overdue Library Records ---" << endl;
+
+    int found = 0;
+
+    for (int i = 0; i < issuedCount; i++) {
+        if (issued[i].daysLate > 7) {
+            double fine = (issued[i].daysLate - 7) * 10;
+            cout << found + 1 << ". Roll No: " << issued[i].rollNo
+                 << " | Item ID: " << issued[i].itemID
+                 << " | Days Late: " << issued[i].daysLate
+                 << " | Fine: " << fine << endl;
+            found++;
+        }
+    }
+
+    if (found == 0) {
+        cout << "No overdue library records found." << endl;
     }
 }
 

@@ -79,6 +79,36 @@ int FinanceManager::getRecordCount() const {
     return recordCount;
 }
 
+double FinanceManager::getTotalPaid() const {
+    double total = 0;
+
+    for (int i = 0; i < recordCount; i++) {
+        total = total + records[i].getTotalPaid();
+    }
+
+    return total;
+}
+
+double FinanceManager::getTotalBalance() const {
+    double total = 0;
+
+    for (int i = 0; i < recordCount; i++) {
+        total = total + records[i].getBalance();
+    }
+
+    return total;
+}
+
+double FinanceManager::getTotalLibraryFine() const {
+    double total = 0;
+
+    for (int i = 0; i < recordCount; i++) {
+        total = total + records[i].getLibraryFine();
+    }
+
+    return total;
+}
+
 bool FinanceManager::recordPayment(string rollNo, double amount) {
     FeeRecord* record = findRecordByRollNo(rollNo);
 

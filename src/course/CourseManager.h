@@ -46,6 +46,7 @@ public:
     Course* findCourseByCode(string code);
     Course* getCourse(int index);
     int getCourseCount() const;
+    int getEnrollmentCount() const;
 
     bool enrollStudent(string rollNo, string courseCode, PersonManager& personManager);
     bool dropStudent(string rollNo, string courseCode);

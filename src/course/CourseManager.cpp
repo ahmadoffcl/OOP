@@ -75,6 +75,10 @@ int CourseManager::getCourseCount() const {
     return courseCount;
 }
 
+int CourseManager::getEnrollmentCount() const {
+    return enrollmentCount;
+}
+
 void CourseManager::loadCourses(PersonManager& personManager) {
     ifstream file(courseFileName);
 

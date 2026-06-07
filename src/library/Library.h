@@ -44,11 +44,14 @@ public:
     void showAllItems() const;
     int getItemCount() const;
     int getIssuedCount() const;
+    int getActiveIssuedCount() const;
+    int getOverdueRecordCount() const;
 
     bool isAlreadyIssued(string rollNo, string itemID) const;
     bool issueItem(string rollNo, string itemID);
     bool returnItem(string rollNo, string itemID, int daysLate);
     void displayIssuedRecords() const;
+    void displayOverdueRecords() const;
 
     void saveCatalog(string fileName) const;
     void loadCatalog(string fileName);

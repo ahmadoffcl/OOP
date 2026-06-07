@@ -37,6 +37,9 @@ public:
     FeeRecord* findRecordByRollNo(string rollNo);
     FeeRecord* getRecord(int index);
     int getRecordCount() const;
+    double getTotalPaid() const;
+    double getTotalBalance() const;
+    double getTotalLibraryFine() const;
 
     bool recordPayment(string rollNo, double amount);
     bool addFine(string rollNo, double amount);

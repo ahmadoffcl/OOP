@@ -160,6 +160,10 @@ int HostelManager::getRoomCount() const {
     return block.getRoomCount();
 }
 
+int HostelManager::getTotalOccupants() const {
+    return block.getTotalOccupants();
+}
+
 void HostelManager::seedDefaultRooms() {
     block.clearRooms();
     block.addRoom(Room(101, "triple", 1));

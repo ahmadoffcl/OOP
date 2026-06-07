@@ -42,6 +42,7 @@ public:
     bool deleteRoom(int roomNumber);
     Room* findRoomByNumber(int roomNumber);
     int getRoomCount() const;
+    int getTotalOccupants() const;
     void seedDefaultRooms();
     void loadFromFile(PersonManager& personManager);
     void saveToFile() const;
