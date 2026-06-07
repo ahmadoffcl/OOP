@@ -108,16 +108,14 @@ g++ -std=c++17 -Wall -Wextra src/main.cpp src/person/*.cpp src/course/*.cpp src/
 
 ## GitHub Repository
 
-Add the public GitHub URL here after pushing:
-
 ```text
-https://github.com/[username]/HITEC-OOP-SCMS-25-CS-067
+https://github.com/ahmadoffcl/OOP
 ```
 
 After pushing, this command can update the README and regenerate the PDF report with your real URL:
 
 ```powershell
-python tools\finalize_github_url.py https://github.com/YOUR_USERNAME/HITEC-OOP-SCMS-25-CS-067
+python tools\generate_deliverables.py --github-url "https://github.com/ahmadoffcl/OOP"
 ```
 
 ## Remaining Work Checklist
