@@ -130,6 +130,7 @@ void printBackOption() {
 void loadLibraryIfNeeded(Library& library) {
     if (library.getItemCount() == 0) {
         library.loadCatalog("data/library_catalog.txt");
+        library.loadIssuedRecords("data/library_issued.txt");
 
         if (library.getItemCount() == 0) {
             library.addItem(new Book("B001", "C++ Basics", "Deitel", 2020, "978-0000000001", "Programming", 3));
@@ -636,86 +637,283 @@ void showLibraryCatalog(Library& library) {
     library.showAllItems();
 }
 
-void showLibrarySearch(Library& library) {
+void addBookPage(Library& library) {
     loadLibraryIfNeeded(library);
-    printTitle("LIBRARY SEARCH");
+    printTitle("ADD BOOK");
 
-    string title;
-    cout << "Enter title to search (press Enter for C++ Basics): ";
-    getline(cin, title);
+    string itemID = readText("Item ID: ");
+    string title = readText("Title: ");
+    string author = readText("Author: ");
+    int year = readInt("Publication Year: ", 2026);
+    string isbn = readText("ISBN: ");
+    string genre = readText("Genre: ");
+    int copies = readInt("Copies Available: ", 1);
+
+    if (itemID == "" || title == "") {
+        cout << "Item ID and title are required." << endl;
+        return;
+    }
+
+    if (copies < 0) {
+        copies = 0;
+    }
+
+    if (library.addItem(new Book(itemID, title, author, year, isbn, genre, copies))) {
+        cout << "Book added. Use option 10 to save records." << endl;
+    }
+}
+
+void addJournalPage(Library& library) {
+    loadLibraryIfNeeded(library);
+    printTitle("ADD JOURNAL");
+
+    string itemID = readText("Item ID: ");
+    string title = readText("Title: ");
+    string author = readText("Author: ");
+    int year = readInt("Publication Year: ", 2026);
+    string issn = readText("ISSN: ");
+    int volume = readInt("Volume: ", 1);
+    int issueNumber = readInt("Issue Number: ", 1);
+
+    if (itemID == "" || title == "") {
+        cout << "Item ID and title are required." << endl;
+        return;
+    }
+
+    if (volume < 0) {
+        volume = 0;
+    }
+
+    if (issueNumber < 0) {
+        issueNumber = 0;
+    }
+
+    if (library.addItem(new Journal(itemID, title, author, year, issn, volume, issueNumber))) {
+        cout << "Journal added. Use option 10 to save records." << endl;
+    }
+}
+
+void searchLibraryByTitlePage(Library& library) {
+    loadLibraryIfNeeded(library);
+    printTitle("SEARCH LIBRARY BY TITLE");
+
+    string title = readText("Title: ");
 
     if (title == "") {
-        title = "C++ Basics";
+        cout << "Title is required." << endl;
+        return;
     }
 
     LibraryItem* found = library.searchByTitle(title);
     if (found != NULL) {
-        cout << "Search title: " << title << endl;
         found->displayItem();
     } else {
         cout << "Item not found." << endl;
     }
 }
 
-void showLibraryIssue(Library& library) {
+void searchLibraryByIDPage(Library& library) {
     loadLibraryIfNeeded(library);
-    printTitle("ISSUE ITEM DEMO");
+    printTitle("SEARCH LIBRARY BY ID");
 
-    library.issueItem("25-CS-067", "B001");
-}
+    string itemID = readText("Item ID: ");
 
-void showLibraryReturn(Library& library) {
-    loadLibraryIfNeeded(library);
-    printTitle("RETURN ITEM DEMO");
+    if (itemID == "") {
+        cout << "Item ID is required." << endl;
+        return;
+    }
 
-    try {
-        library.returnItem("25-CS-067", "B001", 9);
-    } catch (OverdueException& e) {
-        cout << "Fine Error: " << e.what() << endl;
+    LibraryItem* found = library.searchByID(itemID);
+    if (found != NULL) {
+        found->displayItem();
+    } else {
+        cout << "Item not found." << endl;
     }
 }
 
-void libraryMenu(Library& library) {
+int showLibraryStudents(PersonManager& personManager) {
+    Student* students[MAX_PEOPLE];
+    int totalStudents = personManager.getStudents(students, MAX_PEOPLE);
+
+    cout << "Saved Students:" << endl;
+    if (totalStudents == 0) {
+        cout << "No saved students." << endl;
+    }
+
+    for (int i = 0; i < totalStudents; i++) {
+        cout << i + 1 << ". " << students[i]->getRollNo()
+             << " | " << students[i]->getName() << endl;
+    }
+
+    return totalStudents;
+}
+
+void issueLibraryItemPage(Library& library, PersonManager& personManager) {
+    loadLibraryIfNeeded(library);
+    printTitle("ISSUE LIBRARY ITEM");
+
+    if (showLibraryStudents(personManager) == 0) {
+        cout << "Add students in Person Module first." << endl;
+        return;
+    }
+
+    Utils::printSmallLine();
+    library.showAllItems();
+    Utils::printSmallLine();
+
+    string rollNo = readText("Student Roll No: ");
+    string itemID = readText("Item ID: ");
+
+    Student* student = dynamic_cast<Student*>(personManager.findByID(rollNo));
+    if (student == NULL) {
+        cout << "Student not found." << endl;
+        return;
+    }
+
+    if (itemID == "") {
+        cout << "Item ID is required." << endl;
+        return;
+    }
+
+    if (library.issueItem(rollNo, itemID)) {
+        cout << "Use option 10 to save records." << endl;
+    }
+}
+
+void returnLibraryItemPage(Library& library, PersonManager& personManager) {
+    loadLibraryIfNeeded(library);
+    printTitle("RETURN LIBRARY ITEM");
+
+    if (showLibraryStudents(personManager) == 0) {
+        cout << "Add students in Person Module first." << endl;
+        return;
+    }
+
+    Utils::printSmallLine();
+    library.displayIssuedRecords();
+    Utils::printSmallLine();
+
+    string rollNo = readText("Student Roll No: ");
+    string itemID = readText("Item ID: ");
+    int daysLate = readInt("Days Late: ", 0);
+
+    Student* student = dynamic_cast<Student*>(personManager.findByID(rollNo));
+    if (student == NULL) {
+        cout << "Student not found." << endl;
+        return;
+    }
+
+    if (itemID == "") {
+        cout << "Item ID is required." << endl;
+        return;
+    }
+
+    if (daysLate < 0) {
+        daysLate = 0;
+    }
+
+    bool returned = false;
+    try {
+        returned = library.returnItem(rollNo, itemID, daysLate);
+    } catch (OverdueException& e) {
+        cout << "Fine Error: " << e.what() << endl;
+        returned = true;
+    }
+
+    if (returned) {
+        cout << "Use option 10 to save records." << endl;
+    }
+}
+
+void deleteLibraryItemPage(Library& library) {
+    loadLibraryIfNeeded(library);
+    printTitle("DELETE LIBRARY ITEM");
+
+    string itemID = readText("Item ID: ");
+
+    if (itemID == "") {
+        cout << "Item ID is required." << endl;
+        return;
+    }
+
+    if (library.deleteItemByID(itemID)) {
+        cout << "Item deleted. Use option 10 to save records." << endl;
+    } else {
+        cout << "Item not deleted." << endl;
+    }
+}
+
+void saveLibraryRecordsPage(Library& library) {
+    loadLibraryIfNeeded(library);
+    printTitle("SAVE LIBRARY RECORDS");
+
+    library.saveCatalog("data/library_catalog.txt");
+    library.saveIssuedRecords("data/library_issued.txt");
+    cout << "Records saved to data/library_catalog.txt and data/library_issued.txt" << endl;
+}
+
+void reloadLibraryRecordsPage(Library& library) {
+    printTitle("RELOAD LIBRARY RECORDS");
+
+    library.loadCatalog("data/library_catalog.txt");
+    library.loadIssuedRecords("data/library_issued.txt");
+    cout << "Catalog items: " << library.getItemCount() << endl;
+    cout << "Issued records: " << library.getIssuedCount() << endl;
+}
+
+void libraryMenu(Library& library, PersonManager& personManager) {
     int choice;
 
     do {
         showPageTitle("LIBRARY MODULE");
-        cout << "1. Load catalog from file" << endl;
-        cout << "2. Show catalog" << endl;
-        cout << "3. Search by title" << endl;
-        cout << "4. Issue item B001 to 25-CS-067" << endl;
-        cout << "5. Return item B001 with overdue fine" << endl;
-        cout << "6. Show issued records" << endl;
-        cout << "7. Save catalog to file" << endl;
+        cout << "1. Show catalog" << endl;
+        cout << "2. Add Book" << endl;
+        cout << "3. Add Journal" << endl;
+        cout << "4. Search by title" << endl;
+        cout << "5. Search by item ID" << endl;
+        cout << "6. Issue item" << endl;
+        cout << "7. Return item" << endl;
+        cout << "8. Show issued records" << endl;
+        cout << "9. Delete item by ID" << endl;
+        cout << "10. Save library records" << endl;
+        cout << "11. Reload library records" << endl;
         printBackOption();
         choice = readChoice();
 
         if (choice == 1) {
-            printTitle("LOAD LIBRARY CATALOG");
-            library.loadCatalog("data/library_catalog.txt");
-            cout << "Catalog loaded. Total items: " << library.getItemCount() << endl;
-            pauseScreen();
-        } else if (choice == 2) {
             showLibraryCatalog(library);
             pauseScreen();
+        } else if (choice == 2) {
+            addBookPage(library);
+            pauseScreen();
         } else if (choice == 3) {
-            showLibrarySearch(library);
+            addJournalPage(library);
             pauseScreen();
         } else if (choice == 4) {
-            showLibraryIssue(library);
+            searchLibraryByTitlePage(library);
             pauseScreen();
         } else if (choice == 5) {
-            showLibraryReturn(library);
+            searchLibraryByIDPage(library);
             pauseScreen();
         } else if (choice == 6) {
-            printTitle("ISSUED RECORDS");
-            library.displayIssuedRecords();
+            issueLibraryItemPage(library, personManager);
             pauseScreen();
         } else if (choice == 7) {
-            printTitle("SAVE LIBRARY CATALOG");
+            returnLibraryItemPage(library, personManager);
+            pauseScreen();
+        } else if (choice == 8) {
+            printTitle("ISSUED RECORDS");
             loadLibraryIfNeeded(library);
-            library.saveCatalog("data/library_catalog_saved.txt");
-            cout << "Catalog saved to data/library_catalog_saved.txt" << endl;
+            library.displayIssuedRecords();
+            pauseScreen();
+        } else if (choice == 9) {
+            deleteLibraryItemPage(library);
+            pauseScreen();
+        } else if (choice == 10) {
+            saveLibraryRecordsPage(library);
+            pauseScreen();
+        } else if (choice == 11) {
+            reloadLibraryRecordsPage(library);
             pauseScreen();
         } else if (choice != 0) {
             printTitle("WRONG CHOICE");
@@ -986,7 +1184,7 @@ int main() {
         } else if (choice == 2) {
             courseMenu(courseManager, personManager);
         } else if (choice == 3) {
-            libraryMenu(library);
+            libraryMenu(library, personManager);
         } else if (choice == 4) {
             financeMenu(personManager);
         } else if (choice == 5) {
