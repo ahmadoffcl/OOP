@@ -44,7 +44,7 @@ Run each menu option and paste screenshots:
 - Enrollment demo
 - Library module
 - Finance module
-- Hostel demo
+- Hostel real room/allocation flow
 - Reports demo
 
 ## 6. Challenges

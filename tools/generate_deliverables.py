@@ -146,9 +146,9 @@ def make_class_diagram():
         "CampusService": ((80, 1580, 440, 1700), ["+ showServiceName()"]),
         "Accommodation": ((80, 1810, 440, 1960), ["+ allocateRoom()", "+ vacateRoom()"]),
         "Reportable": ((520, 1810, 880, 1960), ["+ generateReport()"]),
-        "Room": ((980, 1580, 1360, 1805), ["- roomNumber", "- type, floor", "- Student* occupants[]", "+ add/remove student", "+ hasStudent()"]),
-        "HostelBlock": ((980, 1880, 1360, 2065), ["- blockName", "- Room rooms[]", "+ addRoom()", "+ getTotalOccupants()"]),
-        "HostelManager": ((1420, 1740, 1740, 2005), ["- HostelBlock block", "+ allocateRoom()", "+ vacateRoom()", "+ generateReport()", "+ showSummary()"]),
+        "Room": ((980, 1580, 1360, 1805), ["- roomNumber", "- type, floor", "- Student* occupants[]", "+ add/remove student", "+ getCapacity()"]),
+        "HostelBlock": ((980, 1880, 1360, 2065), ["- blockName", "- Room rooms[]", "+ add/remove room", "+ findRoomByNumber()", "+ getTotalOccupants()"]),
+        "HostelManager": ((1420, 1740, 1740, 2030), ["- HostelBlock block", "- room/allocation files", "+ allocate/vacate room", "+ save/load records", "+ generateReport()"]),
         "Reports": ((80, 2120, 520, 2320), ["+ sortStudentsByGPA()", "+ findStudentByRollNo()", "+ showTopStudent()", "+ generateCampusTextReport()"]),
         "Utils": ((620, 2120, 1000, 2320), ["+ getTodayDate()", "+ printLine()", "+ printSmallLine()", "+ checkPositiveInt()"]),
     }
@@ -287,7 +287,7 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
         "Course module: Course, Enrollment, and CourseManager classes with saved course/enrollment records and capacity checking.",
         "Library module: Book and Journal catalog with add/search/delete, issue/return, overdue fine, file handling, and arrays.",
         "Finance module: FeeRecord, Invoice, and FinanceManager classes with saved fee records, payments, fines, invoices, copy handling, and static invoice counter.",
-        "Hostel module: Room, HostelBlock, and HostelManager using composition and multiple inheritance.",
+        "Hostel module: Room, HostelBlock, and HostelManager with saved rooms, saved allocations, composition, and multiple inheritance.",
         "Reports module: student sorting, searching, campus text report, and PDF-style text report generation.",
     ])
 
@@ -324,7 +324,7 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
         ("Array-based Collections", "The project uses arrays for people, courses, library items, rooms, and students.", "Person* people[MAX_PEOPLE];"),
         ("Arrays of Objects", "HostelBlock keeps Room objects in an array.", "Room rooms[MAX_BLOCK_ROOMS];"),
         ("Exception Handling", "Custom exceptions are thrown and caught for capacity and overdue cases.", "throw CapacityExceededException(\"Course is full\");"),
-        ("File I/O", "Person, course, enrollment, library, and report data are loaded/saved using fstream.", "ofstream file(fileName);"),
+        ("File I/O", "Person, course, enrollment, library, finance, hostel, and report data are loaded/saved using fstream.", "ofstream file(fileName);"),
         ("Reporting and Utilities", "Reports and Utils keep report, date, formatting, and validation helpers separate.", "Reports::generateCampusTextReport(...);"),
         ("Memory Management", "Objects and arrays created with new are deleted using delete or delete[].", "delete[] sortedStudents;"),
         ("Sorting and Searching", "Reports sorts students by GPA and searches by roll number.", "sortStudentsByGPA(students, count);"),
@@ -342,7 +342,7 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
         "Module 2 - Course and Enrollment: Stores saved course data, enrolls saved students, tracks waiting-list records, saves/reloads text files, blocks over-capacity enrollment, and demonstrates overloaded operators.",
         "Module 3 - Library System: Stores books and journals, adds/deletes catalog items, searches by title or ID, saves/loads catalog and issued records, tracks issued items, and handles overdue fines.",
         "Module 4 - Fee and Finance: Stores saved fee records, records payments with operator-=, adds fines, deep-copies fee data, and generates invoices with a static counter.",
-        "Module 5 - Hostel Management: Uses rooms, hostel blocks, multiple inheritance, virtual inheritance, and composition to allocate/vacate rooms.",
+        "Module 5 - Hostel Management: Uses saved rooms, saved allocations, room search/add/delete, multiple inheritance, virtual inheritance, and composition to allocate/vacate rooms.",
         "Module 6 - Reporting and Utilities: Sorts and searches student data, prints reports, writes a campus text report, writes a PDF-style text report, and keeps helper functions separate.",
     ])
 
@@ -351,7 +351,7 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
                      "Before final submission, create a public GitHub repository named HITEC-OOP-SCMS-25-CS-067, push this folder, "
                      "and paste the repository URL here and in README.md.")
     add_bullets(pdf, [
-        "Local branch: master",
+        "Local branch: main",
         "Current local commits: see git log --oneline in the repository.",
         "A GitHub Actions build workflow is included at .github/workflows/build.yml for the bonus compile check.",
         "Do not submit until the public GitHub link is shared through the course portal.",
@@ -367,7 +367,7 @@ def make_report(diagram_path, screenshot_paths, github_url=DEFAULT_GITHUB_TEXT):
         "Module 2 added a course, searched it, enrolled students, sent a full-course student to waiting list, showed roster, dropped a student, saved/reloaded records, compared courses, and merged waiting lists.",
         "Library module added book/journal records, searched by title and ID, issued and returned items, blocked duplicate issue, showed overdue fine, deleted an item, and saved/reloaded records.",
         "Finance module added/search fee records, recorded payment, added fine, generated invoice, showed copy constructor/assignment, and saved/reloaded records.",
-        "Hostel demo showed service name, allocation, duplicate check, summary, report, and vacate room.",
+        "Hostel module loaded saved rooms, added/searched/deleted a room, allocated/vacated a saved student, blocked duplicate allocation, saved/reloaded records, and printed occupancy report.",
         "Reports demo sorted students by GPA and created data/campus_report.txt.",
         "Reports demo created data/campus_pdf_report.txt.",
         "Wrong input test with abc did not freeze the program.",

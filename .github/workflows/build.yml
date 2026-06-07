@@ -13,7 +13,7 @@ jobs:
         run: g++ -std=c++17 -Wall -Wextra src/main.cpp src/person/*.cpp src/course/*.cpp src/library/*.cpp src/finance/*.cpp src/hostel/*.cpp src/utils/*.cpp -o scms
       - name: Smoke test all menus
         run: |
-          printf '1\n1\n\n2\n\n0\n2\n1\n\n3\nCS-104L\n\n4\n25-CS-252\nCS-104L\n\n5\nCS-104L\n\n7\nCS-104L\nCS-104L\n\n8\nCS-104L\nCS-104L\n\n9\n\n10\n\n11\n\n0\n3\n1\n\n4\nC++ Basics\n\n5\nB001\n\n6\n25-CS-067\nB001\n\n8\n\n7\n25-CS-067\nB001\n9\n\n8\n\n10\n\n11\n\n0\n4\n1\n\n3\n25-CS-067\n\n4\n25-CS-057\n10000\n\n5\n25-CS-057\n250\n\n6\n25-CS-057\n\n7\n25-CS-057\n\n8\n25-CS-057\n\n9\n\n10\n\n0\n5\n1\n\n2\n\n3\n\n4\n\n5\n\n6\n\n4\n\n0\n6\n1\n\n2\n25-CS-067\n\n3\n\n4\n\n5\n\n0\nabc\n\n0\n' | ./scms
+          printf '1\n1\n\n2\n\n0\n2\n1\n\n3\nCS-104L\n\n4\n25-CS-252\nCS-104L\n\n5\nCS-104L\n\n7\nCS-104L\nCS-104L\n\n8\nCS-104L\nCS-104L\n\n9\n\n10\n\n11\n\n0\n3\n1\n\n4\nC++ Basics\n\n5\nB001\n\n6\n25-CS-067\nB001\n\n8\n\n7\n25-CS-067\nB001\n9\n\n8\n\n10\n\n11\n\n0\n4\n1\n\n3\n25-CS-067\n\n4\n25-CS-057\n10000\n\n5\n25-CS-057\n250\n\n6\n25-CS-057\n\n7\n25-CS-057\n\n8\n25-CS-057\n\n9\n\n10\n\n0\n5\n1\n\n2\n\n3\n402\ndouble\n4\n\n4\n402\n\n5\n24\n402\n\n8\n24\n\n6\n25-CS-067\n\n7\n24\n\n13\n402\n\n11\n\n12\n\n9\n\n10\n\n0\n6\n1\n\n2\n25-CS-067\n\n3\n\n4\n\n5\n\n0\nabc\n\n0\n' | ./scms
       - name: Check generated reports
         run: |
           test -f data/campus_report.txt

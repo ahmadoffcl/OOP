@@ -49,7 +49,7 @@ Result:
 - Module 2 course manager added `CS-220`, searched it, enrolled two students, sent a third student to waiting list using `CapacityExceededException`, showed roster, compared courses, merged waiting lists, displayed enrollment records, dropped a waiting student, saved records, reloaded records, and verified `CS-220` remained after reload.
 - Module 3 library manager added a book and journal, searched by title and ID, issued a book to `25-CS-067`, blocked duplicate issue, returned once on time, returned once with overdue fine, displayed issued records, deleted a returned item, saved records, reloaded records, and verified deleted item was gone.
 - Module 4 finance manager added a fee record, searched it, recorded payment using `-=`, added library fine, showed payment history, generated invoice with static counter, showed FeeRecord copy constructor/assignment, saved records, reloaded records, and verified the saved fee record remained.
-- Hostel module printed service name, allocated students, blocked duplicate allocation, showed summary, printed occupancy report, and vacated one student.
+- Module 5 hostel manager loaded saved rooms/allocations, showed rooms, added a room, searched it, allocated saved student `24`, showed the student's room, blocked duplicate allocation for `25-CS-067`, vacated `24`, deleted the empty room, saved records, reloaded records, showed summary, and printed occupancy report.
 - Reports module sorted students by GPA, searched by roll number, showed top GPA student, wrote `data/campus_report.txt`, and wrote `data/campus_pdf_report.txt`.
 - Every module used `0. Back to Home`.
 - Every action page waited for Enter before showing the next menu.

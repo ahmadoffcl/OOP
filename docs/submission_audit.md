@@ -31,7 +31,7 @@ Date: 2026-06-07
 - Module 2 real course/enrollment flow works: add course, search, enroll, waiting list, roster, drop, save, reload, compare, and merge waiting lists
 - Library add/search/issue/duplicate block/return/overdue/delete/save/reload flow works
 - Finance add/search/payment/fine/history/invoice/save/reload flow works, with deep copy, destructor-backed dynamic array design, and static counter demonstrated
-- Hostel allocation, duplicate allocation check, report, and vacate flow work
+- Hostel add/search/delete room, allocate, duplicate allocation check, save/reload, report, and vacate flow work
 - Reports sorting, searching, top student, text report generation, and PDF-style text report generation work
 
 ## Still Needed Before Portal Submission

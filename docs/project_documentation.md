@@ -16,7 +16,7 @@ The Smart Campus Management System is a simple command-line C++ project for mana
 - `src/course`: Course, Enrollment, CourseManager
 - `src/library`: LibraryItem, Book, Journal, Library
 - `src/finance`: FeeRecord and Invoice
-- `src/hostel`: Room, HostelBlock, HostelManager, interfaces
+- `src/hostel`: Room, HostelBlock, HostelManager, accommodation/report interfaces
 - `src/utils`: Exceptions, Reports, Utils
 - `data`: text files used by the program
 - `docs`: notes, viva questions, diagram source, and checklists
@@ -52,7 +52,7 @@ Phase 2 covers library and finance. The Library class stores `LibraryItem*` poin
 
 ## Phase 3 Summary
 
-Phase 3 covers hostel and reports. HostelManager uses multiple inheritance and composition. Reports sort students by GPA and write `data/campus_report.txt`.
+Phase 3 covers hostel and reports. HostelManager uses multiple inheritance and composition, loads/saves `data/hostel_rooms.txt` and `data/hostel_allocations.txt`, adds/searches/deletes rooms, allocates saved students by roll number, vacates rooms, and prints occupancy reports. Reports sort students by GPA and write `data/campus_report.txt`.
 
 ## Build and Run
 

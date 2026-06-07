@@ -68,11 +68,18 @@ Then test menu choices:
 | 4 then 9 | Saves finance records |
 | 4 then 10 | Reloads finance records |
 | 5 then 1 | Shows hostel service name |
-| 5 then 2 | Allocates students to hostel rooms |
-| 5 then 3 | Tries duplicate allocation and blocks it |
-| 5 then 4 | Shows hostel summary |
-| 5 then 5 | Prints occupancy report |
-| 5 then 6 | Vacates Ahmad Ali room |
+| 5 then 2 | Shows all saved hostel rooms and current occupants |
+| 5 then 3 | Adds a hostel room from keyboard input |
+| 5 then 4 | Searches a room by room number |
+| 5 then 5 | Allocates a saved student to a selected room |
+| 5 then 6 | Auto-allocates a saved student to the first available room |
+| 5 then 7 | Vacates a student room by roll number |
+| 5 then 8 | Shows which room a student is in |
+| 5 then 9 | Shows hostel summary |
+| 5 then 10 | Prints occupancy report |
+| 5 then 11 | Saves hostel room/allocation records |
+| 5 then 12 | Reloads hostel room/allocation records |
+| 5 then 13 | Deletes an empty room |
 | 6 then 1 | Sorts students by GPA |
 | 6 then 2 | Finds student by roll number |
 | 6 then 3 | Shows top GPA student |

@@ -145,19 +145,27 @@ classDiagram
         +addStudent()
         +removeStudent()
         +hasStudent()
+        +getCapacity()
     }
 
     class HostelBlock {
         -string blockName
         -Room rooms[]
         +addRoom()
+        +removeRoom()
+        +findRoomByNumber()
         +getTotalOccupants()
     }
 
     class HostelManager {
         -HostelBlock block
+        -string roomFileName
+        -string allocationFileName
         +allocateRoom()
+        +allocateRoomToNumber()
         +vacateRoom()
+        +saveToFile()
+        +loadFromFile()
         +generateReport()
         +showSummary()
     }
