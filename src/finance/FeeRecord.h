@@ -36,12 +36,14 @@ public:
 
     void calculateBalance();
     void addLibraryFine(double fine);
+    Student* getStudent() const;
     double getSemesterFee() const;
     double getHostelFee() const;
     double getLibraryFine() const;
     double getTotalPaid() const;
     double getBalance() const;
     int getPaymentCount() const;
+    double getPaymentAt(int index) const;
 
     FeeRecord& operator-=(double payment);
     void displayFeeRecord() const;

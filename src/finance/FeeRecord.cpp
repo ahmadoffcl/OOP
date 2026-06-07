@@ -93,6 +93,10 @@ void FeeRecord::addLibraryFine(double fine) {
     calculateBalance();
 }
 
+Student* FeeRecord::getStudent() const {
+    return studentRef;
+}
+
 double FeeRecord::getSemesterFee() const {
     return semesterFee;
 }
@@ -115,6 +119,14 @@ double FeeRecord::getBalance() const {
 
 int FeeRecord::getPaymentCount() const {
     return paymentCount;
+}
+
+double FeeRecord::getPaymentAt(int index) const {
+    if (index >= 0 && index < paymentCount) {
+        return payments[index];
+    }
+
+    return 0;
 }
 
 FeeRecord& FeeRecord::operator-=(double payment) {
