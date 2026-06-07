@@ -1180,63 +1180,199 @@ void financeMenu(FinanceManager& financeManager, PersonManager& personManager) {
     } while (choice != 0);
 }
 
-void hostelMenu(PersonManager& personManager) {
-    Student* s1 = personManager.getStudentAt(0);
-    Student* s2 = personManager.getStudentAt(1);
-    Student* s3 = personManager.getStudentAt(2);
+int showHostelStudents(PersonManager& personManager) {
+    Student* students[MAX_PEOPLE];
+    int totalStudents = personManager.getStudents(students, MAX_PEOPLE);
 
-    if (s1 == NULL || s2 == NULL || s3 == NULL) {
-        printTitle("HOSTEL MODULE");
-        cout << "Add at least 3 students in Person Module first." << endl;
-        pauseScreen();
+    cout << "Saved Students:" << endl;
+    if (totalStudents == 0) {
+        cout << "No saved students." << endl;
+    }
+
+    for (int i = 0; i < totalStudents; i++) {
+        cout << i + 1 << ". " << students[i]->getRollNo()
+             << " | " << students[i]->getName() << endl;
+    }
+
+    return totalStudents;
+}
+
+void showAllHostelRoomsPage(HostelManager& hostelManager) {
+    printTitle("HOSTEL ROOMS");
+    hostelManager.showAllRooms();
+}
+
+void addHostelRoomPage(HostelManager& hostelManager) {
+    printTitle("ADD HOSTEL ROOM");
+
+    int roomNumber = readInt("Room Number: ", 0);
+    string type = readText("Room Type (single/double/triple): ", "triple");
+    int floor = readInt("Floor: ", 1);
+
+    if (hostelManager.addRoom(roomNumber, type, floor)) {
+        cout << "Room added. Use option 11 to save records." << endl;
+    }
+}
+
+void searchHostelRoomPage(HostelManager& hostelManager) {
+    printTitle("SEARCH HOSTEL ROOM");
+
+    int roomNumber = readInt("Room Number: ", 0);
+    Room* room = hostelManager.findRoomByNumber(roomNumber);
+
+    if (room == NULL) {
+        cout << "Room not found." << endl;
         return;
     }
 
-    HostelManager manager;
+    room->displayRoom();
+}
+
+void allocateHostelRoomPage(HostelManager& hostelManager, PersonManager& personManager) {
+    printTitle("ALLOCATE STUDENT TO ROOM");
+
+    if (showHostelStudents(personManager) == 0) {
+        cout << "Add students in Person Module first." << endl;
+        return;
+    }
+
+    Utils::printSmallLine();
+    string rollNo = readText("Student Roll No: ");
+    int roomNumber = readInt("Room Number: ", 0);
+
+    Student* student = dynamic_cast<Student*>(personManager.findByID(rollNo));
+    if (student == NULL) {
+        cout << "Student not found." << endl;
+        return;
+    }
+
+    hostelManager.allocateRoomToNumber(student, roomNumber);
+    cout << "Use option 11 to save records." << endl;
+}
+
+void autoAllocateHostelRoomPage(HostelManager& hostelManager, PersonManager& personManager) {
+    printTitle("AUTO ALLOCATE STUDENT");
+
+    if (showHostelStudents(personManager) == 0) {
+        cout << "Add students in Person Module first." << endl;
+        return;
+    }
+
+    Utils::printSmallLine();
+    string rollNo = readText("Student Roll No: ");
+
+    Student* student = dynamic_cast<Student*>(personManager.findByID(rollNo));
+    if (student == NULL) {
+        cout << "Student not found." << endl;
+        return;
+    }
+
+    hostelManager.allocateRoom(student);
+    cout << "Use option 11 to save records." << endl;
+}
+
+void vacateHostelRoomPage(HostelManager& hostelManager) {
+    printTitle("VACATE HOSTEL ROOM");
+
+    string rollNo = readText("Student Roll No: ");
+    hostelManager.vacateRoom(rollNo);
+    cout << "Use option 11 to save records." << endl;
+}
+
+void showStudentHostelRoomPage(HostelManager& hostelManager) {
+    printTitle("STUDENT HOSTEL ROOM");
+
+    string rollNo = readText("Student Roll No: ");
+    hostelManager.showStudentRoom(rollNo);
+}
+
+void deleteHostelRoomPage(HostelManager& hostelManager) {
+    printTitle("DELETE HOSTEL ROOM");
+
+    int roomNumber = readInt("Room Number: ", 0);
+
+    if (hostelManager.deleteRoom(roomNumber)) {
+        cout << "Room deleted. Use option 11 to save records." << endl;
+    }
+}
+
+void saveHostelRecordsPage(HostelManager& hostelManager) {
+    printTitle("SAVE HOSTEL RECORDS");
+
+    hostelManager.saveToFile();
+    cout << "Records saved to data/hostel_rooms.txt and data/hostel_allocations.txt" << endl;
+}
+
+void reloadHostelRecordsPage(HostelManager& hostelManager, PersonManager& personManager) {
+    printTitle("RELOAD HOSTEL RECORDS");
+
+    hostelManager.loadFromFile(personManager);
+    cout << "Records reloaded from hostel files." << endl;
+    cout << "Total rooms: " << hostelManager.getRoomCount() << endl;
+}
+
+void hostelMenu(HostelManager& hostelManager, PersonManager& personManager) {
     int choice;
-    bool allocated = false;
 
     do {
         showPageTitle("HOSTEL MODULE");
         cout << "1. Show hostel service name" << endl;
-        cout << "2. Allocate sample students" << endl;
-        cout << "3. Try duplicate allocation" << endl;
-        cout << "4. Show hostel summary" << endl;
-        cout << "5. Show occupancy report" << endl;
-        cout << "6. Vacate first student room" << endl;
+        cout << "2. Show all rooms" << endl;
+        cout << "3. Add room" << endl;
+        cout << "4. Search room by number" << endl;
+        cout << "5. Allocate student to room" << endl;
+        cout << "6. Auto allocate student" << endl;
+        cout << "7. Vacate student room" << endl;
+        cout << "8. Show student's room" << endl;
+        cout << "9. Show hostel summary" << endl;
+        cout << "10. Show occupancy report" << endl;
+        cout << "11. Save hostel records" << endl;
+        cout << "12. Reload hostel records" << endl;
+        cout << "13. Delete empty room" << endl;
         printBackOption();
         choice = readChoice();
 
         if (choice == 1) {
             printTitle("HOSTEL SERVICE");
-            manager.showServiceName();
+            hostelManager.showServiceName();
             pauseScreen();
         } else if (choice == 2) {
-            printTitle("ALLOCATE SAMPLE STUDENTS");
-            if (!allocated) {
-                manager.allocateRoom(s1);
-                manager.allocateRoom(s2);
-                manager.allocateRoom(s3);
-                allocated = true;
-            } else {
-                cout << "Students are already allocated in this module visit." << endl;
-            }
+            showAllHostelRoomsPage(hostelManager);
             pauseScreen();
         } else if (choice == 3) {
-            printTitle("DUPLICATE ALLOCATION CHECK");
-            manager.allocateRoom(s1);
+            addHostelRoomPage(hostelManager);
             pauseScreen();
         } else if (choice == 4) {
-            printTitle("HOSTEL SUMMARY");
-            manager.showSummary();
+            searchHostelRoomPage(hostelManager);
             pauseScreen();
         } else if (choice == 5) {
-            printTitle("HOSTEL OCCUPANCY REPORT");
-            manager.generateReport();
+            allocateHostelRoomPage(hostelManager, personManager);
             pauseScreen();
         } else if (choice == 6) {
-            printTitle("VACATE ROOM");
-            manager.vacateRoom(s1->getRollNo());
+            autoAllocateHostelRoomPage(hostelManager, personManager);
+            pauseScreen();
+        } else if (choice == 7) {
+            vacateHostelRoomPage(hostelManager);
+            pauseScreen();
+        } else if (choice == 8) {
+            showStudentHostelRoomPage(hostelManager);
+            pauseScreen();
+        } else if (choice == 9) {
+            printTitle("HOSTEL SUMMARY");
+            hostelManager.showSummary();
+            pauseScreen();
+        } else if (choice == 10) {
+            printTitle("HOSTEL OCCUPANCY REPORT");
+            hostelManager.generateReport();
+            pauseScreen();
+        } else if (choice == 11) {
+            saveHostelRecordsPage(hostelManager);
+            pauseScreen();
+        } else if (choice == 12) {
+            reloadHostelRecordsPage(hostelManager, personManager);
+            pauseScreen();
+        } else if (choice == 13) {
+            deleteHostelRoomPage(hostelManager);
             pauseScreen();
         } else if (choice != 0) {
             printTitle("WRONG CHOICE");
@@ -1331,6 +1467,8 @@ int main() {
     courseManager.loadAll(personManager);
     FinanceManager financeManager("data/fee_records.txt");
     financeManager.loadFromFile(personManager);
+    HostelManager hostelManager("data/hostel_rooms.txt", "data/hostel_allocations.txt");
+    hostelManager.loadFromFile(personManager);
     Library library;
     int choice;
 
@@ -1342,6 +1480,7 @@ int main() {
             personMenu(personManager);
             courseManager.loadAll(personManager);
             financeManager.loadFromFile(personManager);
+            hostelManager.loadFromFile(personManager);
         } else if (choice == 2) {
             courseMenu(courseManager, personManager);
         } else if (choice == 3) {
@@ -1349,7 +1488,7 @@ int main() {
         } else if (choice == 4) {
             financeMenu(financeManager, personManager);
         } else if (choice == 5) {
-            hostelMenu(personManager);
+            hostelMenu(hostelManager, personManager);
         } else if (choice == 6) {
             reportsMenu(personManager, library);
         } else if (choice == 0) {
