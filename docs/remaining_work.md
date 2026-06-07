@@ -17,7 +17,7 @@ These items are still left before final submission. The local C++ code, build se
 
 - Add more real input forms for adding books.
 - Add simple validation for GPA, fee amount, and semester.
-- Add more records in `data/library_catalog.txt`.
+- Add more optional records in `data/library_catalog.txt` if your teacher wants a larger catalog.
 - Add separate menu options for load, save, issue, and return library item.
 - Add more comments in places you personally find confusing.
 

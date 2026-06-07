@@ -35,14 +35,14 @@ Examples:
 - Inheritance: `Student : Person`, `Book : LibraryItem`
 - Polymorphism: `Person* people[]` calls different `displayInfo()` functions
 - Operator overloading: `Course ==`, `Course <<`, `FeeRecord -=`
-- File I/O: `Library::saveCatalog()` and `Reports::generateCampusTextReport()`
+- File I/O: `Library::saveCatalog()`, `Library::saveIssuedRecords()`, and `Reports::generateCampusTextReport()`
 
 ## 5. Module Screenshots
 Run each menu option and paste screenshots:
 - Person module
 - Course module
 - Enrollment demo
-- Library demo
+- Library module
 - Finance demo
 - Hostel demo
 - Reports demo

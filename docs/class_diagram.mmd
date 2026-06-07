@@ -85,10 +85,15 @@ classDiagram
     class Library {
         -LibraryItem* items[]
         -IssuedRecord issued[]
+        +addItem()
+        +deleteItemByID()
         +searchByTitle()
+        +searchByID()
         +displayIssuedRecords()
         +saveCatalog()
         +loadCatalog()
+        +saveIssuedRecords()
+        +loadIssuedRecords()
     }
 
     class FeeRecord {

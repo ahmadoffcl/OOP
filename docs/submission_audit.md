@@ -29,7 +29,7 @@ Date: 2026-06-07
 - Each module has `0. Back to Home`
 - Wrong text input does not freeze the program
 - Module 2 real course/enrollment flow works: add course, search, enroll, waiting list, roster, drop, save, reload, compare, and merge waiting lists
-- Library load/search/issue/return/save flow works
+- Library add/search/issue/duplicate block/return/overdue/delete/save/reload flow works
 - Finance payment, deep copy, invoice copy, destructor-backed dynamic array design, and static counter are demonstrated
 - Hostel allocation, duplicate allocation check, report, and vacate flow work
 - Reports sorting, searching, top student, text report generation, and PDF-style text report generation work

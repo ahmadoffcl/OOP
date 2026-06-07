@@ -46,13 +46,17 @@ Then test menu choices:
 | 2 then 9 | Shows saved enrollment records with status |
 | 2 then 10 | Saves courses and enrollments to text files |
 | 2 then 11 | Reloads courses and enrollments from text files |
-| 3 then 1 | Loads library catalog from `data/library_catalog.txt` |
-| 3 then 2 | Shows library catalog |
-| 3 then 3 | Searches C++ book by title |
-| 3 then 4 | Issues item `B001` to `25-CS-067` |
-| 3 then 5 | Returns item `B001` with overdue fine |
-| 3 then 6 | Shows issued item records |
-| 3 then 7 | Saves library catalog |
+| 3 then 1 | Shows library catalog from `data/library_catalog.txt` |
+| 3 then 2 | Adds a book from keyboard input |
+| 3 then 3 | Adds a journal from keyboard input |
+| 3 then 4 | Searches library catalog by title |
+| 3 then 5 | Searches library catalog by item ID |
+| 3 then 6 | Issues a saved item to a saved student roll number |
+| 3 then 7 | Returns an issued item and shows overdue fine when late |
+| 3 then 8 | Shows issued item records |
+| 3 then 9 | Deletes a library item by item ID |
+| 3 then 10 | Saves catalog and issued records |
+| 3 then 11 | Reloads catalog and issued records |
 | 4 then 1 | Shows fee record, payment using `-=`, and payment history |
 | 4 then 2 | Shows fee copy constructor and assignment with copied payment history |
 | 4 then 3 | Shows invoice, copied invoice, assigned invoice, and static counter |

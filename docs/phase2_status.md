@@ -26,6 +26,9 @@ Features:
 - `returnItem()` with overdue fine exception
 - `saveCatalog()`
 - `loadCatalog()`
+- `saveIssuedRecords()`
+- `loadIssuedRecords()`
+- Real add/search/delete/issue/return menu actions
 
 ## Finance Module
 
@@ -52,7 +55,7 @@ Features:
 
 Phase 2 menu options tested:
 
-- Option 4: Library demo
-- Option 5: Finance demo
+- Option 3: Library real management module
+- Option 4: Finance module
 
 Both run successfully after compiling with `build.bat`.
