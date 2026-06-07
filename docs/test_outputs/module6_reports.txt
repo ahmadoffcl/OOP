@@ -1,4 +1,4 @@
-﻿------------------------------------------------------------
+------------------------------------------------------------
  SMART CAMPUS MANAGEMENT SYSTEM
 ------------------------------------------------------------
 Group: Ahmad Ali, Umer Altaf, Muhammed Ahmad
@@ -14,29 +14,67 @@ Course: CS-104L Object-Oriented Programming
 Enter choice: ------------------------------------------------------------
  REPORTS MODULE
 ------------------------------------------------------------
-1. Sort and show students by GPA
-2. Find student by roll number
-3. Show top GPA student
-4. Generate campus text report
-5. Generate PDF-style text report
+1. Show complete campus summary
+2. Sort and show students by GPA
+3. Find student by roll number
+4. Show top GPA student
+5. Show overdue library records
+6. Generate consolidated text report
+7. Generate consolidated PDF-style report
+8. Show utility/date helper info
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ COMPLETE CAMPUS SUMMARY
+------------------------------------------------------------
+Date: 05-06-2026
+------------------------------
+Total People: 6
+Total Students: 4
+Saved Courses: 1
+Enrollment Records: 2
+Library Items: 2
+Issued Records: 1
+Currently Issued Items: 0
+Overdue Library Records: 0
+Fee Records: 3
+Total Fee Paid: 25000
+Total Fee Balance: 210500
+Hostel Rooms: 4
+Hostel Occupants: 3
+
+Press Enter to continue...------------------------------------------------------------
+ REPORTS MODULE
+------------------------------------------------------------
+1. Show complete campus summary
+2. Sort and show students by GPA
+3. Find student by roll number
+4. Show top GPA student
+5. Show overdue library records
+6. Generate consolidated text report
+7. Generate consolidated PDF-style report
+8. Show utility/date helper info
 0. Back to Home
 Enter choice: ------------------------------------------------------------
  STUDENTS SORTED BY GPA
 ------------------------------------------------------------
 
 --- Students Sorted by GPA ---
-25-CS-057 - Umer Altaf - GPA: 3.8
-25-CS-067 - Ahmad Ali - GPA: 3.4
-25-CS-252 - Muhammed Ahmad - GPA: 3.2
+1. 24 | Ahmed Ali | Semester: 2 | GPA: 4
+2. 25-CS-057 | Umer Altaf | Semester: 2 | GPA: 3.8
+3. 25-CS-067 | Ahmad Ali | Semester: 2 | GPA: 3.4
+4. 25-CS-252 | Muhammed Ahmad | Semester: 2 | GPA: 3.2
 
 Press Enter to continue...------------------------------------------------------------
  REPORTS MODULE
 ------------------------------------------------------------
-1. Sort and show students by GPA
-2. Find student by roll number
-3. Show top GPA student
-4. Generate campus text report
-5. Generate PDF-style text report
+1. Show complete campus summary
+2. Sort and show students by GPA
+3. Find student by roll number
+4. Show top GPA student
+5. Show overdue library records
+6. Generate consolidated text report
+7. Generate consolidated PDF-style report
+8. Show utility/date helper info
 0. Back to Home
 Enter choice: ------------------------------------------------------------
  FIND STUDENT
@@ -47,55 +85,108 @@ Enter roll no (press Enter for 25-CS-067): Student found:
 Press Enter to continue...------------------------------------------------------------
  REPORTS MODULE
 ------------------------------------------------------------
-1. Sort and show students by GPA
-2. Find student by roll number
-3. Show top GPA student
-4. Generate campus text report
-5. Generate PDF-style text report
+1. Show complete campus summary
+2. Sort and show students by GPA
+3. Find student by roll number
+4. Show top GPA student
+5. Show overdue library records
+6. Generate consolidated text report
+7. Generate consolidated PDF-style report
+8. Show utility/date helper info
 0. Back to Home
 Enter choice: ------------------------------------------------------------
  TOP GPA STUDENT
 ------------------------------------------------------------
 
 --- Top GPA Student ---
-25-CS-057 - Umer Altaf - GPA: 3.8
+24 - Ahmed Ali - GPA: 4
 
 Press Enter to continue...------------------------------------------------------------
  REPORTS MODULE
 ------------------------------------------------------------
-1. Sort and show students by GPA
-2. Find student by roll number
-3. Show top GPA student
-4. Generate campus text report
-5. Generate PDF-style text report
+1. Show complete campus summary
+2. Sort and show students by GPA
+3. Find student by roll number
+4. Show top GPA student
+5. Show overdue library records
+6. Generate consolidated text report
+7. Generate consolidated PDF-style report
+8. Show utility/date helper info
 0. Back to Home
 Enter choice: ------------------------------------------------------------
- GENERATE CAMPUS TEXT REPORT
+ OVERDUE LIBRARY RECORDS
 ------------------------------------------------------------
-Text report saved to data/campus_report.txt
+
+--- Overdue Library Records ---
+No overdue library records found.
 
 Press Enter to continue...------------------------------------------------------------
  REPORTS MODULE
 ------------------------------------------------------------
-1. Sort and show students by GPA
-2. Find student by roll number
-3. Show top GPA student
-4. Generate campus text report
-5. Generate PDF-style text report
+1. Show complete campus summary
+2. Sort and show students by GPA
+3. Find student by roll number
+4. Show top GPA student
+5. Show overdue library records
+6. Generate consolidated text report
+7. Generate consolidated PDF-style report
+8. Show utility/date helper info
 0. Back to Home
 Enter choice: ------------------------------------------------------------
- GENERATE PDF-STYLE TEXT REPORT
+ GENERATE CONSOLIDATED TEXT REPORT
 ------------------------------------------------------------
-PDF-style text report saved to data/campus_pdf_report.txt
+Consolidated text report saved to data/campus_report.txt
 
 Press Enter to continue...------------------------------------------------------------
  REPORTS MODULE
 ------------------------------------------------------------
-1. Sort and show students by GPA
-2. Find student by roll number
-3. Show top GPA student
-4. Generate campus text report
-5. Generate PDF-style text report
+1. Show complete campus summary
+2. Sort and show students by GPA
+3. Find student by roll number
+4. Show top GPA student
+5. Show overdue library records
+6. Generate consolidated text report
+7. Generate consolidated PDF-style report
+8. Show utility/date helper info
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ GENERATE CONSOLIDATED PDF-STYLE REPORT
+------------------------------------------------------------
+Consolidated PDF-style text report saved to data/campus_pdf_report.txt
+
+Press Enter to continue...------------------------------------------------------------
+ REPORTS MODULE
+------------------------------------------------------------
+1. Show complete campus summary
+2. Sort and show students by GPA
+3. Find student by roll number
+4. Show top GPA student
+5. Show overdue library records
+6. Generate consolidated text report
+7. Generate consolidated PDF-style report
+8. Show utility/date helper info
+0. Back to Home
+Enter choice: ------------------------------------------------------------
+ UTILITY AND DATE HELPERS
+------------------------------------------------------------
+Today Date: 05-06-2026
+------------------------------
+Utils::printLine() prints a long separator.
+Utils::printSmallLine() prints a short separator.
+Utils::checkPositiveInt(-5) returns 0
+Utils::checkPositiveInt(10) returns 10
+
+Press Enter to continue...------------------------------------------------------------
+ REPORTS MODULE
+------------------------------------------------------------
+1. Show complete campus summary
+2. Sort and show students by GPA
+3. Find student by roll number
+4. Show top GPA student
+5. Show overdue library records
+6. Generate consolidated text report
+7. Generate consolidated PDF-style report
+8. Show utility/date helper info
 0. Back to Home
 Enter choice: ------------------------------------------------------------
  SMART CAMPUS MANAGEMENT SYSTEM

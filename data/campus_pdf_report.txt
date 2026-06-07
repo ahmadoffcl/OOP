@@ -7,28 +7,45 @@ Inst   : HITEC University Taxila
 Date   : 05-06-2026
 Group  : Ahmad Ali, Umer Altaf, Muhammed Ahmad
 ------------------------------------------------------------
-Summary
+Complete System Summary
 ------------------------------------------------------------
-Total Students : 3
-Library Items  : 2
-Top GPA Student: Umer Altaf (25-CS-057)
+People Records      : 6
+Student Records     : 4
+Course Records      : 1
+Enrollment Records  : 2
+Library Items       : 2
+Issued Records      : 1
+Active Issued Items : 0
+Overdue Records     : 0
+Fee Records         : 3
+Total Paid          : 25000
+Total Balance       : 210500
+Hostel Rooms        : 4
+Hostel Occupants    : 3
+Top GPA Student     : Ahmed Ali (24)
 ------------------------------------------------------------
 Students Sorted by GPA
 ------------------------------------------------------------
-1. 25-CS-057 | Umer Altaf | GPA: 3.8
-2. 25-CS-067 | Ahmad Ali | GPA: 3.4
-3. 25-CS-252 | Muhammed Ahmad | GPA: 3.2
+1. 24 | Ahmed Ali | GPA: 4
+2. 25-CS-057 | Umer Altaf | GPA: 3.8
+3. 25-CS-067 | Ahmad Ali | GPA: 3.4
+4. 25-CS-252 | Muhammed Ahmad | GPA: 3.2
 ------------------------------------------------------------
-Library Summary
+Module Coverage
 ------------------------------------------------------------
-Library catalog item count: 2
-See the program Library module for full book and journal records.
+1. Person records: saved people, students, faculty, staff.
+2. Courses: saved courses, enrollments, waiting lists.
+3. Library: catalog, issued records, overdue tracking.
+4. Finance: fee records, payments, fines, invoices.
+5. Hostel: saved rooms and allocations.
+6. Reports: sorting, searching, file output, utilities.
 ------------------------------------------------------------
 OOP Concepts Highlight
 ------------------------------------------------------------
 Classes, inheritance, polymorphism, arrays, file handling,
 exception handling, operator overloading, copy constructor,
-copy assignment, static members, and memory management.
+copy assignment, static members, dynamic arrays, sorting,
+std::find_if searching, and memory management.
 ============================================================
 End of PDF-style report
 ============================================================
