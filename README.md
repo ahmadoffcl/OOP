@@ -193,6 +193,3 @@ Main menu:
 - Make sure each group member can explain their module.
 - Confirm the 3-member group permission with the instructor.
 
-## Important
-
-Do not submit without understanding the code. The viva will check whether you can explain the classes, inheritance, file handling, arrays, and menu flows.
