@@ -18,7 +18,7 @@
 | Umer Altaf | 25-CS-057 |
 | Muhammed Ahmad | 25-CS-252 |
 
-Note: The project brief mentions individual/team of 2. Confirm with the instructor if a 3-member group is allowed.
+
 
 ## Project Overview
 
