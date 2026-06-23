@@ -7,7 +7,7 @@
 - Course: CS-104L Object-Oriented Programming
 - University: HITEC University Taxila
 - Language: C++
-- Interface: Command Prompt / Console
+- Interface: Command Prompt/ Console
 - GitHub Repository: https://github.com/ahmadoffcl/OOP
 
 ## Group Members
